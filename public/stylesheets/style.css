@@ -940,17 +940,19 @@ main>div .heading {
   background-color: var(--white-color);
   box-shadow: var(--shadow);
   z-index: 10;
+  display: none;
 }
 
-.sort-list .wrap ul li a {
+.sort-list ul li a {
   display: block;
   padding: 5px 20px;
+  transition: var(--transition-background), var(--transition-color);
 }
 
-.sort-list ul li a:hover {
+.sort-list ul li a:hover,
+.sort-list ul li.active a {
   background-color: var(--dark-color);
   color: var(--white-color);
-  transition: var(--transition-background), var(--transition-color);
 }
 
 
