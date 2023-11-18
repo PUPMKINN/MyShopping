@@ -917,7 +917,30 @@ main>div .heading {
   margin-right: 20px;
 }
 
+.bycats .heading>span,
+.opt-trigger {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
 
+.sort-list .wrap {
+  position: relative;
+}
+
+.sort-list .wrap ul {
+  position: absolute;
+  text-align: left;
+  top: 50px;
+  left: 0;
+  right: 0;
+  background-color: var(--white-color);
+  box-shadow: var(--shadow);
+  z-index: 10;
+}
 
 
 
