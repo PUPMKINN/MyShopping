@@ -960,6 +960,15 @@ main>div .heading {
   color: var(--white-color);
 }
 
+.sort-data {
+  display: none;
+  animation: var(--fade);
+}
+
+.sort-data.active {
+  display: block;
+}
+
 
 
 
