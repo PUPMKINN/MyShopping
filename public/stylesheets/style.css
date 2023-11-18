@@ -941,6 +941,11 @@ main>div .heading {
   box-shadow: var(--shadow);
   z-index: 10;
   display: none;
+  animation: var(--fade);
+}
+
+.sort-list .wrap ul .show {
+  display: block;
 }
 
 .sort-list ul li a {
