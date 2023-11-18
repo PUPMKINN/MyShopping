@@ -900,6 +900,23 @@ main>div .heading {
 }
 
 
+/* ----------------------------- *
+ 
+            #Bycats 
+ 
+ * ----------------------------- */
+
+.bycats .heading {
+  display: flex;
+  justify-content: center;
+}
+
+.bycats .heading>span {
+  font-family: var(--second-font);
+  font-size: 32px;
+  margin-right: 20px;
+}
+
 
 
 
