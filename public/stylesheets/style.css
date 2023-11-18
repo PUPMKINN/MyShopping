@@ -942,6 +942,16 @@ main>div .heading {
   z-index: 10;
 }
 
+.sort-list .wrap ul li a {
+  display: block;
+  padding: 5px 20px;
+}
+
+.sort-list ul li a:hover {
+  background-color: var(--dark-color);
+  color: var(--white-color);
+  transition: var(--transition-background), var(--transition-color);
+}
 
 
 
