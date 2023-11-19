@@ -84,7 +84,9 @@ input::placeholder {
     padding: 50px 30px;
     border-radius: 30px;
     display: flex;
+    flex-direction: column;
     box-shadow: rgb(149 157 165 / 20%) 0 8px 24px;
+    overflow: hidden;
 }
 
 nav ul {
@@ -261,10 +263,64 @@ form .socials button:hover {
     border: 0;
 }
 
+.signin {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+}
+
+.theform .play .wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.theform .play {
+    position: relative;
+    min-height: 300px;
+    transform: translateX(18%) rotateX(-180deg) scale(0.65) rotate(70deg);
+    z-index: 1;
+}
+
+.theform .play .card {
+    position: absolute;
+    width: 350px;
+    height: 500px;
+    border-radius: 30px;
+}
+
+.play .card .one {
+    background-color: #6675ff;
+    transform: rotate(290deg) translate3d(20%, 35%, 0) skewY(-20deg);
+}
+
+.play .card .two {
+    background-color: #5599ff;
+    transform: rotate(318deg) translate3d(60%, 8%, 0) scale(1.1);
+}
+
+.play .card .three {
+    background-color: #5191f2;
+    transform: rotate(335deg) translate3d(100%, -20%, 0);
+}
+
+.play .card .four {
+    background-color: #dddcfb;
+    transform: rotate(-15deg) translate3d(45%, 105%, 0) scale(0.8);
+}
+
+.play .card .five {
+    background-color: #191947;
+    transform: rotate(283deg) translate3d(-150%, 50%, 0);
+}
+
+
+
 
 @media screen and (min-width: 768px) {
     .the form {
         padding: 50px 0;
+        flex-direction: row;
     }
 
     .theform>div {
@@ -279,8 +335,17 @@ form .socials button:hover {
         padding: 0 13% 0 5%;
     }
 
+    .signin {
+        height: auto;
+    }
+
     .theform .play {
         position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 50%;
+        z-index: 1;
+        transform: translateX(100%);
     }
 }
 
