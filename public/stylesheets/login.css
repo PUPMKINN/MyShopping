@@ -3,9 +3,9 @@
 :root {
     --primary: #5352ed;
     --white-color: #ffffff;
-    --grey-color: #e6e6ed;
-    --dark-color: #2f3542;
-    --light-color: #d1d8e0;
+    --light-color: #e6e6ed;
+    --grey-color: #a4b0be;
+    --light-color: #2f3542;
 }
 
 * {
@@ -84,10 +84,11 @@ input::placeholder {
     padding: 50px 30px;
     border-radius: 30px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     box-shadow: rgb(149 157 165 / 20%) 0 8px 24px;
     overflow: hidden;
 }
+
 
 nav ul {
     display: flex;
@@ -102,6 +103,7 @@ nav ul li:first-child a {
     align-items: center;
     justify-content: center;
     border: 1px solid var(--light-color);
+    border-radius: 50%;
     transition: background-color .3s, color .3s;
 }
 
@@ -111,19 +113,26 @@ nav ul li:first-child a:hover {
     border: 0;
 }
 
+
+
+
+
+
 nav ul li:last-child {
     font-size: 12px;
 }
-
 
 nav ul li:last-child a {
     color: var(--primary);
     font-weight: 500;
 }
 
+
 nav ul li:last-child a:hover {
     text-decoration: underline;
 }
+
+
 
 .heading h2 {
     font-size: 42px;
@@ -135,6 +144,7 @@ form .actions p {
     color: var(--grey-color);
     font-size: 14px;
 }
+
 
 form {
     display: flex;
@@ -160,6 +170,7 @@ form p input {
     border-color: var(--light-color);
 }
 
+
 form p:not(.socials) i {
     position: absolute;
     left: 0;
@@ -169,12 +180,14 @@ form p:not(.socials) i {
     color: var(--grey-color);
 }
 
+
 form p i.ri-eye-off-line {
     left: auto;
     right: 0;
     color: var(--dark-color);
     cursor: pointer;
 }
+
 
 form .actions {
     display: flex;
@@ -185,8 +198,9 @@ form .actions {
 
 }
 
+
 form .actions label {
-    width: 100px;
+    width: 100%;
     position: relative;
     overflow: hidden;
 }
@@ -211,7 +225,7 @@ form .actions label i {
     padding: 10px;
     line-height: 1;
     border-radius: 50%;
-    background-color: rgb(255 255 255 /25%);
+    background-color: rgb(255 255 255 / 25%);
     color: var(--white-color);
     cursor: pointer;
     transform: translateX(50px);
@@ -263,11 +277,6 @@ form .socials button:hover {
     border: 0;
 }
 
-.signin {
-    visibility: hidden;
-    opacity: 0;
-    height: 0;
-}
 
 .theform .play .wrapper {
     position: relative;
@@ -275,50 +284,140 @@ form .socials button:hover {
     height: 100%;
 }
 
+
 .theform .play {
     position: relative;
-    min-height: 300px;
-    transform: translateX(18%) rotateX(-180deg) scale(0.65) rotate(70deg);
+    height: 300px;
+    transform: translateX(180deg) rotateX(-180deg) scale(0.65) rotate(70deg);
     z-index: 1;
 }
 
 .theform .play .card {
     position: absolute;
-    width: 350px;
-    height: 500px;
+    width: 150px;
+    height: 280px;
     border-radius: 30px;
 }
 
-.play .card .one {
+
+.signin,
+.signin-show .signup {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+}
+
+.play .card.one {
     background-color: #6675ff;
     transform: rotate(290deg) translate3d(20%, 35%, 0) skewY(-20deg);
 }
 
-.play .card .two {
+.play .card.two {
     background-color: #5599ff;
-    transform: rotate(318deg) translate3d(60%, 8%, 0) scale(1.1);
+    transform: rotate(318deg) translate3d(60%, 8%, 0) scale(1.0);
 }
 
-.play .card .three {
+.play .card.three {
     background-color: #5191f2;
     transform: rotate(335deg) translate3d(100%, -20%, 0);
 }
 
-.play .card .four {
+.play .card.four {
     background-color: #dddcfb;
     transform: rotate(-15deg) translate3d(45%, 105%, 0) scale(0.8);
 }
 
-.play .card .five {
+.play .card.five {
     background-color: #191947;
     transform: rotate(283deg) translate3d(-150%, 50%, 0);
 }
 
 
 
+/*Animation*/
+
+.signin-show .signin,
+.signup-show .signup {
+    visibility: visible;
+    opacity: 1;
+    height: auto;
+    transition: visibility .7s .3s, opacity .7s .3s;
+}
+
+.signin-show .signin {
+    animation: singinswipe 1s .3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+@keyframes signinswipe {
+    from {
+        transform: translate3d(-20%, 0, 0);
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.signup-show .signup {
+    animation: singinswipe 1s .3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+@keyframes signupswipe {
+    form {
+        transform: translate3d(20%, 0, 0);
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/*Formobile*/
+.signin-show .play {
+    animation: signinplaymobile 1s both;
+}
+
+@keyframes signinplaymobile {
+    0% {
+        transform: translateX(18%) rotateX(-180) scale(0.65) rotate(70deg);
+    }
+
+    50% {
+        transform: translateX(0) rotateX(0) scale(5) rotate(138deg);
+    }
+
+    100% {
+        transform: translateX(0) rotateX(-180deg) scale(0.65) rotate(190deg);
+    }
+
+}
+
+.signup-show .play {
+    animation: signupplaymobile 1s both;
+}
+
+@keyframes signupplaymobile {
+    0% {
+        transform: translateX(0) skewY(20deg);
+    }
+
+    50% {
+        transform: translateX(0) rotateX(0) scale(5) rotate(138deg) skewY(40deg);
+    }
+
+    100% {
+        transform: translateX(18%) rotateX(180deg) scale(0.65) rotate(70deg) rotateY(90deg);
+    }
+}
+
+
+
+
+
+
 
 @media screen and (min-width: 768px) {
-    .the form {
+    .theform {
         padding: 50px 0;
         flex-direction: row;
     }
@@ -347,6 +446,46 @@ form .socials button:hover {
         z-index: 1;
         transform: translateX(100%);
     }
+
+    .signin-show .play {
+        animation: signinplay 1s both;
+    }
+
+    @keyframes signinplay {
+        0% {
+            transform: translateX(100%) skewY(20deg);
+        }
+
+        50% {
+            transform: translateX(25%) scale(10) skewY(40deg) rotateY(180deg);
+        }
+
+        100% {
+            transform: translateX(0) rotateY(180deg);
+        }
+
+    }
+
+    .signup-show .play {
+        animation: signupplay 1s both;
+    }
+
+    @keyframes signupplay {
+        0% {
+            transform: translateX(-50%) skewY(80deg);
+        }
+
+        50% {
+            transform: translateX(0), scale(10) skewY(80deg);
+        }
+
+        100% {
+            transform: translateX(100%);
+        }
+
+    }
+
+
 }
 
 

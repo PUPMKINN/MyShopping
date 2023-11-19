@@ -7,6 +7,7 @@
     <title>Login and Register</title>
     <link rel="stylesheet" href="./stylesheets/login.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 
 <body>
@@ -26,7 +27,7 @@
                     <nav>
                         <ul>
                             <li><a href="#0"><i class="ri-arrow-left-line"></i></a></li>
-                            <li>Already member?<a href="#0">Sign in</a></li>
+                            <li>Already member?<a href="#0" class="t-signin">Sign in</a></li>
                         </ul>
                     </nav>
                     <div class="heading">
@@ -58,10 +59,8 @@
                             </label>
                             <p>Or</p>
                             <p class="socials">
-                                <button>
-                                    <i class="ri-facebook-line"></i>
-                                    <i class="ri-google-line"></i>
-                                </button>
+                                <button><i class="ri-facebook-line"></i> </button>
+                                <button><i class="ri-google-line"></i></button>
                             </p>
                             <p></p>
                         </div>
@@ -71,7 +70,7 @@
                     <nav>
                         <ul>
                             <li><a href="#0"><i class="ri-arrow-left-line"></i></a></li>
-                            <li>Don't have an account?<a href="#0">Sign up</a></li>
+                            <li>Don't have an account?<a href="#0" class="t-signup">Sign up</a></li>
                         </ul>
                     </nav>
                     <div class="heading">
@@ -94,10 +93,8 @@
                             </label>
                             <p>Or</p>
                             <p class="socials">
-                                <button>
-                                    <i class="ri-facebook-line"></i>
-                                    <i class="ri-google-line"></i>
-                                </button>
+                                <button><i class="ri-facebook-line"></i> </button>
+                                <button><i class="ri-google-line"></i></button>
                             </p>
                             <p></p>
                         </div>
@@ -107,5 +104,16 @@
             </div>
         </div>
     </div>
+    <script>
+        const signup = document.querySelector('.t-signup'),
+              signin = document.querySelector('.t-signin'),
+              addclass = document.querySelector('.site');
+        signup.addEventListener('click', function() {
+            addclass.className = 'site signup-show';
+        })
+        signin.addEventListener('click', function() {
+            addclass.className = 'site signin-show'
+        })
+    </script>
 </body>
 </html>
