@@ -1214,8 +1214,15 @@ main>div .heading {
   text-overflow: ellipsis;
 }
 
+/* ----------------------------- *
+ 
+          #Product image
+ 
+ * ----------------------------- */
 
-
+.product .wrapper {
+  --grid-col: 331px;
+}
 
 
 
