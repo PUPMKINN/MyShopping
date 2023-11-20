@@ -259,6 +259,10 @@ h2.title {
   color: var(--light-color);
 }
 
+.dotgrid .product-price .before {
+  text-decoration: line-through;
+}
+
 .overlay,
 .mobile-menu {
   position: fixed;
@@ -1224,9 +1228,70 @@ main>div .heading {
   --grid-col: 331px;
 }
 
+.product .main-image img {
+  width: 100%;
+}
+
+.product .outer-thumb {
+  display: none;
+}
+
+.product .outer-thumb .item {
+  height: fit-content !important;
+  cursor: pointer;
+}
+
+.product .thumb-wrap {
+  position: relative;
+  width: 70px;
+  height: 90px;
+}
+
+.product .outer-thumb img {
+  transition: var(--transition-transform);
+}
+
+.product .outer-thumb .swiper-slide-thumb-active>div,
+.product .outer-thumb .item:hover {
+  border: 1px solid var(--grey-color);
+
+}
+
+.product .outer-thumb .swiper-slide-thumb-active img,
+.product .outer-thumb .item:hover img {
+  transform: scale3d(.85, .85, .85);
+
+}
 
 
 
+
+@media(min-width: 550px) {
+  .product .wrapper {
+    --gutter: 60px;
+  }
+
+  .product.dotgrid .image {
+    position: relative;
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    height: min-content;
+    overflow: hidden;
+  }
+
+  .product .outer-main {
+    width: calc(100%-85px);
+    margin: 0 0 0 95px;
+  }
+
+  .product .outer-thumb {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 20px;
+  }
+}
 
 
 
