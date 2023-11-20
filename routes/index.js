@@ -15,8 +15,8 @@ router.get('/admin', function(req, res, next) {
   res.render('admin/admin');
 });
 
-router.get('/product_page', function(req, res, next) {
-  res.render('product_page/product_page');
+router.get('/product', function(req, res, next) {
+  res.render('product/product');
 });
 
 /* GET 404 page. */
