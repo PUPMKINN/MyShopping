@@ -14,13 +14,14 @@ router.get('/login', function(req, res, next) {
 router.get('/admin', function(req, res, next) {
   res.render('admin/admin');
 });
-/* GET 404 page. */
-router.get('/404', function(req, res, next) {
-  res.render('404/404');
-});
 
 router.get('/product_page', function(req, res, next) {
   res.render('product_page/product_page');
+});
+
+/* GET 404 page. */
+router.get('/404', function(req, res, next) {
+  res.render('404/404');
 });
 
 
