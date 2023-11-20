@@ -1195,8 +1195,8 @@ main>div .heading {
   content: '>';
   position: absolute;
   left: 0;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   background-repeat: no-repeat;
   background-size: cover;
 }
