@@ -19,5 +19,9 @@ router.get('/404', function(req, res, next) {
   res.render('404/404');
 });
 
+router.get('/product_page', function(req, res, next) {
+  res.render('product_page/product_page');
+});
+
 
 module.exports = router;
