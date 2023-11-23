@@ -1,17 +1,24 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const methodOverride = require('method-override');
 
 //var indexRouter = require('./public/javascripts/script');
-var indexRouter = require('./routes/index');
-var app = express();
+const indexRouter = require('./routes/index');
+const db = require('./config/dbMongo');
+const app = express();
+
+// Connect to DB
+db.connect();
 
 // view engine setup
-
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+//dùng để chỉnh form từ post sang put
+app.use(methodOverride('_method'));
 
 app.use(logger('dev'));
 app.use(express.json());
