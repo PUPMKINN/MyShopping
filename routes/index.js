@@ -15,9 +15,16 @@ router.get('/admin', function(req, res, next) {
   res.render('admin/admin');
 });
 
+/* GET product page. */
 router.get('/product', function(req, res, next) {
   res.render('product/product');
 });
+
+/* GET category page. */
+router.get('/category', function(req, res, next) {
+  res.render('category/category');
+});
+
 
 /* GET 404 page. */
 router.get('/404', function(req, res, next) {
