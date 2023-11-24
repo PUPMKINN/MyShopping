@@ -30,6 +30,10 @@ router.get('/cart', function(req, res, next) {
   res.render('cart/cart');
 });
 
+/* GET checkout page. */
+router.get('/checkout', function(req, res, next) {
+  res.render('checkout/checkout');
+});
 
 
 /* GET 404 page. */
