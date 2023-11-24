@@ -2265,6 +2265,10 @@ form .button {
     width: unset;
   }
 
+  .inner-footer .wrap>div {
+    flex-flow: nowrap;
+  }
+
 }
 
 @media (max-width: 600px) {
