@@ -25,6 +25,12 @@ router.get('/category', function(req, res, next) {
   res.render('category/category');
 });
 
+/* GET cart page. */
+router.get('/cart', function(req, res, next) {
+  res.render('cart/cart');
+});
+
+
 
 /* GET 404 page. */
 router.get('/404', function(req, res, next) {
