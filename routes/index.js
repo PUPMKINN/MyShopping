@@ -52,7 +52,6 @@ function route(app) {
   //   app.get("/news", function (req, res) {
   //     res.render("news");
   //   });
-  app.use("/news", newsRouter);
 
   //   app.get("/search", function (req, res) {
   //     console.log(req.query.q);

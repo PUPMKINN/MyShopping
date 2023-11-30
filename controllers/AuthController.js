@@ -1,21 +1,22 @@
-const { check, validationResult } = require('express-validator');
 const passport = require('passport');
 const User = require('../models/User');
 
 //[GET] /
-exports.index = function (req, res, next) {
+const getHomePage = (req, res, next) => {
   res.render('home/home');
 };
+
 //[GET] /signin
-exports.getSignIn = function (req, res, next) {
+const getSignIn = (req, res, next) => {
   var messages = req.flash('error');
   res.render('login/login', {
     messages: messages,
     hasErrors: messages.length > 0,
   });
 };
+
 //[POST] /signin
-exports.postSignIn = function(req, res, next){
+const postSignIn = (req, res, next) => {
   User.findOne({ 'username': req.body.username })
   .then((user) => {
     if (!user) {
@@ -27,7 +28,7 @@ exports.postSignIn = function(req, res, next){
       res.status(400).json({ error: 'Wrong password' });
     }
     else {
-      res.redirect("/home");
+      res.redirect("/");
       //res.status(200).json({ message: 'Sign in successfully' });
     }
   })
@@ -35,19 +36,20 @@ exports.postSignIn = function(req, res, next){
 };
 
 //[GET] /signup
-exports.getSignUp = function (req, res, next) {
+const getSignUp = (req, res, next) => {
   var messages = req.flash('error');
-  res.render('login/signup', {
+  res.render('login/login', {
     messages: messages,
     hasErrors: messages.length > 0,
   });
 };
+
 // [POST] /signup
-exports.postSignUp = function(req, res, next) {
+const postSignUp = (req, res, next) => {
   User.findOne({ 'username': req.body.username })
   .then( (user) => {
     if (user) {
-      res.redirect("login/signup");
+      res.redirect("login/login");
       return res.json({ error: 'Username is already in use.' });
     }
     var newUser = new User();
@@ -56,15 +58,22 @@ exports.postSignUp = function(req, res, next) {
     newUser.password = newUser.encryptPassword(req.body.password);
     newUser.save()
     .then(() => {
-      res.redirect('login/signin');
+      res.redirect('login/login');
       res.json({ message: 'User registered successfully' });
     })
     .catch((err) => {
       console.error(err);
-      res.redirect("login/signup");
+      res.redirect("login/login");
       res.json({ error: 'Internal Server Error' });
     });
   })
   .catch(next);
 };
-//res.session.user = user;
+
+module.exports = {
+  getHomePage,
+  getSignIn,
+  postSignIn,
+  getSignUp,
+  postSignUp,
+};
