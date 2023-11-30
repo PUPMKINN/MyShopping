@@ -1,4 +1,4 @@
-const passport = require('passport');
+const passport = require('../middlewares/passport');
 const User = require('../models/User');
 
   //[GET] /
@@ -17,13 +17,13 @@ const getSignIn = (req, res, next) => {
 
 //[POST] /signin
 const postSignIn = (req, res, next) => {
+  console.log("haha");
   passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/signin',
     failureFlash: true,
-  })
+  })(req, res, next); // Thêm dòng này để gọi hàm authenticate
 };
-
 
 //[GET] /signup
 const getSignUp = (req, res, next) => {
@@ -36,11 +36,13 @@ const getSignUp = (req, res, next) => {
 
 // [POST] /signup
 const postSignUp = (req, res, next) => {
+  if(req.body.password != req.body.re_password) {
+    return res.status(201).json({ error: 'Re_Password is not match with Password!' }).redirect("/signup");
+  }
   User.findOne({ 'username': req.body.username })
   .then( (user) => {
     if (user) {
-      res.redirect("login/login");
-      return res.json({ error: 'Username is already in use.' });
+      return res.status(201).json({ error: 'Username is already in use.' }).redirect("/signup");
     }
     else {
       var newUser = new User();
@@ -49,13 +51,11 @@ const postSignUp = (req, res, next) => {
       newUser.password = newUser.encryptPassword(req.body.password);
       newUser.save()
       .then(() => {
-        res.redirect('home/home');
-        res.json({ message: 'User registered successfully' });
+        res.status(201).redirect("/");
       })
       .catch((err) => {
         console.error(err);
-        res.redirect("login/login");
-        res.json({ error: 'Internal Server Error' });
+        res.status(500).redirect("/signup");
       });
     }
     

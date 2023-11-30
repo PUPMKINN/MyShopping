@@ -13,6 +13,7 @@ const { OAuth2Client } = require ('google-auth-library');
 //var indexRouter = require('./public/javascripts/script');
 const route = require('./routes/index');
 const db = require('./config/dbMongo');
+const passport = require('./middlewares/passport');
 const app = express();
 
 // Connect to DB
@@ -27,6 +28,8 @@ app.use(
   })
 );
 app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
