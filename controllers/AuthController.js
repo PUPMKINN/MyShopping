@@ -1,12 +1,12 @@
 const passport = require('passport');
 const User = require('../models/User');
 
-//[GET] /
+  //[GET] /
 const getHomePage = (req, res, next) => {
   res.render('home/home');
 };
 
-//[GET] /signin
+ //[GET] /signin
 const getSignIn = (req, res, next) => {
   var messages = req.flash('error');
   res.render('login/login', {
@@ -69,6 +69,8 @@ const postSignUp = (req, res, next) => {
   })
   .catch(next);
 };
+
+
 
 module.exports = {
   getHomePage,
