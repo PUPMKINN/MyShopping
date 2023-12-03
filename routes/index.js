@@ -15,10 +15,10 @@
 //   res.render('admin/admin');
 // });
 
-/* GET product page. */
-router.get('/product', function(req, res, next) {
-  res.render('product/product');
-});
+// /* GET product page. */
+// router.get('/product', function(req, res, next) {
+//   res.render('product/product');
+// });
 
 // /* GET category page. */
 // router.get('/category', function(req, res, next) {
