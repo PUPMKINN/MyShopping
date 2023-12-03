@@ -1,9 +1,30 @@
 const passport = require('../middlewares/passport');
 const User = require('../models/User');
+const ProductService = require("../services/Product.js")
 
   //[GET] /
-const getHomePage = (req, res, next) => {
-  res.render('home/home');
+const getHomePage = async (req, res, next) => {
+  try {
+    const productName = req.query.productName;
+    const catalogId = req.query.catalogId;
+    const minPrice = req.query.minPrice;
+    const maxPrice = req.query.maxPrice;
+    const manufacturer = req.query.manufacturer;
+    const sortByField = req.query.sortByField;
+    const sortByOrder = req.query.sortByOrder;
+
+    const productList = await ProductService.PrfilteredAndSortedProducts(productName, catalogId, manufacturer, minPrice, maxPrice, sortByField, sortByOrder);
+        
+    if (productList) {
+      res.render("home/home", { productList: productList });
+    }
+    else {
+      res.status(404).json({ message: "Not found" });
+    }
+
+  } catch (error) {
+    next(error);
+  }
 };
 
  //[GET] /signin
@@ -17,7 +38,6 @@ const getSignIn = (req, res, next) => {
 
 //[POST] /signin
 const postSignIn = (req, res, next) => {
-  console.log("haha");
   passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/signin',
