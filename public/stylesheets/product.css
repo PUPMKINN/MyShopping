@@ -1316,7 +1316,7 @@ main>div .heading {
 }
 
 .product .outer-thumb .swiper-slide-thumb-active>div,
-.product .outer-thumb .item:hover {
+.product .outer-thumb .item:hover>div {
     border: 1px solid var(--grey-color);
 
 }
