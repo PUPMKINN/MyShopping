@@ -327,18 +327,18 @@ input.checker:checked::after {
 }
 
 .overlay {
-    background-color: var(--dark-color);
+    /* background-color: var(--dark-color); */
     opacity: 0;
     visibility: hidden;
-    pointer-events: none;
+    /* pointer-events: none; */
     z-index: 999;
     transition: opacity .3s, visibility .3s;
 }
 
 .overlay.active {
     opacity: .75;
-    /* visibility: visible; */
-    pointer-events: all;
+    visibility: visible;
+    pointer-events: none;
 }
 
 .scrollto>.wrapper {
@@ -644,13 +644,6 @@ form :where(input, textarea, select):focus {
 form :where(input, textarea, select)::placeholder {
     color: var(--grey-color);
 }
-
-
-
-
-
-
-
 
 
 .inner-header .search .input {
@@ -1766,7 +1759,7 @@ main>div .heading {
 
 .data-popup {
     z-index: 1001;
-    pointer-events: none;
+    /* pointer-events: none; */
 }
 
 .data-popup .wrap {
@@ -1785,7 +1778,7 @@ main>div .heading {
     max-height: calc(100vw - 60px);
     border-radius: 5px;
     overflow-y: auto;
-    pointer-events: none;
+    /* pointer-events: none; */
 }
 
 .data-popup .close-trigger,
@@ -1798,6 +1791,7 @@ main>div .heading {
     align-items: center;
 }
 
+
 .data-popup .form {
     position: relative;
 }
@@ -1809,7 +1803,7 @@ main>div .heading {
     display: block;
 }
 
-.data-popup .from input {
+.data-popup .form input {
     color: var(--dark-color);
     background-color: var(--light-color);
     border: 0;
@@ -2134,9 +2128,6 @@ form .button {
     .product .profile .comment {
         padding-left: 92px;
     }
-
-
-
 }
 
 
@@ -2264,6 +2255,11 @@ form .button {
     .scrollto .wrapper .item {
         width: unset;
     }
+
+    .inner-footer .wrap>div {
+        flex-flow: nowrap;
+    }
+
 
 }
 
