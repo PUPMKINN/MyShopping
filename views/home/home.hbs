@@ -225,22 +225,24 @@
         <div class="slider">
             <div class="sliderbox swiper">
                 <div class="wrap swiper-wrapper">
+                    {{#each home}}
                     <div class="item swiper-slide">
                         <div class="image">
                             <div class="ob-cover">
-                                <img src="./images/slider_01.jpg" alt="">
+                                <img src="{{this.image}}" alt="">
                             </div>
                             <div class="title-info">
                                 <div class="container wide">
                                     <div class="wrap">
-                                        <span class="price">$40</span>
-                                        <h3 class="title">Feel the tosca color</h3>
+                                        <span class="price">{{this.price}}</span>
+                                        <h3 class="title">{{this.name}}</h3>
                                         <div class="button"><a href="" class="primary-btn">Shop Now</a></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {{/each}}
                     <div class="item swiper-slide">
                         <div class="image">
                             <div class="ob-cover">
