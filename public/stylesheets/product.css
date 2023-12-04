@@ -423,7 +423,6 @@ input.checker:checked::after {
     padding: 0 15px;
     display: flex;
     gap: 5px;
-
 }
 
 .header-right ul {
@@ -606,6 +605,7 @@ form.search i {
     font-size: 20px;
     display: flex;
     align-items: center;
+    /* align-items: flex-start; */
     justify-content: center;
     width: 50px;
     height: 100%;
