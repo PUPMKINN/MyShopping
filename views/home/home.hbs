@@ -231,14 +231,14 @@
                     <div class="item swiper-slide">
                         <div class="image">
                             <div class="ob-cover">
-                                <a href="/product/{{this._id}}"><img src="{{this.gallery}}" alt=""></a>
+                                <a href="/product/detail/{{this._id}}"><img src="{{this.gallery}}" alt=""></a>
                             </div>
                             <div class="title-info">
                                 <div class="container wide">
                                     <div class="wrap">
                                         <span class="price">{{this.price}}</span>
                                         <h3 class="title">{{this.name}}</h3>
-                                        <div class="button"><a href="" class="primary-btn">Shop Now</a></div>
+                                        <div class="button"><a href="/product/detail/{{this._id}}" class="primary-btn">Shop Now</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -265,11 +265,11 @@
                             <div class="item">
                                 <div class="dot-image">
                                     <div class="thumbnail hover">
-                                        <img src="{{this.gallery}}" alt="">
+                                        <a href="/product/detail/{{this._id}}"><img src="{{this.gallery}}" alt=""></a>
                                     </div>
                                 </div>
                                 <div class="dot-info">
-                                    <h3 class="dot-title">{{this.name}}</h3>
+                                    <a href="/product/detail/{{this._id}}"><h3 class="dot-title">{{this.name}}</h3></a>
                                     <p class="grey-color">This year's gifts. Next year's greatness</p>
                                 </div>
                             </div>
@@ -294,7 +294,7 @@
                                 {{#each productList}}
                                 <div class="item swiper-slide">
                                     <div class="dot-image">
-                                        <a href="" class="product-permalink"></a>
+                                        <a href="/product/detail/{{this._id}}" class="product-permalink"></a>
                                         <div class="thumbnail">
                                             <img src="{{this.gallery}}" alt="">
                                         </div>
@@ -307,7 +307,7 @@
                                                 </li>
                                                 <li><a href=""><i class="ri-arrow-left-right-line"></i></a>
                                                 </li>
-                                                <li><a href=""><i class="ri-eye-line"></i></a>
+                                                <li><a href="/product/detail/{{this._id}}"><i class="ri-eye-line"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -364,7 +364,7 @@
                                     {{#each productList}}
                                     <div class="item">
                                         <div class="dot-image">
-                                            <a href="" class="product-permalink"></a>
+                                            <a href="/product/detail/{{this._id}}" class="product-permalink"></a>
                                             <div class="thumbnail">
                                                 <img src="{{this.gallery}}" alt="">
                                             </div>
@@ -377,7 +377,7 @@
                                                     </li>
                                                     <li><a href=""><i class="ri-arrow-left-right-line"></i></a>
                                                     </li>
-                                                    <li><a href=""><i class="ri-eye-line"></i></a>
+                                                    <li><a href="/product/detail/{{this._id}}"><i class="ri-eye-line"></i></a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -393,7 +393,7 @@
                                     </div>
                                     {{/each}}
                                         <div class="dot-image">
-                                            <a href="" class="product-permalink"></a>
+                                            <a href="/product/detail/{{this._id}}" class="product-permalink"></a>
                                             <div class="thumbnail">
                                                 <img src="./images/product_08.jpg" alt="">
                                             </div>
@@ -406,7 +406,7 @@
                                                     </li>
                                                     <li><a href=""><i class="ri-arrow-left-right-line"></i></a>
                                                     </li>
-                                                    <li><a href=""><i class="ri-eye-line"></i></a>
+                                                    <li><a href="/product/detail/{{this._id}}"><i class="ri-eye-line"></i></a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -431,7 +431,7 @@
                                     {{#each productList}}
                                     <div class="item">
                                         <div class="dot-image">
-                                            <a href="" class="product-permalink"></a>
+                                            <a href="/product/detail/{{this._id}}" class="product-permalink"></a>
                                             <div class="thumbnail">
                                                 <img src="{{this.gallery}}" alt="">
                                             </div>
@@ -444,7 +444,7 @@
                                                     </li>
                                                     <li><a href=""><i class="ri-arrow-left-right-line"></i></a>
                                                     </li>
-                                                    <li><a href=""><i class="ri-eye-line"></i></a>
+                                                    <li><a href="/product/detail/{{this._id}}"><i class="ri-eye-line"></i></a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -469,7 +469,7 @@
                                     {{#each productList}}
                                     <div class="item">
                                         <div class="dot-image">
-                                            <a href="" class="product-permalink"></a>
+                                            <a href="/product/detail/{{this._id}}" class="product-permalink"></a>
                                             <div class="thumbnail">
                                                 <img src="{{this.gallery}}" alt="">
                                             </div>
@@ -482,7 +482,7 @@
                                                     </li>
                                                     <li><a href=""><i class="ri-arrow-left-right-line"></i></a>
                                                     </li>
-                                                    <li><a href=""><i class="ri-eye-line"></i></a>
+                                                    <li><a href="/product/detail/{{this._id}}"><i class="ri-eye-line"></i></a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -527,7 +527,7 @@
                                         <div class="item">
                                             <div class="dot-image">
                                                 <div class="thumbnail hover">
-                                                    <a href="">
+                                                    <a href="/product/detail/{{this._id}}">
                                                         <img src="{{this.gallery}}" alt="">
                                                     </a>
                                                 </div>
@@ -535,7 +535,7 @@
                                             <div class="dot-info">
                                                 <a href="">{{this.description}}</a>
                                                 <h3 class="dot-title">
-                                                    <a href="">{{this.name}}</a>
+                                                    <a href="/product/detail/{{this._id}}">{{this.name}}</a>
                                                 </h3>
                                             </div>
                                         </div>
@@ -562,7 +562,7 @@
                                     {{#each productList}}
                                     <div class="item">
                                         <div class="dot-image">
-                                            <a href=""></a>
+                                            <a href="/product/detail/{{this._id}}"></a>
                                             <div class="thumbnail">
                                                 <img src="{{this.gallery}}" alt="">
                                             </div>
