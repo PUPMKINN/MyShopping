@@ -10,7 +10,7 @@ const PrfilteredAndSortedProducts = async function (name, catalogId, manufacture
     const sort = {};
 
     // Fliter
-    if (name !== `None` && name) {
+    if (name !== 'None' && name) {
         fliter.name = name;
     }
     if (catalogId !== "None" && catalogId) {

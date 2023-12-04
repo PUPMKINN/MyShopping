@@ -3,9 +3,9 @@ const { mongooseToObject } = require("../util/mongoose");
 const mongoose = require("mongoose");
 
 
-// [GET] /product/:slug
+// [GET] /product/:id
 const show = (req, res, next) => {
-  Product.findOne({ slug: req.params.slug })
+  Product.findById(req.params.id)
   .then((product) => {
     res.render("product/product", {
       product: mongooseToObject(product),
