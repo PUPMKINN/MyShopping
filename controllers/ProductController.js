@@ -3,13 +3,14 @@ const { mongooseToObject } = require("../util/mongoose");
 const mongoose = require("mongoose");
 
 
-// [GET] /product/:id
+// [GET] /product/detail/:id
 const show = (req, res, next) => {
   Product.findById(req.params.id)
   .then((product) => {
     res.render("product/product", {
       product: mongooseToObject(product),
     });
+    //res.json(product);
   })
   .catch(next);
   //res.send("Product" + req.params.slug);

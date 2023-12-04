@@ -49,17 +49,17 @@
                                                         <div class="mega-content">
                                                             <div class="dotgrid">
                                                                 <div class="wrapper">
-                                                                    {{#each details}}
+                                                                    {{!-- {{#each details}}
                                                                     <!--3 lan-->
                                                                     <div class="item">
                                                                         <div class="dot-image">
                                                                             <a href="" class="product-permalink"></a>
                                                                             <div class="thumbnail">
-                                                                                <img src="{{this.gallery}}"
+                                                                                <img src="{{product.gallery}}"
                                                                                     alt="">
                                                                             </div>
                                                                             <div class="thumbnail hover">
-                                                                                <img src="{{this.gallery}}"
+                                                                                <img src="{{product.gallery}}"
                                                                                     alt="">
                                                                             </div>
                                                                             <div class="actions">
@@ -78,13 +78,13 @@
                                                                             <div class="label"><span>-25%</span></div>
                                                                         </div>
                                                                         <div class="dot-info">
-                                                                            <h2 class="dot-title"><a href="">{{this.name}}</a></h2>
+                                                                            <h2 class="dot-title"><a href="">{{product.name}}</a></h2>
                                                                             <div class="product-price"></div>
-                                                                            <span class="before">{{this.price}}</span> <!--gia ban dau-->
-                                                                            <span class="current">{{this.price}}</span><!--gia sau-->
+                                                                            <span class="before">{{product.price}}</span> <!--gia ban dau-->
+                                                                            <span class="current">{{product.price}}</span><!--gia sau-->
                                                                         </div>
                                                                     </div>
-                                                                    {{/details}}                                                   
+                                                                    {{/details}}                                                    --}}
                                                                 </div>
                                                             </div>
                                                             <div class="links">
@@ -189,17 +189,17 @@
                                     <div class="outer-main">
                                         <div class="main-image swiper">
                                             <div class="wrap swiper-wrapper">
-                                                <div class="item swiper-slide"><img src="{{this.gallery}}"
+                                                <div class="item swiper-slide"><img src="{{product.gallery}}"
                                                         alt=""></div>
-                                                <div class="item swiper-slide"><img src="{{this.gallery}}"
+                                                <div class="item swiper-slide"><img src="{{product.gallery}}"
                                                         alt=""></div>
-                                                <div class="item swiper-slide"><img src="{{this.gallery}}"
+                                                <div class="item swiper-slide"><img src="{{product.gallery}}"
                                                         alt=""></div>
-                                                <div class="item swiper-slide"><img src="{{this.gallery}}"
+                                                <div class="item swiper-slide"><img src="{{product.gallery}}"
                                                         alt=""></div>
-                                                <div class="item swiper-slide"><img src="{{this.gallery}}"
+                                                <div class="item swiper-slide"><img src="{{product.gallery}}"
                                                         alt=""></div>
-                                                <div class="item swiper-slide"><img src="{{this.gallery}}"
+                                                <div class="item swiper-slide"><img src="{{product.gallery}}"
                                                         alt=""></div>
                                             </div>
                                         </div>
@@ -211,27 +211,27 @@
                                         <div class="thumbnail-image swiper">
                                             <div class="wrap swiper-wrapper">
                                                 <div class="item swiper-slide">
-                                                    <div class="thumb-wrap"><img src="{{this.gallery}}" alt="">
+                                                    <div class="thumb-wrap"><img src="{{product.gallery}}" alt="">
                                                     </div>
                                                 </div>
                                                 <div class="item swiper-slide">
-                                                    <div class="thumb-wrap"><img src="{{this.gallery}}" alt="">
+                                                    <div class="thumb-wrap"><img src="{{product.gallery}}" alt="">
                                                     </div>
                                                 </div>
                                                 <div class="item swiper-slide">
-                                                    <div class="thumb-wrap"><img src="{{this.gallery}}" alt="">
+                                                    <div class="thumb-wrap"><img src="{{product.gallery}}" alt="">
                                                     </div>
                                                 </div>
                                                 <div class="item swiper-slide">
-                                                    <div class="thumb-wrap"><img src="{{this.gallery}}" alt="">
+                                                    <div class="thumb-wrap"><img src="{{product.gallery}}" alt="">
                                                     </div>
                                                 </div>
                                                 <div class="item swiper-slide">
-                                                    <div class="thumb-wrap"><img src="{{this.gallery}}" alt="">
+                                                    <div class="thumb-wrap"><img src="{{product.gallery}}" alt="">
                                                     </div>
                                                 </div>
                                                 <div class="item swiper-slide">
-                                                    <div class="thumb-wrap"><img src="{{this.gallery}}" alt="">
+                                                    <div class="thumb-wrap"><img src="{{product.gallery}}" alt="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -240,12 +240,12 @@
                                 </div>
                                 <div class="sumary">
                                     <div class="entry">
-                                        <h1 class="title">{{this.name}}</h1>
+                                        <h1 class="title">{{product.name}}</h1>
                                         <div class="product-group">
                                             <div class="product-price">
-                                                <span class="current">{{this.price}}</span> <!--gia hien tai-->
+                                                <span class="current">{{product.price}}</span> <!--gia hien tai-->
                                                 <div class="wrap">
-                                                    <span class="before">{{this.price}}</span> <!--gia ban dau-->
+                                                    <span class="before">{{product.price}}</span> <!--gia ban dau-->
                                                     <span class="discount">-50%</span>
                                                 </div>
                                             </div>
@@ -388,7 +388,7 @@
                                 <div id="product-custom" class="product-about custom">
                                     <h3>Our custom size</h3>
                                     <div class="image">
-                                        <img src="{{this.gallery}}" alt=""> <!--image custom shoes-->
+                                        <img src="{{product.gallery}}" alt=""> <!--image custom shoes-->
                                     </div>
                                 </div>
                                 <div id="product-review" class="product-about review">
@@ -406,11 +406,11 @@
                                         </div>
                                         <div class="body-review">
                                             <!--lặp nhiều lần -->
-                                            {{#each product}}
+                                            {{!-- {{#each product}}
                                             <div class="profile">
                                                 <div class="thumb-name">
                                                     <div class="image">
-                                                        <img src="{{this.gallery}}" alt="">
+                                                        <img src="{{product.gallery}}" alt="">
                                                     </div>
                                                     <div class="grouping">
                                                         <div class="name">Bach</div>
@@ -426,10 +426,10 @@
                                                 </div>
                                                 <div class="comment">
                                                     <strong>Awesome Product</strong>
-                                                    <p class="grey-color">{{this.description}}</p>
+                                                    <p class="grey-color">{{product.description}}</p>
                                                 </div>
                                             </div>
-                                            {{/each}}
+                                            {{/each}} --}}
                                         </div>
                                     </div>
                                 </div>
@@ -457,15 +457,15 @@
                             <div class="dotgrid carouselbox swiper">
                                 <div class="wrapper swiper-wrapper">
                                     <!--12 lần-->
-                                    {{#each product}}
+                                    {{!-- {{#each product}}
                                     <div class="item swiper-slide">
                                         <div class="dot-image">
                                             <a href="" class="product-permalink"></a>
                                             <div class="thumbnail">
-                                                <img src="{{this.gallery}}" alt="">
+                                                <img src="{{product.gallery}}" alt="">
                                             </div>
                                             <div class="thumbnail hover">
-                                                <img src="{{this.gallery}}" alt="">
+                                                <img src="{{product.gallery}}" alt="">
                                             </div>
                                             <div class="actions">
                                                 <ul>
@@ -480,13 +480,13 @@
                                             <div class="label"><span>-25%</span></div>
                                         </div>
                                         <div class="dot-info">
-                                            <h2 class="dot-title"><a href="">{{this.name}}</a></h2>
+                                            <h2 class="dot-title"><a href="">{{product.name}}</a></h2>
                                             <div class="product-price"></div>
-                                            <span class="before">{{this.price}}</span>
-                                            <span class="current">{{this.price}}</span>
+                                            <span class="before">{{product.price}}</span>
+                                            <span class="current">{{product.price}}</span>
                                         </div>
                                     </div>
-                                    {{/each}}
+                                    {{/each}} --}}
                                 </div>
                             </div>
                             <div class="nav">
@@ -731,7 +731,7 @@
                                         <ul>
                                             <li>
                                                 <!--3 lần-->
-                                                {{#each product}}
+                                                {{!-- {{#each product}}
                                                 <div class="grouping">
                                                     <div class="quantity">
                                                         <div class="control">
@@ -742,12 +742,12 @@
                                                     </div>
                                                     <div class="thumbnail">
                                                         <a href="">
-                                                            <img src="{{this.gallery}}" alt="">
+                                                            <img src="{{product.gallery}}" alt="">
                                                         </a>
                                                     </div>
                                                 </div>
                                                 <div class="variants">
-                                                    <h4 class="dot-title"><a href="">{{this.name}}</a></h4>
+                                                    <h4 class="dot-title"><a href="">{{product.name}}</a></h4>
                                                     <div class="color grey-color">
                                                         <span>Color:</span>
                                                         <span>White</span>
@@ -756,12 +756,12 @@
                                                         <span>Size:</span>
                                                         <span>42</span>
                                                     </div>
-                                                    <div class="price">{{this.price}}</div>
+                                                    <div class="price">{{product.price}}</div>
                                                     <a href="" class="item-remove">
                                                         <i class="ri-close-line"></i>
                                                     </a>
                                                 </div>
-                                                {{/each}}
+                                                {{/each}} --}}
                                             </li>
                                         </ul>
                                     </div>
