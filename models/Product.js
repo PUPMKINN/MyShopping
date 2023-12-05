@@ -29,7 +29,7 @@ const ProductScheme = new Schema({
     thumbnail: {
         type: String
     },
-    gallery_1: {
+    gallery: {
         type: [String],
         default: [],
         validate: {
@@ -39,7 +39,7 @@ const ProductScheme = new Schema({
             message: 'Invalid image URLs in the list'
         }
     },
-    gallery_2: {
+    image: {
         type: [String],
         default: [],
         validate: {
