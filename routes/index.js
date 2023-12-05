@@ -71,9 +71,6 @@ function route(app) {
   app.use("/product", productRouter);
   app.use("/home", siteRouter);
   app.use("/", authRouter);
-  app.get("/create", function (req, res) {
-    res.render("updateProduct/user_update");
-  });
 }
 
 module.exports = route;
