@@ -1,687 +1,680 @@
-<!DOCTYPE html>
-<html lang="en">
-<html>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<style type="stylesheets">@import url(https://fonts.cdnfonts.com/css/prata-2);</style>
+<style type="stylesheets">
+    @import url(https://fonts.googleapis.com/css?family=Montserrat:400,500,600&subset=latin-ext&display=swap);</style>
+<style type="stylesheets">@import url(https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css);</style>
+<style type="stylesheets">@import url(https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css);</style>
+<style>
+    @import url(/stylesheets/category.css);
+</style>
+<script type="module" src="/javascripts/swiper-bundle.min.js"></script>
+<script type="module" src="/javascripts/script.js"></script>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Category Page</title>
-    <link rel="stylesheet" href="./javascripts/script.js">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600&subset=latin-ext&display=swap">
-    <link href="https://fonts.cdnfonts.com/css/prata-2">
-    <link rel="stylesheet" href="./stylesheets/category.css">
-</head>
-
-<body>
-    <div id="page" class="page-category">
-        <header>
-            <div class="inner-header">
-                <div class="container wide">
-                    <div class="wrap">
-                        <div class="header-left">
-                            <div class="menu-bar">
-                                <a href="#0" class="menu-trigger" trigger-button data-target="mobile-menu"><i
-                                        class="ri-menu-line"></i></a>
-                            </div>
-                            <div class="list-inline">
-                                <ul>
-                                    <li><a href=""><i class="ri-user-line"></i></a></li>
-                                    <li><a href=""><span class="item-floating">7</span>
-                                            <i class="ri-star-line"></i>
-                                        </a></li>
-                                </ul>
-                            </div>
+<div id="page" class="page-category">
+    <header>
+        <div class="inner-header">
+            <div class="container wide">
+                <div class="wrap">
+                    <div class="header-left">
+                        <div class="menu-bar">
+                            <a href="#0" class="menu-trigger" trigger-button data-target="mobile-menu"><i
+                                    class="ri-menu-line"></i></a>
                         </div>
-                        <div class="header-center">
-                            <nav class="menu">
-                                <ul>
-                                    <li><a href=""><span>Home</span></a></li>
-                                    <li><a href=""><span>Products</span>
-                                            <i class="ri-arrow-down-s-line"></i>
-                                        </a>
-                                        <ul class="sub-mega">
-                                            <li>
-                                                <div class="container">
-                                                    <div class="wrapper">
-                                                        <div class="mega-content">
-                                                            <div class="dotgrid">
-                                                                <div class="wrapper">
-                                                                    <!-- 3 lần -->
-                                                                    {{#each productList}}
-                                                                    <div class="item">
-                                                                        <div class="dot-image">
-                                                                            <a href="" class="product-permalink"></a>
-                                                                            <div class="thumbnail">
-                                                                                <img src="{{this.gallery}}"
-                                                                                    alt="">
-                                                                            </div>
-                                                                            <div class="thumbnail hover">
-                                                                                <img src="{{this.gallery}}"
-                                                                                    alt="">
-                                                                            </div>
-                                                                            <div class="actions">
-                                                                                <ul>
-                                                                                    <li><a href=""><i
-                                                                                                class="ri-star-line"></i></a>
-                                                                                    </li>
-                                                                                    <li><a href=""><i
-                                                                                                class="ri-arrow-left-right-line"></i></a>
-                                                                                    </li>
-                                                                                    <li><a href=""><i
-                                                                                                class="ri-eye-line"></i></a>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
-                                                                            <div class="label"><span>-25%</span></div>
+                        <div class="list-inline">
+                            <ul>
+                                <li><a href=""><i class="ri-user-line"></i></a></li>
+                                <li><a href=""><span class="item-floating">7</span>
+                                        <i class="ri-star-line"></i>
+                                    </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="header-center">
+                        <nav class="menu">
+                            <ul>
+                                <li><a href=""><span>Home</span></a></li>
+                                <li><a href=""><span>Products</span>
+                                        <i class="ri-arrow-down-s-line"></i>
+                                    </a>
+                                    <ul class="sub-mega">
+                                        <li>
+                                            <div class="container">
+                                                <div class="wrapper">
+                                                    <div class="mega-content">
+                                                        <div class="dotgrid">
+                                                            <div class="wrapper">
+                                                                <!-- 3 lần -->
+                                                                {{#each productList}}
+                                                                <div class="item">
+                                                                    <div class="dot-image">
+                                                                        <a href="" class="product-permalink"></a>
+                                                                        <div class="thumbnail">
+                                                                            <img src="{{this.gallery}}" alt="">
                                                                         </div>
-                                                                        <div class="dot-info">
-                                                                            <h2 class="dot-title"><a href="">{{this.name}}</a></h2>
-                                                                            <div class="product-price"></div>
-                                                                            <span class="before">{{this.price}}</span> <!--giá ban đầu-->
-                                                                            <span class="current">{{this.price}}</span> <!--giá mới-->
+                                                                        <div class="thumbnail hover">
+                                                                            <img src="{{this.thumbnail}}" alt="">
                                                                         </div>
+                                                                        <div class="actions">
+                                                                            <ul>
+                                                                                <li><a href=""><i
+                                                                                            class="ri-star-line"></i></a>
+                                                                                </li>
+                                                                                <li><a href=""><i
+                                                                                            class="ri-arrow-left-right-line"></i></a>
+                                                                                </li>
+                                                                                <li><a href=""><i
+                                                                                            class="ri-eye-line"></i></a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                        <div class="label"><span>-25%</span></div>
                                                                     </div>
-                                                                    {{/each}}
+                                                                    <div class="dot-info">
+                                                                        <h2 class="dot-title"><a
+                                                                                href="">{{this.name}}</a></h2>
+                                                                        <div class="product-price"></div>
+                                                                        <span class="before">${{this.price}}</span>
+                                                                        <!--giá ban đầu-->
+                                                                        <span class="current">${{this.discount}}</span>
+                                                                        <!--giá mới-->
+                                                                    </div>
                                                                 </div>
+                                                                {{/each}}
                                                             </div>
-                                                            <div class="links">
-                                                                <div class="list-block">
-                                                                    <h3 class="dot-title">Jordan</h3>
-                                                                    <ul>
-                                                                        <li><a href="#">Vans</a></li>
-                                                                        <li><a href="#">New Balance</a></li>
-                                                                        <li><a href="#">MLB</a></li>
-                                                                        <li><a href="#">Puma</a></li>
-                                                                        <li><a href="#">Supreme</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="list-block">
-                                                                    <h3 class="dot-title">Shoes</h3>
-                                                                    <ul>
-                                                                        <li><a href="#">Louis Vuition</a></li>
-                                                                        <li><a href="#">Dolce and Gabbana</a></li>
-                                                                        <li><a href="#">Gucci</a></li>
-                                                                        <li><a href="#">Nike</a></li>
-                                                                        <li><a href="#">Adidas</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="list-block">
-                                                                    <h3 class="dot-title">Boots</h3>
-                                                                    <ul>
-                                                                        <li><a href="#">Armani</a></li>
-                                                                        <li><a href="#">Channel</a></li>
-                                                                        <li><a href="#">Dior</a></li>
-                                                                        <li><a href="#">Gucci</a></li>
-                                                                        <li><a href="#">Hugo Boss</a></li>
-                                                                    </ul>
-                                                                </div>
+                                                        </div>
+                                                        <div class="links">
+                                                            <div class="list-block">
+                                                                <h3 class="dot-title">Jordan</h3>
+                                                                <ul>
+                                                                    <li><a href="#">Vans</a></li>
+                                                                    <li><a href="#">New Balance</a></li>
+                                                                    <li><a href="#">MLB</a></li>
+                                                                    <li><a href="#">Puma</a></li>
+                                                                    <li><a href="#">Supreme</a></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="list-block">
+                                                                <h3 class="dot-title">Shoes</h3>
+                                                                <ul>
+                                                                    <li><a href="#">Louis Vuition</a></li>
+                                                                    <li><a href="#">Dolce and Gabbana</a></li>
+                                                                    <li><a href="#">Gucci</a></li>
+                                                                    <li><a href="#">Nike</a></li>
+                                                                    <li><a href="#">Adidas</a></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="list-block">
+                                                                <h3 class="dot-title">Boots</h3>
+                                                                <ul>
+                                                                    <li><a href="#">Armani</a></li>
+                                                                    <li><a href="#">Channel</a></li>
+                                                                    <li><a href="#">Dior</a></li>
+                                                                    <li><a href="#">Gucci</a></li>
+                                                                    <li><a href="#">Hugo Boss</a></li>
+                                                                </ul>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a href=""><span>Disc</span></a></li>
-                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href=""><span>Disc</span></a></li>
+                            </ul>
 
-                                <ul>
-                                    <li><a href=""><span>Specials</span>
-                                            <i class="ri-arrow-down-s-line"></i>
-                                        </a>
-                                        <ul class="sub-menu list-block">
-                                            <li><a href="">Nike</a></li>
-                                            <li><a href="">Dior</a></li>
-                                            <li><a href="">Adidas</a></li>
-                                            <li><a href="">Balenciaga</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href=""><span>Sale</span></a></li>
-                                </ul>
-                            </nav>
-                            <div class="branding"><a href="">Shopping</a></div>
-                        </div>
-                        <div class="header-right">
-                            <div class="list-inline">
-                                <ul>
-                                    <li><a href="#0" trigger-button data-target="search-float"><i
-                                                class="ri-search-line"></i></a></li>
-                                    <li><a href="#0" trigger-button data-target="data-cart"><span
-                                                class="item-floating">0</span><i class="ri-shopping-bag-line"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="wrap">
-                        <div class="breadcrumb list-inline">
                             <ul>
-                                <li><a href="">Home</a></li>
-                                <li><a href="">Product</a></li>
-                                <li><span>Nike</span></li>
+                                <li><a href=""><span>Specials</span>
+                                        <i class="ri-arrow-down-s-line"></i>
+                                    </a>
+                                    <ul class="sub-menu list-block">
+                                        <li><a href="">Nike</a></li>
+                                        <li><a href="">Dior</a></li>
+                                        <li><a href="">Adidas</a></li>
+                                        <li><a href="">Balenciaga</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href=""><span>Sale</span></a></li>
+                            </ul>
+                        </nav>
+                        <div class="branding"><a href="">Shopping</a></div>
+                    </div>
+                    <div class="header-right">
+                        <div class="list-inline">
+                            <ul>
+                                <li><a href="#0" trigger-button data-target="search-float"><i
+                                            class="ri-search-line"></i></a></li>
+                                <li><a href="#0" trigger-button data-target="data-cart"><span
+                                            class="item-floating">0</span><i class="ri-shopping-bag-line"></i></a>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div id="search-float" class="search-float">
-                    <div class="containe rwide">
-                        <form action="" class="search">
-                            <i class="ri-search-line"></i>
-                            <input type="search" class="input" id="" placeholder="Search products">
-                            <i class="ri-close-line" close-button></i>
-                        </form>
+            </div>
+            <div class="container">
+                <div class="wrap">
+                    <div class="breadcrumb list-inline">
+                        <ul>
+                            <li><a href="">Home</a></li>
+                            <li><a href="">Product</a></li>
+                            <li><span>Nike</span></li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </header>
-        <main>
-            <div class="section">
-                <div class="container wide">
-                    <div class="wrap">
-                        <div class="heading">
-                            <h1 class="title">Nike</h1>
-                        </div>
-                        <div class="content">
-                            <div id="sidebar-filter" class="sidebar">
-                                <div class="wrap">
-                                    <a href="#0" class="close-trigger" close-button>
-                                        <i class="ri-close-line"></i>
-                                    </a>
-                                    <div class="sidebar-content">
-                                        <div class="sidebar-title">Filter</div>
-                                        <div class="widget">
-                                            <div class="sumary">
-                                                <input type="checkbox" name="cats" id="aaa" checked>
-                                                <label for="aaa">
-                                                    <span>Size</span>
-                                                    <i class="ri-arrow-down-s-line"></i>
-                                                </label>
-                                                <div class="accord product-size">
-                                                    <div class="wrap">
-                                                        <button>40</button>
-                                                        <button>41</button>
-                                                        <button>42</button>
-                                                        <button>43</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="widget">
-                                            <div class="sumary">
-                                                <input type="checkbox" name="cats" id="aab" checked>
-                                                <label for="aab">
-                                                    <span>Colors</span>
-                                                    <i class="ri-arrow-down-s-line"></i>
-                                                </label>
-                                                <div class="accord product-color">
-                                                    <div class="wrap">
-                                                        <button class="white"></button>
-                                                        <button class="black"></button>
-                                                        <button class="brown"></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="widget">
-                                            <div class="sumary">
-                                                <input type="checkbox" name="cats" id="aac" checked>
-                                                <label for="aac">
-                                                    <span>Categories</span>
-                                                    <i class="ri-arrow-down-s-line"></i>
-                                                </label>
-                                                <div class="accord list-block scrollto">
-                                                    <ul class="wrapper initial">
-                                                        <li><a href="">All Shoes</a></li>
-                                                        <li><a href="">Newest Sneaker</a></li>
-                                                        <li><a href="">Jordan</a></li>
-                                                        <li><a href="">LifeStyle</a></li>
-                                                        <li><a href="">Running</a></li>
-                                                        <li><a href="">Gym and Tranning</a></li>
-                                                        <li><a href="">Basketball</a></li>
-                                                        <li><a href="">Football</a></li>
-                                                        <li><a href="">Sandals and Slides</a></li>
-                                                        <li><a href="">Gym and Tranning</a></li>
-                                                        <li><a href="">Last sizes available</a></li>
-                                                        <li><a href="">Last sizes available</a></li>
-                                                        <li><a href="">Customise by you</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="widget">
-                                            <div class="sumary">
-                                                <input type="checkbox" name="cats" id="aad" checked>
-                                                <label for="aad">
-                                                    <span>Brands</span>
-                                                    <i class="ri-arrow-down-s-line"></i>
-                                                </label>
-                                                <div class="accord list-block scrollto">
-                                                    <ul class="wrapper initial">
-                                                        <li><a href="#">Nike</a></li>
-                                                        <li><a href="#">Dior</a></li>
-                                                        <li><a href="#">Adidas</a></li>
-                                                        <li><a href="#">Balenciaga</a></li>
-                                                        <li><a href="#">Gucci</a></li>
-                                                        <li><a href="#">Puma</a></li>
-                                                        <li><a href="#">Louis Vuition</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="widget">
-                                            <div class="sumary">
-                                                <label><span>Price</span></label>
-                                                <div class="range-track">
-                                                    <input type="range" value="25" min="0" max="500" step="1">
-                                                </div>
-                                                <div class="price-range grey-color">
-                                                    <span>$30</span>
-                                                    <span>$500</span>
+            <div id="search-float" class="search-float">
+                <div class="containe rwide">
+                    <form action="" class="search">
+                        <i class="ri-search-line"></i>
+                        <input type="search" class="input" id="" placeholder="Search products">
+                        <i class="ri-close-line" close-button></i>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="section">
+            <div class="container wide">
+                <div class="wrap">
+                    <div class="heading">
+                        <h1 class="title">Nike</h1>
+                    </div>
+                    <div class="content">
+                        <div id="sidebar-filter" class="sidebar">
+                            <div class="wrap">
+                                <a href="#0" class="close-trigger" close-button>
+                                    <i class="ri-close-line"></i>
+                                </a>
+                                <div class="sidebar-content">
+                                    <div class="sidebar-title">Filter</div>
+                                    <div class="widget">
+                                        <div class="sumary">
+                                            <input type="checkbox" name="cats" id="aaa" checked>
+                                            <label for="aaa">
+                                                <span>Size</span>
+                                                <i class="ri-arrow-down-s-line"></i>
+                                            </label>
+                                            <div class="accord product-size">
+                                                <div class="wrap">
+                                                    <button>40</button>
+                                                    <button>41</button>
+                                                    <button>42</button>
+                                                    <button>43</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="category-content">
-                                <div class="sorter">
-                                    <a href="#0" class="menu-trigger" trigger-button data-target="sidebar-filter">
-                                        <i class="ri-filter-line"></i>
-                                    </a>
-                                    <div class="left">
-                                        <span class="grey-color">Showing 9 of 35 results</span>
-                                    </div>
-                                    <div class="right">
-                                        <div class="sort-list">
-                                            <div class="wrap">
-                                                <div class="opt-trigger">
-                                                    <span class="value">Default sorting</span>
-                                                    <i class="ri-arrow-down-s-line"></i>
+                                    <div class="widget">
+                                        <div class="sumary">
+                                            <input type="checkbox" name="cats" id="aab" checked>
+                                            <label for="aab">
+                                                <span>Colors</span>
+                                                <i class="ri-arrow-down-s-line"></i>
+                                            </label>
+                                            <div class="accord product-color">
+                                                <div class="wrap">
+                                                    <button class="white"></button>
+                                                    <button class="black"></button>
+                                                    <button class="brown"></button>
                                                 </div>
-                                                <ul>
-                                                    <li class="active"><a href="#0">Default sorting</a></li>
-                                                    <li><a href="#0">Popular</a></li>
-                                                    <li><a href="#0">Rating</a></li>
-                                                    <li><a href="#0">Latest</a></li>
-                                                    <li><a href="#0">Price: low to high</a></li>
-                                                    <li><a href="#0">Price: high to low</a></li>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="widget">
+                                        <div class="sumary">
+                                            <input type="checkbox" name="cats" id="aac" checked>
+                                            <label for="aac">
+                                                <span>Categories</span>
+                                                <i class="ri-arrow-down-s-line"></i>
+                                            </label>
+                                            <div class="accord list-block scrollto">
+                                                <ul class="wrapper initial">
+                                                    <li><a href="">All Shoes</a></li>
+                                                    <li><a href="">Newest Sneaker</a></li>
+                                                    <li><a href="">Jordan</a></li>
+                                                    <li><a href="">LifeStyle</a></li>
+                                                    <li><a href="">Running</a></li>
+                                                    <li><a href="">Gym and Tranning</a></li>
+                                                    <li><a href="">Basketball</a></li>
+                                                    <li><a href="">Football</a></li>
+                                                    <li><a href="">Sandals and Slides</a></li>
+                                                    <li><a href="">Gym and Tranning</a></li>
+                                                    <li><a href="">Last sizes available</a></li>
+                                                    <li><a href="">Last sizes available</a></li>
+                                                    <li><a href="">Customise by you</a></li>
                                                 </ul>
                                             </div>
                                         </div>
-                                        <div class="list-inline">
-                                            <ul>
-                                                <li><a href=""><i class="ri-pause-mini-line"></i></a></li>
-                                                <li><a href=""><i class="ri-list-check-2"></i></a></li>
-                                                <li><a href=""><i class="ri-layout-grid-line"></i></a></li>
-                                                <li><a href=""><i class="ri-layout-masonry-line"></i></a></li>
-                                            </ul>
-                                        </div>
                                     </div>
-                                </div>
-                                <div class="tabbed">
-                                    <div id="shoes" class="sort-data active">
-                                        <div class="dotgrid">
-                                            <div class="wrapper">
-                                                <!--9 lần -->
-                                                {{#each productList}}
-                                                <div class="item">
-                                                    <div class="dot-image">
-                                                        <a href="" class="product-permalink"></a>
-                                                        <div class="thumbnail">
-                                                            <img src="{{this.gallery}}" alt="">
-                                                        </div>
-                                                        <div class="thumbnail hover">
-                                                            <img src="{{this.gallery}}" alt="">
-                                                        </div>
-                                                        <div class="actions">
-                                                            <ul>
-                                                                <li><a href=""><i class="ri-star-line"></i></a>
-                                                                </li>
-                                                                <li><a href=""><i
-                                                                            class="ri-arrow-left-right-line"></i></a>
-                                                                </li>
-                                                                <li><a href=""><i class="ri-eye-line"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="label"><span>-25%</span></div>
-                                                    </div>
-                                                    <div class="dot-info">
-                                                        <h2 class="dot-title"><a href="">{{this.name}}</a></h2>
-                                                        <div class="product-price">
-                                                            <span class="before">{{this.price}}</span>
-                                                            <span class="current">{{this.price}}</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                {{/each}}
+                                    <div class="widget">
+                                        <div class="sumary">
+                                            <input type="checkbox" name="cats" id="aad" checked>
+                                            <label for="aad">
+                                                <span>Brands</span>
+                                                <i class="ri-arrow-down-s-line"></i>
+                                            </label>
+                                            <div class="accord list-block scrollto">
+                                                <ul class="wrapper initial">
+                                                    <li><a href="#">Nike</a></li>
+                                                    <li><a href="#">Dior</a></li>
+                                                    <li><a href="#">Adidas</a></li>
+                                                    <li><a href="#">Balenciaga</a></li>
+                                                    <li><a href="#">Gucci</a></li>
+                                                    <li><a href="#">Puma</a></li>
+                                                    <li><a href="#">Louis Vuition</a></li>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="button"><a href="" class="primary-btn">Load more</a></div>
+                                    <div class="widget">
+                                        <div class="sumary">
+                                            <label><span>Price</span></label>
+                                            <div class="range-track">
+                                                <input type="range" value="25" min="0" max="500" step="1">
+                                            </div>
+                                            <div class="price-range grey-color">
+                                                <span>$30</span>
+                                                <span>$500</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-
-
-        </main>
-        <footer>
-            <div class="inner-footer">
-                <div class="container">
-                    <div class="wrap">
-                        <div class="top">
-                            <div class="subscribe">
-                                <h3>Get voucher from us</h3>
-                                <p class="grey-color">Enter your email be the first to know about new collections from
-                                    us
-                                </p>
-                                <form action="" class="search">
-                                    <i class="ri-mail-line"></i>
-                                    <input type="text" class="input" placeholder="Enter your email">
-                                    <input type="submit" class="submit">
-                                    <i class="ri-arrow-right-line"></i>
-                                </form>
-                            </div>
-                            <div class="list-block">
-                                <h3 class="dot-title">Service</h3>
-                                <ul>
-                                    <li><a href="#">About us</a></li>
-                                    <li><a href="#">Careers</a></li>
-                                    <li><a href="#">Delivery Information</a></li>
-                                    <li><a href="#">Terms & Condition</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                </ul>
-                            </div>
-                            <div class="list-block">
-                                <h3 class="dot-title">Pages</h3>
-                                <ul>
-                                    <li><a href="#">My account</a></li>
-                                    <li><a href="#">Login</a></li>
-                                    <li><a href="#">Wishlist</a></li>
-                                    <li><a href="#">Cart</a></li>
-                                    <li><a href="#">Checkout</a></li>
-                                </ul>
-                            </div>
-                            <div class="list-block">
-                                <h3 class="dot-title">Pages</h3>
-                                <div class="comp-address grey-color">
-                                    <p>227 Nguyễn Văn Cừ Street<br>District 5,Ward 4,HCM City</p>
-                                    <p>
-                                        <a href="">+84928928329</a>
-                                        <br>
-                                        <a href="">shoppingshoes@gmail.com</a>
-                                    </p>
-                                    <p>
-                                        Weekdays: 9AM to 5PM<br>
-                                        Saturday: 9AM to 3PM<br>
-                                        Sunday: Closed
-                                    </p>
+                        <div class="category-content">
+                            <div class="sorter">
+                                <a href="#0" class="menu-trigger" trigger-button data-target="sidebar-filter">
+                                    <i class="ri-filter-line"></i>
+                                </a>
+                                <div class="left">
+                                    <span class="grey-color">Showing 9 of 35 results</span>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="bottom">
-                            <div class="list-inline">
-                                <ul>
-                                    <li><a href=""><i class="ri-facebook-line"></i></a></li>
-                                    <li><a href=""><i class="ri-instagram-line"></i></a></li>
-                                    <li><a href=""><i class="ri-twitter-line"></i></a></li>
-                                    <li><a href=""><i class="ri-pinterest-line"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="copyright">
-                                <p>© 2023 Shopping, Inc. All Rights Reserved</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-    <div class="overlay" data-overlay></div>
-    <div id="mobile-menu" class="mobile-menu">
-        <div class="wrap">
-            <a href="" class="close-trigger active" close-button>
-                <i class="ri-close-line"></i>
-            </a>
-            <div class="main-menu scrollto">
-                <nav class="wrapper">
-                    <ul>
-                        <li><a href=""><span>Home</span></a></li>
-                        <li class="has-child"><a href="">
-                                <span>Products</span>
-                                <span class="child-trigger"><i class="ri-arrow-down-s-line"></i></span>
-                            </a>
-                            <ul class="sub-menu list-block">
-                                <li><a href="#">Nike</a></li>
-                                <li><a href="#">Dior</a></li>
-                                <li><a href="#">Adidas</a></li>
-                                <li><a href="#">Balenciaga</a></li>
-                                <li><a href="#">Vans</a></li>
-                                <li><a href="#">New Balance</a></li>
-                                <li><a href="#">MLB</a></li>
-                                <li><a href="#">Puma</a></li>
-                                <li><a href="#">Supreme</a></li>
-                                <li><a href="#">Louis Vuition</a></li>
-                                <li><a href="#">Dolce & Gabbana</a></li>
-                                <li><a href="#">Gucci</a></li>
-                                <li><a href="#">Nike</a></li>
-                                <li><a href="#">Adidas</a></li>
-                                <li><a href="#">Armani</a></li>
-                                <li><a href="#">Channel</a></li>
-                                <li><a href="#">Dior</a></li>
-                                <li><a href="#">Gucci</a></li>
-                                <li><a href="#">Hugo Boss</a></li>
-                            </ul>
-                        </li>
-                        <li><a href=""><span>Discount</span></a></li>
-                        <li class="has-child">
-                            <a href="">
-                                <span>Specials</span>
-                                <span class="child-trigger"><i class="ri-arrow-down-s-line"></i></span>
-                            </a>
-                            <ul class="sub-menu list-block">
-                                <li><a href="#">Nike</a></li>
-                                <li><a href="#">Dior</a></li>
-                                <li><a href="#">Adidas</a></li>
-                                <li><a href="#">Balenciaga</a></li>
-                            </ul>
-                        </li>
-                        <li><a href=""><span>Sale</span></a></li>
-
-
-                    </ul>
-                </nav>
-                <div class="button">
-                    <a href="" class="secondary-btn">Login</a>
-                    <a href="" class="primary-btn">Register</a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="data-share" class="data-popup d-share">
-        <div class="wrap">
-            <div class="data-content">
-                <a href="#0" class="close-trigger" close-button><i class="ri-close-line"></i></a>
-                <div class="form">
-                    <label>Copy link</label>
-                    <input type="text" disabled value="https://www.youtube.com/">
-                    <span><i class="ri-file-copy-line"></i></span>
-                </div>
-                <div class="meadia-share list-inline">
-                    <label>Share</label>
-                    <ul>
-                        <li><a href=""><i class="ri-facebook-line"></i></a></li>
-                        <li><a href=""><i class="ri-instagram-line"></i></a></li>
-                        <li><a href=""><i class="ri-pinterest-line"></i></a></li>
-                        <li><a href=""><i class="ri-youtube-line"></i></a></li>
-
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="data-question" class="data-popup d-question">
-        <div class="wrap">
-            <div class="data-content">
-                <a href="#0" class="close-trigger" close-button><i class="ri-close-line"></i></a>
-                <h3>The question</h3>
-                <form action="">
-                    <div><input type="text" placeholder="Name"></div>
-                    <div><input type="text" placeholder="Email"></div>
-                    <div><textarea placeholder="Your question is.." cols="30" rows="5"></textarea></div>
-                    <div class="button">
-                        <button type="submit" class="secondary-btn">Submit</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-
-    <div id="data-review" class="data-popup d-review">
-        <div class="wrap">
-            <div class="data-content">
-                <a href="#0" class="close-trigger" close-button><i class="ri-close-line"></i></a>
-                <h3>Write a review</h3>
-                <form action="">
-                    <div class="dotgrid">
-                        <div class="wrapper">
-                            <div><input type="text" placeholder="Name"></div>
-                            <div><input type="text" placeholder="Email"></div>
-                        </div>
-                    </div>
-                    <div class="rating">
-                        <span>Your rating:</span>
-                        <div class="stars">
-                            <input type="radio" name="rating" id="star5">
-                            <label for="star5"><i class="ri-star-fill"></i></label>
-                            <input type="radio" name="rating" id="star4">
-                            <label for="star4"><i class="ri-star-fill"></i></label>
-                            <input type="radio" name="rating" id="star3">
-                            <label for="star3"><i class="ri-star-fill"></i></label>
-                            <input type="radio" name="rating" id="star2">
-                            <label for="star2"><i class="ri-star-fill"></i></label>
-                            <input type="radio" name="rating" id="star1">
-                            <label for="star1"><i class="ri-star-fill"></i></label>
-
-                        </div>
-                    </div>
-                    <div><input type="text" placeholder="Review titles"></div>
-                    <div><textarea placeholder="Your review is.." cols="30" rows="5"></textarea></div>
-                    <div class="button">
-                        <button type="submit" class="secondary-btn">Submit</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <div id="data-cart" class="cart-menu">
-        <div class="wrap">
-            <a href="#0" class="close-trigger" close-button><i class="ri-close-line"></i></a>
-            <div class="scrollto cart-outer">
-                <div class="wrapper">
-                    <div class="cart-list">
-                        <div class="wrapper">
-                            <div class="cart-header">
-                                <h3>Shopping cart</h3>
-                            </div>
-                            <div class="cart-body">
-                                <div class="product-list scrollto">
-                                    <div class="wrapper">
+                                <div class="right">
+                                    <div class="sort-list">
+                                        <div class="wrap">
+                                            <div class="opt-trigger">
+                                                <span class="value">Default sorting</span>
+                                                <i class="ri-arrow-down-s-line"></i>
+                                            </div>
+                                            <ul>
+                                                <li class="active"><a href="#0">Default sorting</a></li>
+                                                <li><a href="#0">Popular</a></li>
+                                                <li><a href="#0">Rating</a></li>
+                                                <li><a href="#0">Latest</a></li>
+                                                <li><a href="#0">Price: low to high</a></li>
+                                                <li><a href="#0">Price: high to low</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="list-inline">
                                         <ul>
-                                            <li>
-                                                <!--3 lần-->
-                                                {{#each productList}}
-                                                <div class="grouping">
-                                                    <div class="quantity">
-                                                        <div class="control">
-                                                            <button>-</button>
-                                                            <input type="text" value="1">
-                                                            <button>+</button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="thumbnail">
-                                                        <a href="">
-                                                            <img src="{{this.gallery}}" alt="">
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="variants">
-                                                    <h4 class="dot-title"><a href="">{{this.name}}</a></h4>
-                                                    <div class="color grey-color">
-                                                        <span>Color:</span>
-                                                        <span>White</span>
-                                                    </div>
-                                                    <div class="size grey-color">
-                                                        <span>Size:</span>
-                                                        <span>42</span>
-                                                    </div>
-                                                    <div class="price">{{this.price}}</div>
-                                                    <a href="" class="item-remove">
-                                                        <i class="ri-close-line"></i>
-                                                    </a>
-                                                </div>
-                                                {{/each}}
-                                            </li>
+                                            <li><a href=""><i class="ri-pause-mini-line"></i></a></li>
+                                            <li><a href=""><i class="ri-list-check-2"></i></a></li>
+                                            <li><a href=""><i class="ri-layout-grid-line"></i></a></li>
+                                            <li><a href=""><i class="ri-layout-masonry-line"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                            <div class="cart-footer">
-                                <div class="discount">
-                                    <form action="">
-                                        <input type="text" class="input" placeholder="Coupon">
-                                        <input type="submit" class="submit" value="Apply">
-                                    </form>
+                            <div class="tabbed">
+                                <div id="shoes" class="sort-data active">
+                                    <div class="dotgrid">
+                                        <div class="wrapper">
+                                            <!--9 lần -->
+                                            {{#each productList}}
+                                            <div class="item">
+                                                <div class="dot-image">
+                                                    <a href="" class="product-permalink"></a>
+                                                    <div class="thumbnail">
+                                                        <img src="{{this.gallery}}" alt="">
+                                                    </div>
+                                                    <div class="thumbnail hover">
+                                                        <img src="{{this.gallery}}" alt="">
+                                                    </div>
+                                                    <div class="actions">
+                                                        <ul>
+                                                            <li><a href=""><i class="ri-star-line"></i></a>
+                                                            </li>
+                                                            <li><a href=""><i class="ri-arrow-left-right-line"></i></a>
+                                                            </li>
+                                                            <li><a href=""><i class="ri-eye-line"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="label"><span>-25%</span></div>
+                                                </div>
+                                                <div class="dot-info">
+                                                    <h2 class="dot-title"><a href="">{{this.name}}</a></h2>
+                                                    <div class="product-price">
+                                                        <span class="before">{{this.price}}</span>
+                                                        <span class="current">{{this.price}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{/each}}
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="math-pricing">
+                                <div class="button"><a href="" class="primary-btn">Load more</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+    </main>
+    <footer>
+        <div class="inner-footer">
+            <div class="container">
+                <div class="wrap">
+                    <div class="top">
+                        <div class="subscribe">
+                            <h3>Get voucher from us</h3>
+                            <p class="grey-color">Enter your email be the first to know about new collections from
+                                us
+                            </p>
+                            <form action="" class="search">
+                                <i class="ri-mail-line"></i>
+                                <input type="text" class="input" placeholder="Enter your email">
+                                <input type="submit" class="submit">
+                                <i class="ri-arrow-right-line"></i>
+                            </form>
+                        </div>
+                        <div class="list-block">
+                            <h3 class="dot-title">Service</h3>
+                            <ul>
+                                <li><a href="#">About us</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="#">Delivery Information</a></li>
+                                <li><a href="#">Terms & Condition</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                            </ul>
+                        </div>
+                        <div class="list-block">
+                            <h3 class="dot-title">Pages</h3>
+                            <ul>
+                                <li><a href="#">My account</a></li>
+                                <li><a href="#">Login</a></li>
+                                <li><a href="#">Wishlist</a></li>
+                                <li><a href="#">Cart</a></li>
+                                <li><a href="#">Checkout</a></li>
+                            </ul>
+                        </div>
+                        <div class="list-block">
+                            <h3 class="dot-title">Pages</h3>
+                            <div class="comp-address grey-color">
+                                <p>227 Nguyễn Văn Cừ Street<br>District 5,Ward 4,HCM City</p>
+                                <p>
+                                    <a href="">+84928928329</a>
+                                    <br>
+                                    <a href="">shoppingshoes@gmail.com</a>
+                                </p>
+                                <p>
+                                    Weekdays: 9AM to 5PM<br>
+                                    Saturday: 9AM to 3PM<br>
+                                    Sunday: Closed
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <div class="list-inline">
+                            <ul>
+                                <li><a href=""><i class="ri-facebook-line"></i></a></li>
+                                <li><a href=""><i class="ri-instagram-line"></i></a></li>
+                                <li><a href=""><i class="ri-twitter-line"></i></a></li>
+                                <li><a href=""><i class="ri-pinterest-line"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="copyright">
+                            <p>© 2023 Shopping, Inc. All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<div class="overlay" data-overlay></div>
+<div id="mobile-menu" class="mobile-menu">
+    <div class="wrap">
+        <a href="" class="close-trigger active" close-button>
+            <i class="ri-close-line"></i>
+        </a>
+        <div class="main-menu scrollto">
+            <nav class="wrapper">
+                <ul>
+                    <li><a href=""><span>Home</span></a></li>
+                    <li class="has-child"><a href="">
+                            <span>Products</span>
+                            <span class="child-trigger"><i class="ri-arrow-down-s-line"></i></span>
+                        </a>
+                        <ul class="sub-menu list-block">
+                            <li><a href="#">Nike</a></li>
+                            <li><a href="#">Dior</a></li>
+                            <li><a href="#">Adidas</a></li>
+                            <li><a href="#">Balenciaga</a></li>
+                            <li><a href="#">Vans</a></li>
+                            <li><a href="#">New Balance</a></li>
+                            <li><a href="#">MLB</a></li>
+                            <li><a href="#">Puma</a></li>
+                            <li><a href="#">Supreme</a></li>
+                            <li><a href="#">Louis Vuition</a></li>
+                            <li><a href="#">Dolce & Gabbana</a></li>
+                            <li><a href="#">Gucci</a></li>
+                            <li><a href="#">Nike</a></li>
+                            <li><a href="#">Adidas</a></li>
+                            <li><a href="#">Armani</a></li>
+                            <li><a href="#">Channel</a></li>
+                            <li><a href="#">Dior</a></li>
+                            <li><a href="#">Gucci</a></li>
+                            <li><a href="#">Hugo Boss</a></li>
+                        </ul>
+                    </li>
+                    <li><a href=""><span>Discount</span></a></li>
+                    <li class="has-child">
+                        <a href="">
+                            <span>Specials</span>
+                            <span class="child-trigger"><i class="ri-arrow-down-s-line"></i></span>
+                        </a>
+                        <ul class="sub-menu list-block">
+                            <li><a href="#">Nike</a></li>
+                            <li><a href="#">Dior</a></li>
+                            <li><a href="#">Adidas</a></li>
+                            <li><a href="#">Balenciaga</a></li>
+                        </ul>
+                    </li>
+                    <li><a href=""><span>Sale</span></a></li>
+
+
+                </ul>
+            </nav>
+            <div class="button">
+                <a href="" class="secondary-btn">Login</a>
+                <a href="" class="primary-btn">Register</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="data-share" class="data-popup d-share">
+    <div class="wrap">
+        <div class="data-content">
+            <a href="#0" class="close-trigger" close-button><i class="ri-close-line"></i></a>
+            <div class="form">
+                <label>Copy link</label>
+                <input type="text" disabled value="https://www.youtube.com/">
+                <span><i class="ri-file-copy-line"></i></span>
+            </div>
+            <div class="meadia-share list-inline">
+                <label>Share</label>
+                <ul>
+                    <li><a href=""><i class="ri-facebook-line"></i></a></li>
+                    <li><a href=""><i class="ri-instagram-line"></i></a></li>
+                    <li><a href=""><i class="ri-pinterest-line"></i></a></li>
+                    <li><a href=""><i class="ri-youtube-line"></i></a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="data-question" class="data-popup d-question">
+    <div class="wrap">
+        <div class="data-content">
+            <a href="#0" class="close-trigger" close-button><i class="ri-close-line"></i></a>
+            <h3>The question</h3>
+            <form action="">
+                <div><input type="text" placeholder="Name"></div>
+                <div><input type="text" placeholder="Email"></div>
+                <div><textarea placeholder="Your question is.." cols="30" rows="5"></textarea></div>
+                <div class="button">
+                    <button type="submit" class="secondary-btn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div id="data-review" class="data-popup d-review">
+    <div class="wrap">
+        <div class="data-content">
+            <a href="#0" class="close-trigger" close-button><i class="ri-close-line"></i></a>
+            <h3>Write a review</h3>
+            <form action="">
+                <div class="dotgrid">
+                    <div class="wrapper">
+                        <div><input type="text" placeholder="Name"></div>
+                        <div><input type="text" placeholder="Email"></div>
+                    </div>
+                </div>
+                <div class="rating">
+                    <span>Your rating:</span>
+                    <div class="stars">
+                        <input type="radio" name="rating" id="star5">
+                        <label for="star5"><i class="ri-star-fill"></i></label>
+                        <input type="radio" name="rating" id="star4">
+                        <label for="star4"><i class="ri-star-fill"></i></label>
+                        <input type="radio" name="rating" id="star3">
+                        <label for="star3"><i class="ri-star-fill"></i></label>
+                        <input type="radio" name="rating" id="star2">
+                        <label for="star2"><i class="ri-star-fill"></i></label>
+                        <input type="radio" name="rating" id="star1">
+                        <label for="star1"><i class="ri-star-fill"></i></label>
+
+                    </div>
+                </div>
+                <div><input type="text" placeholder="Review titles"></div>
+                <div><textarea placeholder="Your review is.." cols="30" rows="5"></textarea></div>
+                <div class="button">
+                    <button type="submit" class="secondary-btn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="data-cart" class="cart-menu">
+    <div class="wrap">
+        <a href="#0" class="close-trigger" close-button><i class="ri-close-line"></i></a>
+        <div class="scrollto cart-outer">
+            <div class="wrapper">
+                <div class="cart-list">
+                    <div class="wrapper">
+                        <div class="cart-header">
+                            <h3>Shopping cart</h3>
+                        </div>
+                        <div class="cart-body">
+                            <div class="product-list scrollto">
+                                <div class="wrapper">
                                     <ul>
                                         <li>
-                                            <span>Subtotal</span>
-                                            <span class="value"></span>
-                                        </li>
-                                        <ul>
-                                            <li><span>Shipping</span></li>
-                                            <li>
-                                                <div>
-                                                    <input type="radio" class="checker" name="shipping">
-                                                    <label for="">Free</label>
+                                            <!--3 lần-->
+                                            {{#each productList}}
+                                            <div class="grouping">
+                                                <div class="quantity">
+                                                    <div class="control">
+                                                        <button>-</button>
+                                                        <input type="text" value="1">
+                                                        <button>+</button>
+                                                    </div>
                                                 </div>
-                                                <span class="value">$0.00</span>
-                                            </li>
-                                            <li>
-                                                <div>
-                                                    <input type="radio" class="checker" name="shipping">
-                                                    <label for="">Flat</label>
+                                                <div class="thumbnail">
+                                                    <a href="">
+                                                        <img src="{{this.gallery}}" alt="">
+                                                    </a>
                                                 </div>
-                                                <span class="value">$20.00</span>
-                                            </li>
-                                        </ul>
-                                        <li>
-                                            <span>Promo discount</span>
-                                            <span class="value">-$0.00</span>
-                                        </li>
-                                        <li class="total">
-                                            <span>Total</span>
-                                            <span class="value">$115.00</span>
+                                            </div>
+                                            <div class="variants">
+                                                <h4 class="dot-title"><a href="">{{this.name}}</a></h4>
+                                                <div class="color grey-color">
+                                                    <span>Color:</span>
+                                                    <span>White</span>
+                                                </div>
+                                                <div class="size grey-color">
+                                                    <span>Size:</span>
+                                                    <span>42</span>
+                                                </div>
+                                                <div class="price">{{this.price}}</div>
+                                                <a href="" class="item-remove">
+                                                    <i class="ri-close-line"></i>
+                                                </a>
+                                            </div>
+                                            {{/each}}
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="button">
-                                    <a href="" class="secondary-btn">Checkout</a>
-                                    <a href="" class="grey-link">Viewcart</a>
-                                </div>
+                            </div>
+                        </div>
+                        <div class="cart-footer">
+                            <div class="discount">
+                                <form action="">
+                                    <input type="text" class="input" placeholder="Coupon">
+                                    <input type="submit" class="submit" value="Apply">
+                                </form>
+                            </div>
+                            <div class="math-pricing">
+                                <ul>
+                                    <li>
+                                        <span>Subtotal</span>
+                                        <span class="value"></span>
+                                    </li>
+                                    <ul>
+                                        <li><span>Shipping</span></li>
+                                        <li>
+                                            <div>
+                                                <input type="radio" class="checker" name="shipping">
+                                                <label for="">Free</label>
+                                            </div>
+                                            <span class="value">$0.00</span>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <input type="radio" class="checker" name="shipping">
+                                                <label for="">Flat</label>
+                                            </div>
+                                            <span class="value">$20.00</span>
+                                        </li>
+                                    </ul>
+                                    <li>
+                                        <span>Promo discount</span>
+                                        <span class="value">-$0.00</span>
+                                    </li>
+                                    <li class="total">
+                                        <span>Total</span>
+                                        <span class="value">$115.00</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="button">
+                                <a href="" class="secondary-btn">Checkout</a>
+                                <a href="" class="grey-link">Viewcart</a>
                             </div>
                         </div>
                     </div>
@@ -689,9 +682,4 @@
             </div>
         </div>
     </div>
-
-    <script src="./javascripts/script.js"></script>
-
-</body>
-
-</html>
+</div>
