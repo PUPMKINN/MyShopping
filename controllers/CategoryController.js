@@ -1,7 +1,7 @@
 const User = require('../models/User');
 const ProductService = require("../services/Product.js")
 
-  //[GET] /
+  //[GET] /category ? productName=""
 const show = async (req, res, next) => {
   try {
     const productName = req.query.productName;
