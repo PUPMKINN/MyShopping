@@ -337,7 +337,7 @@ input.checker:checked::after {
 
 .overlay.active {
     opacity: .75;
-    visibility: visible;
+    /* visibility: visible; */
     pointer-events: none;
 }
 

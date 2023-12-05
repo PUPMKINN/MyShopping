@@ -6,13 +6,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Page</title>
-    <link rel="stylesheet" href="./javascripts/script.js">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="javascripts" href="./javascripts/script.js">
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600&subset=latin-ext&display=swap">
-    <link href="https://fonts.cdnfonts.com/css/prata-2">
-    <link rel="stylesheet" href="./stylesheets/product.css">
+    <style type="stylesheets">@import url(https://fonts.cdnfonts.com/css/prata-2);</style>
+    <style type="stylesheets">
+        @import url(https://fonts.googleapis.com/css?family=Montserrat:400,500,600&subset=latin-ext&display=swap);
+    </style>
+    <style type="stylesheets">@import url(https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css);</style>
+    <style type="stylesheets">@import url(https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css);</style>
+    <style tyle="css">
+        @import url(/stylesheets/product.css);
+    </style>
+
+
 </head>
 
 <body>
@@ -55,11 +61,11 @@
                                                                                 <a href=""
                                                                                     class="product-permalink"></a>
                                                                                 <div class="thumbnail">
-                                                                                    <img src="./images/product_01.jpg"
+                                                                                    <img src="{{product.gallery}}"
                                                                                         alt="">
                                                                                 </div>
                                                                                 <div class="thumbnail hover">
-                                                                                    <img src="./images/product_01b.jpg"
+                                                                                    <img src="{{product.gallery}}"
                                                                                         alt="">
                                                                                 </div>
                                                                                 <div class="actions">
@@ -95,11 +101,11 @@
                                                                                 <a href=""
                                                                                     class="product-permalink"></a>
                                                                                 <div class="thumbnail">
-                                                                                    <img src="./images/product_02.jpg"
+                                                                                    <img src="{{product.gallery}}"
                                                                                         alt="">
                                                                                 </div>
                                                                                 <div class="thumbnail hover">
-                                                                                    <img src="./images/product_02b.jpg"
+                                                                                    <img src="{{product.gallery}}"
                                                                                         alt="">
                                                                                 </div>
                                                                                 <div class="actions">
@@ -133,11 +139,11 @@
                                                                                 <a href=""
                                                                                     class="product-permalink"></a>
                                                                                 <div class="thumbnail">
-                                                                                    <img src="./images/product_03.jpg"
+                                                                                    <img src="{{product.gallery}}"
                                                                                         alt="">
                                                                                 </div>
                                                                                 <div class="thumbnail hover">
-                                                                                    <img src="./images/product_03b.jpg"
+                                                                                    <img src="{{product.gallery}}"
                                                                                         alt="">
                                                                                 </div>
                                                                                 <div class="actions">
@@ -493,7 +499,7 @@
                                             <div class="profile">
                                                 <div class="thumb-name">
                                                     <div class="image">
-                                                        <img src="./images/ig_01.jpg" alt="">
+                                                        <img src="{{product.gallery}}" alt="">
                                                     </div>
                                                     <div class="grouping">
                                                         <div class="name">Bach</div>
@@ -519,7 +525,7 @@
                                             <div class="profile">
                                                 <div class="thumb-name">
                                                     <div class="image">
-                                                        <img src="./images/ig_02.jpg" alt="">
+                                                        <img src="{{product.gallery}}" alt="">
                                                     </div>
                                                     <div class="grouping">
                                                         <div class="name">Bach</div>
@@ -570,10 +576,10 @@
                                         <div class="dot-image">
                                             <a href="" class="product-permalink"></a>
                                             <div class="thumbnail">
-                                                <img src="./images/product_01.jpg" alt="">
+                                                <img src="{{product.gallery}}" alt="">
                                             </div>
                                             <div class="thumbnail hover">
-                                                <img src="./images/product_01b.jpg" alt="">
+                                                <img src="{{product.gallery}}" alt="">
                                             </div>
                                             <div class="actions">
                                                 <ul>
@@ -590,10 +596,40 @@
                                         <div class="dot-info">
                                             <h2 class="dot-title"><a href="">The Sweater
                                                     in Tosca</a></h2>
-                                            <div class="product-price"></div>
-                                            <span class="before">$80</span>
-                                            <span class="before"></span>
-                                            <span class="before"></span>
+                                            <div class="product-price">
+                                                <span class="before">$80.00</span>
+                                                <span class="current">$45.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item swiper-slide">
+                                        <div class="dot-image">
+                                            <a href="" class="product-permalink"></a>
+                                            <div class="thumbnail">
+                                                <img src="{{product.gallery}}" alt="">
+                                            </div>
+                                            <div class="thumbnail hover">
+                                                <img src="{{product.gallery}}" alt="">
+                                            </div>
+                                            <div class="actions">
+                                                <ul>
+                                                    <li><a href=""><i class="ri-star-line"></i></a>
+                                                    </li>
+                                                    <li><a href=""><i class="ri-arrow-left-right-line"></i></a>
+                                                    </li>
+                                                    <li><a href=""><i class="ri-eye-line"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="label"><span>-25%</span></div>
+                                        </div>
+                                        <div class="dot-info">
+                                            <h2 class="dot-title"><a href="">The Sweater
+                                                    in Tosca</a></h2>
+                                           <div class="product-price">
+                                                <span class="before">$80.00</span>
+                                                <span class="current">$45.00</span>
+                                            </div>
 
 
                                         </div>
@@ -602,10 +638,10 @@
                                         <div class="dot-image">
                                             <a href="" class="product-permalink"></a>
                                             <div class="thumbnail">
-                                                <img src="./images/product_02.jpg" alt="">
+                                                <img src="{{product.gallery}}" alt="">
                                             </div>
                                             <div class="thumbnail hover">
-                                                <img src="./images/product_02b.jpg" alt="">
+                                                <img src="{{product.gallery}}" alt="">
                                             </div>
                                             <div class="actions">
                                                 <ul>
@@ -622,10 +658,10 @@
                                         <div class="dot-info">
                                             <h2 class="dot-title"><a href="">The Sweater
                                                     in Tosca</a></h2>
-                                            <div class="product-price"></div>
-                                            <span class="before">$80</span>
-                                            <span class="before"></span>
-                                            <span class="before"></span>
+                                            <div class="product-price">
+                                                <span class="before">$80.00</span>
+                                                <span class="current">$45.00</span>
+                                            </div>
 
 
                                         </div>
@@ -634,10 +670,10 @@
                                         <div class="dot-image">
                                             <a href="" class="product-permalink"></a>
                                             <div class="thumbnail">
-                                                <img src="./images/product_03.jpg" alt="">
+                                                <img src="{{product.gallery}}" alt="">
                                             </div>
                                             <div class="thumbnail hover">
-                                                <img src="./images/product_03b.jpg" alt="">
+                                                <img src="{{product.gallery}}" alt="">
                                             </div>
                                             <div class="actions">
                                                 <ul>
@@ -654,10 +690,10 @@
                                         <div class="dot-info">
                                             <h2 class="dot-title"><a href="">The Sweater
                                                     in Tosca</a></h2>
-                                            <div class="product-price"></div>
-                                            <span class="before">$80</span>
-                                            <span class="before"></span>
-                                            <span class="before"></span>
+                                            <div class="product-price">
+                                                <span class="before">$80.00</span>
+                                                <span class="current">$45.00</span>
+                                            </div>
 
 
                                         </div>
@@ -666,10 +702,10 @@
                                         <div class="dot-image">
                                             <a href="" class="product-permalink"></a>
                                             <div class="thumbnail">
-                                                <img src="./images/product_01.jpg" alt="">
+                                                <img src="{{product.gallery}}" alt="">
                                             </div>
                                             <div class="thumbnail hover">
-                                                <img src="./images/product_01b.jpg" alt="">
+                                                <img src="{{product.gallery}}" alt="">
                                             </div>
                                             <div class="actions">
                                                 <ul>
@@ -686,10 +722,10 @@
                                         <div class="dot-info">
                                             <h2 class="dot-title"><a href="">The Sweater
                                                     in Tosca</a></h2>
-                                            <div class="product-price"></div>
-                                            <span class="before">$80</span>
-                                            <span class="before"></span>
-                                            <span class="before"></span>
+                                            <div class="product-price">
+                                                <span class="before">$80.00</span>
+                                                <span class="current">$45.00</span>
+                                            </div>
 
 
                                         </div>
@@ -698,10 +734,10 @@
                                         <div class="dot-image">
                                             <a href="" class="product-permalink"></a>
                                             <div class="thumbnail">
-                                                <img src="./images/product_02.jpg" alt="">
+                                                <img src="{{product.gallery}}" alt="">
                                             </div>
                                             <div class="thumbnail hover">
-                                                <img src="./images/product_02b.jpg" alt="">
+                                                <img src="{{product.gallery}}" alt="">
                                             </div>
                                             <div class="actions">
                                                 <ul>
@@ -718,10 +754,10 @@
                                         <div class="dot-info">
                                             <h2 class="dot-title"><a href="">The Sweater
                                                     in Tosca</a></h2>
-                                            <div class="product-price"></div>
-                                            <span class="before">$80</span>
-                                            <span class="before"></span>
-                                            <span class="before"></span>
+                                            <div class="product-price">
+                                                <span class="before">$80.00</span>
+                                                <span class="current">$45.00</span>
+                                            </div>
 
 
                                         </div>
@@ -730,10 +766,10 @@
                                         <div class="dot-image">
                                             <a href="" class="product-permalink"></a>
                                             <div class="thumbnail">
-                                                <img src="./images/product_03.jpg" alt="">
+                                                <img src="{{product.gallery}}" alt="">
                                             </div>
                                             <div class="thumbnail hover">
-                                                <img src="./images/product_03b.jpg" alt="">
+                                                <img src="{{product.gallery}}" alt="">
                                             </div>
                                             <div class="actions">
                                                 <ul>
@@ -750,10 +786,10 @@
                                         <div class="dot-info">
                                             <h2 class="dot-title"><a href="">The Sweater
                                                     in Tosca</a></h2>
-                                            <div class="product-price"></div>
-                                            <span class="before">$80</span>
-                                            <span class="before"></span>
-                                            <span class="before"></span>
+                                            <div class="product-price">
+                                                <span class="before">$80.00</span>
+                                                <span class="current">$45.00</span>
+                                            </div>
 
 
                                         </div>
@@ -762,10 +798,10 @@
                                         <div class="dot-image">
                                             <a href="" class="product-permalink"></a>
                                             <div class="thumbnail">
-                                                <img src="./images/product_01.jpg" alt="">
+                                                <img src="{{product.gallery}}" alt="">
                                             </div>
                                             <div class="thumbnail hover">
-                                                <img src="./images/product_01b.jpg" alt="">
+                                                <img src="{{product.gallery}}" alt="">
                                             </div>
                                             <div class="actions">
                                                 <ul>
@@ -782,10 +818,10 @@
                                         <div class="dot-info">
                                             <h2 class="dot-title"><a href="">The Sweater
                                                     in Tosca</a></h2>
-                                            <div class="product-price"></div>
-                                            <span class="before">$80</span>
-                                            <span class="before"></span>
-                                            <span class="before"></span>
+                                            <div class="product-price">
+                                                <span class="before">$80.00</span>
+                                                <span class="current">$45.00</span>
+                                            </div>
 
 
                                         </div>
@@ -794,10 +830,10 @@
                                         <div class="dot-image">
                                             <a href="" class="product-permalink"></a>
                                             <div class="thumbnail">
-                                                <img src="./images/product_02.jpg" alt="">
+                                                <img src="{{product.gallery}}" alt="">
                                             </div>
                                             <div class="thumbnail hover">
-                                                <img src="./images/product_02b.jpg" alt="">
+                                                <img src="{{product.gallery}}" alt="">
                                             </div>
                                             <div class="actions">
                                                 <ul>
@@ -814,10 +850,10 @@
                                         <div class="dot-info">
                                             <h2 class="dot-title"><a href="">The Sweater
                                                     in Tosca</a></h2>
-                                            <div class="product-price"></div>
-                                            <span class="before">$80</span>
-                                            <span class="before"></span>
-                                            <span class="before"></span>
+                                            <div class="product-price">
+                                                <span class="before">$80.00</span>
+                                                <span class="current">$45.00</span>
+                                            </div>
 
 
                                         </div>
@@ -826,10 +862,10 @@
                                         <div class="dot-image">
                                             <a href="" class="product-permalink"></a>
                                             <div class="thumbnail">
-                                                <img src="./images/product_03.jpg" alt="">
+                                                <img src="{{product.gallery}}" alt="">
                                             </div>
                                             <div class="thumbnail hover">
-                                                <img src="./images/product_03b.jpg" alt="">
+                                                <img src="{{product.gallery}}" alt="">
                                             </div>
                                             <div class="actions">
                                                 <ul>
@@ -846,10 +882,10 @@
                                         <div class="dot-info">
                                             <h2 class="dot-title"><a href="">The Sweater
                                                     in Tosca</a></h2>
-                                            <div class="product-price"></div>
-                                            <span class="before">$80</span>
-                                            <span class="before"></span>
-                                            <span class="before"></span>
+                                            <div class="product-price">
+                                                <span class="before">$80.00</span>
+                                                <span class="current">$45.00</span>
+                                            </div>
 
 
                                         </div>
@@ -858,10 +894,10 @@
                                         <div class="dot-image">
                                             <a href="" class="product-permalink"></a>
                                             <div class="thumbnail">
-                                                <img src="./images/product_01.jpg" alt="">
+                                                <img src="{{product.gallery}}" alt="">
                                             </div>
                                             <div class="thumbnail hover">
-                                                <img src="./images/product_01b.jpg" alt="">
+                                                <img src="{{product.gallery}}" alt="">
                                             </div>
                                             <div class="actions">
                                                 <ul>
@@ -878,42 +914,10 @@
                                         <div class="dot-info">
                                             <h2 class="dot-title"><a href="">The Sweater
                                                     in Tosca</a></h2>
-                                            <div class="product-price"></div>
-                                            <span class="before">$80</span>
-                                            <span class="before"></span>
-                                            <span class="before"></span>
-
-
-                                        </div>
-                                    </div>
-                                    <div class="item swiper-slide">
-                                        <div class="dot-image">
-                                            <a href="" class="product-permalink"></a>
-                                            <div class="thumbnail">
-                                                <img src="./images/product_02.jpg" alt="">
+                                            <div class="product-price">
+                                                <span class="before">$80.00</span>
+                                                <span class="current">$45.00</span>
                                             </div>
-                                            <div class="thumbnail hover">
-                                                <img src="./images/product_02b.jpg" alt="">
-                                            </div>
-                                            <div class="actions">
-                                                <ul>
-                                                    <li><a href=""><i class="ri-star-line"></i></a>
-                                                    </li>
-                                                    <li><a href=""><i class="ri-arrow-left-right-line"></i></a>
-                                                    </li>
-                                                    <li><a href=""><i class="ri-eye-line"></i></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="label"><span>-25%</span></div>
-                                        </div>
-                                        <div class="dot-info">
-                                            <h2 class="dot-title"><a href="">The Sweater
-                                                    in Tosca</a></h2>
-                                            <div class="product-price"></div>
-                                            <span class="before">$80</span>
-                                            <span class="before"></span>
-                                            <span class="before"></span>
 
 
                                         </div>
@@ -1076,7 +1080,7 @@
                     <input type="text" disabled value="https://www.youtube.com/">
                     <span><i class="ri-file-copy-line"></i></span>
                 </div>
-                <div class="meadia-share list-inline">
+                <div class="media-share list-inline">
                     <label>Share</label>
                     <ul>
                         <li><a href=""><i class="ri-facebook-line"></i></a></li>
@@ -1157,7 +1161,7 @@
                                 <div class="product-list scrollto">
                                     <div class="wrapper">
                                         <ul>
-                                             <li>
+                                            <li>
                                                 <div class="grouping">
                                                     <div class="quantity">
                                                         <div class="control">
@@ -1168,7 +1172,7 @@
                                                     </div>
                                                     <div class="thumbnail">
                                                         <a href="">
-                                                            <img src="./images/product_01.jpg" alt="">
+                                                            <img src="{{product.gallery}}" alt="">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -1199,7 +1203,7 @@
                                                     </div>
                                                     <div class="thumbnail">
                                                         <a href="">
-                                                            <img src="./images/product_07.jpg" alt="">
+                                                            <img src="{{product.gallery}}" alt="">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -1230,7 +1234,7 @@
                                                     </div>
                                                     <div class="thumbnail">
                                                         <a href="">
-                                                            <img src="./images/product_04.jpg" alt="">
+                                                            <img src="{{product.gallery}}" alt="">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -1306,5 +1310,6 @@
         </div>
     </div>
 </body>
+<script src="./javascripts/script.js"></script>
 
 </html>
