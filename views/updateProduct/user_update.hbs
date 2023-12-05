@@ -4,7 +4,7 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="./stylesheets/user_update.css">
+   <link rel="stylesheet" href="./stylesheets/admin-add.css">
 </head>
 <body>
 
@@ -13,11 +13,12 @@
 
         <form action="" method="post" enctype="multipart/form-data">
             <h3 class="title">update the product</h3>
-            <input type="text" class="box" name="product_name" placeholder="enter the product name">
-            <input type="number" min="0" class="box" name="product_price" placeholder="enter the product price">
+            <input type="text" class="box" name="product_name" placeholder="Enter the product name">
+            <input type="number" min="0" class="box" name="product_price" placeholder="Enter the product price">
+            <input type="number" min="0" class="box" name="product_quantity" placeholder="Enter the product quantity">
             <input type="file" class="box" name="product_image" accept="image/png, image/jpeg, image/jpg">
             <input type="submit" value="update product" name="update_product" class="btn">
-            <a href="./user_edit.hbs" class="btn">go back!</a>
+            <a href="./admin-add.html" class="btn">go back!</a>
         </form>
 
     </div>
