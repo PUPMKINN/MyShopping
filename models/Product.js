@@ -29,17 +29,7 @@ const ProductScheme = new Schema({
     thumbnail: {
         type: String
     },
-    gallery_1: {
-        type: [String],
-        default: [],
-        validate: {
-            validator: function (value) {
-                return value.every(url => typeof url === 'string' && url.trim().length > 0);
-            },
-            message: 'Invalid image URLs in the list'
-        }
-    },
-    gallery_2: {
+    gallery: {
         type: [String],
         default: [],
         validate: {

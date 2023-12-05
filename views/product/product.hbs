@@ -8,9 +8,9 @@
 <style>
     @import url(/stylesheets/product.css);
 </style>
-<script src="/javascripts/script.js"></script>
-<script type="javasripts" src="./javascripts/script.js"></script>
-<script src="../script.js" type="text/javascript"></script>
+<script src="./javascripts/script.js"></script>
+<style>@import url(/javascripts/script.js);</style>
+<script src="./javascripts/swiper-bundle.min.js"></script>
 
 <div id="page" class="page-single">
     <header>
@@ -50,7 +50,7 @@
                                                                         <div class="dot-image">
                                                                             <a href="" class="product-permalink"></a>
                                                                             <div class="thumbnail">
-                                                                                <img src="./images/product_01.jpg" alt="">
+                                                                                <img src="{{product.gallery}}" alt="">
                                                                             </div>
                                                                             <div class="thumbnail hover">
                                                                                 <img src="{{product.gallery}}" alt="">
@@ -305,10 +305,10 @@
                                     <h1 class="title">{{product.name}}</h1>
                                     <div class="product-group">
                                         <div class="product-price">
-                                            <span class="current">{{product.price}}</span> <!--gia hien tai-->
+                                            <span class="current">${{product.discount}}</span> <!--gia hien tai-->
                                             <div class="wrap">
-                                                <span class="before">{{product.price}}</span> <!--gia ban dau-->
-                                                <span class="discount">-50%</span>
+                                                <span class="before">${{product.price}}</span> <!--gia ban dau-->
+                                                <span class="discount">-30%</span>
                                             </div>
                                         </div>
                                         <div class="product-rating">
@@ -534,7 +534,7 @@
             </div>
         </div>
         <!--carousel-->
-        <div class="carousel">
+        {{!-- <div class="carousel">
             <div class="container">
                 <div class="wrap">
                     <div class="heading">
@@ -565,8 +565,7 @@
                                         <div class="label"><span>-25%</span></div>
                                     </div>
                                     <div class="dot-info">
-                                        <h2 class="dot-title"><a href="">The Sweater
-                                                in Tosca</a></h2>
+                                        <h2 class="dot-title"><a href="">{{product.name}}</a></h2>
                                         <div class="product-price">
                                             <span class="before">$80.00</span>
                                             <span class="current">$45.00</span>
@@ -906,7 +905,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </main>
     <footer>
         <div class="inner-footer">
