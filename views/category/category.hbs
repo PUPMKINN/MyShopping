@@ -667,11 +667,13 @@
                         </div>
                         <div class="cart-body">
                             <div class="product-list scrollto">
+                                
                                 <div class="wrapper">
+                                    {{#each productList}}
                                     <ul>
                                         <li>
                                             <!--3 lần-->
-                                            {{#each productList}}
+                                            
                                             <div class="grouping">
                                                 <div class="quantity">
                                                     <div class="control">
@@ -701,10 +703,12 @@
                                                     <i class="ri-close-line"></i>
                                                 </a>
                                             </div>
-                                            {{/each}}
+                                            
                                         </li>
                                     </ul>
+                                    {{/each}}
                                 </div>
+                                 
                             </div>
                         </div>
                         <div class="cart-footer">
