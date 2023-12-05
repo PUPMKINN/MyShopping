@@ -25,8 +25,6 @@ const create = (req, res, next) => {
 const store = (req, res, next) => {
   //res.json(req.body);
   const formData = req.body;
-  formData.image =
-    "https://img.youtube.com/vi/" + req.body.videoID + "/sddefault.jpg";
   const product = new Product(formData);
   product.save().then;
   res.redirect("/home");
