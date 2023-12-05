@@ -248,7 +248,6 @@ if (sorter) {
     sorter.querySelector('.opt-trigger').addEventListener('click', function () {
         sorter.querySelector('ul').classList.toggle('show');
     });
-
     sortLi.forEach(item => item.addEventListener('click', function () {
         sortLi.forEach(li => {
             if (li !== this) {
