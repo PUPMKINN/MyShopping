@@ -48,6 +48,7 @@ const siteRouter = require("./site");
 const productRouter = require("./product");
 const authRouter = require("./auth");
 const categoryRouter = require("./category.js");
+const reviewRouter = require("./review");
 
 function route(app) {
   //   app.get("/news", function (req, res) {
@@ -70,6 +71,7 @@ function route(app) {
   app.use("/me", meRouter);
   app.use("/product", productRouter);
   app.use("/home", siteRouter);
+  app.use("/review", reviewRouter);
   app.use("/", authRouter);
 }
 

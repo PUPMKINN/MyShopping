@@ -1057,31 +1057,31 @@
         <div class="data-content">
             <a href="#0" class="close-trigger" close-button><i class="ri-close-line"></i></a>
             <h3>Write a review</h3>
-            <form action="">
+            <form action="/review/store/{{product._id}}" method="post">
                 <div class="dotgrid">
                     <div class="wrapper">
-                        <div><input type="text" placeholder="Name"></div>
-                        <div><input type="text" placeholder="Email"></div>
+                        <div><input type="text" name="username" placeholder="Name"></div>
+                        <div><input type="text" name="email" placeholder="Email"></div>
                     </div>
                 </div>
                 <div class="rating">
                     <span>Your rating:</span>
                     <div class="stars">
-                        <input type="radio" name="rating" id="star5">
-                        <label for="star5"><i class="ri-star-fill"></i></label>
-                        <input type="radio" name="rating" id="star4">
-                        <label for="star4"><i class="ri-star-fill"></i></label>
-                        <input type="radio" name="rating" id="star3">
-                        <label for="star3"><i class="ri-star-fill"></i></label>
-                        <input type="radio" name="rating" id="star2">
-                        <label for="star2"><i class="ri-star-fill"></i></label>
-                        <input type="radio" name="rating" id="star1">
-                        <label for="star1"><i class="ri-star-fill"></i></label>
+                        <input type="radio" name="rating" id="5" value="5">
+                        <label for="5"><i class="ri-star-fill"></i></label>
+                        <input type="radio" name="rating" id="4" value="4">
+                        <label for="4"><i class="ri-star-fill"></i></label>
+                        <input type="radio" name="rating" id="3" value="3">
+                        <label for="3"><i class="ri-star-fill"></i></label>
+                        <input type="radio" name="rating" id="2" value="2">
+                        <label for="2"><i class="ri-star-fill"></i></label>
+                        <input type="radio" name="rating" id="1" value="1">
+                        <label for="1"><i class="ri-star-fill"></i></label>
 
                     </div>
                 </div>
-                <div><input type="text" placeholder="Review titles"></div>
-                <div><textarea placeholder="Your review is.." cols="30" rows="5"></textarea></div>
+                <div><input type="text" name="title" placeholder="Review titles"></div>
+                <div><textarea name="comment" placeholder="Your review is.." cols="30" rows="5"></textarea></div>
                 <div class="button">
                     <button type="submit" class="secondary-btn">Submit</button>
                 </div>

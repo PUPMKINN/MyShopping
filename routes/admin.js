@@ -20,14 +20,14 @@ const UploadProduct = upload.fields([
 
 
 
-router.get("/admin/home-page", adminControllers.getHomePage);
-router.get("/admin/product/:productId", adminControllers.getProductDetail)
+router.get("/home-page", adminControllers.getHomePage);
+router.get("/product/:productId", adminControllers.getProductDetail)
 
-router.get("/admin/product",  adminControllers.getFormCreateNewProduct)
-router.post("/admin/product", checkAdmin, UploadProduct, adminControllers.postANewProduct)
+router.get("/product",  adminControllers.getFormCreateNewProduct)
+router.post("/product", checkAdmin, UploadProduct, adminControllers.postANewProduct)
 
-router.get("/admin/productlist", checkAdmin, adminControllers.getProductList)
-router.get("/admin/dashboard", checkAdmin, adminControllers.getDashBoard)
+router.get("/productlist", checkAdmin, adminControllers.getProductList)
+router.get("/dashboard", checkAdmin, adminControllers.getDashBoard)
 
 
 module.exports = router;

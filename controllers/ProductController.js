@@ -27,7 +27,7 @@ const store = (req, res, next) => {
   const formData = req.body;
   const product = new Product(formData);
   product.save().then;
-  res.redirect("/home");
+  res.redirect("/");
 }
 
 // [GET] /product/:id/edit
