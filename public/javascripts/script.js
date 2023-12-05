@@ -35,6 +35,105 @@ for (let i = 0; i < triggerOpen.length; i++) {
     // overlay.addEventListener('click', openData);
 }
 
+// const triggerOpen = document.querySelectorAll('[trigger-button]');
+// const overlay = document.querySelectorAll('[data-overlay]');
+// const forms = document.querySelectorAll('.data-popup');
+
+// let activeForm;
+
+// const openData = function (formId) {
+//     const targetEl = document.querySelector(`#${formId}`);
+//     if (targetEl) {
+//         targetEl.classList.add('active');
+//         overlay.forEach(item => item.classList.add('active'));
+//         activeForm = targetEl;
+//     }
+// };
+
+// const closeData = function () {
+//     if (activeForm) {
+//         activeForm.classList.remove('active');
+//         overlay.forEach(item => item.classList.remove('active'));
+//         activeForm = null;
+//     }
+// };
+
+// for (let i = 0; i < triggerOpen.length; i++) {
+//     const currentId = triggerOpen[i].dataset.target;
+
+//     triggerOpen[i].addEventListener('click', function () {
+//         openData(currentId);
+//     });
+
+//     const closeButton = document.querySelector(`[close-button="${currentId}"]`);
+//     if (closeButton) {
+//         closeButton.addEventListener('click', closeData);
+//     }
+
+//     overlay.forEach(function (overlayItem) {
+//         overlayItem.addEventListener('click', closeData);
+//     });
+// }
+
+// // Add pointer cursor to the forms
+// forms.forEach(form => {
+//     form.style.cursor = 'default';
+//     form.addEventListener('click', function (event) {
+//         event.stopPropagation(); // Prevent closing when clicking inside the form
+//         form.style.cursor = 'default';
+//     });
+// });
+
+// // Set pointer cursor for overlay
+// overlay.forEach(overlayItem => {
+//     overlayItem.style.cursor = 'default';
+// });
+
+
+
+
+
+
+// const triggerOpen = document.querySelectorAll('[trigger-button]');
+// const triggerClose = document.querySelectorAll('[close-button]');
+// const overlay = document.querySelectorAll('[data-overlay]');
+// let activeForm;
+
+// const openData = function (formId) {
+//     const targetEl = document.querySelector(`#${formId}`);
+//     if (targetEl) {
+//         targetEl.classList.add('active');
+//         overlay.forEach(item => item.classList.add('active'));
+//         activeForm = targetEl;
+//     }
+// };
+
+// const closeData = function () {
+//     if (activeForm) {
+//         activeForm.classList.remove('active');
+//         overlay.forEach(item => item.classList.remove('active'));
+//         activeForm = null;
+//     }
+// };
+
+// for (let i = 0; i < triggerOpen.length; i++) {
+//     const currentId = triggerOpen[i].dataset.target;
+
+//     triggerOpen[i].addEventListener('click', function () {
+//         openData(currentId);
+//     });
+
+//     const closeButton = document.querySelector(`[close-button="${currentId}"]`);
+//     if (closeButton) {
+//         closeButton.addEventListener('click', closeData);
+//     }
+
+//     overlay.forEach(function (overlayItem) {
+//         overlayItem.addEventListener('click', closeData);
+//     });
+// }
+
+
 
 
 
@@ -141,7 +240,6 @@ trigger.forEach((btn) => {
     });
 });
 
-
 //sorter
 const sorter = document.querySelector('.sort-list');
 
@@ -162,29 +260,6 @@ if (sorter) {
         sorter.querySelector('ul').classList.toggle('show');
     }));
 }
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    const searchForm = document.getElementById("searchForm");
-    const closeButton = document.getElementById("closeButton");
-    const productNameInput = document.getElementById("productName");
-    closeButton.addEventListener("click", function () {
-        productNameInput.value = ''; 
-    });
-    productNameInput.addEventListener("keydown", function (event) {
-        if (event.key === "Enter") {
-            event.preventDefault(); 
-        }
-    });
-
-    searchForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-        const searchTerm = productNameInput.value;
-        console.log("Search term:", searchTerm);
-    });
-});
-
 //search enter
 document.addEventListener("DOMContentLoaded", function () {
     const searchForm = document.getElementById("searchForm");
