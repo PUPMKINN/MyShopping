@@ -2088,6 +2088,7 @@ form .button {
 
 .cart-menu .product-list>.wrapper {
     max-height: 400px;
+    overflow-x: auto;
 }
 
 

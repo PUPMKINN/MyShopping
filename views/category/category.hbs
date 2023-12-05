@@ -186,7 +186,7 @@
                     </div>
                     <div class="content">
                         <div id="sidebar-filter" class="sidebar">
-                            {{!-- <form action="">
+                            {{!-- <form action="/category" method="get">
                                 <div class="wrap">
                                     <a href="#0" class="close-trigger" close-button>
                                         <i class="ri-close-line"></i>
@@ -250,25 +250,18 @@
                                                         <li><a href="">Customise by you</a></li>
                                                     </ul>
                                                 </div>
-
-                                                <label for="category">Categories</label>
-                                                <select name="category" id="category">
-                                                    <option value="All Shoes">All Shoes</option>
-                                                    <option value="Newest Sneaker">Newest Sneaker</option>
-                                                    <!-- Add other category options as needed -->
-                                                </select>
                                             </div>
                                         </div>
                                         <div class="widget">
                                             <div class="sumary">
-                                                <input type="checkbox" name="cats" id="aad" checked>
-                                                <label for="aad">
-                                                    <span>Brands</span>
+                                                <input type="checkbox" name="manufacturer" id="manufacturer" checked>
+                                                <label for="manufacturer">
+                                                    <span for="manufacturer">Brands</span>
                                                     <i class="ri-arrow-down-s-line"></i>
                                                 </label>
                                                 <div class="accord list-block scrollto">
                                                     <ul class="wrapper initial">
-                                                        <li><a href="#">Nike</a></li>
+                                                        <li><a href="" value="Nike">Nike</a></li>
                                                         <li><a href="#">Dior</a></li>
                                                         <li><a href="#">Adidas</a></li>
                                                         <li><a href="#">Balenciaga</a></li>
@@ -277,15 +270,9 @@
                                                         <li><a href="#">Louis Vuition</a></li>
                                                     </ul>
                                                 </div>
-
-                                                <label for="manufacturer">Brands</label>
-                                                <select name="manufacturer" id="manufacturer">
-                                                    <option value="Nike">Nike</option>
-                                                    <option value="Dior">Dior</option>
-                                                    <!-- Add other brand options as needed -->
-                                                </select>
                                             </div>
                                         </div>
+
                                         <div class="widget">
                                             <div class="sumary">
                                                 <label><span>Price</span></label>
@@ -296,9 +283,6 @@
                                                     <span>$30</span>
                                                     <span>$500</span>
                                                 </div>
-                                                <label for="price">Price</label>
-                                                <input type="range" name="price" id="price" value="25" min="0" max="500"
-                                                    step="1">
                                             </div>
                                         </div>
                                     </div>
@@ -712,7 +696,7 @@
                                                     <span>Size:</span>
                                                     <span>42</span>
                                                 </div>
-                                                <div class="price">{{this.price}}</div>
+                                                <div class="price">${{this.price}}</div>
                                                 <a href="" class="item-remove">
                                                     <i class="ri-close-line"></i>
                                                 </a>
