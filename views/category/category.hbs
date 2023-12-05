@@ -74,11 +74,12 @@
                                                                                 href="">{{this.name}}</a></h2>
                                                                         <div class="product-price">
                                                                             <span class="before">${{this.price}}</span>
-                                                                        <!--giá ban đầu-->
-                                                                        <span class="current">${{this.discount}}</span>
-                                                                        <!--giá mới-->
+                                                                            <!--giá ban đầu-->
+                                                                            <span
+                                                                                class="current">${{this.discount}}</span>
+                                                                            <!--giá mới-->
                                                                         </div>
-                                                                        
+
                                                                     </div>
                                                                 </div>
                                                                 {{/each}}
@@ -185,109 +186,173 @@
                     </div>
                     <div class="content">
                         <div id="sidebar-filter" class="sidebar">
-                            <form action="">
+                            {{!-- <form action="">
                                 <div class="wrap">
-                                <a href="#0" class="close-trigger" close-button>
-                                    <i class="ri-close-line"></i>
-                                </a>
-                                <div class="sidebar-content">
-                                    <div class="sidebar-title">Filter</div>
-                                    <div class="widget">
-                                        <div class="sumary">
-                                            <input type="checkbox" name="cats" id="aaa" checked>
-                                            <label for="aaa">
-                                                <span>Size</span>
-                                                <i class="ri-arrow-down-s-line"></i>
-                                            </label>
-                                            <div class="accord product-size">
-                                                <div class="wrap">
-                                                    <button>40</button>
-                                                    <button>41</button>
-                                                    <button>42</button>
-                                                    <button>43</button>
+                                    <a href="#0" class="close-trigger" close-button>
+                                        <i class="ri-close-line"></i>
+                                    </a>
+                                    <div class="sidebar-content">
+                                        <div class="sidebar-title">Filter</div>
+                                        <div class="widget">
+                                            <div class="sumary">
+                                                <input type="checkbox" name="cats" id="aaa" checked>
+                                                <label for="aaa">
+                                                    <span>Size</span>
+                                                    <i class="ri-arrow-down-s-line"></i>
+                                                </label>
+                                                <div class="accord product-size">
+                                                    <div class="wrap">
+                                                        <button>40</button>
+                                                        <button>41</button>
+                                                        <button>42</button>
+                                                        <button>43</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="widget">
-                                        <div class="sumary">
-                                            <input type="checkbox" name="cats" id="aab" checked>
-                                            <label for="aab">
-                                                <span>Colors</span>
-                                                <i class="ri-arrow-down-s-line"></i>
-                                            </label>
-                                            <div class="accord product-color">
-                                                <div class="wrap">
-                                                    <button class="white"></button>
-                                                    <button class="black"></button>
-                                                    <button class="brown"></button>
+                                        <div class="widget">
+                                            <div class="sumary">
+                                                <input type="checkbox" name="cats" id="aab" checked>
+                                                <label for="aab">
+                                                    <span>Colors</span>
+                                                    <i class="ri-arrow-down-s-line"></i>
+                                                </label>
+                                                <div class="accord product-color">
+                                                    <div class="wrap">
+                                                        <button class="white"></button>
+                                                        <button class="black"></button>
+                                                        <button class="brown"></button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="widget">
-                                        <div class="sumary">
-                                            <input type="checkbox" name="cats" id="aac" checked>
-                                            <label for="aac">
-                                                <span>Categories</span>
-                                                <i class="ri-arrow-down-s-line"></i>
-                                            </label>
-                                            <div class="accord list-block scrollto">
-                                                <ul class="wrapper initial">
-                                                    <li><a href="">All Shoes</a></li>
-                                                    <li><a href="">Newest Sneaker</a></li>
-                                                    <li><a href="">Jordan</a></li>
-                                                    <li><a href="">LifeStyle</a></li>
-                                                    <li><a href="">Running</a></li>
-                                                    <li><a href="">Gym and Tranning</a></li>
-                                                    <li><a href="">Basketball</a></li>
-                                                    <li><a href="">Football</a></li>
-                                                    <li><a href="">Sandals and Slides</a></li>
-                                                    <li><a href="">Gym and Tranning</a></li>
-                                                    <li><a href="">Last sizes available</a></li>
-                                                    <li><a href="">Last sizes available</a></li>
-                                                    <li><a href="">Customise by you</a></li>
-                                                </ul>
+                                        <div class="widget">
+                                            <div class="sumary">
+                                                <input type="checkbox" name="cats" id="aac" checked>
+                                                <label for="aac">
+                                                    <span>Categories</span>
+                                                    <i class="ri-arrow-down-s-line"></i>
+                                                </label>
+                                                <div class="accord list-block scrollto">
+                                                    <ul class="wrapper initial">
+                                                        <li><a href="">All Shoes</a></li>
+                                                        <li><a href="">Newest Sneaker</a></li>
+                                                        <li><a href="">Jordan</a></li>
+                                                        <li><a href="">LifeStyle</a></li>
+                                                        <li><a href="">Running</a></li>
+                                                        <li><a href="">Gym and Tranning</a></li>
+                                                        <li><a href="">Basketball</a></li>
+                                                        <li><a href="">Football</a></li>
+                                                        <li><a href="">Sandals and Slides</a></li>
+                                                        <li><a href="">Gym and Tranning</a></li>
+                                                        <li><a href="">Last sizes available</a></li>
+                                                        <li><a href="">Last sizes available</a></li>
+                                                        <li><a href="">Customise by you</a></li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="widget">
-                                        <div class="sumary">
-                                            <input type="checkbox" name="cats" id="aad" checked>
-                                            <label for="aad">
-                                                <span>Brands</span>
-                                                <i class="ri-arrow-down-s-line"></i>
-                                            </label>
-                                            <div class="accord list-block scrollto">
-                                                <ul class="wrapper initial">
-                                                    <li><a href="#">Nike</a></li>
-                                                    <li><a href="#">Dior</a></li>
-                                                    <li><a href="#">Adidas</a></li>
-                                                    <li><a href="#">Balenciaga</a></li>
-                                                    <li><a href="#">Gucci</a></li>
-                                                    <li><a href="#">Puma</a></li>
-                                                    <li><a href="#">Louis Vuition</a></li>
-                                                </ul>
+                                        <div class="widget">
+                                            <div class="sumary">
+                                                <input type="checkbox" name="cats" id="aad" checked>
+                                                <label for="aad">
+                                                    <span>Brands</span>
+                                                    <i class="ri-arrow-down-s-line"></i>
+                                                </label>
+                                                <div class="accord list-block scrollto">
+                                                    <ul class="wrapper initial">
+                                                        <li><a href="#">Nike</a></li>
+                                                        <li><a href="#">Dior</a></li>
+                                                        <li><a href="#">Adidas</a></li>
+                                                        <li><a href="#">Balenciaga</a></li>
+                                                        <li><a href="#">Gucci</a></li>
+                                                        <li><a href="#">Puma</a></li>
+                                                        <li><a href="#">Louis Vuition</a></li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="widget">
-                                        <div class="sumary">
-                                            <label><span>Price</span></label>
-                                            <div class="range-track">
-                                                <input type="range" value="25" min="0" max="500" step="1">
-                                            </div>
-                                            <div class="price-range grey-color">
-                                                <span>$30</span>
-                                                <span>$500</span>
+                                        <div class="widget">
+                                            <div class="sumary">
+                                                <label><span>Price</span></label>
+                                                <div class="range-track">
+                                                    <input type="range" value="25" min="0" max="500" step="1">
+                                                </div>
+                                                <div class="price-range grey-color">
+                                                    <span>$30</span>
+                                                    <span>$500</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="button">
-                                        <a href="" class="secondary-btn">Submit</a>
+                                <div class="button">
+                                    <a href="" class="secondary-btn">Submit</a>
+                                </div>
+                            </form> --}}
+                            <form action="/category" method="get">
+                                <div class="wrap">
+                                    <a href="#0" class="close-trigger" close-button>
+                                        <i class="ri-close-line"></i>
+                                    </a>
+                                    <div class="sidebar-content">
+                                        <div class="sidebar-title">Filter</div>
+                                        <div class="widget">
+                                            <div class="sumary">
+                                                <label for="size">Size</label>
+                                                <select name="size" id="size">
+                                                    <option value="40">40</option>
+                                                    <option value="41">41</option>
+                                                    <option value="42">42</option>
+                                                    <option value="43">43</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="widget">
+                                            <div class="sumary">
+                                                <label for="color">Colors</label>
+                                                <select name="color" id="color">                                                    
+                                                    <option value="white">White</option>
+                                                    <option value="black">Black</option>
+                                                    <option value="brown">Brown</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="widget">
+                                            <div class="sumary">
+                                                <label for="category">Categories</label>
+                                                <select name="category" id="category">
+                                                    <option value="All Shoes">All Shoes</option>
+                                                    <option value="Newest Sneaker">Newest Sneaker</option>
+                                                    <!-- Add other category options as needed -->
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="widget">
+                                            <div class="sumary">
+                                                <label for="manufacturer">Brands</label>
+                                                <select name="manufacturer" id="manufacturer">
+                                                    <option value="Nike">Nike</option>
+                                                    <option value="Dior">Dior</option>
+                                                    <option value="LeBron">LeBron</option>
+                                                    <option value="Adidas">Adidas</option>
+                                                    
+                                                    <!-- Add other brand options as needed -->
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="widget">
+                                            <div class="sumary">
+                                                <label for="price">Price</label>
+                                                <input type="range" name="price" id="price" value="25" min="0" max="500"
+                                                    step="1">
+                                            </div>
+                                        </div>
                                     </div>
+                                </div>
+                                <div class="button">
+                                    <button type="submit" class="secondary-btn">Submit</button>
+                                </div>
                             </form>
                         </div>
                         <div class="category-content">
