@@ -162,3 +162,46 @@ if (sorter) {
         sorter.querySelector('ul').classList.toggle('show');
     }));
 }
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const searchForm = document.getElementById("searchForm");
+    const closeButton = document.getElementById("closeButton");
+    const productNameInput = document.getElementById("productName");
+    closeButton.addEventListener("click", function () {
+        productNameInput.value = ''; 
+    });
+    productNameInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); 
+        }
+    });
+
+    searchForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const searchTerm = productNameInput.value;
+        console.log("Search term:", searchTerm);
+    });
+});
+
+//search enter
+document.addEventListener("DOMContentLoaded", function () {
+    const searchForm = document.getElementById("searchForm");
+    const closeButton = document.getElementById("closeButton");
+    const productNameInput = document.getElementById("productName");
+    closeButton.addEventListener("click", function () {
+        productNameInput.value = ''; 
+    });
+    productNameInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); 
+        }
+    });
+
+    searchForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const searchTerm = productNameInput.value;
+        console.log("Search term:", searchTerm);
+    });
+});
