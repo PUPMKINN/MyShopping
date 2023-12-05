@@ -18,7 +18,7 @@ const show = (req, res, next) => {
 
 // [GET] /product/create
 const create = (req, res, next) => {
-  res.render("updateProduct/user_update");
+  res.render("updateProduct/user_create");
 }
 
 // [POST] /product/store
