@@ -218,7 +218,7 @@
                     <form action="/" method="get" class="search">
                         <i class="ri-search-line"></i>
                         <input type="search" class="input" id="productName" name="productName" placeholder="Search products">
-                        <button type="submit"> Search </button>
+                        {{!-- <button type="submit"> Search </button> --}}
                         <i class="ri-close-line" close-button></i>
                     </form>
                 </div>
@@ -491,39 +491,66 @@
                     </div>
                     <!--Blog-->
                     <div class="fromblog">
-                        <div class="container">
-                            <div class="wrap">
-                                <div class="heading">
-                                    <h2 class="title">From the blog</h2>
-                                </div>
-                                <div class="dotgrid scrollto">
-                                    <div class="wrapper">
-                                        <!--3 lần-->
-                                        {{#each productList}}
-                                        <div class="item">
-                                            <div class="dot-image">
-                                                <div class="thumbnail hover">
-                                                    <a href="/product/detail/{{this._id}}">
-                                                        <img src="{{this.gallery}}" alt="">
-                                                    </a>
+                            <div class="container">
+                                <div class="wrap">
+                                    <div class="heading">
+                                        <h2 class="title">From the blog</h2>
+                                    </div>
+                                    <div class="dotgrid scrollto">
+                                        <div class="wrapper">
+                                            <div class="item">
+                                                <div class="dot-image">
+                                                    <div class="thumbnail hover">
+                                                        <a href="">
+                                                            <img src="./images/blog_01.jpg" alt="">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="dot-info">
+                                                    <a href="">Feeling</a>
+                                                    <h3 class="dot-title">
+                                                        <a href="">How do you feel today?</a>
+                                                    </h3>
                                                 </div>
                                             </div>
-                                            <div class="dot-info">
-                                                <a href="">{{this.description}}</a>
-                                                <h3 class="dot-title">
-                                                    <a href="/product/detail/{{this._id}}">{{this.name}}</a>
-                                                </h3>
+                                            <div class="item">
+                                                <div class="dot-image">
+                                                    <div class="thumbnail hover">
+                                                        <a href="">
+                                                            <img src="./images/blog_02.jpg" alt="">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="dot-info">
+                                                    <a href="">Tips</a>
+                                                    <h3 class="dot-title">
+                                                        <a href="">Property wear shoe on gymerday</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="dot-image">
+                                                    <div class="thumbnail hover">
+                                                        <a href="">
+                                                            <img src="./images/blog_03.jpg" alt="">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="dot-info">
+                                                    <a href="">Trainning</a>
+                                                    <h3 class="dot-title">
+                                                        <a href="">What should I wear this shoes?</a>
+                                                    </h3>
+                                                </div>
                                             </div>
                                         </div>
-                                        {{/each}}
                                     </div>
-                                </div>
-                                <div class="button">
-                                    <a href="" class="secondary-btn">Read more</a>
+                                    <div class="button">
+                                        <a href="" class="secondary-btn">Read more</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     <!--Insta-->
                     <div class="frominsta">
                         <div class="container">
@@ -533,77 +560,58 @@
                                 </div>
                             </div>
                             <div class="dotgrid scrollto">
-                                {{!-- <div class="wrapper">
-                                    <!--5 lần-->
-                                    {{#each productList}}
-                                    <div class="item">
-                                        <div class="dot-image">
-                                            <a href="/product/detail/{{this._id}}"></a>
-                                            <div class="thumbnail">
-                                                <img src="{{this.gallery}}" alt="">
-                                            </div>
-                                            <div class="actions">
-                                                <i class="ri-instagram-line"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {{/each}}
-                                </div> --}}
                                 <div class="wrapper">
                                         <div class="item">
                                             <div class="dot-image">
-                                                <a href=""></a>
+                                                <a href="https://www.instagram.com/p/CzEUaG_rvXM/?img_index=1"></a>
                                                 <div class="thumbnail">
                                                     <img src="./images/ig_01.jpg" alt="">
                                                 </div>
                                                 <div class="actions">
-                                                    <a href="https://www.instagram.com/p/CzEUaG_rvXM/?img_index=1">
                                                     <i class="ri-instagram-line"></i>
-                                                    </a>
-                                                    
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="item">
                                             <div class="dot-image">
-                                                <a href=""></a>
+                                                <a href="https://www.instagram.com/p/CzeR4nGuRCc/?img_index=1"></a>
                                                 <div class="thumbnail">
                                                     <img src="./images/ig_05.jpg" alt="">
                                                 </div>
                                                 <div class="actions">
-                                                    <i class="ri-instagram-line"></i>
+                                                    <i class="ri-instagram-line"></i>                                      
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="item">
                                             <div class="dot-image">
-                                                <a href=""></a>
+                                                <a href="https://www.instagram.com/p/CzUaK5YyLc3/?img_index=1"></a>
                                                 <div class="thumbnail">
                                                     <img src="./images/ig_02.jpg" alt="">
                                                 </div>
                                                 <div class="actions">
-                                                    <i class="ri-instagram-line"></i>
+                                                    <i class="ri-instagram-line"></i>      
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="item">
                                             <div class="dot-image">
-                                                <a href=""></a>
+                                                <a href="https://www.instagram.com/p/C0CVBDMxLqh/?img_index=1"></a>
                                                 <div class="thumbnail">
                                                     <img src="./images/ig_04.jpg" alt="">
                                                 </div>
                                                 <div class="actions">
-                                                    <i class="ri-instagram-line"></i>
+                                                    <i class="ri-instagram-line"></i>                                                                                                    
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="item">
                                             <div class="dot-image">
-                                                <a href=""></a>
+                                                <a href="https://www.instagram.com/p/C0VjrHVL_55/"></a>
                                                 <div class="thumbnail">
                                                     <img src="./images/ig_03.jpg" alt="">
                                                 </div>
-                                                <div class="actions">
+                                                <div class="actions">                                                    
                                                     <i class="ri-instagram-line"></i>
                                                 </div>
                                             </div>
