@@ -439,56 +439,30 @@
                                         </div>
                                     </div>
                                     <div class="body-review">
+                                        {{#each}}
                                         <div class="profile">
                                             <div class="thumb-name">
                                                 <div class="image">
-                                                    <img src="{{product.gallery}}" alt="">
+                                                    <img src="{{review.avatar}}" alt=""> <!--thêm biến chứa hình ảnh-->
                                                 </div>
                                                 <div class="grouping">
-                                                    <div class="name">Bach</div>
+                                                    <div class="name">{{review.name}}</div>
                                                     <div class="rating">
-                                                        <i class="ri-star-fill"></i>
+                                                        <i class="ri-star-fill">{{review.rating}}</i> <!--có 5 ngôi sao để trong 1 cái hay 5 cái-->
                                                         <i class="ri-star-fill"></i>
                                                         <i class="ri-star-fill"></i>
                                                         <i class="ri-star-fill"></i>
                                                         <i class="ri-star-fill"></i>
                                                     </div>
-                                                    <div class="date grey-color">20/11/2023</div>
+                                                    <div class="date grey-color">{{review.datePost}}</div>
                                                 </div>
                                             </div>
                                             <div class="comment">
-                                                <strong>Awesome Product</strong>
-                                                <p class="grey-color">All Nike Members receive special offers and
-                                                    product promotions just to say thanks for being with us, or for
-                                                    moments of personal significance like birthdays. Nike Member
-                                                    Rewards is not a points-based system, so you'll receive rewards
-                                                    throughout the year.</p>
+                                                <strong>{{review.title}}</strong>
+                                                <p class="grey-color">{{review.comment}}</p>
                                             </div>
                                         </div>
-                                        <div class="profile">
-                                            <div class="thumb-name">
-                                                <div class="image">
-                                                    <img src="{{product.gallery}}" alt="">
-                                                </div>
-                                                <div class="grouping">
-                                                    <div class="name">Bach</div>
-                                                    <div class="rating">
-                                                        <i class="ri-star-fill"></i>
-                                                        <i class="ri-star-fill"></i>
-                                                        <i class="ri-star-fill"></i>
-                                                    </div>
-                                                    <div class="date grey-color">20/11/2023</div>
-                                                </div>
-                                            </div>
-                                            <div class="comment">
-                                                <strong>Awesome Product</strong>
-                                                <p class="grey-color">All Nike Members receive special offers and
-                                                    product promotions just to say thanks for being with us, or for
-                                                    moments of personal significance like birthdays. Nike Member
-                                                    Rewards is not a points-based system, so you'll receive rewards
-                                                    throughout the year.</p>
-                                            </div>
-                                        </div>
+                                        {{/each}}
                                     </div>
                                 </div>
                             </div>
