@@ -1,19 +1,27 @@
 const Product = require("../models/Product");
-const { mongooseToObject } = require("../util/mongoose");
+const Review = require("../models/Review");
+const { mongooseToObject, mutipleMongooseToObject } = require("../util/mongoose");
 const mongoose = require("mongoose");
 
 
 // [GET] /product/detail/:id
-const show = (req, res, next) => {
-  Product.findById(req.params.id)
-  .then((product) => {
+const show = async(req, res, next) => {
+  try {
+    const product = await Product.findById(req.params.id);
+
+    if (!product) {
+      return res.status(404).render("404"); // Handle the case where the product is not found
+    }
+
+    const reviews = await Review.find({ productId: req.params.id });
+
     res.render("product/product", {
       product: mongooseToObject(product),
+      reviews: mutipleMongooseToObject(reviews),
     });
-    //res.json(product);
-  })
-  .catch(next);
-  //res.send("Product" + req.params.slug);
+  } catch (err) {
+    next(err);
+  }
 }
 
 // [GET] /product/create
@@ -34,6 +42,7 @@ const store = (req, res, next) => {
 const edit = (req, res, next) => {
   Product.findById(req.params.id)
   .then((product) =>
+
     res.render("products/edit", {
       product: mongooseToObject(product),
     })
