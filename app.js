@@ -9,7 +9,6 @@ const methodOverride = require('method-override');
 const nodemailer = require('nodemailer');
 const { OAuth2Client } = require ('google-auth-library');
 
-
 //var indexRouter = require('./public/javascripts/script');
 const route = require('./routes/index');
 const db = require('./config/dbMongo');
@@ -64,3 +63,4 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+

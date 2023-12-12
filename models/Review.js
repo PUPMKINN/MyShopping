@@ -26,7 +26,17 @@ const reviewSchema = new mongoose.Schema({
   datePost: {
     type: Date,
     default: Date.now(),
-  }
+  },
+  avatar: {
+    type: [String],
+    default: [],
+    validate: {
+        validator: function (value) {
+            return value.every(url => typeof url === 'string' && url.trim().length > 0);
+        },
+        message: 'Invalid image URLs in the list'
+    }
+},
 });
 
 module.exports = mongoose.model('Review', reviewSchema);

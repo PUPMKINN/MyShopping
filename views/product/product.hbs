@@ -455,24 +455,19 @@
                                         <div class="profile">
                                             <div class="thumb-name">
                                                 <div class="image">
-                                                    <img src="{{product.gallery}}" alt=""> <!--thêm biến chứa hình ảnh-->
+                                                    <img src="{{this.avatar}}" alt=""> <!--thêm biến chứa hình ảnh-->
                                                 </div>
                                                 <div class="grouping">
                                                     <div class="name">{{this.name}}</div>
-                                                    <div class="rating">
-                                                        <i class="ri-star-fill">{{this.rating}}</i>
-                                                        <!--có 5 ngôi sao để trong 1 cái hay 5 cái-->
-                                                        {{!-- <i class="ri-star-fill"></i>
+                                                    <div class="rating">{{this.rating}}
                                                         <i class="ri-star-fill"></i>
-                                                        <i class="ri-star-fill"></i>
-                                                        <i class="ri-star-fill"></i> --}}
                                                     </div>
-                                                    <div class="date grey-color">{{this.datePost}}</div>
                                                 </div>
                                             </div>
                                             <div class="comment">
                                                 <strong>{{this.title}}</strong>
                                                 <p class="grey-color">{{this.comment}}</p>
+                                                <div class="date grey-color">{{this.datePost}}</div>
                                             </div>
                                         </div>
                                         {{/each}}
@@ -1303,42 +1298,40 @@
 
 <script type="module" src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-function submitReview(event) {
-    var reviewText = $('#review').val();
+    function submitReview(event) {
+        var reviewText = $('#review').val();
 
-    $.ajax({
-        type: 'POST',
-        url: '/review/store/{{product._id}}',
-        data: $('#reviewForm').serialize(),
-        success: function(response) {
-            // Handle the response if needed
-            // For example, you might want to update the UI with the new review data
+        $.ajax({
+            type: 'POST',
+            url: '/review/store/{{product._id}}',
+            data: $('#reviewForm').serialize(),
+            success: function (response) {
+                // Handle the response if needed
+                // For example, you might want to update the UI with the new review data
 
-            // Reload the product detail page
-            updateProductDetail();
-        },
-        error: function(error) {
-            console.error('Error submitting review:', error);
-        }
-    });
-    // Prevent the default form submission
-    event.preventDefault();
-}
+                // Reload the product detail page
+                updateProductDetail();
+            },
+            error: function (error) {
+                console.error('Error submitting review:', error);
+            }
+        });
+        // Prevent the default form submission
+        event.preventDefault();
+    }
 
-function updateProductDetail() {
-    $.ajax({
-        type: 'GET',
-        url: '/product/detail/{{product._id}}',  // Update the URL to your product detail endpoint
-        success: function(response) {
-            // Replace the entire product detail section with the new data
-            //$('#product-review').html(response); 
-            location.reload();
-        },
-        error: function(error) {
-            console.error('Error updating product detail:', error);
-        }
-    });
-}
+    function updateProductDetail() {
+        $.ajax({
+            type: 'GET',
+            url: '/product/detail/{{product._id}}',  // Update the URL to your product detail endpoint
+            success: function (response) {
+                // Replace the entire product detail section with the new data
+                //$('#product-review').html(response); 
+                location.reload();
+            },
+            error: function (error) {
+                console.error('Error updating product detail:', error);
+            }
+        });
+    }
 </script>
-
-
