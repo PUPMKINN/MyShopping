@@ -406,7 +406,7 @@
                                                 <div class="dot-image">
                                                     <a href="" class="product-permalink"></a>
                                                     <div class="thumbnail">
-                                                        <img src="{{this.gallery}}" alt="">
+                                                        <a href="/product/detail/{{this._id}}"><img src="{{this.gallery}}" alt=""></a>
                                                     </div>
                                                     <div class="thumbnail hover">
                                                         <img src="{{this.thumbnail}}" alt="">
@@ -424,7 +424,7 @@
                                                     <div class="label"><span>-25%</span></div>
                                                 </div>
                                                 <div class="dot-info">
-                                                    <h2 class="dot-title"><a href="">{{this.name}}</a></h2>
+                                                    <h2 class="dot-title"><a href="/product/detail/{{this._id}}">{{this.name}}</a></h2>
                                                     <div class="product-price">
                                                         <span class="before">${{this.price}}</span>
                                                         <span class="current">${{this.discount}}</span>
