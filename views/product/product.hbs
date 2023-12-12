@@ -458,21 +458,21 @@
                                                     <img src="{{product.gallery}}" alt=""> <!--thêm biến chứa hình ảnh-->
                                                 </div>
                                                 <div class="grouping">
-                                                    <div class="name">{{review.name}}</div>
+                                                    <div class="name">{{this.name}}</div>
                                                     <div class="rating">
-                                                        <i class="ri-star-fill">{{review.rating}}</i>
+                                                        <i class="ri-star-fill">{{this.rating}}</i>
                                                         <!--có 5 ngôi sao để trong 1 cái hay 5 cái-->
+                                                        {{!-- <i class="ri-star-fill"></i>
                                                         <i class="ri-star-fill"></i>
                                                         <i class="ri-star-fill"></i>
-                                                        <i class="ri-star-fill"></i>
-                                                        <i class="ri-star-fill"></i>
+                                                        <i class="ri-star-fill"></i> --}}
                                                     </div>
-                                                    <div class="date grey-color">{{review.datePost}}</div>
+                                                    <div class="date grey-color">{{this.datePost}}</div>
                                                 </div>
                                             </div>
                                             <div class="comment">
-                                                <strong>{{review.title}}</strong>
-                                                <p class="grey-color">{{review.comment}}</p>
+                                                <strong>{{this.title}}</strong>
+                                                <p class="grey-color">{{this.comment}}</p>
                                             </div>
                                         </div>
                                         {{/each}}
