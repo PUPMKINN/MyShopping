@@ -14,7 +14,8 @@ const show = async(req, res, next) => {
     }
 
     const reviews = await Review.find({ productId: req.params.id });
-
+    console.log("Product:", product);
+    console.log("Reviews:", reviews);
     res.render("product/product", {
       product: mongooseToObject(product),
       reviews: mutipleMongooseToObject(reviews),

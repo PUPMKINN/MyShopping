@@ -451,11 +451,11 @@
                                         </div>
                                     </div>
                                     <div class="body-review">
-                                        {{#each review}}
+                                        {{#each reviews}}
                                         <div class="profile">
                                             <div class="thumb-name">
                                                 <div class="image">
-                                                    <img src="{{review.avatar}}" alt=""> <!--thêm biến chứa hình ảnh-->
+                                                    <img src="{{product.gallery}}" alt=""> <!--thêm biến chứa hình ảnh-->
                                                 </div>
                                                 <div class="grouping">
                                                     <div class="name">{{review.name}}</div>
@@ -1044,7 +1044,7 @@
         <div class="data-content">
             <a href="#0" class="close-trigger" close-button><i class="ri-close-line"></i></a>
             <h3>Write a review</h3>
-            <form action="/review/store/{{product._id}}" method="post">
+            <form id="reviewForm" action="/review/store/{{product._id}}" method="post">
                 <div class="dotgrid">
                     <div class="wrapper">
                         <div><input type="text" name="username" placeholder="Name"></div>
@@ -1070,7 +1070,7 @@
                 <div><input type="text" name="title" placeholder="Review titles"></div>
                 <div><textarea name="comment" placeholder="Your review is.." cols="30" rows="5"></textarea></div>
                 <div class="button">
-                    <button type="submit" class="secondary-btn">Submit</button>
+                    <button type="button" onclick="submitReview(event)" class="secondary-btn">Submit</button>
                 </div>
             </form>
         </div>
@@ -1301,11 +1301,44 @@
     </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+function submitReview(event) {
+    var reviewText = $('#review').val();
 
-{{#section 'scripts'}}
-    <script>
-        $.getJSON('/product/{{productDetail._id}}/reviews');
-    </script>
-{{/section}}
+    $.ajax({
+        type: 'POST',
+        url: '/review/store/{{product._id}}',
+        data: $('#reviewForm').serialize(),
+        success: function(response) {
+            // Handle the response if needed
+            // For example, you might want to update the UI with the new review data
+
+            // Reload the product detail page
+            updateProductDetail();
+        },
+        error: function(error) {
+            console.error('Error submitting review:', error);
+        }
+    });
+    // Prevent the default form submission
+    event.preventDefault();
+}
+
+function updateProductDetail() {
+    $.ajax({
+        type: 'GET',
+        url: '/product/detail/{{product._id}}',  // Update the URL to your product detail endpoint
+        success: function(response) {
+            // Replace the entire product detail section with the new data
+            //$('#product-review').html(response); 
+            location.reload();
+        },
+        error: function(error) {
+            console.error('Error updating product detail:', error);
+        }
+    });
+}
+</script>
 
 
