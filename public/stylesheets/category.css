@@ -2333,7 +2333,11 @@ input[type="range"]::-webkit-slider-thumb {
     --grid-col: 221px;
 }
 
-
+.button-container {
+    display: flex;
+    gap: 10px;
+    /* Adjust the gap as needed */
+}
 
 
 

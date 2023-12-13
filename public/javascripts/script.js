@@ -14,10 +14,10 @@ const openData = function () {
 for (let i = 0; i < triggerOpen.length; i++) {
     let currentId = triggerOpen[i].dataset.target,
         targetEl = document.querySelector(`#${currentId}`)
-        const openData = function() {
-            targetEl.classList.remove('active');
-            overlay.classList.remove('active');
-        }
+    const openData = function () {
+        targetEl.classList.remove('active');
+        overlay.classList.remove('active');
+    }
     triggerOpen[i].addEventListener('click', function () {
         if (targetEl) {
             targetEl.classList.add('active');
@@ -146,6 +146,7 @@ if (sorter) {
     sorter.querySelector('.opt-trigger').addEventListener('click', function () {
         sorter.querySelector('ul').classList.toggle('show');
     });
+
     sortLi.forEach(item => item.addEventListener('click', function () {
         sortLi.forEach(li => {
             if (li !== this) {
@@ -163,11 +164,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const closeButton = document.getElementById("closeButton");
     const productNameInput = document.getElementById("productName");
     closeButton.addEventListener("click", function () {
-        productNameInput.value = ''; 
+        productNameInput.value = '';
     });
     productNameInput.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
-            event.preventDefault(); 
+            event.preventDefault();
         }
     });
 
@@ -180,39 +181,67 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 var page = 1;
-        const curUrl = new URL(window.location.href);
-        curUrl.pathname = '/products/paging';
-            
-        const prevPage = document.getElementById("prev_page");
-        const nextPage = document.getElementById("next_page");
+const curUrl = new URL(window.location.href);
+curUrl.pathname = '/products/paging';
 
-        prevPage.addEventListener("click", async function () {
-            try {
-                if (curUrl.searchParams.has('page')) {
-                    if (curUrl.searchParams.get('page') > 1) curUrl.searchParams.set('page', page - 1);
-                } else {
-                    curUrl.searchParams.append('page', page);
-                }
-                console.log(curUrl.toString());
-            } catch (error) {
-                console.log(error);
+const prevPage = document.getElementById("prev_page");
+const nextPage = document.getElementById("next_page");
 
-            }
+prevPage.addEventListener("click", async function () {
+    try {
+        if (curUrl.searchParams.has('page')) {
+            if (curUrl.searchParams.get('page') > 1) curUrl.searchParams.set('page', page - 1);
+        } else {
+            curUrl.searchParams.append('page', page);
+        }
+        console.log(curUrl.toString());
+    } catch (error) {
+        console.log(error);
 
-            try {
-                const response = await fetch(curUrl.toString());
+    }
 
-                const htmlContent = await response.text();
+    try {
+        const response = await fetch(curUrl.toString());
 
-                console.log(htmlContent);
+        const htmlContent = await response.text();
 
-                if (!response.ok) {
-                    throw new Error(`Network response was not ok: ${response.status}`);
-                }
+        console.log(htmlContent);
 
-            } catch (error) {
-                // Handle errors during the fetch
-                console.error('Fetch error:', error.message);
-                debugger;
-            }
-        });
+        if (!response.ok) {
+            throw new Error(`Network response was not ok: ${response.status}`);
+        }
+
+    } catch (error) {
+        // Handle errors during the fetch
+        console.error('Fetch error:', error.message);
+        debugger;
+    }
+});
+
+function clearForm() {
+    var form = document.getElementById("filter_form");
+    form.reset();
+}
+
+function selectColor(color) {
+    // Get the clicked color button
+    var selectedButton = document.querySelector('.color-button.' + color);
+
+    // Check if the button is currently selected
+    var isSelected = selectedButton.classList.contains('selected');
+
+    // Get all color buttons
+    var colorButtons = document.querySelectorAll('.color-button');
+
+    // Deselect all color buttons
+    colorButtons.forEach(function(button) {
+        button.classList.remove('selected');
+        button.style.boxShadow = 'none'; // Remove the box shadow for all buttons
+    });
+
+    // If the button was not selected, select it; otherwise, return to the initial state
+    if (!isSelected) {
+        selectedButton.classList.add('selected');
+        selectedButton.style.boxShadow = 'inset 0 0 0 4px var(--white-color)';
+    }
+}

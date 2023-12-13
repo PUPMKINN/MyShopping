@@ -1,6 +1,7 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <style type="stylesheets">@import url(https://fonts.cdnfonts.com/css/prata-2);</style>
-<style type="stylesheets">@import url(https://fonts.googleapis.com/css?family=Montserrat:400,500,600&subset=latin-ext&display=swap);</style>
+<style type="stylesheets">
+    @import url(https://fonts.googleapis.com/css?family=Montserrat:400,500,600&subset=latin-ext&display=swap);</style>
 <style type="stylesheets">@import url(https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css);</style>
 <style type="stylesheets">@import url(https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css);</style>
 <style>
@@ -291,7 +292,7 @@
                                     <a href="" class="secondary-btn">Submit</a>
                                 </div>
                             </form> --}}
-                            <form action="/category" method="get">
+                            <form action="/category" method="GET" id="filter_form">
                                 <div class="wrap">
                                     <a href="#0" class="close-trigger" close-button>
                                         <i class="ri-close-line"></i>
@@ -302,6 +303,7 @@
                                             <div class="sumary">
                                                 <label for="size">Size</label>
                                                 <select name="size" id="size">
+                                                    <option value="None">None</option>
                                                     <option value="40">40</option>
                                                     <option value="41">41</option>
                                                     <option value="42">42</option>
@@ -309,20 +311,43 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="widget">
+                                        {{!-- <div class="widget">
                                             <div class="sumary">
                                                 <label for="color">Colors</label>
                                                 <select name="color" id="color">
+                                                    <option value="None">None</option>
                                                     <option value="white">White</option>
                                                     <option value="black">Black</option>
                                                     <option value="brown">Brown</option>
                                                 </select>
+                                            </div>
+                                        </div> --}}
+                                        <div class="widget">
+                                            <div class="sumary">
+                                                <input type="checkbox" name="color" id="color" checked>
+                                                <label for="color">
+                                                    <span>Colors</span>
+                                                    <i class="ri-arrow-down-s-line"></i>
+                                                </label>
+                                                <div class="accord product-color">
+                                                    <div class="wrap">
+                                                        <div class="wrap">
+                                                            <button class="color-button white"
+                                                                onclick="selectColor('white')"></button>
+                                                            <button class="color-button black"
+                                                                onclick="selectColor('black')"></button>
+                                                            <button class="color-button brown"
+                                                                onclick="selectColor('brown')"></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="widget">
                                             <div class="sumary">
                                                 <label for="category">Categories</label>
                                                 <select name="category" id="category">
+                                                    <option value="None">None</option>
                                                     <option value="All Shoes">All Shoes</option>
                                                     <option value="Newest Sneaker">Newest Sneaker</option>
                                                     <option value="Jordan">Jordan</option>
@@ -337,6 +362,7 @@
                                             <div class="sumary">
                                                 <label for="manufacturer">Brands</label>
                                                 <select name="manufacturer" id="manufacturer">
+                                                    <option value="None">None</option>
                                                     <option value="Nike">Nike</option>
                                                     <option value="Dior">Dior</option>
                                                     <option value="LeBron">LeBron</option>
@@ -347,15 +373,22 @@
                                         </div>
                                         <div class="widget">
                                             <div class="sumary">
-                                                <label for="price">Price</label>
-                                                <input type="range" name="price" id="price" value="25" min="0" max="500"
-                                                    step="1">
+                                                <label><span>Price</span></label>
+                                                <div class="range-track">
+                                                    <input type="range" value="25" min="0" max="500" step="1">
+                                                </div>
+                                                <div class="price-range grey-color">
+                                                    <span>$30</span>
+                                                    <span>$500</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="button">
-                                    <button type="submit" class="secondary-btn">Submit</button>
+                                <div class="button-container">
+                                    <div class="button"><a href="#" class="primary-btn" onclick="clearForm()">Clear
+                                            all</a></div>
+                                    <div class="button"><a href="#" class="primary-btn">Submit</a></div>
                                 </div>
                             </form>
 
@@ -405,7 +438,8 @@
                                                 <div class="dot-image">
                                                     <a href="" class="product-permalink"></a>
                                                     <div class="thumbnail">
-                                                        <a href="/product/detail/{{this._id}}"><img src="{{this.gallery}}" alt=""></a>
+                                                        <a href="/product/detail/{{this._id}}"><img
+                                                                src="{{this.gallery}}" alt=""></a>
                                                     </div>
                                                     <div class="thumbnail hover">
                                                         <img src="{{this.thumbnail}}" alt="">
@@ -423,7 +457,8 @@
                                                     <div class="label"><span>-25%</span></div>
                                                 </div>
                                                 <div class="dot-info">
-                                                    <h2 class="dot-title"><a href="/product/detail/{{this._id}}">{{this.name}}</a></h2>
+                                                    <h2 class="dot-title"><a
+                                                            href="/product/detail/{{this._id}}">{{this.name}}</a></h2>
                                                     <div class="product-price">
                                                         <span class="before">${{this.price}}</span>
                                                         <span class="current">${{this.discount}}</span>
@@ -435,14 +470,14 @@
                                     </div>
                                 </div>
                                 <div class="pagination">
-                                        <a id="prev_page"><</a>
-                                        <a id="1" href="" class="active">1</a>
-                                        <a id="2" href="">2</a>
-                                        <a id="3" href="">3</a>
-                                        <a id="4" href="">4</a>
-                                        <a id="5" href="">5</a>
-                                        <a id="next_page" href="">></a>
-                                    </div>
+                                    <a id="prev_page">< </a>
+                                            <a id="1" href="" class="active">1</a>
+                                            <a id="2" href="">2</a>
+                                            <a id="3" href="">3</a>
+                                            <a id="4" href="">4</a>
+                                            <a id="5" href="">5</a>
+                                            <a id="next_page" href="">></a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -677,13 +712,13 @@
                         </div>
                         <div class="cart-body">
                             <div class="product-list scrollto">
-                                
+
                                 <div class="wrapper">
                                     {{#each productList}}
                                     <ul>
                                         <li>
                                             <!--3 lần-->
-                                            
+
                                             <div class="grouping">
                                                 <div class="quantity">
                                                     <div class="control">
@@ -713,12 +748,12 @@
                                                     <i class="ri-close-line"></i>
                                                 </a>
                                             </div>
-                                            
+
                                         </li>
                                     </ul>
                                     {{/each}}
                                 </div>
-                                 
+
                             </div>
                         </div>
                         <div class="cart-footer">
