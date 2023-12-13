@@ -35,108 +35,6 @@ for (let i = 0; i < triggerOpen.length; i++) {
     // overlay.addEventListener('click', openData);
 }
 
-// const triggerOpen = document.querySelectorAll('[trigger-button]');
-// const overlay = document.querySelectorAll('[data-overlay]');
-// const forms = document.querySelectorAll('.data-popup');
-
-// let activeForm;
-
-// const openData = function (formId) {
-//     const targetEl = document.querySelector(`#${formId}`);
-//     if (targetEl) {
-//         targetEl.classList.add('active');
-//         overlay.forEach(item => item.classList.add('active'));
-//         activeForm = targetEl;
-//     }
-// };
-
-// const closeData = function () {
-//     if (activeForm) {
-//         activeForm.classList.remove('active');
-//         overlay.forEach(item => item.classList.remove('active'));
-//         activeForm = null;
-//     }
-// };
-
-// for (let i = 0; i < triggerOpen.length; i++) {
-//     const currentId = triggerOpen[i].dataset.target;
-
-//     triggerOpen[i].addEventListener('click', function () {
-//         openData(currentId);
-//     });
-
-//     const closeButton = document.querySelector(`[close-button="${currentId}"]`);
-//     if (closeButton) {
-//         closeButton.addEventListener('click', closeData);
-//     }
-
-//     overlay.forEach(function (overlayItem) {
-//         overlayItem.addEventListener('click', closeData);
-//     });
-// }
-
-// // Add pointer cursor to the forms
-// forms.forEach(form => {
-//     form.style.cursor = 'default';
-//     form.addEventListener('click', function (event) {
-//         event.stopPropagation(); // Prevent closing when clicking inside the form
-//         form.style.cursor = 'default';
-//     });
-// });
-
-// // Set pointer cursor for overlay
-// overlay.forEach(overlayItem => {
-//     overlayItem.style.cursor = 'default';
-// });
-
-
-
-
-
-
-// const triggerOpen = document.querySelectorAll('[trigger-button]');
-// const triggerClose = document.querySelectorAll('[close-button]');
-// const overlay = document.querySelectorAll('[data-overlay]');
-// let activeForm;
-
-// const openData = function (formId) {
-//     const targetEl = document.querySelector(`#${formId}`);
-//     if (targetEl) {
-//         targetEl.classList.add('active');
-//         overlay.forEach(item => item.classList.add('active'));
-//         activeForm = targetEl;
-//     }
-// };
-
-// const closeData = function () {
-//     if (activeForm) {
-//         activeForm.classList.remove('active');
-//         overlay.forEach(item => item.classList.remove('active'));
-//         activeForm = null;
-//     }
-// };
-
-// for (let i = 0; i < triggerOpen.length; i++) {
-//     const currentId = triggerOpen[i].dataset.target;
-
-//     triggerOpen[i].addEventListener('click', function () {
-//         openData(currentId);
-//     });
-
-//     const closeButton = document.querySelector(`[close-button="${currentId}"]`);
-//     if (closeButton) {
-//         closeButton.addEventListener('click', closeData);
-//     }
-
-//     overlay.forEach(function (overlayItem) {
-//         overlayItem.addEventListener('click', closeData);
-//     });
-// }
-
-
-
-
-
 
 //Mobile interface
 const submenu = document.querySelectorAll('.child-trigger');
@@ -279,3 +177,42 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Search term:", searchTerm);
     });
 });
+
+
+var page = 1;
+        const curUrl = new URL(window.location.href);
+        curUrl.pathname = '/products/paging';
+            
+        const prevPage = document.getElementById("prev_page");
+        const nextPage = document.getElementById("next_page");
+
+        prevPage.addEventListener("click", async function () {
+            try {
+                if (curUrl.searchParams.has('page')) {
+                    if (curUrl.searchParams.get('page') > 1) curUrl.searchParams.set('page', page - 1);
+                } else {
+                    curUrl.searchParams.append('page', page);
+                }
+                console.log(curUrl.toString());
+            } catch (error) {
+                console.log(error);
+
+            }
+
+            try {
+                const response = await fetch(curUrl.toString());
+
+                const htmlContent = await response.text();
+
+                console.log(htmlContent);
+
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok: ${response.status}`);
+                }
+
+            } catch (error) {
+                // Handle errors during the fetch
+                console.error('Fetch error:', error.message);
+                debugger;
+            }
+        });
