@@ -28,11 +28,20 @@ for (let i = 0; i < triggerOpen.length; i++) {
         // overlay.classList.add('active');
     });
 
-    targetEl.querySelector('[close-button]').addEventListener('click', openData);
+    // targetEl.querySelector('[close-button]').addEventListener('click', openData);
     overlay.forEach(function (overlayItem) {
         overlayItem.addEventListener('click', openData);
     });
     // overlay.addEventListener('click', openData);
+}
+
+function closeSearch() {
+    var x = document.getElementById("search-float");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
 }
 
 
@@ -123,20 +132,6 @@ const mainImage = new Swiper('.main-image', {
 });
 
 
-//tabbed 
-const trigger = document.querySelectorAll('.tabbed-trigger');
-const content = document.querySelectorAll('.tabbed > div');
-
-trigger.forEach((btn) => {
-    btn.addEventListener('click', function () {
-        let dataTarget = this.dataset.id,
-            body = document.querySelector(`#${dataTarget}`);
-        trigger.forEach((b) => b.parentNode.classList.remove('active'));
-        content.forEach((s) => s.classList.remove('active'));
-        this.parentNode.classList.add('active');
-        body.classList.add('active');
-    });
-});
 
 //sorter
 const sorter = document.querySelector('.sort-list');
@@ -158,6 +153,23 @@ if (sorter) {
         sorter.querySelector('ul').classList.toggle('show');
     }));
 }
+
+//tabbed 
+const trigger = document.querySelectorAll('.tabbed-trigger');
+const content = document.querySelectorAll('.tabbed > div');
+
+trigger.forEach((btn) => {
+    btn.addEventListener('click', function () {
+        let dataTarget = this.dataset.id,
+            body = document.querySelector(`#${dataTarget}`);
+        trigger.forEach((b) => b.parentNode.classList.remove('active'));
+        content.forEach((s) => s.classList.remove('active'));
+        this.parentNode.classList.add('active');
+        body.classList.add('active');
+    });
+});
+
+
 //search enter
 document.addEventListener("DOMContentLoaded", function () {
     const searchForm = document.getElementById("searchForm");
@@ -234,7 +246,7 @@ function selectColor(color) {
     var colorButtons = document.querySelectorAll('.color-button');
 
     // Deselect all color buttons
-    colorButtons.forEach(function(button) {
+    colorButtons.forEach(function (button) {
         button.classList.remove('selected');
         button.style.boxShadow = 'none'; // Remove the box shadow for all buttons
     });

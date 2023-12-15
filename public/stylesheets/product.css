@@ -302,6 +302,11 @@ input.checker:checked::after {
     line-height: 34px;
 }
 
+.list-block .dot-title {
+    display: flex;
+    justify-content: space-between;
+}
+
 .dot-title a {
     transition: var(--transition-color);
 }
