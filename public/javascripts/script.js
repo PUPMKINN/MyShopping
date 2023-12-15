@@ -35,14 +35,11 @@ for (let i = 0; i < triggerOpen.length; i++) {
     // overlay.addEventListener('click', openData);
 }
 
-function closeSearch() {
-    var x = document.getElementById("search-float");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-}
+
+
+
+
+
 
 
 //Mobile interface
@@ -156,7 +153,7 @@ if (sorter) {
 
 //tabbed 
 const trigger = document.querySelectorAll('.tabbed-trigger');
-const content = document.querySelectorAll('.tabbed > div');
+const content = document.querySelectorAll('.tabbed>div');
 
 trigger.forEach((btn) => {
     btn.addEventListener('click', function () {

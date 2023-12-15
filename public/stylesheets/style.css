@@ -302,11 +302,6 @@ input.checker:checked::after {
   line-height: 34px;
 }
 
-.list-block .dot-title {
-  display: flex;
-  justify-content: space-between;
-}
-
 .dot-title a {
   transition: var(--transition-color);
 }
@@ -342,9 +337,8 @@ input.checker:checked::after {
 
 .overlay.active {
   opacity: .75;
-  visibility: hidden;
-  /* visibility: visible; */
-  pointer-events: all;
+  visibility: visible;
+  pointer-events: none;
 }
 
 .scrollto>.wrapper {
@@ -429,7 +423,6 @@ input.checker:checked::after {
   padding: 0 15px;
   display: flex;
   gap: 5px;
-
 }
 
 .header-right ul {
@@ -612,6 +605,7 @@ form.search i {
   font-size: 20px;
   display: flex;
   align-items: center;
+  /* align-items: flex-start; */
   justify-content: center;
   width: 50px;
   height: 100%;
@@ -652,13 +646,6 @@ form :where(input, textarea, select)::placeholder {
 }
 
 
-
-
-
-
-
-
-
 .inner-header .search .input {
   display: flex;
   border: 0;
@@ -669,6 +656,10 @@ form :where(input, textarea, select)::placeholder {
 
 .search-float.active {
   display: block;
+}
+
+i.ri-close-line {
+  top: -40px !important;
 }
 
 
@@ -1015,7 +1006,6 @@ main>div .heading {
 .bycats .heading {
   display: flex;
   justify-content: center;
-  padding-top: 15px;
 }
 
 .bycats .heading>span {
@@ -1051,7 +1041,7 @@ main>div .heading {
   animation: var(--fade);
 }
 
-.sort-list .wrap ul .show {
+.sort-list .wrap ul.show {
   display: block;
 }
 
@@ -1073,8 +1063,9 @@ main>div .heading {
   animation: var(--fade);
 }
 
-.sort-data.active,
-.data-popup.active {
+
+.data-popup.active,
+.sort-data.active {
   display: block;
 }
 
@@ -1323,7 +1314,7 @@ main>div .heading {
 }
 
 .product .outer-thumb .swiper-slide-thumb-active>div,
-.product .outer-thumb .item:hover {
+.product .outer-thumb .item:hover>div {
   border: 1px solid var(--grey-color);
 
 }
@@ -1773,7 +1764,7 @@ main>div .heading {
 
 .data-popup {
   z-index: 1001;
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 
 .data-popup .wrap {
@@ -1792,7 +1783,7 @@ main>div .heading {
   max-height: calc(100vw - 60px);
   border-radius: 5px;
   overflow-y: auto;
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 
 .data-popup .close-trigger,
@@ -1805,6 +1796,7 @@ main>div .heading {
   align-items: center;
 }
 
+
 .data-popup .form {
   position: relative;
 }
@@ -1816,7 +1808,7 @@ main>div .heading {
   display: block;
 }
 
-.data-popup .from input {
+.data-popup .form input {
   color: var(--dark-color);
   background-color: var(--light-color);
   border: 0;
@@ -2141,9 +2133,6 @@ form .button {
   .product .profile .comment {
     padding-left: 92px;
   }
-
-
-
 }
 
 
@@ -2275,6 +2264,7 @@ form .button {
   .inner-footer .wrap>div {
     flex-flow: nowrap;
   }
+
 
 }
 
