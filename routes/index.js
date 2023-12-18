@@ -70,7 +70,7 @@ function route(app) {
   app.use("/category", categoryRouter);
   app.use("/me", meRouter);
   app.use("/product", productRouter);
-  app.use("/home", siteRouter);
+  app.use("/site", siteRouter);
   app.use("/review", reviewRouter);
   app.use("/", authRouter);
 }

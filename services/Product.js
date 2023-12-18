@@ -5,7 +5,7 @@ const Review = require("../models/Review.js");
 
 const mongoose = require("mongoose");
 
-const PrfilteredAndSortedProducts = async function (name, catalogId, manufacturer, minPrice, maxPrice, sortByField, sortByOrder) {
+const PrfilteredAndSorted = async function (name, catalogId, manufacturer, minPrice, maxPrice, sortByField, sortByOrder) {
     const fliter = {};
     const sort = {};
 
@@ -43,6 +43,51 @@ const PrfilteredAndSortedProducts = async function (name, catalogId, manufacture
     try {
         const result = await Product.find(fliter).sort(sort);
 
+        return result;
+    } catch (error) {
+        console.log("Error in PrfilteredAndSortedProducts of Product Services", error);
+        throw error;
+    }
+
+}
+
+const PrfilteredSortedPaging = async function (name, catalogId, manufacturer, minPrice, maxPrice, sortByField, sortByOrder, skipAmount, pageSize) {
+    const fliter = {};
+    const sort = {};
+
+    // Fliter
+    if (name !== 'None' && name) {
+        fliter.name = name;
+    }
+    if (catalogId !== "None" && catalogId) {
+        try {
+            fliter.catalogId = new mongoose.Types.ObjectId(catalogId);
+
+        } catch (error) {
+            delete fliter.catalogId;
+            console.log("Catalog Id invalid", error);
+        }
+    }
+    if (manufacturer !== `None` && manufacturer) {
+        fliter.manufacturer = manufacturer;
+    }
+
+    if (minPrice !== `None` && maxPrice !== `None` && minPrice && maxPrice) {
+        minPrice = Number(minPrice);
+        maxPrice = Number(maxPrice);
+
+        if (minPrice <= maxPrice) {
+            fliter.price = { $gte: minPrice, $lte: maxPrice };
+        }
+    }
+
+    // Sort
+    if (sortByField !== `None` && sortByField) {
+        sort[sortByField] = sortByOrder === `desc` ? -1 : 1;
+    }
+
+    try {
+        const result = await Product.find(fliter).sort(sort).skip(skipAmount).limit(pageSize);
         return result;
     } catch (error) {
         console.log("Error in PrfilteredAndSortedProducts of Product Services", error);
@@ -133,7 +178,8 @@ const getProductByCart = async function (cart) {
 
 
 module.exports = {
-    PrfilteredAndSortedProducts,
+    PrfilteredAndSorted,
+    PrfilteredSortedPaging,
     getAnProductDetail,
     getProductByCart,
     //saveFileAndGetUrlFromThumbnailAndGallery,

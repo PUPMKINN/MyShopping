@@ -42,8 +42,12 @@ const search = (req, res) => {
   res.render("search");
 }
 
+const AboutUs = (req, res) => {
+  res.render("aboutus/aboutus");
+}
 
 module.exports = {
   getHomePage,
+  AboutUs,
   search,
 };

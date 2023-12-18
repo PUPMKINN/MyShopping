@@ -11,6 +11,10 @@ router.post("/signin", authController.postSignIn);
 router.post("/signup", authController.postSignUp);
 router.post("/register", authController.postSignUp);
 //router.get("/forget-password", authController.forgetpassword);
+router.get("/forget-password", authController.getForgetPassword);
+router.post("/forget-password", authController.postForgetPassword);
+router.get("/reset-password", authController.getResetPassword);
+router.post("/reset-password", authController.postResetPassword);
 router.get("/", authController.getHomePage);
 
 
