@@ -354,24 +354,25 @@
                                 <a href="#0" class="menu-trigger" trigger-button data-target="sidebar-filter">
                                     <i class="ri-filter-line"></i>
                                 </a>
+
+                                <div class="left">
+                                    <div class="input-box">
+                                        <i class="ri-search-eye-line"></i>
+                                        <input type="text" id="search-product" placeholder="Search" />
+                                    </div>
+                                </div>
                                 <div class="left">
                                     <span class="grey-color">Showing 9 of 35 results</span>
                                 </div>
-                                {{!-- <div class="left">
-                                    <div class="input-box">
-                                        <i class="ri-search-eye-line"></i>
-                                        <input type="text" id="search-tutor" placeholder="Search" />
-                                    </div>
-                                </div> --}}
                                 <div class="right">
-                                    <div class="sort-list">
+                                    {{!-- <div class="sort-list">
                                         <div class="wrap">
                                             <div class="opt-trigger">
                                                 <span class="value">Default sorting</span>
                                                 <i class="ri-arrow-down-s-line"></i>
                                             </div>
                                             <ul>
-                                                {{!-- <li class="active">
+                                                <li class="active">
                                                     <a href="">
                                                         <selected>Default sorting</selected>
                                                     </a>
@@ -390,14 +391,20 @@
                                                 </li>
                                                 <li>
                                                     <option value="price-asc">Price: High to Low</option>
-                                                </li> --}}
-                                                <div class="active">
-                                                    <select class="form-select" id="sort-selection"
-                                                        aria-label=""></select>
-                                                    <option selected>Default sorting</option>
-                                                </div>
+                                                </li>
                                             </ul>
                                         </div>
+                                    </div> --}}
+                                    <div class="col-8 col-xl-2 col-lg-2 col-sm-8 wrapper-sort-course">
+                                        <select class="form-select" id="sort_selection" aria-label="Sort Course">
+                                            <option selected>Sort Products</option>
+                                            <option value="name-asc">Name: A-Z</option>
+                                            <option value="name-desc">Name: Z-A</option>
+                                            <option value="popular">Popular</option>
+                                            <option value="latest">Latest</option>
+                                            <option value="price-desc">Price: High to Low</option>
+                                            <option value="price-asc">Price: Low to High</option>
+                                        </select>
                                     </div>
                                     <div class="list-inline">
                                         <ul>
@@ -864,7 +871,7 @@
 
 
     $('.fa-search').addEventListener('click', function () {
-        const tutorName = $('#search-tutor').value
+        const tutorName = $('#search-product').value
         console.log(tutorName)
         if (currentUrl.searchParams.has('tutorName')) {
             currentUrl.searchParams.set('tutorName', tutorName);

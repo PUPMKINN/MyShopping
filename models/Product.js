@@ -48,6 +48,12 @@ const ProductScheme = new Schema({
         default: 0,
         min: 0
     },
+    average: {
+        type: Number,
+        default: 0,
+        get: v => Math.round(v * 100) / 100, // Lấy giá trị với 2 số sau dấu thập phân
+        set: v => Math.round(v * 100) / 100, // Set giá trị với 2 số sau dấu thập phân
+    },
     // nhà sản xuất
     manufacturer: {
         type: String,

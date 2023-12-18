@@ -5,23 +5,34 @@ const Review = require("../models/Review.js");
 
 const mongoose = require("mongoose");
 
-const PrfilteredAndSorted = async function (name, catalogId, manufacturer, minPrice, maxPrice, sortByField, sortByOrder) {
+const PrfilteredAndSorted = async function (searchField, name, productName, average, manufacturer, minPrice, maxPrice, sortByField, sortByOrder) {
     const fliter = {};
     const sort = {};
 
     // Fliter
+    if (searchField !== `None` && searchField) {
+        const product = await Product.find({name: searchField});
+        if(product.length>0)  fliter.name = searchField;
+        else {
+            const productList = await User.find({fullname: searchField, role: "productList"})
+            if(productList.length>0)fliter.productList = productList[0]._id;
+        }
+    }
+
+
     if (name !== 'None' && name) {
         fliter.name = name;
     }
-    if (catalogId !== "None" && catalogId) {
+    if (productName !== "None" && productName) {
         try {
-            fliter.catalogId = new mongoose.Types.ObjectId(catalogId);
+            const productList = await User.find({fullname: productName, role: "productList" })
 
         } catch (error) {
-            delete fliter.catalogId;
+            delete fliter.productList;
             console.log("Catalog Id invalid", error);
         }
     }
+
     if (manufacturer !== `None` && manufacturer) {
         fliter.manufacturer = manufacturer;
     }
@@ -35,9 +46,21 @@ const PrfilteredAndSorted = async function (name, catalogId, manufacturer, minPr
         }
     }
 
+    if(average) {
+        fliter.average = average;
+    }
+
     // Sort
+    // if (sortByField !== `None` && sortByField) {
+    //     sort[sortByField] = sortByOrder === `desc` ? -1 : 1;
+    // }
+
     if (sortByField !== `None` && sortByField) {
-        sort[sortByField] = sortByOrder === `desc` ? -1 : 1;
+        if (sortByField === 'productList.username') {
+            sort['ProductList.username'] = sortByOrder === 'desc' ? -1 : 1;
+        } else {
+            sort[sortByField] = sortByOrder === 'desc' ? -1 : 1;
+        }
     }
 
     try {
@@ -51,20 +74,31 @@ const PrfilteredAndSorted = async function (name, catalogId, manufacturer, minPr
 
 }
 
-const PrfilteredSortedPaging = async function (name, catalogId, manufacturer, minPrice, maxPrice, sortByField, sortByOrder, skipAmount, pageSize) {
+const PrfilteredSortedPaging = async function (searchField, name, productName, manufacturer, minPrice, maxPrice, sortByField, sortByOrder, skipAmount, pageSize) {
     const fliter = {};
     const sort = {};
 
     // Fliter
+    if (searchField !== `None` && searchField) {
+        const product = await Product.find({name: searchField});
+        if(product.length>0)  fliter.name = searchField;
+        else {
+            const productList = await User.find({fullname: searchField, role: "productList"})
+            //console.log(tutor); 
+            if(productList.length>0)fliter.productList = productList[0]._id;
+        }
+    }
     if (name !== 'None' && name) {
         fliter.name = name;
     }
-    if (catalogId !== "None" && catalogId) {
+    if (productName !== "None" && productName) {
         try {
-            fliter.catalogId = new mongoose.Types.ObjectId(catalogId);
+            const productList = await User.find({fullname: productName, role: "productList"})
+            fliter.productList = productList[0]._id;
+
 
         } catch (error) {
-            delete fliter.catalogId;
+            delete fliter.productName;
             console.log("Catalog Id invalid", error);
         }
     }
@@ -105,8 +139,8 @@ const getAnProductDetail = async function (productId) {
         // console.log(productInfo)
         //// Get related product
         // 1. Catalog
-        const catalogId = new mongoose.Types.ObjectId(productInfo.catalogId);
-        const catalogRelatedProductList = await Product.find({ catalogId });
+        const productList = new mongoose.Types.ObjectId(productInfo.productList);
+        const catalogRelatedProductList = await Product.find({ productList });
 
 
         // 2. Manufacturer
@@ -148,33 +182,33 @@ const getProductByCart = async function (cart) {
     }
 }
 
-// const saveFileAndGetUrlFromThumbnailAndGallery = async function (files) {
-//     try {
+const saveFileAndGetUrlFromThumbnailAndGallery = async function (files) {
+    try {
 
-//         let thumbnail;
-//         let gallery = []
-//         if ("thumbnail" in files) {
-//             const thumbnailObject = await uploadToCloudinary(files[`thumbnail`][0], 280, 280);
-//             thumbnail = thumbnailObject.url;
+        let thumbnail;
+        let gallery = []
+        if ("thumbnail" in files) {
+            const thumbnailObject = await uploadToCloudinary(files[`thumbnail`][0], 280, 280);
+            thumbnail = thumbnailObject.url;
 
-//             const thumbnailGallery = await uploadToCloudinary(files[`thumbnail`][0], 450, 600);
-//             gallery.push(thumbnailGallery.url);
-//         }
-//         if (`gallery` in files) {
-//             for (let i = 0; i < files[`gallery`].length; i++) {
-//                 const image = await uploadToCloudinary(files[`gallery`][i], 450, 600);
-//                 gallery.push(image.url);
-//                 // console.log(image.url);
-//             }
-//         }
+            const thumbnailGallery = await uploadToCloudinary(files[`thumbnail`][0], 450, 600);
+            gallery.push(thumbnailGallery.url);
+        }
+        if (`gallery` in files) {
+            for (let i = 0; i < files[`gallery`].length; i++) {
+                const image = await uploadToCloudinary(files[`gallery`][i], 450, 600);
+                gallery.push(image.url);
+                // console.log(image.url);
+            }
+        }
 
-//         return { thumbnail, gallery };
-//     } catch (error) {
-//         console.log("Error: Save file and get url");
-//         throw error;
-//     }
+        return { thumbnail, gallery };
+    } catch (error) {
+        console.log("Error: Save file and get url");
+        throw error;
+    }
 
-// }
+}
 
 
 module.exports = {
