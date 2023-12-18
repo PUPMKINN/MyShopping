@@ -226,11 +226,14 @@
                 </div>
             </div>
             <div id="search-float" class="search-float">
-                <div class="containe rwide">
-                    <form action="" class="search">
+                <div class="container wide">
+                    <form action="/" method="get" class="search">
                         <i class="ri-search-line"></i>
-                        <input type="search" class="input" id="" placeholder="Search products">
-                        <i class="ri-close-line" close-button></i>
+                        <input type="search" class="input" id="productName" name="productName"
+                            placeholder="Search products">
+                        {{!-- <button type="submit"> Search </button> --}}
+                        <a href="" class="close-trigger active" close-button>
+                            <i class="ri-close-line"></i></a>
                     </form>
                 </div>
             </div>
@@ -245,112 +248,6 @@
                     </div>
                     <div class="content">
                         <div id="sidebar-filter" class="sidebar">
-                            {{!-- <form action="/category" method="get">
-                                <div class="wrap">
-                                    <a href="#0" class="close-trigger" close-button>
-                                        <i class="ri-close-line"></i>
-                                    </a>
-                                    <div class="sidebar-content">
-                                        <div class="sidebar-title">Filter</div>
-                                        <div class="widget">
-                                            <div class="sumary">
-                                                <input type="checkbox" name="cats" id="aaa" checked>
-                                                <label for="aaa">
-                                                    <span>Size</span>
-                                                    <i class="ri-arrow-down-s-line"></i>
-                                                </label>
-                                                <div class="accord product-size">
-                                                    <div class="wrap">
-                                                        <button>40</button>
-                                                        <button>41</button>
-                                                        <button>42</button>
-                                                        <button>43</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="widget">
-                                            <div class="sumary">
-                                                <input type="checkbox" name="cats" id="aab" checked>
-                                                <label for="aab">
-                                                    <span>Colors</span>
-                                                    <i class="ri-arrow-down-s-line"></i>
-                                                </label>
-                                                <div class="accord product-color">
-                                                    <div class="wrap">
-                                                        <button class="white"></button>
-                                                        <button class="black"></button>
-                                                        <button class="brown"></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="widget">
-                                            <div class="sumary">
-                                                <input type="checkbox" name="cats" id="aac" checked>
-                                                <label for="aac">
-                                                    <span>Categories</span>
-                                                    <i class="ri-arrow-down-s-line"></i>
-                                                </label>
-                                                <div class="accord list-block scrollto">
-                                                    <ul class="wrapper initial">
-                                                        <li><a href="">All Shoes</a></li>
-                                                        <li><a href="">Newest Sneaker</a></li>
-                                                        <li><a href="">Jordan</a></li>
-                                                        <li><a href="">LifeStyle</a></li>
-                                                        <li><a href="">Running</a></li>
-                                                        <li><a href="">Gym and Tranning</a></li>
-                                                        <li><a href="">Basketball</a></li>
-                                                        <li><a href="">Football</a></li>
-                                                        <li><a href="">Sandals and Slides</a></li>
-                                                        <li><a href="">Gym and Tranning</a></li>
-                                                        <li><a href="">Last sizes available</a></li>
-                                                        <li><a href="">Last sizes available</a></li>
-                                                        <li><a href="">Customise by you</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="widget">
-                                            <div class="sumary">
-                                                <input type="checkbox" name="manufacturer" id="manufacturer" checked>
-                                                <label for="manufacturer">
-                                                    <span for="manufacturer">Brands</span>
-                                                    <i class="ri-arrow-down-s-line"></i>
-                                                </label>
-                                                <div class="accord list-block scrollto">
-                                                    <ul class="wrapper initial">
-                                                        <li><a href="" value="Nike">Nike</a></li>
-                                                        <li><a href="#">Dior</a></li>
-                                                        <li><a href="#">Adidas</a></li>
-                                                        <li><a href="#">Balenciaga</a></li>
-                                                        <li><a href="#">Gucci</a></li>
-                                                        <li><a href="#">Puma</a></li>
-                                                        <li><a href="#">Louis Vuition</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="widget">
-                                            <div class="sumary">
-                                                <label><span>Price</span></label>
-                                                <div class="range-track">
-                                                    <input type="range" value="25" min="0" max="500" step="1">
-                                                </div>
-                                                <div class="price-range grey-color">
-                                                    <span>$30</span>
-                                                    <span>$500</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="button">
-
-                                    <a href="" class="secondary-btn">Submit</a>
-                                </div>
-                            </form> --}}
                             <form action="/category" method="GET" id="filter_form">
                                 <div class="wrap">
                                     <a href="#0" class="close-trigger" close-button>
@@ -424,7 +321,7 @@
                                                     <option value="None">None</option>
                                                     <option value="Nike">Nike</option>
                                                     <option value="Dior">Dior</option>
-                                                    <option value="LeBron">LeBron</option>
+                                                    <option value="LeBron">Nike</option>
                                                     <option value="Adidas">Adidas</option>
                                                     <option value="Jordan">Jordan</option>
                                                 </select>
@@ -460,6 +357,12 @@
                                 <div class="left">
                                     <span class="grey-color">Showing 9 of 35 results</span>
                                 </div>
+                                {{!-- <div class="left">
+                                    <div class="input-box">
+                                        <i class="ri-search-eye-line"></i>
+                                        <input type="text" id="search-tutor" placeholder="Search" />
+                                    </div>
+                                </div> --}}
                                 <div class="right">
                                     <div class="sort-list">
                                         <div class="wrap">
@@ -468,12 +371,31 @@
                                                 <i class="ri-arrow-down-s-line"></i>
                                             </div>
                                             <ul>
-                                                <li class="active"><a href="#0">Default sorting</a></li>
-                                                <li><a href="#0">Popular</a></li>
-                                                <li><a href="#0">Rating</a></li>
-                                                <li><a href="#0">Latest</a></li>
-                                                <li><a href="#0">Price: low to high</a></li>
-                                                <li><a href="#0">Price: high to low</a></li>
+                                                {{!-- <li class="active">
+                                                    <a href="">
+                                                        <selected>Default sorting</selected>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <option value="name-asc">Name A-Z</option>
+                                                </li>
+                                                <li>
+                                                    <option value="name-desc">Name Z-A</option>
+                                                </li>
+                                                <li>
+                                                    <option value="size">Size</option>
+                                                </li>
+                                                <li>
+                                                    <option value="price-asc">Price: Low to High</option>
+                                                </li>
+                                                <li>
+                                                    <option value="price-asc">Price: High to Low</option>
+                                                </li> --}}
+                                                <div class="active">
+                                                    <select class="form-select" id="sort-selection"
+                                                        aria-label=""></select>
+                                                    <option selected>Default sorting</option>
+                                                </div>
                                             </ul>
                                         </div>
                                     </div>
@@ -869,3 +791,90 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    // Lấy phần tử input range
+    const $ = document.querySelector.bind(document)
+    const $$ = document.querySelectorAll.bind(document)
+    const rangeInput = $('#range-price');
+    const submitBtn = $('#primary-btn');
+
+    // handle sort and filter
+
+    let maxPrice = 0;
+    let minPrice = 0;
+    // Thêm sự kiện 'input' để theo dõi sự thay đổi giá trị
+    rangeInput.addEventListener('input', function () {
+        // Lấy giá trị hiện tại từ phần tử input range
+        maxPrice = rangeInput.value;
+        // Hiển thị giá trị trong console hoặc làm cái gì đó với giá trị này
+        console.log('Giá trị hiện tại:', maxPrice);
+    });
+    let currentUrl = new URL(window.location.href);
+
+    const sortSelection = document.getElementById("sort_selection");
+    console.log(sortSelection)
+    sortSelection.addEventListener("change", async function () {
+
+        let selectedValue = sortSelection.value;
+        const parts = selectedValue.split('-');
+        const sortByOrder = parts[1];
+        const sortByField = parts[0];
+        if (currentUrl.searchParams.has('sortByField')) {
+            currentUrl.searchParams.set('sortByField', sortByField);
+        }
+        else {
+            currentUrl.searchParams.append('sortByField', sortByField);
+        }
+
+        if (currentUrl.searchParams.has('sortByOrder')) {
+            currentUrl.searchParams.set('sortByOrder', sortByOrder);
+        }
+        else {
+            currentUrl.searchParams.append('sortByOrder', sortByOrder);
+        }
+        console.log('haha')
+        window.location.href = currentUrl.toString();
+
+
+    })
+    submitBtn.addEventListener('click', function () {
+
+
+
+        if (currentUrl.searchParams.has('minPrice')) {
+            currentUrl.searchParams.set('minPrice', minPrice);
+        }
+        else {
+            currentUrl.searchParams.append('minPrice', minPrice);
+        }
+
+        if (currentUrl.searchParams.has('maxPrice')) {
+            currentUrl.searchParams.set('maxPrice', maxPrice);
+        }
+        else {
+            currentUrl.searchParams.append('maxPrice', maxPrice);
+        }
+        console.log(currentUrl.toString());
+        window.location.href = currentUrl.toString();
+
+    });
+
+
+
+    $('.fa-search').addEventListener('click', function () {
+        const tutorName = $('#search-tutor').value
+        console.log(tutorName)
+        if (currentUrl.searchParams.has('tutorName')) {
+            currentUrl.searchParams.set('tutorName', tutorName);
+        }
+        else {
+            currentUrl.searchParams.append('tutorName', tutorName);
+        }
+        window.location.href = currentUrl.toString();
+
+    });
+
+
+</script>

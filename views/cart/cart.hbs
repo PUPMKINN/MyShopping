@@ -244,11 +244,14 @@
                     </div>
                 </div>
                 <div id="search-float" class="search-float">
-                    <div class="containe rwide">
-                        <form action="" class="search">
+                    <div class="container wide">
+                        <form action="/" method="get" class="search">
                             <i class="ri-search-line"></i>
-                            <input type="search" class="input" id="" placeholder="Search products">
-                            <i class="ri-close-line" close-button></i>
+                            <input type="search" class="input" id="productName" name="productName"
+                                placeholder="Search products">
+                            {{!-- <button type="submit"> Search </button> --}}
+                            <a href="" class="close-trigger active" close-button>
+                                <i class="ri-close-line"></i></a>
                         </form>
                     </div>
                 </div>
@@ -299,7 +302,7 @@
                                                             <span>Size:</span>
                                                             <span>42</span>
                                                         </div>
-                                                        
+
                                                     </div>
                                                 </div>
                                                 <div class="grouping wrapper">
@@ -334,7 +337,7 @@
                                                             <span>Size:</span>
                                                             <span>42</span>
                                                         </div>
-                                                        
+
                                                     </div>
                                                 </div>
                                                 <div class="grouping wrapper">
@@ -369,7 +372,7 @@
                                                             <span>Size:</span>
                                                             <span>42</span>
                                                         </div>
-                                                        
+
                                                     </div>
                                                 </div>
                                                 <div class="grouping wrapper">
@@ -405,7 +408,8 @@
                                                 </div>
                                                 <div class="sub-terms">
                                                     <input type="checkbox" class="checker" id="terms">
-                                                    <label for="terms">I agree to <a href="" class="grey-link">Terms & Condition</a></label>
+                                                    <label for="terms">I agree to <a href="" class="grey-link">Terms &
+                                                            Condition</a></label>
                                                 </div>
                                                 <div class="button">
                                                     <a href="" class="secondary-btn">Checkout</a>
