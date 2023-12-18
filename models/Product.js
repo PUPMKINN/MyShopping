@@ -49,15 +49,21 @@ const ProductScheme = new Schema({
         min: 0
     },
     // nhà sản xuất
-    manufacturer: {
+    brand: {
         type: String,
-        required: [true, "Please provide manufacturer"],
+        required: [true, "Please provide brand"],
         trim: true
     },
     // sort theo tống số lần mua
     totalPurchase: {
         type: Number,
         default: 0,
+    },
+    average: {
+        type: Number,
+        default: 0,
+        get: v => Math.round(v * 100) / 100, // Lấy giá trị với 2 số sau dấu thập phân
+        set: v => Math.round(v * 100) / 100, // Set giá trị với 2 số sau dấu thập phân
     },
     status: {
         type: String,

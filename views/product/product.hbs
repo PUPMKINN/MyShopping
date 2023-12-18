@@ -16,6 +16,7 @@
         <div class="inner-header">
             <div class="container wide">
                 <div class="wrap">
+                    <!--Header left-->
                     <div class="header-left">
                         <div class="menu-bar">
                             <a href="#0" class="menu-trigger" trigger-button data-target="mobile-menu"><i
@@ -23,18 +24,19 @@
                         </div>
                         <div class="list-inline">
                             <ul>
-                                <li><a href=""><i class="ri-user-line"></i></a></li>
+                                <li><a href="/login"><i class="ri-user-line"></i></a></li>
                                 <li><a href=""><span class="item-floating">7</span>
                                         <i class="ri-star-line"></i>
                                     </a></li>
                             </ul>
                         </div>
                     </div>
+                    <!--Header center-->
                     <div class="header-center">
                         <nav class="menu">
                             <ul>
-                                <li><a href=""><span>Home</span></a></li>
-                                <li><a href=""><span>Products</span>
+                                <li><a href="/"><span>Home</span></a></li>
+                                <li><a href="/category"><span>Products</span>
                                         <i class="ri-arrow-down-s-line"></i>
                                     </a>
                                     <ul class="sub-mega">
@@ -44,113 +46,114 @@
                                                     <div class="mega-content">
                                                         <div class="dotgrid">
                                                             <div class="wrapper">
-                                                                <div class="wrapper">
-                                                                    <div class="item">
-                                                                        <div class="dot-image">
-                                                                            <a href="" class="product-permalink"></a>
-                                                                            <div class="thumbnail">
-                                                                                <img src="{{product.gallery}}" alt="">
-                                                                            </div>
-                                                                            <div class="thumbnail hover">
-                                                                                <img src="{{product.thumbnail}}" alt="">
-                                                                            </div>
-                                                                            <div class="actions">
-                                                                                <ul>
-                                                                                    <li><a href=""><i
-                                                                                                class="ri-star-line"></i></a>
-                                                                                    </li>
-                                                                                    <li><a href=""><i
-                                                                                                class="ri-arrow-left-right-line"></i></a>
-                                                                                    </li>
-                                                                                    <li><a href=""><i
-                                                                                                class="ri-eye-line"></i></a>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
-                                                                            <div class="label"><span>-25%</span>
-                                                                            </div>
+                                                                <div class="item">
+                                                                    <div class="dot-image">
+                                                                        <a href="/product/detail/656c6a79070d4b726e9d9c71"
+                                                                            class="product-permalink"></a>
+                                                                        <div class="thumbnail">
+                                                                            <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/e48b21b9-405e-4697-b9b6-b9675a40bb66/jordan-stadium-90-shoes-0cSSz3.png"
+                                                                                alt="">
                                                                         </div>
-                                                                        <div class="dot-info">
-                                                                            <h2 class="dot-title"><a
-                                                                                    href="">{{product.name}}</a></h2>
-                                                                            <div class="product-price">
-                                                                                <span
-                                                                                    class="before">${{product.price}}</span>
-                                                                                <span
-                                                                                    class="current">${{product.discount}}</span>
-                                                                            </div>
+                                                                        <div class="thumbnail hover">
+                                                                            <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/0e9512c7-a0e5-4692-83f9-0cb7271ac9d0/jordan-stadium-90-shoes-0cSSz3.png"
+                                                                                alt="">
+                                                                        </div>
+                                                                        <div class="actions">
+                                                                            <ul>
+                                                                                <li><a href=""><i
+                                                                                            class="ri-star-line"></i></a>
+                                                                                </li>
+                                                                                <li><a href=""><i
+                                                                                            class="ri-arrow-left-right-line"></i></a>
+                                                                                </li>
+                                                                                <li><a href=""><i
+                                                                                            class="ri-eye-line"></i></a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                        <div class="label"><span>-25%</span></div>
+                                                                    </div>
+                                                                    <div class="dot-info">
+                                                                        <h2 class="dot-title"><a
+                                                                                href="/product/detail/656c6a79070d4b726e9d9c71">Jordan
+                                                                                Stadium 90</a></h2>
+                                                                        <div class="product-price">
+                                                                            <span class="before">$170</span>
+                                                                            <span class="current">$128</span>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="item">
-                                                                        <div class="dot-image">
-                                                                            <a href="" class="product-permalink"></a>
-                                                                            <div class="thumbnail">
-                                                                                <img src="{{product.gallery}}" alt="">
-                                                                            </div>
-                                                                            <div class="thumbnail hover">
-                                                                                <img src="{{product.thumbnail}}" alt="">
-                                                                            </div>
-                                                                            <div class="actions">
-                                                                                <ul>
-                                                                                    <li><a href=""><i
-                                                                                                class="ri-star-line"></i></a>
-                                                                                    </li>
-                                                                                    <li><a href=""><i
-                                                                                                class="ri-arrow-left-right-line"></i></a>
-                                                                                    </li>
-                                                                                    <li><a href=""><i
-                                                                                                class="ri-eye-line"></i></a>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
-                                                                            <div class="label"><span>-25%</span>
-                                                                            </div>
+                                                                </div>
+                                                                <div class="item">
+                                                                    <div class="dot-image">
+                                                                        <a href="/product/detail/656c6fcd070d4b726e9d9c74"
+                                                                            class="product-permalink"></a>
+                                                                        <div class="thumbnail">
+                                                                            <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/1c0c434c-9802-4556-89c7-a8600b2828d8/air-jordan-1-low-shoes-6Q1tFM.png"
+                                                                                alt="">
                                                                         </div>
-                                                                        <div class="dot-info">
-                                                                            <h2 class="dot-title"><a
-                                                                                    href="">{{product.name}}</a></h2>
-                                                                            <div class="product-price">
-                                                                                <span
-                                                                                    class="before">${{product.price}}</span>
-                                                                                <span
-                                                                                    class="current">${{product.discount}}</span>
-                                                                            </div>
+                                                                        <div class="thumbnail hover">
+                                                                            <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/a21d548e-eb3d-4a1b-a086-fffc780f0e0a/air-jordan-1-low-shoes-6Q1tFM.png"
+                                                                                alt="">
+                                                                        </div>
+                                                                        <div class="actions">
+                                                                            <ul>
+                                                                                <li><a href=""><i
+                                                                                            class="ri-star-line"></i></a>
+                                                                                </li>
+                                                                                <li><a href=""><i
+                                                                                            class="ri-arrow-left-right-line"></i></a>
+                                                                                </li>
+                                                                                <li><a href=""><i
+                                                                                            class="ri-eye-line"></i></a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                        <div class="label"><span>-30%</span></div>
+                                                                    </div>
+                                                                    <div class="dot-info">
+                                                                        <h2 class="dot-title"><a
+                                                                                href="/product/detail/656c6fcd070d4b726e9d9c74">Air
+                                                                                Jordan 1 Low</a></h2>
+                                                                        <div class="product-price">
+                                                                            <span class="before">$134</span>
+                                                                            <span class="current">$96</span>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="item">
-                                                                        <div class="dot-image">
-                                                                            <a href="" class="product-permalink"></a>
-                                                                            <div class="thumbnail">
-                                                                                <img src="{{product.gallery}}" alt="">
-                                                                            </div>
-                                                                            <div class="thumbnail hover">
-                                                                                <img src="{{product.thumbnail}}" alt="">
-                                                                            </div>
-                                                                            <div class="actions">
-                                                                                <ul>
-                                                                                    <li><a href=""><i
-                                                                                                class="ri-star-line"></i></a>
-                                                                                    </li>
-                                                                                    <li><a href=""><i
-                                                                                                class="ri-arrow-left-right-line"></i></a>
-                                                                                    </li>
-                                                                                    <li><a href=""><i
-                                                                                                class="ri-eye-line"></i></a>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
-                                                                            <div class="label"><span>-25%</span>
-                                                                            </div>
+                                                                </div>
+                                                                <div class="item">
+                                                                    <div class="dot-image">
+                                                                        <a href="/product/detail/656c7265070d4b726e9d9c77"
+                                                                            class="product-permalink"></a>
+                                                                        <div class="thumbnail">
+                                                                            <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/7ef88efc-01ff-427e-9def-b84d5a344053/paris-saint-germain-jumpman-mvp-shoes-LxppNW.png"
+                                                                                alt="">
                                                                         </div>
-                                                                        <div class="dot-info">
-                                                                            <h2 class="dot-title"><a
-                                                                                    href="">{{product.name}}</a></h2>
-                                                                            <div class="product-price">
-                                                                                <span
-                                                                                    class="before">${{product.price}}</span>
-                                                                                <span
-                                                                                    class="current">${{product.discount}}</span>
-                                                                            </div>
+                                                                        <div class="thumbnail hover">
+                                                                            <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/e5f172b1-fc2c-48ab-b3d9-d4748eb4e206/paris-saint-germain-jumpman-mvp-shoes-LxppNW.png"
+                                                                                alt="">
+                                                                        </div>
+                                                                        <div class="actions">
+                                                                            <ul>
+                                                                                <li><a href=""><i
+                                                                                            class="ri-star-line"></i></a>
+                                                                                </li>
+                                                                                <li><a href=""><i
+                                                                                            class="ri-arrow-left-right-line"></i></a>
+                                                                                </li>
+                                                                                <li><a href=""><i
+                                                                                            class="ri-eye-line"></i></a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                        <div class="label"><span>-10%</span></div>
+                                                                    </div>
+                                                                    <div class="dot-info">
+                                                                        <h2 class="dot-title"><a
+                                                                                href="/product/detail/656c7265070d4b726e9d9c77">Paris
+                                                                                Saint-Germain Jumpman MVP</a></h2>
+                                                                        <div class="product-price">
+                                                                            <span class="before">$200</span>
+                                                                            <span class="current">$180</span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -160,9 +163,9 @@
                                                             <div class="list-block">
                                                                 <h3 class="dot-title">Categories</h3>
                                                                 <ul>
-                                                                    <li><a href="#">Jordan</a></li>
+                                                                    <li><a href="#bycats">Jordan</a></li>
                                                                     <li><a href="#">Gym and Trainning</a></li>
-                                                                    <li><a href="#">Sandal and Slides</a></li>
+                                                                    <li><a href="#">Air Max</a></li>
                                                                     <li><a href="#">Running</a></li>
 
                                                                 </ul>
@@ -177,11 +180,10 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="/aboutus"><span>Our</span></a></li>
+                                <li><a href="/site/aboutus"><span>Our</span></a></li>
                             </ul>
 
                             <ul>
@@ -189,48 +191,42 @@
                                         <i class="ri-arrow-down-s-line"></i>
                                     </a>
                                     <ul class="sub-menu list-block">
-                                        <li><a href="">Nike</a></li>
-                                        <li><a href="">Dior</a></li>
-                                        <li><a href="">Adidas</a></li>
-                                        <li><a href="">Balenciaga</a></li>
+                                        <li><a href="/category/nike">Nike</a></li><!--Product brands Nike-->
+                                        <li><a href="/category/dior">Dior</a></li><!--Product brands Dior-->
+                                        <li><a href="/category/adidas">Adidas</a></li><!--Product brands Adidas-->
+                                        <li><a href="/category/balenciaga">Balenciaga</a></li>
+                                        <!--Product brands Balenciaga-->
                                     </ul>
                                 </li>
-                                <li><a href=""><span>Sale</span></a></li>
+                                <li><a href="/login"><span>Login</span></a></li> <!--login-->
+                                <li><a href=""><span>Contacts</span></a></li> <!--contact-->
                             </ul>
                         </nav>
-                        <div class="branding"><a href="">Shopping</a></div>
+                        <div class="branding"><a href="/">Shopping</a></div>
                     </div>
+                    <!--Header right-->
                     <div class="header-right">
                         <div class="list-inline">
                             <ul>
                                 <li><a href="#0" trigger-button data-target="search-float"><i
                                             class="ri-search-line"></i></a></li>
-                                <li><a href="#0" trigger-button data-target="data-cart"><span
-                                            class="item-floating">0</span><i class="ri-shopping-bag-line"></i></a>
-                                </li>
+                                <li><a href=""><span class="item-floating">0</span><i
+                                            class="ri-shopping-bag-line"></i></a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="wrap">
-                    <div class="breadcrumb list-inline">
-                        <ul>
-                            <li><a href="">Home</a></li>
-                            <li><a href="">Product</a></li>
-                            <li><a href="">Nike</a></li>
-                            <li><span>The Sneaker in Vietnam</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+
             <div id="search-float" class="search-float">
-                <div class="containe rwide">
-                    <form action="" class="search">
+                <div class="container wide">
+                    <form action="/" method="get" class="search">
                         <i class="ri-search-line"></i>
-                        <input type="search" class="input" id="" placeholder="Search products">
-                        <i class="ri-close-line" close-button></i>
+                        <input type="search" class="input" id="productName" name="productName"
+                            placeholder="Search products">
+                        {{!-- <button type="submit"> Search </button> --}}
+                        <a href="" class="close-trigger active" close-button>
+                            <i class="ri-close-line"></i></a>
                     </form>
                 </div>
             </div>
@@ -486,12 +482,15 @@
                             <div class="wrapper swiper-wrapper">
                                 <div class="item swiper-slide">
                                     <div class="dot-image">
-                                        <a href="" class="product-permalink"></a>
+                                        <a href="/product/detail/656c6a79070d4b726e9d9c71"
+                                            class="product-permalink"></a>
                                         <div class="thumbnail">
-                                            <img src="{{product.gallery}}" alt="">
+                                            <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/e48b21b9-405e-4697-b9b6-b9675a40bb66/jordan-stadium-90-shoes-0cSSz3.png"
+                                                alt="">
                                         </div>
                                         <div class="thumbnail hover">
-                                            <img src="{{product.gallery}}" alt="">
+                                            <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/0e9512c7-a0e5-4692-83f9-0cb7271ac9d0/jordan-stadium-90-shoes-0cSSz3.png"
+                                                alt="">
                                         </div>
                                         <div class="actions">
                                             <ul>
@@ -506,21 +505,25 @@
                                         <div class="label"><span>-25%</span></div>
                                     </div>
                                     <div class="dot-info">
-                                        <h2 class="dot-title"><a href="">{{product.name}}</a></h2>
+                                        <h2 class="dot-title"><a href="/product/detail/656c6a79070d4b726e9d9c71">Jordan
+                                                Stadium 90</a></h2>
                                         <div class="product-price">
-                                            <span class="before">$80.00</span>
-                                            <span class="current">$45.00</span>
+                                            <span class="before">$170</span>
+                                            <span class="current">$128</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="item swiper-slide">
                                     <div class="dot-image">
-                                        <a href="" class="product-permalink"></a>
+                                        <a href="/product/detail/656c6fcd070d4b726e9d9c74"
+                                            class="product-permalink"></a>
                                         <div class="thumbnail">
-                                            <img src="{{product.gallery}}" alt="">
+                                            <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/1c0c434c-9802-4556-89c7-a8600b2828d8/air-jordan-1-low-shoes-6Q1tFM.png"
+                                                alt="">
                                         </div>
                                         <div class="thumbnail hover">
-                                            <img src="{{product.gallery}}" alt="">
+                                            <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/a21d548e-eb3d-4a1b-a086-fffc780f0e0a/air-jordan-1-low-shoes-6Q1tFM.png"
+                                                alt="">
                                         </div>
                                         <div class="actions">
                                             <ul>
@@ -532,27 +535,28 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="label"><span>-25%</span></div>
+                                        <div class="label"><span>-30%</span></div>
                                     </div>
                                     <div class="dot-info">
-                                        <h2 class="dot-title"><a href="">The Sweater
-                                                in Tosca</a></h2>
+                                        <h2 class="dot-title"><a href="/product/detail/656c6fcd070d4b726e9d9c74">Air
+                                                Jordan 1 Low</a></h2>
                                         <div class="product-price">
-                                            <span class="before">$80.00</span>
-                                            <span class="current">$45.00</span>
+                                            <span class="before">$134</span>
+                                            <span class="current">$96</span>
                                         </div>
-
-
                                     </div>
                                 </div>
                                 <div class="item swiper-slide">
                                     <div class="dot-image">
-                                        <a href="" class="product-permalink"></a>
+                                        <a href="/product/detail/656c7265070d4b726e9d9c77"
+                                            class="product-permalink"></a>
                                         <div class="thumbnail">
-                                            <img src="{{product.gallery}}" alt="">
+                                            <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/7ef88efc-01ff-427e-9def-b84d5a344053/paris-saint-germain-jumpman-mvp-shoes-LxppNW.png"
+                                                alt="">
                                         </div>
                                         <div class="thumbnail hover">
-                                            <img src="{{product.gallery}}" alt="">
+                                            <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/e5f172b1-fc2c-48ab-b3d9-d4748eb4e206/paris-saint-germain-jumpman-mvp-shoes-LxppNW.png"
+                                                alt="">
                                         </div>
                                         <div class="actions">
                                             <ul>
@@ -564,27 +568,28 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="label"><span>-25%</span></div>
+                                        <div class="label"><span>-10%</span></div>
                                     </div>
                                     <div class="dot-info">
-                                        <h2 class="dot-title"><a href="">The Sweater
-                                                in Tosca</a></h2>
+                                        <h2 class="dot-title"><a href="/product/detail/656c7265070d4b726e9d9c77">Paris
+                                                Saint-Germain Jumpman MVP</a></h2>
                                         <div class="product-price">
-                                            <span class="before">$80.00</span>
-                                            <span class="current">$45.00</span>
+                                            <span class="before">$200</span>
+                                            <span class="current">$180</span>
                                         </div>
-
-
                                     </div>
                                 </div>
                                 <div class="item swiper-slide">
                                     <div class="dot-image">
-                                        <a href="" class="product-permalink"></a>
+                                        <a href="/product/detail/657bc31bf66e6a5f44494fe9"
+                                            class="product-permalink"></a>
                                         <div class="thumbnail">
-                                            <img src="{{product.gallery}}" alt="">
+                                            <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/853e7895-81cd-4327-b29d-4c6661c4a8a4/legend-essential-2-workout-shoes-5z5dH3.png"
+                                                alt="">
                                         </div>
                                         <div class="thumbnail hover">
-                                            <img src="{{product.gallery}}" alt="">
+                                            <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/dcb9c3df-d6c5-4681-b4de-d8056d2b642c/legend-essential-2-workout-shoes-5z5dH3.png"
+                                                alt="">
                                         </div>
                                         <div class="actions">
                                             <ul>
@@ -596,27 +601,28 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="label"><span>-25%</span></div>
+                                        <div class="label"><span>-20%</span></div>
                                     </div>
                                     <div class="dot-info">
-                                        <h2 class="dot-title"><a href="">The Sweater
-                                                in Tosca</a></h2>
+                                        <h2 class="dot-title"><a href="/product/detail/657bc31bf66e6a5f44494fe9">Nike
+                                                Legend Essential 2</a></h2>
                                         <div class="product-price">
-                                            <span class="before">$80.00</span>
-                                            <span class="current">$45.00</span>
+                                            <span class="before">$79</span>
+                                            <span class="current">$63</span>
                                         </div>
-
-
                                     </div>
                                 </div>
                                 <div class="item swiper-slide">
                                     <div class="dot-image">
-                                        <a href="" class="product-permalink"></a>
+                                        <a href="/product/detail/657c1cdde5afc31c7478ca8e"
+                                            class="product-permalink"></a>
                                         <div class="thumbnail">
-                                            <img src="{{product.gallery}}" alt="">
+                                            <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/150aed98-5514-4943-a51d-ce8f86113731/jordan-stay-loyal-2-shoes-sDkgDk.png"
+                                                alt="">
                                         </div>
                                         <div class="thumbnail hover">
-                                            <img src="{{product.gallery}}" alt="">
+                                            <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/cd113b8d-08d7-46ac-81d5-3683ca62f04c/jordan-stay-loyal-2-shoes-sDkgDk.png"
+                                                alt="">
                                         </div>
                                         <div class="actions">
                                             <ul>
@@ -628,27 +634,28 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="label"><span>-25%</span></div>
+                                        {{!-- <div class="label"><span>-20%</span></div> --}}
                                     </div>
                                     <div class="dot-info">
-                                        <h2 class="dot-title"><a href="">The Sweater
-                                                in Tosca</a></h2>
+                                        <h2 class="dot-title"><a href="/product/detail/657c1cdde5afc31c7478ca8e">Jordan
+                                                Stay Loyal 2</a></h2>
                                         <div class="product-price">
-                                            <span class="before">$80.00</span>
-                                            <span class="current">$45.00</span>
+                                            {{!-- <span class="before">$79</span> --}}
+                                            <span class="current">$138</span>
                                         </div>
-
-
                                     </div>
                                 </div>
                                 <div class="item swiper-slide">
                                     <div class="dot-image">
-                                        <a href="" class="product-permalink"></a>
+                                        <a href="/product/detail/657c216be5afc31c7478ca8f"
+                                            class="product-permalink"></a>
                                         <div class="thumbnail">
-                                            <img src="{{product.gallery}}" alt="">
+                                            <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/ece7a799-cdf1-45df-aa17-b744080b8e88/air-zoom-tr-1-workout-shoes-Zq4r1h.png"
+                                                alt="">
                                         </div>
                                         <div class="thumbnail hover">
-                                            <img src="{{product.gallery}}" alt="">
+                                            <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/0880355a-ba9c-43a4-9cd7-511c18c4f113/air-zoom-tr-1-workout-shoes-Zq4r1h.png"
+                                                alt="">
                                         </div>
                                         <div class="actions">
                                             <ul>
@@ -660,177 +667,15 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="label"><span>-25%</span></div>
+                                        {{!-- <div class="label"><span>-20%</span></div> --}}
                                     </div>
                                     <div class="dot-info">
-                                        <h2 class="dot-title"><a href="">The Sweater
-                                                in Tosca</a></h2>
+                                        <h2 class="dot-title"><a href="/product/detail/657c216be5afc31c7478ca8f">Nike
+                                                Legend Essential 2</a></h2>
                                         <div class="product-price">
-                                            <span class="before">$80.00</span>
-                                            <span class="current">$45.00</span>
+                                            {{!-- <span class="before">$79</span> --}}
+                                            <span class="current">$145</span>
                                         </div>
-
-
-                                    </div>
-                                </div>
-                                <div class="item swiper-slide">
-                                    <div class="dot-image">
-                                        <a href="" class="product-permalink"></a>
-                                        <div class="thumbnail">
-                                            <img src="{{product.gallery}}" alt="">
-                                        </div>
-                                        <div class="thumbnail hover">
-                                            <img src="{{product.gallery}}" alt="">
-                                        </div>
-                                        <div class="actions">
-                                            <ul>
-                                                <li><a href=""><i class="ri-star-line"></i></a>
-                                                </li>
-                                                <li><a href=""><i class="ri-arrow-left-right-line"></i></a>
-                                                </li>
-                                                <li><a href=""><i class="ri-eye-line"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="label"><span>-25%</span></div>
-                                    </div>
-                                    <div class="dot-info">
-                                        <h2 class="dot-title"><a href="">The Sweater
-                                                in Tosca</a></h2>
-                                        <div class="product-price">
-                                            <span class="before">$80.00</span>
-                                            <span class="current">$45.00</span>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                                <div class="item swiper-slide">
-                                    <div class="dot-image">
-                                        <a href="" class="product-permalink"></a>
-                                        <div class="thumbnail">
-                                            <img src="{{product.gallery}}" alt="">
-                                        </div>
-                                        <div class="thumbnail hover">
-                                            <img src="{{product.gallery}}" alt="">
-                                        </div>
-                                        <div class="actions">
-                                            <ul>
-                                                <li><a href=""><i class="ri-star-line"></i></a>
-                                                </li>
-                                                <li><a href=""><i class="ri-arrow-left-right-line"></i></a>
-                                                </li>
-                                                <li><a href=""><i class="ri-eye-line"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="label"><span>-25%</span></div>
-                                    </div>
-                                    <div class="dot-info">
-                                        <h2 class="dot-title"><a href="">The Sweater
-                                                in Tosca</a></h2>
-                                        <div class="product-price">
-                                            <span class="before">$80.00</span>
-                                            <span class="current">$45.00</span>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                                <div class="item swiper-slide">
-                                    <div class="dot-image">
-                                        <a href="" class="product-permalink"></a>
-                                        <div class="thumbnail">
-                                            <img src="{{product.gallery}}" alt="">
-                                        </div>
-                                        <div class="thumbnail hover">
-                                            <img src="{{product.gallery}}" alt="">
-                                        </div>
-                                        <div class="actions">
-                                            <ul>
-                                                <li><a href=""><i class="ri-star-line"></i></a>
-                                                </li>
-                                                <li><a href=""><i class="ri-arrow-left-right-line"></i></a>
-                                                </li>
-                                                <li><a href=""><i class="ri-eye-line"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="label"><span>-25%</span></div>
-                                    </div>
-                                    <div class="dot-info">
-                                        <h2 class="dot-title"><a href="">The Sweater
-                                                in Tosca</a></h2>
-                                        <div class="product-price">
-                                            <span class="before">$80.00</span>
-                                            <span class="current">$45.00</span>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                                <div class="item swiper-slide">
-                                    <div class="dot-image">
-                                        <a href="" class="product-permalink"></a>
-                                        <div class="thumbnail">
-                                            <img src="{{product.gallery}}" alt="">
-                                        </div>
-                                        <div class="thumbnail hover">
-                                            <img src="{{product.gallery}}" alt="">
-                                        </div>
-                                        <div class="actions">
-                                            <ul>
-                                                <li><a href=""><i class="ri-star-line"></i></a>
-                                                </li>
-                                                <li><a href=""><i class="ri-arrow-left-right-line"></i></a>
-                                                </li>
-                                                <li><a href=""><i class="ri-eye-line"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="label"><span>-25%</span></div>
-                                    </div>
-                                    <div class="dot-info">
-                                        <h2 class="dot-title"><a href="">The Sweater
-                                                in Tosca</a></h2>
-                                        <div class="product-price">
-                                            <span class="before">$80.00</span>
-                                            <span class="current">$45.00</span>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                                <div class="item swiper-slide">
-                                    <div class="dot-image">
-                                        <a href="" class="product-permalink"></a>
-                                        <div class="thumbnail">
-                                            <img src="{{product.gallery}}" alt="">
-                                        </div>
-                                        <div class="thumbnail hover">
-                                            <img src="{{product.gallery}}" alt="">
-                                        </div>
-                                        <div class="actions">
-                                            <ul>
-                                                <li><a href=""><i class="ri-star-line"></i></a>
-                                                </li>
-                                                <li><a href=""><i class="ri-arrow-left-right-line"></i></a>
-                                                </li>
-                                                <li><a href=""><i class="ri-eye-line"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="label"><span>-25%</span></div>
-                                    </div>
-                                    <div class="dot-info">
-                                        <h2 class="dot-title"><a href="">The Sweater
-                                                in Tosca</a></h2>
-                                        <div class="product-price">
-                                            <span class="before">$80.00</span>
-                                            <span class="current">$45.00</span>
-                                        </div>
-
-
                                     </div>
                                 </div>
                             </div>
@@ -904,10 +749,12 @@
                     <div class="bottom">
                         <div class="list-inline">
                             <ul>
-                                <li><a href="https://www.facebook.com/bach0807/"><i class="ri-facebook-line"></i></a></li>
+                                <li><a href="https://www.facebook.com/bach0807/"><i class="ri-facebook-line"></i></a>
+                                </li>
                                 <li><a href="https://www.instagram.com/"><i class="ri-instagram-line"></i></a></li>
                                 <li><a href="https://github.com/"><i class="ri-github-line"></i></a></li>
-                                <li><a href="https://www.pinterest.com/search/pins/?q=nike%20450*600&rs=typed"><i class="ri-pinterest-line"></i></a></li>
+                                <li><a href="https://www.pinterest.com/search/pins/?q=nike%20450*600&rs=typed"><i
+                                            class="ri-pinterest-line"></i></a></li>
                             </ul>
                         </div>
                         <div class="copyright">
