@@ -59,12 +59,6 @@ const ProductScheme = new Schema({
         type: Number,
         default: 0,
     },
-    average: {
-        type: Number,
-        default: 0,
-        get: v => Math.round(v * 100) / 100, // Lấy giá trị với 2 số sau dấu thập phân
-        set: v => Math.round(v * 100) / 100, // Set giá trị với 2 số sau dấu thập phân
-    },
     status: {
         type: String,
         required: [true, `Please provide status`],
