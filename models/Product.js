@@ -49,9 +49,9 @@ const ProductScheme = new Schema({
         min: 0
     },
     // nhà sản xuất
-    brand: {
+    manufacturer: {
         type: String,
-        required: [true, "Please provide brand"],
+        required: [true, "Please provide manufacturer"],
         trim: true
     },
     // sort theo tống số lần mua

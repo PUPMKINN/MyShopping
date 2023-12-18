@@ -5,7 +5,7 @@ const Review = require("../models/Review.js");
 
 const mongoose = require("mongoose");
 
-const PrfilteredAndSorted = async function (name, catalogId, brand, minPrice, maxPrice, sortByField, sortByOrder) {
+const PrfilteredAndSorted = async function (name, catalogId, manufacturer, minPrice, maxPrice, sortByField, sortByOrder) {
     const fliter = {};
     const sort = {};
 
@@ -22,8 +22,8 @@ const PrfilteredAndSorted = async function (name, catalogId, brand, minPrice, ma
             console.log("Catalog Id invalid", error);
         }
     }
-    if (brand !== `None` && brand) {
-        fliter.brand = brand;
+    if (manufacturer !== `None` && manufacturer) {
+        fliter.manufacturer = manufacturer;
     }
 
     if (minPrice !== `None` && maxPrice !== `None` && minPrice && maxPrice) {
@@ -51,7 +51,7 @@ const PrfilteredAndSorted = async function (name, catalogId, brand, minPrice, ma
 
 }
 
-const PrfilteredSortedPaging = async function (name, catalogId, brand, minPrice, maxPrice, sortByField, sortByOrder, skipAmount, pageSize) {
+const PrfilteredSortedPaging = async function (name, catalogId, manufacturer, minPrice, maxPrice, sortByField, sortByOrder, skipAmount, pageSize) {
     const fliter = {};
     const sort = {};
 
@@ -68,8 +68,8 @@ const PrfilteredSortedPaging = async function (name, catalogId, brand, minPrice,
             console.log("Catalog Id invalid", error);
         }
     }
-    if (brand !== `None` && brand) {
-        fliter.brand = brand;
+    if (manufacturer !== `None` && manufacturer) {
+        fliter.manufacturer = manufacturer;
     }
 
     if (minPrice !== `None` && maxPrice !== `None` && minPrice && maxPrice) {
@@ -109,11 +109,11 @@ const getAnProductDetail = async function (productId) {
         const catalogRelatedProductList = await Product.find({ catalogId });
 
 
-        // 2. brand
-        const brand = productInfo.brand;
-        const brandRelatedProductList = await Product.find({ brand });
+        // 2. Manufacturer
+        const manufacturer = productInfo.manufacturer;
+        const manufacturerRelatedProductList = await Product.find({ manufacturer });
         // Combine and make the list unique
-        const allRelatedProducts = [...catalogRelatedProductList, ...brandRelatedProductList];
+        const allRelatedProducts = [...catalogRelatedProductList, ...manufacturerRelatedProductList];
         const relatedProducts = Array.from(new Set(allRelatedProducts.map(product => product._id)))
             .map(productId => allRelatedProducts.find(product => product._id === productId));
 
