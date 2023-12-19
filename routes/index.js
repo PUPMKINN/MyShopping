@@ -68,7 +68,7 @@ function route(app) {
   //     res.render("home");
   //   });
   app.use("/category", categoryRouter);
-  app.use("/me", meRouter);
+  app.use("/user", meRouter);
   app.use("/product", productRouter);
   app.use("/site", siteRouter);
   app.use("/review", reviewRouter);
