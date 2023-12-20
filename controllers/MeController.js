@@ -21,6 +21,7 @@ const getCart = (req, res, next) => {
 const getCheckOut = (req, res, next) => {
   res.render("checkout/checkout");
 }
+//[GET] /user/contact
 
 const getContact = (req, res, next) => {
   res.render("contact/contact");
