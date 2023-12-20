@@ -2264,6 +2264,16 @@ input[type="range"]::-webkit-slider-thumb {
     padding-top: 20px;
 }
 
+
+select#sort_selection {
+    font-size: var(--fs14);
+    border: 1px solid var(--light-color);
+    outline: 0;
+    background-color: transparent;
+    padding: 10px 20px;
+    transition: border .3s;
+}
+
 /* ----------------------------- *
  
           #Product category
