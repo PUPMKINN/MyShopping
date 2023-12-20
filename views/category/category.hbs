@@ -319,16 +319,17 @@
                                         <div class="widget">
                                             <div class="sumary">
                                                 <label><span>Price</span></label>
+                                                <span class="rangeValues" id="range-values">
+                                                </span>
                                                 <div class="range-track" id="range-track">
-                                                    <input type="range" class="range-input" value="0" min="100"
+                                                    <input type="range" class="range-input" value="100" min="0"
                                                         max="500" step="10">
                                                     <input type="range" class="range-input" value="250" min="100"
                                                         max="500" step="10">
                                                 </div>
 
                                                 <div class="price-range grey-color">
-                                                    {{!-- <span class="rangeValues" id="range-values">
-                                                    </span> --}}
+
                                                     <!-- <p id="min-value">$30</p>
                                                     <p id="max-value">$500</p> -->
                                                 </div>
@@ -471,9 +472,7 @@
                     </div>
                 </div>
             </div>
-
-
-
+        </div>
     </main>
     <footer>
         <div class="inner-footer">
