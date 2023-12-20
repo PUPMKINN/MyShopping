@@ -1,3 +1,7 @@
+<script type="module" src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script type="module" src="/javascripts/script.js"></script>
+
+
 <div id="page" class="page-home">
     <header>
         <div class="inner-header">
@@ -229,22 +233,24 @@
                     <div class="item swiper-slide">
                         <div class="image">
                             <div class="ob-cover">
-                                <a href="/product/detail/{{this._id}}"><img src="/images/{{this.gallery}}" alt="Gallery"></a>
+                                <a href="/product/detail/{{this._id}}"><img src="/images/{{this.gallery}}"
+                                        alt="Gallery"></a>
                             </div>
                             <div class="title-info">
                                 <div class="container wide">
                                     <div class="wrap">
                                         <span class="price">${{this.price}}</span>
                                         <h3 class="title">{{this.name}}</h3>
-                                        <div class="button"><a href="/product/detail/{{this._id}}"
-                                                class="primary-btn">Shop Now</a></div>
+                                        <div class="button">
+                                            <a href="/product/detail/{{this._id}}" class="primary-btn">Shop Now</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     {{/each}}
-                    
+
                 </div>
 
                 <div class="custom-pagination">
@@ -404,7 +410,7 @@
                                     </div>
                                 </div>
                                 {{/each}}
-                                
+
                             </div>
                         </div>
 
