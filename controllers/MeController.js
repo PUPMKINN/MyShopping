@@ -22,8 +22,13 @@ const getCheckOut = (req, res, next) => {
   res.render("checkout/checkout");
 }
 
+const getContact = (req, res, next) => {
+  res.render("contact/contact");
+}
+
 module.exports = {
   storedProducts,
   getCart,
   getCheckOut,
+  getContact,
 };
