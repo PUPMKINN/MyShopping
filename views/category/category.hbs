@@ -330,12 +330,19 @@
                                         <div class="widget">
                                             <div class="sumary">
                                                 <label><span>Price</span></label>
-                                                <div class="range-track">
-                                                    <input type="range" value="25" min="0" max="500" step="1">
+                                                <div class="range-track" id="range-track">
+
+                                                    <input type="range" class="range-input" value="100" min="100"
+                                                        max="500" step="10">
+                                                    <input type="range" class="range-input" value="250" min="100"
+                                                        max="500" step="10">
                                                 </div>
+
                                                 <div class="price-range grey-color">
-                                                    <span>$30</span>
-                                                    <span>$500</span>
+                                                    <span class="rangeValues" id="range-values">
+                                                    </span>
+                                                    <!-- <p id="min-value">$30</p>
+                                                    <p id="max-value">$500</p> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -443,7 +450,8 @@
                                                             </li>
                                                         </ul>
                                                     </div>
-                                                    <div class="label"><span>{{this.view}}%</span></div>
+                                                    <div class="label"><span>-{{percent this.discount
+                                                            this.price}}%</span></div>
                                                 </div>
                                                 <div class="dot-info">
                                                     <h2 class="dot-title"><a
@@ -497,7 +505,7 @@
                         <div class="list-block">
                             <h3 class="dot-title">Service</h3>
                             <ul>
-                                <li><a href="/aboutus">About us</a></li>
+                                <li><a href="/site/aboutus">About us</a></li>
                                 <li><a href="#">Delivery Information</a></li>
                                 <li><a href="#">Terms & Condition</a></li>
                                 <li><a href="#">Privacy Policy</a></li>
@@ -510,7 +518,7 @@
                                 <li><a href="/login">Login</a></li>
                                 <li><a href="#">Wishlist</a></li>
                                 <li><a href="#">Cart</a></li>
-                                <li><a href="#">Checkout</a></li>
+                                <li><a href="/user/checkout">Checkout</a></li>
                             </ul>
                         </div>
                         <div class="list-block">
@@ -802,6 +810,40 @@
 
 
 <script>
+    //Filter price
+    function getVals() {
+        // Get slider values
+        let parent = this.parentNode;
+        let slides = parent.querySelectorAll(".range-input");
+        let slide1 = parseFloat(slides[0].value);
+        let slide2 = parseFloat(slides[1].value);
+
+        // Cross Range 
+        if (slide1 > slide2) {
+            let tmp = slide2;
+            slide2 = slide1;
+            slide1 = tmp;
+        }
+
+        let displayElement = document.getElementById("range-values");
+        //innerHTML property allows Javascript code to manipulate a website being displayed
+        displayElement.innerHTML = "Min: $" + slide1 + " - Max: $" + slide2;
+    }
+
+    window.onload = function () {
+        let sliderSections = document.getElementById("range-track");
+        let sliders = sliderSections.querySelectorAll(".range-input");
+
+        sliders.forEach((slide) => {
+            if (slide.type === "range") {
+                // Change Value Method
+                slide.oninput = getVals;
+                // Initial Value
+                slide.oninput();
+            }
+        });
+    };
+
     // Lấy phần tử input range
     const $ = document.querySelector.bind(document)
     const $$ = document.querySelectorAll.bind(document)
@@ -847,6 +889,7 @@
 
 
     })
+
     submitBtn.addEventListener('click', function () {
 
 
