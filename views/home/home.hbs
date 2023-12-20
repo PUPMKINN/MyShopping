@@ -229,7 +229,7 @@
                     <div class="item swiper-slide">
                         <div class="image">
                             <div class="ob-cover">
-                                <a href="/product/detail/{{this._id}}"><img src="{{this.gallery}}" alt=""></a>
+                                <a href="/product/detail/{{this._id}}"><img src="/images/{{this.gallery}}" alt="Gallery"></a>
                             </div>
                             <div class="title-info">
                                 <div class="container wide">
@@ -244,6 +244,7 @@
                         </div>
                     </div>
                     {{/each}}
+                    
                 </div>
 
                 <div class="custom-pagination">
@@ -376,10 +377,10 @@
                                     <div class="dot-image">
                                         <a href="/product/detail/{{this._id}}" class="product-permalink"></a>
                                         <div class="thumbnail">
-                                            <img src="{{this.gallery}}" alt="">
+                                            <img src="/images/{{this.gallery}}" alt="Gallery">
                                         </div>
                                         <div class="thumbnail hover">
-                                            <img src="{{this.thumbnail}}" alt="">
+                                            <img src="/images/{{this.thumbnail}}" alt="Thumbnail">
                                         </div>
                                         <div class="actions">
                                             <ul>
@@ -403,6 +404,7 @@
                                     </div>
                                 </div>
                                 {{/each}}
+                                
                             </div>
                         </div>
 

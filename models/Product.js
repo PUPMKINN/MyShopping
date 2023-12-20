@@ -30,14 +30,15 @@ const ProductScheme = new Schema({
         type: String
     },
     gallery: {
-        type: [String],
-        default: [],
-        validate: {
-            validator: function (value) {
-                return value.every(url => typeof url === 'string' && url.trim().length > 0);
-            },
-            message: 'Invalid image URLs in the list'
-        }
+        type: String
+        // type: [String],
+        // default: [],
+        // validate: {
+        //     validator: function (value) {
+        //         return value.every(url => typeof url === 'string' && url.trim().length > 0);
+        //     },
+        //     message: 'Invalid image URLs in the list'
+        // }
     },
     creationTime: {
         type: Date,

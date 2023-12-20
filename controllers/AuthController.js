@@ -1,5 +1,6 @@
 const passport = require('../middlewares/passport');
 const User = require('../models/User');
+const Product = require('../models/Product.js')
 const ProductService = require("../services/Product.js")
 
   //[GET] /
@@ -14,9 +15,13 @@ const getHomePage = async (req, res, next) => {
     const sortByOrder = req.query.sortByOrder;
 
     const productList = await ProductService.PrfilteredAndSorted(productName, catalogId, manufacturer, minPrice, maxPrice, sortByField, sortByOrder);
-        
+    const product = await Product.findById('656c6a79070d4b726e9d9c71').lean();
+    console.log(product);
     if (productList) {
-      res.render("home/home", { productList: productList });
+      res.render("home/home", { 
+        productList: productList,
+        product: product, 
+      });
     }
     else {
       res.status(404).json({ message: "Not found" });

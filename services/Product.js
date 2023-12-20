@@ -64,7 +64,7 @@ const PrfilteredAndSorted = async function (searchField, name, productName, aver
     }
 
     try {
-        const result = await Product.find(fliter).sort(sort);
+        const result = await Product.find(fliter).sort(sort).lean();
 
         return result;
     } catch (error) {
@@ -121,7 +121,7 @@ const PrfilteredSortedPaging = async function (searchField, name, productName, m
     }
 
     try {
-        const result = await Product.find(fliter).sort(sort).skip(skipAmount).limit(pageSize);
+        const result = await Product.find(fliter).sort(sort).skip(skipAmount).limit(pageSize).lean();
         return result;
     } catch (error) {
         console.log("Error in PrfilteredAndSortedProducts of Product Services", error);
