@@ -188,45 +188,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
-var page = 1;
-const curUrl = new URL(window.location.href);
-curUrl.pathname = '/products/paging';
-
-const prevPage = document.getElementById("prev_page");
-const nextPage = document.getElementById("next_page");
-
-prevPage.addEventListener("click", async function () {
-    try {
-        if (curUrl.searchParams.has('page')) {
-            if (curUrl.searchParams.get('page') > 1) curUrl.searchParams.set('page', page - 1);
-        } else {
-            curUrl.searchParams.append('page', page);
-        }
-        console.log(curUrl.toString());
-    } catch (error) {
-        console.log(error);
-
-    }
-
-    try {
-        const response = await fetch(curUrl.toString());
-
-        const htmlContent = await response.text();
-
-        console.log(htmlContent);
-
-        if (!response.ok) {
-            throw new Error(`Network response was not ok: ${response.status}`);
-        }
-
-    } catch (error) {
-        // Handle errors during the fetch
-        console.error('Fetch error:', error.message);
-        debugger;
-    }
-});
-
 function clearForm() {
     var form = document.getElementById("filter_form");
     form.reset();

@@ -2203,9 +2203,11 @@ form .button {
     height: 230px;
 }
 
+
 input[type="range"] {
     --webkit-appearance: none;
-    width: 100%;
+    width: 15%;
+    position: absolute;
 }
 
 input[type="range"]:focus {
