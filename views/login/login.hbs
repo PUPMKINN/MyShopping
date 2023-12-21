@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login and Register</title>
     <link rel="stylesheet" href="./stylesheets/login.css">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 
@@ -70,7 +71,8 @@
                     <nav>
                         <ul>
                             <li><a href="/"><i class="ri-arrow-left-line"></i></a></li>
-                            <li>Don't have an account?<a href="#0" class="t-signup">Sign up</a>or <a href="/forgot-password">Forgot Password</a></li>
+                            <li>Don't have an account?<a href="#0" class="t-signup">Sign up</a>or <a
+                                    href="/forgot-password">Forgot Password</a></li>
                         </ul>
                     </nav>
                     <div class="heading">
@@ -93,7 +95,9 @@
                             </label>
                             <p>Or</p>
                             <p class="socials">
-                                <button><i class="ri-facebook-line"></i> </button>
+
+                                <a href="/auth/facebook"><i class="ri-facebook-line"></i></a>
+
                                 <button><i class="ri-google-line"></i></button>
                             </p>
                             <p></p>
@@ -106,14 +110,15 @@
     </div>
     <script>
         const signup = document.querySelector('.t-signup'),
-              signin = document.querySelector('.t-signin'),
-              addclass = document.querySelector('.site');
-        signup.addEventListener('click', function() {
+            signin = document.querySelector('.t-signin'),
+            addclass = document.querySelector('.site');
+        signup.addEventListener('click', function () {
             addclass.className = 'site signup-show';
         })
-        signin.addEventListener('click', function() {
+        signin.addEventListener('click', function () {
             addclass.className = 'site signin-show'
         })
     </script>
 </body>
+
 </html>

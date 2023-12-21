@@ -8,6 +8,8 @@ const logger = require('morgan');
 const methodOverride = require('method-override');
 const nodemailer = require('nodemailer');
 const { OAuth2Client } = require ('google-auth-library');
+//add facebook
+const facebookRouter = require('./controllers/facebook-auth');
 
 //var indexRouter = require('./public/javascripts/script');
 const route = require('./routes/index');
@@ -18,6 +20,8 @@ const app = express();
 
 // Connect to DB
 db.connect();
+
+require('dotenv').config();
 
 //Session for registry
 app.use(
@@ -45,6 +49,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, '/public')));
+
+
+//Facebook
+app.use('/auth/facebook', facebookRouter);
+passport.serializeUser(function (user, cb) {
+  cb(null, user);
+});
+passport.deserializeUser(function (obj, cb) {
+  cb(null, obj);
+});
 
 route(app);
 
