@@ -7,6 +7,8 @@ router.get('/cart', meController.getCart);
 router.get('/checkout', meController.getCheckOut);
 router.get('/contact', meController.getContact);
 router.get('/wishlist', meController.getWishlist);
+router.get('/profile', meController.getProfile);
+router.get('/', meController.getHomePage);
 
 
 

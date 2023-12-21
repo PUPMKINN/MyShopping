@@ -30,7 +30,7 @@ const getHomePage = async (req, res, next) => {
 
         const productList = await ProductService.PrfilteredAndSortedProducts(productName, catalogId, manufacturer, minPrice, maxPrice, sortByField, sortByOrder);
         if (productList) {
-            res.render("HomePage_1.ejs", { productList: productList });
+            res.render("admin/home/admin", { productList: productList });
         }
         else {
             res.status(404).json({ message: "Not found" });
@@ -141,6 +141,33 @@ const getProductList = async (req, res, next) => {
     }
 }
 
+const getAccountPage = (req, res, next) => {
+    res.render('admin/account/admin-account');
+}
+const addProduct = (req,res,next) => {
+    res.render('admin/add/add');
+}
+const getCalendar = (req, res, next) => {
+    res.render('admin/calendar/calendar');
+}
+const changePassword = (req, res, next) => {
+    res.render('admin/change-password/change-password');
+}
+const confirmPassword = (req, res, next) => {
+    res.render('admin/confirm-password/confirm-password');
+}
+const getContact = (req, res, next) => {
+    res.render('admin/contact/contact');
+}
+const getDelivery = (req, res, next) => {
+    res.render('admin/delivery/delivery');
+}
+const getEdit = (req, res, next) => {
+    res.render('admin/edit/edit');
+}
+const getProfile = (req, res, next) => {
+    res.render('admin/profile/admin-profile');
+}
 module.exports = {
     getHomePage,
     getDashBoard,
@@ -148,5 +175,13 @@ module.exports = {
     getFormCreateNewProduct,
     postANewProduct,
     getProductList,
-
+    getAccountPage,
+    addProduct,
+    getCalendar,
+    changePassword,
+    confirmPassword,
+    getContact,
+    getDelivery,
+    getEdit,
+    getProfile,
 }

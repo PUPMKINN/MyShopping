@@ -44,7 +44,7 @@ const edit = (req, res, next) => {
   Product.findById(req.params.id)
   .then((product) =>
 
-    res.render("products/edit", {
+    res.render("updateProduct/user_update", {
       product: mongooseToObject(product),
     })
   )
