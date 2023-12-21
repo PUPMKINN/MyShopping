@@ -31,10 +31,18 @@ const getWishlist = (req, res, next) => {
   res.render("wishlist/wishlist");
 }
 
+const getHomePage = (req, res, next) => {
+  res.render("home/user_home");
+}
+const getProfile = (req, res, next) => {
+  res.render("home/user_profile");
+}
 module.exports = {
   storedProducts,
   getCart,
   getCheckOut,
   getContact,
   getWishlist,
+  getHomePage,
+  getProfile,
 };

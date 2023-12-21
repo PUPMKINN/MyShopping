@@ -44,7 +44,7 @@ const getSignIn = (req, res, next) => {
 //[POST] /signin
 const postSignIn = (req, res, next) => {
   passport.authenticate('local', {
-    successRedirect: '/',
+    successRedirect: '/signin',
     failureRedirect: '/signin',
     failureFlash: true,
   })(req, res, next); // Thêm dòng này để gọi hàm authenticate

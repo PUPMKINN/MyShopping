@@ -29,5 +29,14 @@ router.post("/product", checkAdmin, UploadProduct, adminControllers.postANewProd
 router.get("/productlist", checkAdmin, adminControllers.getProductList)
 router.get("/dashboard", checkAdmin, adminControllers.getDashBoard)
 
-
+router.get("/account", adminControllers.getAccountPage);
+router.get("/add", adminControllers.addProduct);
+router.get("/calendar", adminControllers.getCalendar);
+router.get("/change-password", adminControllers.changePassword);
+router.get("/confirm-password", adminControllers.confirmPassword);
+router.get("/contact", adminControllers.getContact);
+router.get("/delivery", adminControllers.getDelivery);
+router.get("/edit", adminControllers.getEdit);
+router.get("/profile", adminControllers.getProfile);
+router.get("/", adminControllers.getHomePage);
 module.exports = router;
