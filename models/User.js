@@ -78,12 +78,12 @@ const UserScheme = new Schema({
         type: String,
         default: "user",
     },
-    accountId: {
-        type: String,
-    },
-    provider: {
-        type: String,
-    },
+    // accountId: {
+    //     type: String,
+    // },
+    // provider: {
+    //     type: String,
+    // },
 
 })
 
