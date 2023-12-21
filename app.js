@@ -52,13 +52,13 @@ app.use(express.static(path.join(__dirname, '/public')));
 
 
 //Facebook
-app.use('/auth/facebook', facebookRouter);
-passport.serializeUser(function (user, cb) {
-  cb(null, user);
-});
-passport.deserializeUser(function (obj, cb) {
-  cb(null, obj);
-});
+// app.use('/auth/facebook', facebookRouter);
+// passport.serializeUser(function (user, cb) {
+//   cb(null, user);
+// });
+// passport.deserializeUser(function (obj, cb) {
+//   cb(null, obj);
+// });
 
 route(app);
 

@@ -5,7 +5,7 @@ const Review = require("../models/Review.js");
 
 const mongoose = require("mongoose");
 
-const PrfilteredAndSorted = async function (searchField, name, productName, average, manufacturer, minPrice, maxPrice, sortByField, sortByOrder) {
+const PrfilteredAndSorted = async function (searchField, productName, color, size, brand, minPrice, maxPrice, sortByField, sortByOrder) {
     const fliter = {};
     const sort = {};
 
@@ -14,28 +14,28 @@ const PrfilteredAndSorted = async function (searchField, name, productName, aver
         const product = await Product.find({name: searchField});
         if(product.length>0)  fliter.name = searchField;
         else {
-            const productList = await User.find({fullname: searchField, role: "productList"})
-            if(productList.length>0)fliter.productList = productList[0]._id;
+            // const productList = await User.find({fullname: searchField, role: "productList"})
+            // if(productList.length>0)fliter.productList = productList[0]._id;
         }
     }
 
 
-    if (name !== 'None' && name) {
-        fliter.name = name;
+    if (productName !== 'None' && productName) {
+        fliter.name = productName;
     }
-    if (productName !== "None" && productName) {
-        try {
-            const productList = await User.find({fullname: productName, role: "productList" })
+    if (color !== 'None' && color) {
+        fliter.color = color;
+    }
+    if (size !== 'None' && size) {
+        fliter.size = size;
+    }
+    if (brand !== 'None' && brand) {
+        fliter.brand = brand;
+    }
 
-        } catch (error) {
-            delete fliter.productList;
-            console.log("Catalog Id invalid", error);
-        }
-    }
-
-    if (manufacturer !== `None` && manufacturer) {
-        fliter.manufacturer = manufacturer;
-    }
+    // if (manufacturer !== `None` && manufacturer) {
+    //     fliter.manufacturer = manufacturer;
+    // }
 
     if (minPrice !== `None` && maxPrice !== `None` && minPrice && maxPrice) {
         minPrice = Number(minPrice);
@@ -46,22 +46,22 @@ const PrfilteredAndSorted = async function (searchField, name, productName, aver
         }
     }
 
-    if(average) {
-        fliter.average = average;
-    }
-
-    // Sort
-    // if (sortByField !== `None` && sortByField) {
-    //     sort[sortByField] = sortByOrder === `desc` ? -1 : 1;
+    // if(average) {
+    //     fliter.average = average;
     // }
 
+    // Sort
     if (sortByField !== `None` && sortByField) {
-        if (sortByField === 'productList.username') {
-            sort['ProductList.username'] = sortByOrder === 'desc' ? -1 : 1;
-        } else {
-            sort[sortByField] = sortByOrder === 'desc' ? -1 : 1;
-        }
+        sort[sortByField] = sortByOrder === `desc` ? -1 : 1;
     }
+
+    // if (sortByField !== `None` && sortByField) {
+    //     if (sortByField === 'productList.username') {
+    //         sort['ProductList.username'] = sortByOrder === 'desc' ? -1 : 1;
+    //     } else {
+    //         sort[sortByField] = sortByOrder === 'desc' ? -1 : 1;
+    //     }
+    // }
 
     try {
         const result = await Product.find(fliter).sort(sort).lean();
@@ -74,7 +74,7 @@ const PrfilteredAndSorted = async function (searchField, name, productName, aver
 
 }
 
-const PrfilteredSortedPaging = async function (searchField, name, productName, manufacturer, minPrice, maxPrice, sortByField, sortByOrder, skipAmount, pageSize) {
+const PrfilteredSortedPaging = async function (searchField, productName, color, size, brand, minPrice, maxPrice, sortByField, sortByOrder, skipAmount, pageSize) {
     const fliter = {};
     const sort = {};
 
@@ -83,27 +83,22 @@ const PrfilteredSortedPaging = async function (searchField, name, productName, m
         const product = await Product.find({name: searchField});
         if(product.length>0)  fliter.name = searchField;
         else {
-            const productList = await User.find({fullname: searchField, role: "productList"})
-            //console.log(tutor); 
-            if(productList.length>0)fliter.productList = productList[0]._id;
+            // const productList = await User.find({fullname: searchField, role: "productList"})
+            // //console.log(tutor); 
+            // if(productList.length>0)fliter.productList = productList[0]._id;
         }
     }
-    if (name !== 'None' && name) {
-        fliter.name = name;
+    if (productName !== 'None' && productName) {
+        fliter.name = productName;
     }
-    if (productName !== "None" && productName) {
-        try {
-            const productList = await User.find({fullname: productName, role: "productList"})
-            fliter.productList = productList[0]._id;
-
-
-        } catch (error) {
-            delete fliter.productName;
-            console.log("Catalog Id invalid", error);
-        }
+    if (color !== 'None' && color) {
+        fliter.color = color;
     }
-    if (manufacturer !== `None` && manufacturer) {
-        fliter.manufacturer = manufacturer;
+    if (size !== 'None' && size) {
+        fliter.size = size;
+    }
+    if (brand !== 'None' && brand) {
+        fliter.brand = brand;
     }
 
     if (minPrice !== `None` && maxPrice !== `None` && minPrice && maxPrice) {
@@ -216,6 +211,6 @@ module.exports = {
     PrfilteredSortedPaging,
     getAnProductDetail,
     getProductByCart,
-    //saveFileAndGetUrlFromThumbnailAndGallery,
+    saveFileAndGetUrlFromThumbnailAndGallery,
 
 }

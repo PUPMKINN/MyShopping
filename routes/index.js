@@ -1,4 +1,3 @@
-// module.exports = router;
 const meRouter = require("./me");
 const siteRouter = require("./site");
 const productRouter = require("./product");

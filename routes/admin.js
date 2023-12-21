@@ -39,4 +39,5 @@ router.get("/delivery", adminControllers.getDelivery);
 router.get("/edit", adminControllers.getEdit);
 router.get("/profile", adminControllers.getProfile);
 router.get("/", adminControllers.getHomePage);
+
 module.exports = router;
