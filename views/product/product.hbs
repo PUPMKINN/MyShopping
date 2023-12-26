@@ -1069,6 +1069,25 @@
 
 <script type="module" src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
+    //handle reviews
+    function getRating() {
+        var ratingElements = $$('.rating-form .rating input');
+        var selectedRating;
+
+        for (var i = 0; i < ratingElements.length; i++) {
+            if (ratingElements[i].checked) {
+                selectedRating = ratingElements[i].value;
+                break;
+            }
+        }
+
+        return selectedRating;
+    }
+
+
+
+
+
     function submitReview(event) {
         var reviewText = $('#review').val();
 
