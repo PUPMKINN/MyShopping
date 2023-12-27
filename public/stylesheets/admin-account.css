@@ -12,6 +12,7 @@
 .text-center {
     background-color: azure;
     font-size: 30px;
+    text-align: center;
 }
 
 .top-navbar {
