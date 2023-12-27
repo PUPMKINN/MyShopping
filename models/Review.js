@@ -6,11 +6,11 @@ const reviewSchema = new mongoose.Schema({
     ref: 'Product', // Tham chiếu đến schema sản phẩm (Product)
     required: true
   },
-  // userId: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'User', // Tham chiếu đến schema người dùng (User)
-  //   required: true
-  // },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User', // Tham chiếu đến schema người dùng (User)
+    required: true
+  },
   rating: {
     type: Number,
     required: true,

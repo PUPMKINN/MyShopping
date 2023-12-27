@@ -59,17 +59,26 @@ const UserScheme = new Schema({
         {
             productId: {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: 'Course',
+                ref: 'Product',
             },
             quantity: Number
         }
     ],
-    reviews: [
+    favList: [
         {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Review',
+            productId: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Product',
+            },
+            quantity: Number
         }
     ],
+    // reviews: [
+    //     {
+    //         type: mongoose.Schema.Types.ObjectId,
+    //         ref: 'Review',
+    //     }
+    // ],
     ban: {
         type: Boolean,
         default: false,
