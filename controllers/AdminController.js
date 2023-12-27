@@ -1,18 +1,18 @@
-const { json } = require("body-parser");
-const connection = require("../config/database.js");
+//const { json } = require("body-parser");
+//const connection = require("../config/database.js");
 const mongoose = require("mongoose");
 
 // Model
-const User = require("../model/User.js");
-const Review = require("../model/Review.js");
-const Product = require("../model/Product.js");
-const Catalog = require("../model/Catalog.js");
+const User = require("../models/User.js");
+const Review = require("../models/Review.js");
+const Product = require("../models/Product.js");
+//const Catalog = require("../models/Catalog.js");
 
 //Service
-const ProductService = require("../service/Product.js")
+const ProductService = require("../services/Product.js")
 
 const { use } = require("passport");
-const jwt = require("jsonwebtoken");
+//const jwt = require("jsonwebtoken");
 const { sendMail } = require("./mailApi.js")
 
 
@@ -141,30 +141,39 @@ const getProductList = async (req, res, next) => {
 }
 
 const getAccountPage = (req, res, next) => {
+    // 1 list user, amount of user
     res.render('admin/account/admin-account');
 }
 const addProduct = (req, res, next) => {
+    //
     res.render('admin/add/add');
 }
 const getCalendar = (req, res, next) => {
+    //
     res.render('admin/calendar/calendar');
 }
 const changePassword = (req, res, next) => {
+    // Bên user
     res.render('admin/change-password/change-password');
 }
 const confirmPassword = (req, res, next) => {
+    // Bên user
     res.render('admin/confirm-password/confirm-password');
 }
 const getContact = (req, res, next) => {
+    //Bên user
     res.render('admin/contact/contact');
 }
 const getDelivery = (req, res, next) => {
+    // Hiển thị trạng thái order
     res.render('admin/delivery/delivery');
 }
 const getEdit = (req, res, next) => {
+    //Edit sản phẩm 
     res.render('admin/edit/edit');
 }
 const getProfile = (req, res, next) => {
+    //Xem thông tin profile, có nút update profile
     res.render('admin/profile/admin-profile');
 }
 module.exports = {

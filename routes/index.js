@@ -4,7 +4,7 @@ const productRouter = require("./product");
 const authRouter = require("./auth");
 const categoryRouter = require("./category.js");
 const reviewRouter = require("./review");
-
+const adminRouter = require("./admin.js");
 function route(app) {
   //   app.get("/news", function (req, res) {
   //     res.render("news");
@@ -27,6 +27,7 @@ function route(app) {
   app.use("/product", productRouter);
   app.use("/site", siteRouter);
   app.use("/review", reviewRouter);
+  app.use("/admin", adminRouter);
   app.use("/", authRouter);
 }
 

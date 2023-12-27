@@ -15,19 +15,23 @@ const storedProducts = async(req, res, next) => {
 }
 //[GET] /user/cart 
 const getCart = (req, res, next) => {
+  //Truyền những món hàng trong cart
   res.render("cart/cart");
 }
 //[GET] /user/checkout
 const getCheckOut = (req, res, next) => {
+  //Lưu vào order
   res.render("checkout/checkout");
 }
 //[GET] /user/contact
 
 const getContact = (req, res, next) => {
+  //Gửi thông tin tới admin
   res.render("contact/contact");
 }
 
 const getWishlist = (req, res, next) => {
+  //Xem danh sách yêu thích , có nút xóa
   res.render("wishlist/wishlist");
 }
 
