@@ -20,10 +20,10 @@ const UploadProduct = upload.fields([
 
 
 
-router.get("/home-page", adminControllers.getHomePage);
+router.get("/adminhome", adminControllers.getHomePage);
 router.get("/product/:productId", adminControllers.getProductDetail)
 
-router.get("/product",  adminControllers.getFormCreateNewProduct)
+router.get("/product", adminControllers.getFormCreateNewProduct)
 router.post("/product", checkAdmin, UploadProduct, adminControllers.postANewProduct)
 
 router.get("/productlist", checkAdmin, adminControllers.getProductList)

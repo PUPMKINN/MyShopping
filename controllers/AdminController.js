@@ -27,10 +27,9 @@ const getHomePage = async (req, res, next) => {
         const manufacturer = req.query.manufacturer;
         const sortByField = req.query.sortByField;
         const sortByOrder = req.query.sortByOrder;
-
         const productList = await ProductService.PrfilteredAndSortedProducts(productName, catalogId, manufacturer, minPrice, maxPrice, sortByField, sortByOrder);
         if (productList) {
-            res.render("admin/home/admin", { productList: productList });
+            res.render("/admin/home/admin", { productList: productList });
         }
         else {
             res.status(404).json({ message: "Not found" });
@@ -144,7 +143,7 @@ const getProductList = async (req, res, next) => {
 const getAccountPage = (req, res, next) => {
     res.render('admin/account/admin-account');
 }
-const addProduct = (req,res,next) => {
+const addProduct = (req, res, next) => {
     res.render('admin/add/add');
 }
 const getCalendar = (req, res, next) => {
