@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const User = require("../models/User.js");
 const Review = require("../models/Review.js");
 const Product = require("../models/Product.js");
+const Order = require("../models/Order.js");
 //const Catalog = require("../models/Catalog.js");
 
 //Service
@@ -140,14 +141,63 @@ const getProductList = async (req, res, next) => {
     }
 }
 
-const getAccountPage = (req, res, next) => {
+const getAccountPage = async (req, res, next) => {
     // 1 list user, amount of user
-    res.render('admin/account/admin-account');
+    const userList = await User.find();
+    res.render('admin/account/admin-account', {
+        userList: userList,
+        amountOfUser: userList.length,
+    });
 }
-const addProduct = (req, res, next) => {
+const getEditUserPage = async (req, res, next) => {
+    const user = await User.findById(req.params.id);
+    res.render("", {
+        user: user,
+    })
+}
+const putEditUserPage = async (req, res, next) => {
+    const result = validationResult(req);
+    if (!result.isEmpty()) {
+      res.status(400).json({ errors: result.array() });
+      return;
+    }
+    User.updateOne({ _id: req.params.id }, req.body)
+    .then(() => res.status(200).json({success: true, redirectUrl: '/admin', msg: "Chỉnh sửa khóa học thành công!"}))
+    .catch(next);
+}
+const destroyUser = async (req, res, next) => {
+    var id = new mongoose.Types.ObjectId(req.params.id);
+    User.deleteOne({ _id: id })
+    .then(() => res.status(200).json({success: true, redirectUrl: '/admin', msg: "Xóa user thành công!"}))
+    .catch((error) => {
+        console.error("Lỗi khi xóa bản ghi:", error);
+        next(error); // Chuyển error cho middleware xử lý lỗi
+    });
+}
+
+const getAddProduct = (req, res, next) => {
     //
     res.render('admin/add/add');
 }
+const postAddProduct = async (req, res, next) => {
+// Verify user input
+  const result = validationResult(req);
+  if (!result.isEmpty()) {
+      res.status(400).json({ errors: result.array() });
+      return;
+  }
+  //res.json(req.body);
+  const checkList = await Product.find({name: req.body.name});
+  if(checkList!=null) {
+    return res.status(304).json({error: 'Bạn đã đăng món hàng này rồi!'})
+  }
+  const formData = req.body;
+  const product = new Product(formData);
+  product.save().then;
+  return res.status(200).json({success: true, redirectUrl: '/admin', msg: "Đăng khóa học thành công!"})
+
+}
+
 const getCalendar = (req, res, next) => {
     //
     res.render('admin/calendar/calendar');
@@ -164,17 +214,92 @@ const getContact = (req, res, next) => {
     //Bên user
     res.render('admin/contact/contact');
 }
-const getDelivery = (req, res, next) => {
+
+const getDelivery = async(req, res, next) => {
     // Hiển thị trạng thái order
-    res.render('admin/delivery/delivery');
+    const orderList = await Order.find();
+
+    res.render('admin/delivery/delivery', {
+        orderList: orderList,
+        amountOfOrder: orderList.length,
+    });
 }
-const getEdit = (req, res, next) => {
+const getEditDeliveryPage = async (req, res, next) => {
+    const order = await Order.findById(req.params.id);
+    res.render("", {
+        order: order,
+    })
+}
+const putEditDeliveryPage = async (req, res, next) => {
+    const result = validationResult(req);
+    if (!result.isEmpty()) {
+      res.status(400).json({ errors: result.array() });
+      return;
+    }
+    Order.updateOne({ _id: req.params.id }, req.body)
+    .then(() => res.status(200).json({success: true, redirectUrl: '/admin', msg: "Chỉnh sửa món hàng thành công!"}))
+    .catch(next);
+}
+const destroyDelivery = async (req, res, next) => {
+    var id = new mongoose.Types.ObjectId(req.params.id);
+    Order.deleteOne({ _id: id })
+    .then(() => res.status(200).json({success: true, redirectUrl: '/admin', msg: "Xóa user thành công!"}))
+    .catch((error) => {
+        console.error("Lỗi khi xóa bản ghi:", error);
+        next(error); // Chuyển error cho middleware xử lý lỗi
+    });
+}
+
+const getProductPage = async(req, res, next) => {
+    const productList = await Product.find();
+    res.render("", {
+        productList: productList,
+        amountOfProduct: productList.length,
+    })
+}
+const getEditProductPage = async(req, res, next) => {
     //Edit sản phẩm 
-    res.render('admin/edit/edit');
+    const product = await Product.findById(req.params.id)
+    res.render('admin/edit/edit', {
+      product: product,
+    })
 }
-const getProfile = (req, res, next) => {
+const putEditProductPage = async(req, res, next) => {
+    const result = validationResult(req);
+    if (!result.isEmpty()) {
+      res.status(400).json({ errors: result.array() });
+      return;
+    }
+    Product.updateOne({ _id: req.params.id }, req.body)
+    .then(() => res.status(200).json({success: true, redirectUrl: '/admin', msg: "Chỉnh sửa món hàng thành công!"}))
+    .catch(next);
+}
+const destroyProduct = async (req, res, next) => {
+    var id = new mongoose.Types.ObjectId(req.params.id);
+    Product.deleteOne({ _id: id })
+    .then(() => res.status(200).json({success: true, redirectUrl: '/admin', msg: "Xóa user thành công!"}))
+    .catch((error) => {
+        console.error("Lỗi khi xóa bản ghi:", error);
+        next(error); // Chuyển error cho middleware xử lý lỗi
+    });
+}
+
+const getProfile = async(req, res, next) => {
     //Xem thông tin profile, có nút update profile
-    res.render('admin/profile/admin-profile');
+    const user = User.findById(req.user._id);
+    res.render('admin/profile/admin-profile', {
+        user: user,
+    });
+}
+const putEditProfile = async(req, res, next) => {
+    const result = validationResult(req);
+    if (!result.isEmpty()) {
+      res.status(400).json({ errors: result.array() });
+      return;
+    }
+    User.updateOne({ _id: req.user._id }, req.body)
+    .then(() => res.status(200).json({success: true, redirectUrl: '/admin', msg: "Chỉnh sửa món hàng thành công!"}))
+    .catch(next);
 }
 module.exports = {
     getHomePage,
@@ -184,12 +309,23 @@ module.exports = {
     postANewProduct,
     getProductList,
     getAccountPage,
-    addProduct,
+    getEditUserPage,
+    putEditUserPage,
+    destroyUser,
+    getAddProduct,
+    postAddProduct,
     getCalendar,
     changePassword,
     confirmPassword,
     getContact,
     getDelivery,
-    getEdit,
+    getEditDeliveryPage,
+    putEditDeliveryPage,
+    destroyDelivery,
+    getProductPage,
+    getEditProductPage,
+    putEditProductPage,
+    destroyProduct,
     getProfile,
+    putEditProfile,
 }
