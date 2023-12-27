@@ -29,7 +29,7 @@ const getHomePage = async (req, res, next) => {
         const sortByOrder = req.query.sortByOrder;
         const productList = await ProductService.PrfilteredAndSortedProducts(productName, catalogId, manufacturer, minPrice, maxPrice, sortByField, sortByOrder);
         if (productList) {
-            res.render("/admin/home/admin", { productList: productList });
+            res.render("admin.hbs", { productList: productList });
         }
         else {
             res.status(404).json({ message: "Not found" });
