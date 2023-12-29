@@ -8,9 +8,85 @@
    <div class="admin-product-form-container">
       <form action="" method="post" enctype="multipart/form-data">
          <h3>Add a new product</h3>
-         <input type="text" placeholder="Enter product name" name="product_name" class="box">
-         <input type="number" placeholder="Enter product price" name="product_price" class="box">
-         <input type="number" placeholder="Enter product quantity" name="product_quantity" class="box">
+         <input type="text" placeholder="Enter product name" name="name" class="box">
+         <input type="number" placeholder="Enter product price" name="price" class="box">
+         <input type="number" placeholder="Enter product quantity" name="quantity" class="box">
+         <h3>Choose size option</h3>
+         <div class="check-box-group">
+            <label class="custom-checkbox" tab-index="0" aria-label="opt">
+               <input type="checkbox" id="size" name="size" value="36">
+               <span class="checkmark"></span>
+               <span class="label">36</span>
+            </label>
+            <label class="custom-checkbox" tab-index="0" aria-label="Another Label">
+               <input type="checkbox" id="size" name="size" value="37">
+               <span class="checkmark"></span>
+               <span class="label">37</span>
+            </label>
+            <label class="custom-checkbox" tab-index="0" aria-label="Another Label2">
+               <input type="checkbox" id="size" name="size" value="38">
+               <span class="checkmark"></span>
+               <span class="label">38</span>
+            </label>
+            <label class="custom-checkbox" tab-index="0" aria-label="Another Label3">
+               <input type="checkbox" id="size" name="size" value="39">
+               <span class="checkmark"></span>
+               <span class="label">39</span>
+            </label>
+            <label class="custom-checkbox" tab-index="0" aria-label="Another Label4">
+               <input type="checkbox" id="size" name="size" value="40">
+               <span class="checkmark"></span>
+               <span class="label">40</span>
+            </label>
+            <label class="custom-checkbox" tab-index="0" aria-label="Another Label5">
+               <input type="checkbox" id="size" name="size" value="41">
+               <span class="checkmark"></span>
+               <span class="label">41</span>
+            </label>
+            <label class="custom-checkbox" tab-index="0" aria-label="Another Label6">
+               <input type="checkbox" id="size" name="size" value="42">
+               <span class="checkmark"></span>
+               <span class="label">42</span>
+            </label>
+            <label class="custom-checkbox" tab-index="0" aria-label="Another Label7">
+               <input type="checkbox" id="size" name="size" value="43">
+               <span class="checkmark"></span>
+               <span class="label">43</span>
+            </label>
+         </div>
+         <h3>Choose color option</h3>
+         <div class="check-box-group">
+            <label class="custom-checkbox" tab-index="0" for="color" aria-label="opt1">
+               <input type="checkbox" id="color" name="color" value="red">
+               <span class="checkmark"></span>
+               <span class="label">Red</span>
+            </label>
+            <label class="custom-checkbox" tab-index="0" aria-label="Another Label8">
+               <input type="checkbox" id="color" name="color" value="green">
+               <span class="checkmark"></span>
+               <span class="label">Green</span>
+            </label>
+            <label class="custom-checkbox" tab-index="0" aria-label="Another Label9">
+               <input type="checkbox" id="color" name="color" value="blue">
+               <span class="checkmark"></span>
+               <span class="label">Blue</span>
+            </label>
+            <label class="custom-checkbox" tab-index="0" aria-label="Another Label10">
+               <input type="checkbox" id="color" name="color" value="black">
+               <span class="checkmark"></span>
+               <span class="label">Black</span>
+            </label>
+            <label class="custom-checkbox" tab-index="0" aria-label="Another Label11">
+               <input type="checkbox" id="color" name="color" value="white">
+               <span class="checkmark"></span>
+               <span class="label">White</span>
+            </label>
+            <label class="custom-checkbox" tab-index="0" aria-label="Another Label12">
+               <input type="checkbox" id="color" name="color" value="brown">
+               <span class="checkmark"></span>
+               <span class="label">Brown</span>
+            </label>
+         </div>
          <input type="file" accept="image/png, image/jpeg, image/jpg" name="product_image" class="box">
          <input type="submit" class="btn" name="add_product" value="add product">
       </form>
@@ -23,19 +99,11 @@
                <th>Product image</th>
                <th>Product name</th>
                <th>Product price</th>
+               <th>Size</th>
+               <th>Color</th>
                <th>Quantity</th>
-               <th>Action</th>
             </tr>
          </thead>
-         <tr>
-            <td><img src="" height="100" alt=""></td>
-            <td>
-               <a href="./edit/edit.hbs" class="btn"> <i class="fas fa-edit"></i>
-                  edit </a>
-               <a href="./add/add.hbs" class="btn"> <i class="fas fa-trash"></i>
-                  delete </a>
-            </td>
-         </tr>
       </table>
    </div>
 </div>
