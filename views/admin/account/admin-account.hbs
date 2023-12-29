@@ -239,11 +239,12 @@
         $('#editAccount').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             courseId = button.data('id');
+            console.log(courseId);
         });
 
         // When delete course btn clicked
         btnDeleteCourse.onclick = function () {
-            deleteForm.action = '/account/edit/' + courseId + '?_method=PUT';
+            deleteForm.action = 'admin/account/edit/' + courseId + '?_method=PUT';
             deleteForm.submit
         }
     });

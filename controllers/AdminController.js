@@ -232,7 +232,7 @@ const getContact = (req, res, next) => {
 
 const getDelivery = async(req, res, next) => {
     // Hiển thị trạng thái order
-    const orderList = await Order.find();
+    const orderList = await Order.find().populate('userId listItem').lean();
 
     res.render('admin/delivery/delivery', {
         orderList: orderList,
