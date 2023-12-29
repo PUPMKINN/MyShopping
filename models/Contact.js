@@ -11,6 +11,9 @@ const contactSchema = new mongoose.Schema({
     ref: 'User', // Tham chiếu đến schema người dùng (User)
     required: true
   },
+  email: {
+    type: String,
+  },
 //   rating: {
 //     type: Number,
 //     required: true,

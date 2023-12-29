@@ -38,7 +38,7 @@ router.post("/add", adminControllers.postAddProduct);
 router.get("/calendar", adminControllers.getCalendar);
 //router.get("/change-password", adminControllers.changePassword);
 //router.get("/confirm-password", adminControllers.confirmPassword);
-//router.get("/contact", adminControllers.getContact);
+router.get("/contact", adminControllers.getContact);
 router.get("/delivery/edit/:id", adminControllers.getEditDeliveryPage);
 router.put("/delivery/edit/:id", adminControllers.putEditDeliveryPage);
 router.delete("/delivery/:id", adminControllers.destroyDelivery);

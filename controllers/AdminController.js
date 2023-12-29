@@ -7,6 +7,7 @@ const User = require("../models/User.js");
 const Review = require("../models/Review.js");
 const Product = require("../models/Product.js");
 const Order = require("../models/Order.js");
+const Contact = require("../models/Contact.js");
 //const Catalog = require("../models/Catalog.js");
 
 //Service
@@ -226,8 +227,9 @@ const confirmPassword = (req, res, next) => {
     // Bên user
     res.render('admin/confirm-password/confirm-password');
 }
-const getContact = (req, res, next) => {
+const getContact = async (req, res, next) => {
     //Bên user
+    const contactList = await Contact.find().populate('userId').lean();
     res.render('admin/contact/contact');
 }
 
