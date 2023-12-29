@@ -166,7 +166,7 @@ const getAccountPage = async (req, res, next) => {
     });
 }
 const getEditUserPage = async (req, res, next) => {
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(req.params.id).lean();
     res.render("", {
         user: user,
     })
@@ -241,7 +241,7 @@ const getDelivery = async(req, res, next) => {
     });
 }
 const getEditDeliveryPage = async (req, res, next) => {
-    const order = await Order.findById(req.params.id);
+    const order = await Order.findById(req.params.id).lean();
     res.render("", {
         order: order,
     })
@@ -267,7 +267,7 @@ const destroyDelivery = async (req, res, next) => {
 }
 
 const getProductPage = async(req, res, next) => {
-    const productList = await Product.find();
+    const productList = await Product.find().lean();
     res.render("", {
         productList: productList,
         amountOfProduct: productList.length,
@@ -302,7 +302,7 @@ const destroyProduct = async (req, res, next) => {
 
 const getProfile = async(req, res, next) => {
     //Xem thông tin profile, có nút update profile
-    const user = User.findById(req.user._id);
+    const user = User.findById(req.user._id).lean();
     res.render('admin/profile/admin-profile', {
         user: user,
     });
