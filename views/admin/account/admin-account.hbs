@@ -31,7 +31,7 @@
                         <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
                             <h2 class="ml-lg-2">Manage Account</h2>
                         </div>
-                        <div class="col-sm-6 p-0 flex justify-content-lg-end justify-content-center">
+                        {{!-- <div class="col-sm-6 p-0 flex justify-content-lg-end justify-content-center">
                             <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">
                                 <i class="material-icons ri-file-add-fill">&#xE147;</i>
                                 <span>Add New Account</span>
@@ -40,7 +40,7 @@
                                 <i class="material-icons ri-delete-bin-2-fill"></i>
                                 <span>Delete Account</span>
                             </a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 
@@ -61,30 +61,31 @@
                     </thead>
 
                     <tbody>
+                        {{#each userList}}
                         <tr>
                             <th><span class="custom-checkbox">
                                     <input type="checkbox" id="checkbox1" name="option[]" value="1">
                                     <label for="checkbox1"></label></th>
-                            <th>Trịnh Xuân Bách</th>
-                            <th>txbach21@clc.fitus.edu.vn</th>
-                            <th>Nguyễn Văn Cừ,District 5, HCMC</th>
-                            <th>0942607590</th>
-                            <th>Admin</th>
-                            <th>Active</th>
+                            <th>{{this.username}}</th>
+                            <th>{{this.email}}</th>
+                            <th>{{this.address}}</th>
+                            <th>{{this.phoneNumber}}</th>
+                            <th>{{this.role}}</th>
                             <th>
-                                <a href="#editAccount" class="edit" data-toggle="modal">
+                                <a href="/account/edit/{{this._id}}" class="edit" data-toggle="modal">
                                     <i class="material-icons ri-pencil-fill" data-toggle="tooltip"
                                         title="Edit">&#xE254;</i>
                                 </a>
-                                <a href="#deleteAccount" class="delete" data-toggle="modal">
+                                <a href="/account/{{this._id}}" class="delete" data-toggle="modal">
                                     <i class="material-icons ri-delete-bin-2-fill" data-toggle="tooltip"
                                         title="Delete">&#xE872;</i>
                                 </a>
                             </th>
                         </tr>
+                        {{/each}}
 
 
-                        <tr>
+                        {{!-- <tr>
                             <th><span class="custom-checkbox">
                                     <input type="checkbox" id="checkbox1" name="option[]" value="1">
                                     <label for="checkbox2"></label></th>
@@ -171,7 +172,7 @@
                                         title="Delete">&#xE872;</i>
                                 </a>
                             </th>
-                        </tr>
+                        </tr> --}}
 
                     </tbody>
 
