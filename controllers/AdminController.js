@@ -14,7 +14,8 @@ const ProductService = require("../services/Product.js")
 
 const { use } = require("passport");
 //const jwt = require("jsonwebtoken");
-const { sendMail } = require("./mailApi.js")
+const { sendMail } = require("./mailApi.js");
+const { mutipleMongooseToObject, mongooseToObject } = require("../util/mongoose.js");
 
 
 require('dotenv').config();
@@ -274,7 +275,7 @@ const getProductPage = async(req, res, next) => {
 }
 const getEditProductPage = async(req, res, next) => {
     //Edit sản phẩm 
-    const product = await Product.findById(req.params.id)
+    const product = await Product.findById(req.params.id).lean()
     res.render('admin/edit/edit', {
       product: product,
     })
