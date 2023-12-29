@@ -274,7 +274,6 @@
                 <table>
                     <thead>
                         <tr>
-                            <th scope="col" width="50px">ID</th>
                             <th scope="col" width="100px">Name</th>
                             <th scope="col" width="290px">Address</th>
                             <th scope="col">Date</th>
@@ -284,100 +283,24 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {{#each orderList}}
                         <tr>
-                            <td data-label="Account">1</td>
-                            <td data-label="Due Date"><img src="./images/profile.png" class="tab-img"><br>Trịnh Xuân
-                                Bách</td>
-                            <td data-label="Amount">Nike Air Jordan</td>
-                            <td data-label="Period">1/12/2023</td>
-                            <td data-label="Due Date">$30.00</td>
+                            <td data-label="Due Date"><br>{{this.userId.username}}</td>
+                            {{#each this.listItem}}
+                            <td data-label="Amount">{{this.name}}</td>
+                            {{/each}}
+                            <td data-label="Period">{{this.userId.date}}</td>
+                            <td data-label="Price">{{this.userId.total}}</td>
                             <td data-label="Amount" style="position: relative;"><span class="pe"></span>Processing
                             </td>
                             <td data-label="Period"><i class="fas fa-cog"></i>
                                 <i class="fa fa-angle-down ticon"></i>
                             </td>
                         </tr>
-
-                        <tr>
-                            <td data-label="Account">1</td>
-                            <td data-label="Due Date"><img src="./images/profile.png" class="tab-img"><br>Trịnh Xuân
-                                Bách </td>
-                            <td data-label="Amount">Nike Air Jordan</td>
-                            <td data-label="Period">1/12/2023</td>
-                            <td data-label="Due Date">$30.00</td>
-                            <td data-label="Amount" style="position: relative;"><span class="pe"></span>Processing
-                            </td>
-                            <td data-label="Period"><i class="fas fa-cog"></i>
-                                <i class="fa fa-angle-down ticon"></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td data-label="Account">1</td>
-                            <td data-label="Due Date"><img src="./images/profile.png" class="tab-img"><br>Trịnh Xuân
-                                Bách </td>
-                            <td data-label="Amount">Nike Air Jordan</td>
-                            <td data-label="Period">1/12/2023</td>
-                            <td data-label="Due Date">$30.00</td>
-                            <td data-label="Amount" style="position: relative;"><span class="pe"></span>Processing
-                            </td>
-                            <td data-label="Period"><i class="fas fa-cog"></i>
-                                <i class="fa fa-angle-down ticon"></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td data-label="Account">1</td>
-                            <td data-label="Due Date"><img src="./images/profile.png" class="tab-img"><br>Trịnh Xuân
-                                Bách </td>
-                            <td data-label="Amount">Nike Air Jordan</td>
-                            <td data-label="Period">1/12/2023</td>
-                            <td data-label="Due Date">$30.00</td>
-                            <td data-label="Amount" style="position: relative;"><span class="pe"></span>Processing
-                            </td>
-                            <td data-label="Period"><i class="fas fa-cog"></i>
-                                <i class="fa fa-angle-down ticon"></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td data-label="Account">1</td>
-                            <td data-label="Due Date"><img src="./images/profile.png" class="tab-img"><br>Trịnh Xuân
-                                Bách </td>
-                            <td data-label="Amount">Nike Air Jordan</td>
-                            <td data-label="Period">1/12/2023</td>
-                            <td data-label="Due Date">$30.00</td>
-                            <td data-label="Amount" style="position: relative;"><span class="pe"></span>Processing
-                            </td>
-                            <td data-label="Period"><i class="fas fa-cog"></i>
-                                <i class="fa fa-angle-down ticon"></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td data-label="Account">1</td>
-                            <td data-label="Due Date"><img src="./images/profile.png" class="tab-img"><br>Trịnh Xuân
-                                Bách </td>
-                            <td data-label="Amount">Nike Air Jordan</td>
-                            <td data-label="Period">1/12/2023</td>
-                            <td data-label="Due Date">$30.00</td>
-                            <td data-label="Amount" style="position: relative;"><span class="pe"></span>Processing
-                            </td>
-                            <td data-label="Period"><i class="fas fa-cog"></i>
-                                <i class="fa fa-angle-down ticon"></i>
-                            </td>
-                        </tr>
+                        {{/each}}
                     </tbody>
                 </table>
-                <div class="col-12 col-md-5 col-xl-4">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-header bg-white">
-                            Add Products
-                        </div>
-                        <div class="btn">
-                            <a href="./admin-add.html">Edit products +</a>
-                        </div>
-                    </div>
-                </div>
             </div>
-
-
             <!-- end: Graph -->
         </div>
         <!-- end: Content -->
