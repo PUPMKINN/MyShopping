@@ -70,12 +70,12 @@
             </a>
             <ul class="sidebar-dropdown-menu">
                 <li class="sidebar-dropdown-menu-item">
-                    <a href="./login.hbs">
+                    <a href="/login">
                         Login
                     </a>
                 </li>
                 <li class="sidebar-dropdown-menu-item">
-                    <a href="./login/login.hbs">
+                    <a href="/login">
                         Registration
                     </a>
                 </li>
@@ -119,17 +119,17 @@
             </a>
             <ul class="sidebar-dropdown-menu">
                 <li class="sidebar-dropdown-menu-item">
-                    <a href="#">
+                    <a href="/">
                         Shop
                     </a>
                 </li>
                 <li class="sidebar-dropdown-menu-item">
-                    <a href="#">
+                    <a href="">
                         Checkout
                     </a>
                 </li>
                 <li class="sidebar-dropdown-menu-item">
-                    <a href="#">
+                    <a href="">
                         Details
                     </a>
                 </li>
@@ -142,7 +142,7 @@
             </a>
         </li>
         <li class="sidebar-menu-item">
-            <a href="./calendar/calendar.hbs">
+            <a href="/admin/calendar">
                 <i class="ri-calendar-line sidebar-menu-item-icon"></i>
                 Calendar
             </a>
@@ -274,28 +274,20 @@
                 <table>
                     <thead>
                         <tr>
-                            <th scope="col" width="100px">Name</th>
-                            <th scope="col" width="290px">Address</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
                             <th scope="col">Date</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Status</th>
-                            <th scope="col" width="70px">Action</th>
+                            <th scope="col">Comment</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {{#each orderList}}
+                        {{#each contactList}}
                         <tr>
-                            <td data-label="Due Date"><br>{{this.userId.username}}</td>
-                            {{#each this.listItem}}
-                            <td data-label="Amount">{{this.name}}</td>
-                            {{/each}}
-                            <td data-label="Period">{{this.userId.date}}</td>
-                            <td data-label="Price">{{this.userId.total}}</td>
-                            <td data-label="Amount" style="position: relative;"><span class="pe"></span>Processing
-                            </td>
-                            <td data-label="Period"><i class="fas fa-cog"></i>
-                                <i class="fa fa-angle-down ticon"></i>
-                            </td>
+                            <td data-label="name"><br>{{this.userId.username}}</td>
+                            <td data-label="name"><br>{{this.name}}</td>
+                            <td data-label="email">{{this.email}}</td>
+                            <td data-label="datepost">{{this.datePost}}</td>
+                            <td data-label="comment">{{this.comment}}</td>
                         </tr>
                         {{/each}}
                     </tbody>
