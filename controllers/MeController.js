@@ -19,7 +19,7 @@ const storedProducts = async(req, res, next) => {
 //[GET] /user/cart 
 const getCart = (req, res, next) => {
   //Truyền những món hàng trong cart
-  const user = User.findById(req.user._id);
+  const user = User.findById(req.user._id).lean();
   res.render("cart/cart", {
     user: user,
   });
@@ -27,7 +27,7 @@ const getCart = (req, res, next) => {
 //[GET] /user/checkout
 const getCheckOut = (req, res, next) => {
   //Lưu vào order
-  const user = User.findById(req.user._id);
+  const user = User.findById(req.user._id).lean();
   res.render("checkout/checkout", {
     user: user,
   });
@@ -67,7 +67,7 @@ const postContact = (req, res, next) => {
 
 const getWishlist = (req, res, next) => {
   //Xem danh sách yêu thích , có nút xóa
-  const user = User.findById(req.user._id);
+  const user = User.findById(req.user._id).lean();
   res.render("wishlist/wishlist", {
     user: user,
   });
