@@ -143,10 +143,25 @@ const getProductList = async (req, res, next) => {
 
 const getAccountPage = async (req, res, next) => {
     // 1 list user, amount of user
-    const userList = await User.find();
+    const userListFull = await User.find();
+    const pageSize = 4;
+    //filter thay vào trên đây (filter xong lấy ra coursesFull, courses)
+    const totalCourses = userListFull.length;
+    const totalPages = Math.ceil(totalCourses / pageSize);
+    const pageNumber = parseInt(req.query.page) || 1;
+    const skipAmount = (pageNumber - 1) * pageSize;
+    const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+    const currentPage = Math.max(1, Math.min(totalPages, pageNumber));
+    var nextPage = currentPage + 1; if(nextPage > totalPages) nextPage = totalPages;
+    var prevPage = currentPage - 1; if(prevPage < 1) prevPage = 1;
+    const userList = await User.find().skip(skipAmount).limit(pageSize).lean();
     res.render('admin/account/admin-account', {
         userList: userList,
         amountOfUser: userList.length,
+        pages: pages,
+        prevPage: prevPage,
+        currentPage: currentPage,
+        nextPage: nextPage,
     });
 }
 const getEditUserPage = async (req, res, next) => {
