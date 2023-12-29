@@ -55,7 +55,6 @@
                             <th>Address</th>
                             <th>Phone</th>
                             <th>Access Level</th>
-                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -72,9 +71,14 @@
                             <th>{{this.phoneNumber}}</th>
                             <th>{{this.role}}</th>
                             <th>
-                                <a href="/account/edit/{{this._id}}" class="edit" data-toggle="modal">
+                                {{!-- <a href="#editAccount" class="edit" data-toggle="modal">
                                     <i class="material-icons ri-pencil-fill" data-toggle="tooltip"
-                                        title="Edit">&#xE254;</i>
+                                        data-id="{{this._id}}" title="Edit">&#xE254;</i>
+                                </a> --}}
+                                <a href="#editAccount" class="edit" data-toggle="modal"
+                                    onclick="setEditUserId('{{this._id}}')">
+                                    <i class="material-icons ri-pencil-fill" data-toggle="tooltip"
+                                        data-target="#editAccount" title="Edit">&#xE254;</i>
                                 </a>
                                 <a href="/account/{{this._id}}" class="delete" data-toggle="modal">
                                     <i class="material-icons ri-delete-bin-2-fill" data-toggle="tooltip"
@@ -83,96 +87,6 @@
                             </th>
                         </tr>
                         {{/each}}
-
-
-                        {{!-- <tr>
-                            <th><span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox1" name="option[]" value="1">
-                                    <label for="checkbox2"></label></th>
-                            <th>Trịnh Xuân Bách</th>
-                            <th>txbach21@clc.fitus.edu.vn</th>
-                            <th>Nguyễn Văn Cừ,District 5, HCMC</th>
-                            <th>0942607590</th>
-                            <th>Admin</th>
-                            <th>Active</th>
-                            <th>
-                                <a href="#editAccount" class="edit" data-toggle="modal">
-                                    <i class="material-icons ri-pencil-fill" data-toggle="tooltip"
-                                        title="Edit">&#xE254;</i>
-                                </a>
-                                <a href="#deleteAccount" class="delete" data-toggle="modal">
-                                    <i class="material-icons ri-delete-bin-2-fill" data-toggle="tooltip"
-                                        title="Delete">&#xE872;</i>
-                                </a>
-                            </th>
-                        </tr>
-
-
-                        <tr>
-                            <th><span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox1" name="option[]" value="1">
-                                    <label for="checkbox3"></label></th>
-                            <th>Trịnh Xuân Bách</th>
-                            <th>txbach21@clc.fitus.edu.vn</th>
-                            <th>Nguyễn Văn Cừ,District 5, HCMC</th>
-                            <th>0942607590</th>
-                            <th>Admin</th>
-                            <th>Active</th>
-                            <th>
-                                <a href="#editAccount" class="edit" data-toggle="modal">
-                                    <i class="material-icons ri-pencil-fill" data-toggle="tooltip"
-                                        title="Edit">&#xE254;</i>
-                                </a>
-                                <a href="#deleteAccount" class="delete" data-toggle="modal">
-                                    <i class="material-icons ri-delete-bin-2-fill" data-toggle="tooltip"
-                                        title="Delete">&#xE872;</i>
-                                </a>
-                            </th>
-                        </tr>
-
-                        <tr>
-                            <th><span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox1" name="option[]" value="1">
-                                    <label for="checkbox4"></label></th>
-                            <th>Trịnh Xuân Bách</th>
-                            <th>txbach21@clc.fitus.edu.vn</th>
-                            <th>Nguyễn Văn Cừ,District 5, HCMC</th>
-                            <th>0942607590</th>
-                            <th>Admin</th>
-                            <th>Active</th>
-                            <th>
-                                <a href="#editAccount" class="edit" data-toggle="modal">
-                                    <i class="material-icons ri-pencil-fill" data-toggle="tooltip"
-                                        title="Edit">&#xE254;</i>
-                                </a>
-                                <a href="#deleteAccount" class="delete" data-toggle="modal">
-                                    <i class="material-icons ri-delete-bin-2-fill" data-toggle="tooltip"
-                                        title="Delete">&#xE872;</i>
-                                </a>
-                            </th>
-                        </tr>
-
-                        <tr>
-                            <th><span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox1" name="option[]" value="1">
-                                    <label for="checkbox5"></label></th>
-                            <th>Trịnh Xuân Bách</th>
-                            <th>txbach21@clc.fitus.edu.vn</th>
-                            <th>Nguyễn Văn Cừ,District 5, HCMC</th>
-                            <th>0942607590</th>
-                            <th>Admin</th>
-                            <th>Active</th>
-                            <th>
-                                <a href="#editAccount" class="edit" data-toggle="modal">
-                                    <i class="material-icons ri-pencil-fill" data-toggle="tooltip"
-                                        title="Edit">&#xE254;</i>
-                                </a>
-                                <a href="#deleteAccount" class="delete" data-toggle="modal">
-                                    <i class="material-icons ri-delete-bin-2-fill" data-toggle="tooltip"
-                                        title="Delete">&#xE872;</i>
-                                </a>
-                            </th>
-                        </tr> --}}
 
                     </tbody>
 
@@ -232,7 +146,8 @@
         </div>
         <!----edit-modal end--------->
         <!----edit-modal start--------->
-        <div class="modal fade" tabindex="-1" id="editAccount" role="dialog">
+        <form class="modal fade" tabindex="-1" id="editAccount" role="dialog"
+            action="/account/edit/{{this._id}}?_method=PUT" method="POST">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -261,11 +176,12 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-success">Save</button>
+                        <button type="submit" class="btn btn-success">Save</button>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
+        <form name="delete-course-form" method="POST"></form>
         <!----edit-modal end--------->
         <!----delete-modal start--------->
         <div class="modal fade" tabindex="-1" id="deleteAccount" role="dialog">
@@ -313,4 +229,23 @@
         });
 
     });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var courseId;
+        var deleteForm = document.forms['delete-course-form'];
+        var btnDeleteCourse = document.getElementById('btn btn-success');
+
+        // When dialog confirm clicked
+        $('#editAccount').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            courseId = button.data('id');
+        });
+
+        // When delete course btn clicked
+        btnDeleteCourse.onclick = function () {
+            deleteForm.action = '/account/edit/' + courseId + '?_method=PUT';
+            deleteForm.submit
+        }
+    });
+
 </script>
