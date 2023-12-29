@@ -1,7 +1,10 @@
 const User = require('../models/User');
 const ProductService = require("../services/Product.js")
+const { validationResult } = require("express-validator");
+const { mutipleMongooseToObject, mongooseToObject } = require("../util/mongoose");
 
-  //[GET] /category ? productName=""
+
+//[GET] /category ? productName=""
 const show = async (req, res, next) => {
   try {
     const searchField = req.query.searchField;
@@ -27,14 +30,13 @@ const show = async (req, res, next) => {
     const productList = await ProductService.PrfilteredSortedPaging(
       searchField, productName, color, size, brand, minPrice, maxPrice, sortByField, sortByOrder, skipAmount, pageSize
     );
-      
     const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
     const currentPage = Math.max(1, Math.min(totalPages, pageNumber));
-    var nextPage = currentPage + 1; if(nextPage > totalPages) nextPage = totalPages;
-    var prevPage = currentPage - 1; if(prevPage < 1) prevPage = 1;
-    
+    var nextPage = currentPage + 1; if (nextPage > totalPages) nextPage = totalPages;
+    var prevPage = currentPage - 1; if (prevPage < 1) prevPage = 1;
+
     if (productList) {
-      res.render("category/category", { 
+      res.render("category/category", {
         productList: productList,
         pages: pages,
         prevPage: prevPage,
@@ -52,5 +54,5 @@ const show = async (req, res, next) => {
 };
 
 module.exports = {
-    show,
+  show,
 };
