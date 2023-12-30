@@ -1023,6 +1023,8 @@
         return selectedRating;
     }
 
+
+
     document.querySelector(".decrease").setAttribute("disabled", "disabled");
     var valueCount
 
@@ -1165,60 +1167,96 @@
 
 
 
+
+
     function addItemToCart(title, price, imageSrc) {
-        var cartRow = document.createElement('div')
-        cartRow.classList.add('cart-header')
-        var cartItems = document.getElementsByClassName('cart-body')[0]
-        var cartItemNames = cartItems.getElementsByClassName('dot-title')
+        var cartRow = createCartItem(title, price, imageSrc);
+        var cartItems = document.getElementsByClassName('cart-body')[0];
+        var cartItemNames = cartItems.getElementsByClassName('dot-title');
+
         for (var i = 0; i < cartItemNames.length; i++) {
             if (cartItemNames[i].innerText == title) {
-                alert('This item is already added to the cart')
-                return
+                alert('This item is already added to the cart');
+                return;
             }
         }
-        var cartRowContents = `
-       <div class="product-list scrollto">
-                                <div class="wrapper">
-                                    <ul>
-                                        <li>
-                                            <div class="grouping">
-                                                <div class="quantity">
-                                                    <div class="control">
-                                                        <button class="decrease">-</button>
-                                            <input type="text" id="quantity" value="1">
-                                            <button class="increase">+</button>
-                                                    </div>
-                                                </div>
-                                                <div class="thumbnail">
-                                                    <a href="">
-                                                        <img src="${imageSrc}" alt="">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="variants">
-                                                <h4 class="dot-title"><a href="">${title}</a></h4>
-                                                <div class="color grey-color">
-                                                    <span>Color:</span>
-                                                    <span>White</span>
-                                                </div>
-                                                <div class="size grey-color">
-                                                    <span>Size:</span>
-                                                    <span>42</span>
-                                                </div>
-                                                <div class="price">${price}</div>
-                                                <button type="primary-btn" class="item-remove">
-                                                    <i class="ri-close-line"></i>
-                                                </button>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>`
-        cartRow.innerHTML = cartRowContents
-        cartItems.append(cartRow)
-        cartRow.getElementsByClassName('item-remove')[0].addEventListener('click', removeCartItem)
-        cartRow.getElementsByClassName('quantity-input')[0].addEventListener('change', quantityChanged)
+
+        cartItems.appendChild(cartRow);
     }
+
+    function createCartItem(title, price, imageSrc) {
+        var cartRow = document.createElement('div');
+        cartRow.classList.add('cart-header');
+
+        var cartRowContents = `
+        <div class="product-list scrollto">
+            <div class="wrapper">
+                <ul>
+                    <li>
+                        <div class="grouping">
+                            <div class="quantity">
+                                <div class="control">
+                                    <button class="decrease">-</button>
+                                    <input type="text" class="quantity-input" value="1">
+                                    <button class="increase">+</button>
+                                </div>
+                            </div>
+                            <div class="thumbnail">
+                                <a href="">
+                                    <img src="${imageSrc}" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="variants">
+                            <h4 class="dot-title"><a href="">${title}</a></h4>
+                            <div class="color grey-color">
+                                <span>Color:</span>
+                                <span>White</span>
+                            </div>
+                            <div class="size grey-color">
+                                <span>Size:</span>
+                                <span>42</span>
+                            </div>
+                            <div class="price">${price}</div>
+                            <button type="primary-btn" class="item-remove">
+                                <i class="ri-close-line"></i>
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>`;
+
+        cartRow.innerHTML = cartRowContents;
+        cartRow.getElementsByClassName('item-remove')[0].addEventListener('click', removeCartItem);
+        cartRow.getElementsByClassName('quantity-input')[0].addEventListener('change', quantityChanged);
+        cartRow.querySelector(".increase").addEventListener("click", increaseQuantity);
+        cartRow.querySelector(".decrease").addEventListener("click", decreaseQuantity);
+
+        return cartRow;
+    }
+
+    function increaseQuantity() {
+        var valueCount = parseInt(this.parentNode.querySelector(".quantity-input").value);
+        valueCount++;
+        this.parentNode.querySelector(".quantity-input").value = valueCount;
+        if (valueCount > 1) {
+            this.parentNode.querySelector(".decrease").removeAttribute("disabled");
+            this.parentNode.querySelector(".decrease").classList.remove("disabled");
+        }
+        updateCartTotal();
+    }
+
+    function decreaseQuantity() {
+        var valueCount = parseInt(this.parentNode.querySelector(".quantity-input").value);
+        valueCount--;
+        this.parentNode.querySelector(".quantity-input").value = valueCount;
+        if (valueCount == 1) {
+            this.setAttribute("disabled", "disabled");
+        }
+        updateCartTotal();
+    }
+
 
     function updateCartTotal() {
         var cartItemContainer = document.getElementsByClassName('cart-body')[0]
