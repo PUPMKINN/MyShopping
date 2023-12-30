@@ -312,11 +312,12 @@
                                     <div class="product-action">
                                         <div class="qty">
                                             <button class="decrease">-</button>
-                                            <input type="text" value="1">
-                                            <button class="iecrease">+</button>
+                                            <input type="text" id="quantity" value="1">
+                                            <button class="increase">+</button>
                                         </div>
                                         <div class="addcart button">
-                                            <button type="submit" class="primary-btn">Add to cart</button>
+                                            <button type="submit" class="primary-btn shop-item-button"> Add
+                                                to cart</button>
                                         </div>
                                         <div class="buynow button">
                                             <button type="submit" class="secondary-btn">Buy Now</button>
@@ -830,7 +831,7 @@
 <div id="data-share" class="data-popup d-share">
     <div class="wrap">
         <div class="data-content">
-            <a href="#0" class="close-trigger" close-button><i class="ri-close-line"></i></a>
+            <a href="/" class="close-trigger" close-button><i class="ri-close-line"></i></a>
             <div class="form">
                 <label>Copy link</label>
                 <input type="text" disabled value="https://www.youtube.com/">
@@ -905,7 +906,7 @@
 </div>
 <div id="data-cart" class="cart-menu">
     <div class="wrap">
-        <a href="#0" class="close-trigger" close-button><i class="ri-close-line"></i></a>
+        <a href="" class="close-trigger" close-button><i class="ri-close-line"></i></a>
         <div class="scrollto cart-outer">
             <div class="wrapper">
                 <div class="cart-list">
@@ -914,7 +915,7 @@
                             <h3>Shopping cart</h3>
                         </div>
                         <div class="cart-body">
-                            <div class="product-list scrollto">
+                            {{!-- <div class="product-list scrollto">
                                 <div class="wrapper">
                                     <ul>
                                         <li>
@@ -922,18 +923,19 @@
                                                 <div class="quantity">
                                                     <div class="control">
                                                         <button>-</button>
-                                                        <input type="text" value="1">
+                                                        <input type="text" id="quantity" class="quantity-input"
+                                                            value="1">
                                                         <button>+</button>
                                                     </div>
                                                 </div>
                                                 <div class="thumbnail">
                                                     <a href="">
-                                                        <img src="./images/product_01.jpg" alt="">
+                                                        <img src="${imageSrc}" alt="">
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="variants">
-                                                <h4 class="dot-title"><a href="">The Sneaker in VietNam</a></h4>
+                                                <h4 class="dot-title"><a href="">${title}</a></h4>
                                                 <div class="color grey-color">
                                                     <span>Color:</span>
                                                     <span>White</span>
@@ -942,78 +944,15 @@
                                                     <span>Size:</span>
                                                     <span>42</span>
                                                 </div>
-                                                <div class="price">$45.00</div>
+                                                <div class="price">${price}</div>
                                                 <a href="" class="item-remove">
                                                     <i class="ri-close-line"></i>
                                                 </a>
                                             </div>
                                         </li>
-                                        <li>
-                                            <div class="grouping">
-                                                <div class="quantity">
-                                                    <div class="control">
-                                                        <button>-</button>
-                                                        <input type="text" value="1">
-                                                        <button>+</button>
-                                                    </div>
-                                                </div>
-                                                <div class="thumbnail">
-                                                    <a href="">
-                                                        <img src="./images/product_07.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="variants">
-                                                <h4 class="dot-title"><a href="">The Sneaker in VietNam</a></h4>
-                                                <div class="color grey-color">
-                                                    <span>Color:</span>
-                                                    <span>White</span>
-                                                </div>
-                                                <div class="size grey-color">
-                                                    <span>Size:</span>
-                                                    <span>42</span>
-                                                </div>
-                                                <div class="price">$45.00</div>
-                                                <a href="" class="item-remove">
-                                                    <i class="ri-close-line"></i>
-                                                </a>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="grouping">
-                                                <div class="quantity">
-                                                    <div class="control">
-                                                        <button>-</button>
-                                                        <input type="text" value="1">
-                                                        <button>+</button>
-                                                    </div>
-                                                </div>
-                                                <div class="thumbnail">
-                                                    <a href="">
-                                                        <img src="./images/product_04.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="variants">
-                                                <h4 class="dot-title"><a href="">The Sneaker in VietNam</a></h4>
-                                                <div class="color grey-color">
-                                                    <span>Color:</span>
-                                                    <span>White</span>
-                                                </div>
-                                                <div class="size grey-color">
-                                                    <span>Size:</span>
-                                                    <span>42</span>
-                                                </div>
-                                                <div class="price">$45.00</div>
-                                                <a href="" class="item-remove">
-                                                    <i class="ri-close-line"></i>
-                                                </a>
-                                            </div>
-                                        </li>
-
                                     </ul>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="cart-footer">
                             <div class="discount">
@@ -1084,6 +1023,28 @@
         return selectedRating;
     }
 
+    document.querySelector(".decrease").setAttribute("disabled", "disabled");
+    var valueCount
+
+    document.querySelector(".increase").addEventListener("click", function () {
+        valueCount = document.getElementById("quantity").value;
+        valueCount++;
+        document.getElementById("quantity").value = valueCount;
+        if (valueCount > 1) {
+            document.querySelector(".decrease").removeAttribute("disabled");
+            document.querySelector(".decrease").classList.remove("disabled");
+        }
+    })
+    document.querySelector(".decrease").addEventListener("click", function () {
+        valueCount = document.getElementById("quantity").value;
+        valueCount--;
+        document.getElementById("quantity").value = valueCount;
+        if (valueCount == 1) {
+            document.querySelector(".decrease").setAttribute("disabled", "disabled");
+        }
+    })
+
+
 
 
 
@@ -1124,4 +1085,164 @@
             }
         });
     }
+
+    //add to cart
+
+    if (document.readyState == 'loading') {
+        document.addEventListener('DOMContentLoaded', ready)
+    } else {
+        ready()
+    }
+
+    function ready() {
+        var removeCartItemButtons = document.getElementsByClassName('item-remove')
+        for (var i = 0; i < removeCartItemButtons.length; i++) {
+            var button = removeCartItemButtons[i]
+            button.addEventListener('click', removeCartItem)
+        }
+
+        var quantityInputs = document.getElementsByClassName('quantity-input')
+        for (var i = 0; i < quantityInputs.length; i++) {
+            var input = quantityInputs[i]
+            input.addEventListener('change', quantityChanged)
+        }
+
+        var addToCartButtons = document.getElementsByClassName('shop-item-button')
+        for (var i = 0; i < addToCartButtons.length; i++) {
+            var button = addToCartButtons[i]
+            button.addEventListener('click', addToCartClicked)
+        }
+
+        document.getElementsByClassName('secondary-btn')[0].addEventListener('click', purchaseClicked)
+    }
+
+    function quantityChanged(event) {
+        var input = event.target
+        if (isNaN(input.value) || input.value <= 0) {
+            input.value = 1
+        }
+        updateCartTotal()
+    }
+    function removeCartItem(event) {
+        var buttonClicked = event.target;
+        var cartItem = buttonClicked.closest('.cart-header');
+        cartItem.remove();
+        updateCartTotal();
+    }
+
+    function purchaseClicked() {
+        alert('Thank you for your purchase')
+        var cartItems = document.getElementsByClassName('cart-body')[0]
+        while (cartItems.hasChildNodes()) {
+            cartItems.removeChild(cartItems.firstChild)
+        }
+        updateCartTotal()
+    }
+
+    function addToCartClicked(event) {
+        var button = event.target;
+        var shopItem = button.closest('.wrapper');  // Find the closest ancestor with class 'item'
+        if (!shopItem) {
+            console.error('Unable to find the shop item.');
+            return;
+        }
+
+        var titleElement = shopItem.querySelector('.title');
+        var priceElement = shopItem.querySelector('.product-price');
+        var thumbnailElement = shopItem.querySelector('.thumb-wrap');
+
+        if (!titleElement || !priceElement || !thumbnailElement) {
+            console.error('Missing required elements in the shop item.');
+            return;
+        }
+
+        var title = titleElement.innerText;
+        var price = priceElement.innerText;
+        var imageSrc = thumbnailElement.querySelector('img').src;
+
+        addItemToCart(title, price, imageSrc);
+    }
+
+
+
+    function addItemToCart(title, price, imageSrc) {
+        var cartRow = document.createElement('div')
+        cartRow.classList.add('cart-header')
+        var cartItems = document.getElementsByClassName('cart-body')[0]
+        var cartItemNames = cartItems.getElementsByClassName('dot-title')
+        for (var i = 0; i < cartItemNames.length; i++) {
+            if (cartItemNames[i].innerText == title) {
+                alert('This item is already added to the cart')
+                return
+            }
+        }
+        var cartRowContents = `
+       <div class="product-list scrollto">
+                                <div class="wrapper">
+                                    <ul>
+                                        <li>
+                                            <div class="grouping">
+                                                <div class="quantity">
+                                                    <div class="control">
+                                                        <button class="decrease">-</button>
+                                            <input type="text" id="quantity" value="1">
+                                            <button class="increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <div class="thumbnail">
+                                                    <a href="">
+                                                        <img src="${imageSrc}" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="variants">
+                                                <h4 class="dot-title"><a href="">${title}</a></h4>
+                                                <div class="color grey-color">
+                                                    <span>Color:</span>
+                                                    <span>White</span>
+                                                </div>
+                                                <div class="size grey-color">
+                                                    <span>Size:</span>
+                                                    <span>42</span>
+                                                </div>
+                                                <div class="price">${price}</div>
+                                                <button type="primary-btn" class="item-remove">
+                                                    <i class="ri-close-line"></i>
+                                                </button>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>`
+        cartRow.innerHTML = cartRowContents
+        cartItems.append(cartRow)
+        cartRow.getElementsByClassName('item-remove')[0].addEventListener('click', removeCartItem)
+        cartRow.getElementsByClassName('quantity-input')[0].addEventListener('change', quantityChanged)
+    }
+
+    function updateCartTotal() {
+        var cartItemContainer = document.getElementsByClassName('cart-body')[0]
+        var cartRows = cartItemContainer.getElementsByClassName('cart-header')
+        var total = 0
+        for (var i = 0; i < cartRows.length; i++) {
+            var cartRow = cartRows[i]
+            var priceElement = cartRow.getElementsByClassName('price')[0]
+            var quantityElement = cartRow.getElementsByClassName('quantity-input')[0]
+            var price = parseFloat(priceElement.innerText.replace('$', ''))
+            var quantity = quantityElement.value
+            total = total + (price * quantity)
+        }
+        total = Math.round(total * 100) / 100
+        document.getElementsByClassName('value')[0].innerText = '$' + total
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var closeButton = document.querySelector('.close-trigger');
+        var cartMenu = document.getElementById('data-cart');
+
+        closeButton.addEventListener('click', function () {
+            // Thêm hoặc loại bỏ lớp 'active' để ẩn hoặc hiển thị cart-menu
+            cartMenu.classList.toggle('active');
+        });
+    });
 </script>

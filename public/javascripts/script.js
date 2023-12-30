@@ -28,7 +28,7 @@ for (let i = 0; i < triggerOpen.length; i++) {
         // overlay.classList.add('active');
     });
 
-    // targetEl.querySelector('[close-button]').addEventListener('click', openData);
+    targetEl.querySelector('[close-button]').addEventListener('click', openData);
     overlay.forEach(function (overlayItem) {
         overlayItem.addEventListener('click', openData);
     });
@@ -168,50 +168,50 @@ trigger.forEach((btn) => {
 
 
 //search enter
-document.addEventListener("DOMContentLoaded", function () {
-    const searchForm = document.getElementById("searchForm");
-    const closeButton = document.getElementById("closeButton");
-    const productNameInput = document.getElementById("productName");
-    closeButton.addEventListener("click", function () {
-        productNameInput.value = '';
-    });
-    productNameInput.addEventListener("keydown", function (event) {
-        if (event.key === "Enter") {
-            event.preventDefault();
-        }
-    });
+// document.addEventListener("DOMContentLoaded", function () {
+//     const searchForm = document.getElementById("searchForm");
+//     const closeButton = document.getElementById("closeButton");
+//     const productNameInput = document.getElementById("productName");
+//     closeButton.addEventListener("click", function () {
+//         productNameInput.value = '';
+//     });
+//     productNameInput.addEventListener("keydown", function (event) {
+//         if (event.key === "Enter") {
+//             event.preventDefault();
+//         }
+//     });
 
-    searchForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-        const searchTerm = productNameInput.value;
-        console.log("Search term:", searchTerm);
-    });
-});
+//     searchForm.addEventListener("submit", function (event) {
+//         event.preventDefault();
+//         const searchTerm = productNameInput.value;
+//         console.log("Search term:", searchTerm);
+//     });
+// });
 
 function clearForm() {
     var form = document.getElementById("filter_form");
     form.reset();
 }
 
-function selectColor(color) {
-    // Get the clicked color button
-    var selectedButton = document.querySelector('.color-button.' + color);
+// function selectColor(color) {
+//     // Get the clicked color button
+//     var selectedButton = document.querySelector('.color-button.' + color);
 
-    // Check if the button is currently selected
-    var isSelected = selectedButton.classList.contains('selected');
+//     // Check if the button is currently selected
+//     var isSelected = selectedButton.classList.contains('selected');
 
-    // Get all color buttons
-    var colorButtons = document.querySelectorAll('.color-button');
+//     // Get all color buttons
+//     var colorButtons = document.querySelectorAll('.color-button');
 
-    // Deselect all color buttons
-    colorButtons.forEach(function (button) {
-        button.classList.remove('selected');
-        button.style.boxShadow = 'none'; // Remove the box shadow for all buttons
-    });
+//     // Deselect all color buttons
+//     colorButtons.forEach(function (button) {
+//         button.classList.remove('selected');
+//         button.style.boxShadow = 'none'; // Remove the box shadow for all buttons
+//     });
 
-    // If the button was not selected, select it; otherwise, return to the initial state
-    if (!isSelected) {
-        selectedButton.classList.add('selected');
-        selectedButton.style.boxShadow = 'inset 0 0 0 4px var(--white-color)';
-    }
-}
+//     // If the button was not selected, select it; otherwise, return to the initial state
+//     if (!isSelected) {
+//         selectedButton.classList.add('selected');
+//         selectedButton.style.boxShadow = 'inset 0 0 0 4px var(--white-color)';
+//     }
+// }

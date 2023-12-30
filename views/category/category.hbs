@@ -63,9 +63,10 @@
                                                                                             class="ri-star-line"></i></a>
                                                                                 </li>
                                                                                 <li><a href=""><i
-                                                                                            class="ri-arrow-left-right-line"></i></a>
+                                                                                            class="ri-shopping-cart-line"></i></a>
                                                                                 </li>
-                                                                                <li><a href=""><i
+                                                                                <li><a
+                                                                                        href="/product/detail/656c6a79070d4b726e9d9c71"><i
                                                                                             class="ri-eye-line"></i></a>
                                                                                 </li>
                                                                             </ul>
@@ -100,9 +101,10 @@
                                                                                             class="ri-star-line"></i></a>
                                                                                 </li>
                                                                                 <li><a href=""><i
-                                                                                            class="ri-arrow-left-right-line"></i></a>
+                                                                                            class="ri-shopping-cart-line"></i></a>
                                                                                 </li>
-                                                                                <li><a href=""><i
+                                                                                <li><a
+                                                                                        href="/product/detail/656c6fcd070d4b726e9d9c74"><i
                                                                                             class="ri-eye-line"></i></a>
                                                                                 </li>
                                                                             </ul>
@@ -137,9 +139,10 @@
                                                                                             class="ri-star-line"></i></a>
                                                                                 </li>
                                                                                 <li><a href=""><i
-                                                                                            class="ri-arrow-left-right-line"></i></a>
+                                                                                            class="ri-shopping-cart-line"></i></a>
                                                                                 </li>
-                                                                                <li><a href=""><i
+                                                                                <li><a
+                                                                                        href="/product/detail/656c6fcd070d4b726e9d9c74"><i
                                                                                             class="ri-eye-line"></i></a>
                                                                                 </li>
                                                                             </ul>
@@ -424,9 +427,12 @@
                                                         <ul>
                                                             <li><a href=""><i class="ri-star-line"></i></a>
                                                             </li>
-                                                            <li><a href=""><i class="ri-arrow-left-right-line"></i></a>
+                                                            <li><a href=""
+                                                                    onclick="addItemToCart('product/detail/{{this._id}}')"><i
+                                                                        class="ri-shopping-cart-line"></i></a>
                                                             </li>
-                                                            <li><a href=""><i class="ri-eye-line"></i></a>
+                                                            <li><a href="/product/detail/{{this._id}}"><i
+                                                                        class="ri-eye-line"></i></a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -697,7 +703,7 @@
                                         <li>
                                             <!--3 lần-->
 
-                                            <div class="grouping">
+                                            {{!-- <div class="grouping">
                                                 <div class="quantity">
                                                     <div class="control">
                                                         <button>-</button>
@@ -725,8 +731,7 @@
                                                 <a href="" class="item-remove">
                                                     <i class="ri-close-line"></i>
                                                 </a>
-                                            </div>
-
+                                            </div> --}}
                                         </li>
                                     </ul>
                                     {{/each}}
@@ -788,122 +793,142 @@
 
 
 <script>
-    //Filter price
-    function getVals() {
-        // Get slider values
-        let parent = this.parentNode;
-        let slides = parent.querySelectorAll(".range-input");
-        let slide1 = parseFloat(slides[0].value);
-        let slide2 = parseFloat(slides[1].value);
+    //add to cart
 
-        // Cross Range 
-        if (slide1 > slide2) {
-            let tmp = slide2;
-            slide2 = slide1;
-            slide1 = tmp;
-        }
-
-        let displayElement = document.getElementById("range-values");
-        //innerHTML property allows Javascript code to manipulate a website being displayed
-        displayElement.innerHTML = "Min: $" + slide1 + " - Max: $" + slide2;
+    if (document.readyState == 'loading') {
+        document.addEventListener('DOMContentLoaded', ready)
+    } else {
+        ready()
     }
 
-    window.onload = function () {
-        let sliderSections = document.getElementById("range-track");
-        let sliders = sliderSections.querySelectorAll(".range-input");
+    function ready() {
+        var removeCartItemButtons = document.getElementsByClassName('item-remove')
+        for (var i = 0; i < removeCartItemButtons.length; i++) {
+            var button = removeCartItemButtons[i]
+            button.addEventListener('click', removeCartItem)
+        }
 
-        sliders.forEach((slide) => {
-            if (slide.type === "range") {
-                // Change Value Method
-                slide.oninput = getVals;
-                // Initial Value
-                slide.oninput();
+        var quantityInputs = document.getElementsByClassName('quantity-input')
+        for (var i = 0; i < quantityInputs.length; i++) {
+            var input = quantityInputs[i]
+            input.addEventListener('change', quantityChanged)
+        }
+
+        var addToCartButtons = document.getElementsByClassName('ri-shopping-cart-line')
+        for (var i = 0; i < addToCartButtons.length; i++) {
+            var button = addToCartButtons[i]
+            button.addEventListener('click', addToCartClicked)
+        }
+
+        document.getElementsByClassName('secondary-btn')[0].addEventListener('click', purchaseClicked)
+    }
+
+    function quantityChanged(event) {
+        var input = event.target
+        if (isNaN(input.value) || input.value <= 0) {
+            input.value = 1
+        }
+        updateCartTotal()
+    }
+    function removeCartItem(event) {
+        var buttonClicked = event.target
+        buttonClicked.parentElement.parentElement.remove()
+        updateCartTotal()
+    }
+
+    function purchaseClicked() {
+        alert('Thank you for your purchase')
+        var cartItems = document.getElementsByClassName('cart-body')[0]
+        while (cartItems.hasChildNodes()) {
+            cartItems.removeChild(cartItems.firstChild)
+        }
+        updateCartTotal()
+    }
+    function addToCartClicked(event) {
+        var button = event.target;
+        var shopItem = button.closest('.item');  // Find the closest ancestor with class 'item'
+        if (!shopItem) {
+            console.error('Unable to find the shop item.');
+            return;
+        }
+
+        var titleElement = shopItem.querySelector('.dot-title');
+        var priceElement = shopItem.querySelector('.product-price');
+        var thumbnailElement = shopItem.querySelector('.thumbnail');
+
+        if (!titleElement || !priceElement || !thumbnailElement) {
+            console.error('Missing required elements in the shop item.');
+            return;
+        }
+
+        var title = titleElement.innerText;
+        var price = priceElement.innerText;
+        var imageSrc = thumbnailElement.querySelector('img').src;
+
+        addItemToCart(title, price, imageSrc);
+    }
+
+
+    function addItemToCart(title, price, imageSrc) {
+        var cartRow = document.createElement('div')
+        cartRow.classList.add('cart-header')
+        var cartItems = document.getElementsByClassName('cart-body')[0]
+        var cartItemNames = cartItems.getElementsByClassName('dot-title')
+        for (var i = 0; i < cartItemNames.length; i++) {
+            if (cartItemNames[i].innerText == title) {
+                alert('This item is already added to the cart')
+                return
             }
-        });
-    };
-
-    // Lấy phần tử input range
-    const $ = document.querySelector.bind(document)
-    const $$ = document.querySelectorAll.bind(document)
-    const rangeInput = $('#range-price');
-    const submitBtn = $('#primary-btn');
-
-    // handle sort and filter
-
-    let maxPrice = 0;
-    let minPrice = 0;
-    // Thêm sự kiện 'input' để theo dõi sự thay đổi giá trị
-    rangeInput.addEventListener('input', function () {
-        // Lấy giá trị hiện tại từ phần tử input range
-        maxPrice = rangeInput.value;
-        // Hiển thị giá trị trong console hoặc làm cái gì đó với giá trị này
-        console.log('Giá trị hiện tại:', maxPrice);
-    });
-    let currentUrl = new URL(window.location.href);
-
-    const sortSelection = document.getElementById("sort_selection");
-    console.log(sortSelection)
-    sortSelection.addEventListener("change", async function () {
-
-        let selectedValue = sortSelection.value;
-        const parts = selectedValue.split('-');
-        const sortByOrder = parts[1];
-        const sortByField = parts[0];
-        if (currentUrl.searchParams.has('sortByField')) {
-            currentUrl.searchParams.set('sortByField', sortByField);
         }
-        else {
-            currentUrl.searchParams.append('sortByField', sortByField);
+        var cartRowContents = `
+        <div class="grouping">
+                                                <div class="quantity">
+                                                    <div class="control">
+                                                        <button>-</button>
+                                                        <input type="text" id="quantity" class="quantity-input" value="1">
+                                                        <button>+</button>
+                                                    </div>
+                                                </div>
+                                                <div class="thumbnail">
+                                                    <a href="">
+                                                        <img src="${imageSrc}" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="variants">
+                                                <h4 class="dot-title"><a href="">${title}</a></h4>
+                                                <div class="color grey-color">
+                                                    <span>Color:</span>
+                                                    <span>White</span>
+                                                </div>
+                                                <div class="size grey-color">
+                                                    <span>Size:</span>
+                                                    <span>42</span>
+                                                </div>
+                                                <div class="price">Price:${price}</div>
+                                                <a href="" class="item-remove">
+                                                    <i class="ri-close-line"></i>
+                                                </a>
+                                            </div>`
+        cartRow.innerHTML = cartRowContents
+        cartItems.append(cartRow)
+        cartRow.getElementsByClassName('item-remove')[0].addEventListener('click', removeCartItem)
+        cartRow.getElementsByClassName('quantity-input')[0].addEventListener('change', quantityChanged)
+    }
+
+    function updateCartTotal() {
+        var cartItemContainer = document.getElementsByClassName('cart-body')[0]
+        var cartRows = cartItemContainer.getElementsByClassName('cart-header')
+        var total = 0
+        for (var i = 0; i < cartRows.length; i++) {
+            var cartRow = cartRows[i]
+            var priceElement = cartRow.getElementsByClassName('price')[0]
+            var quantityElement = cartRow.getElementsByClassName('quantity-input')[0]
+            var price = parseFloat(priceElement.innerText.replace('$', ''))
+            var quantity = quantityElement.value
+            total = total + (price * quantity)
         }
-
-        if (currentUrl.searchParams.has('sortByOrder')) {
-            currentUrl.searchParams.set('sortByOrder', sortByOrder);
-        }
-        else {
-            currentUrl.searchParams.append('sortByOrder', sortByOrder);
-        }
-        console.log('haha')
-        window.location.href = currentUrl.toString();
-
-
-    })
-
-    submitBtn.addEventListener('click', function () {
-
-
-
-        if (currentUrl.searchParams.has('minPrice')) {
-            currentUrl.searchParams.set('minPrice', minPrice);
-        }
-        else {
-            currentUrl.searchParams.append('minPrice', minPrice);
-        }
-
-        if (currentUrl.searchParams.has('maxPrice')) {
-            currentUrl.searchParams.set('maxPrice', maxPrice);
-        }
-        else {
-            currentUrl.searchParams.append('maxPrice', maxPrice);
-        }
-        console.log(currentUrl.toString());
-        window.location.href = currentUrl.toString();
-
-    });
-
-
-
-    $('.fa-search').addEventListener('click', function () {
-        const tutorName = $('#search-product').value
-        console.log(tutorName)
-        if (currentUrl.searchParams.has('tutorName')) {
-            currentUrl.searchParams.set('tutorName', tutorName);
-        }
-        else {
-            currentUrl.searchParams.append('tutorName', tutorName);
-        }
-        window.location.href = currentUrl.toString();
-
-    });
-
-
+        total = Math.round(total * 100) / 100
+        document.getElementsByClassName('value')[0].innerText = '$' + total
+    }
 </script>
