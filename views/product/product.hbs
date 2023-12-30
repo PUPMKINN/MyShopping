@@ -972,16 +972,16 @@
                                         <li>
                                             <div>
                                                 <input type="radio" class="checker" name="shipping">
-                                                <label for="">Free</label>
+                                                <label for="shipping">Free</label>
                                             </div>
-                                            <span class="value">$0.00</span>
+                                            <span class="free-ship">$0.00</span>
                                         </li>
                                         <li>
                                             <div>
                                                 <input type="radio" class="checker" name="shipping">
-                                                <label for="">Flat</label>
+                                                <label for="shipping">Flat</label>
                                             </div>
-                                            <span class="value">$20.00</span>
+                                            <span class="shipping">$20.00</span>
                                         </li>
                                     </ul>
                                     <li>
@@ -990,7 +990,7 @@
                                     </li>
                                     <li class="total">
                                         <span>Total</span>
-                                        <span class="value">$115.00</span>
+                                        <span class="value-total"></span>
                                     </li>
                                 </ul>
                             </div>
@@ -1098,6 +1098,7 @@
 
     function ready() {
         var removeCartItemButtons = document.getElementsByClassName('item-remove')
+
         for (var i = 0; i < removeCartItemButtons.length; i++) {
             var button = removeCartItemButtons[i]
             button.addEventListener('click', removeCartItem)
@@ -1150,7 +1151,7 @@
         }
 
         var titleElement = shopItem.querySelector('.title');
-        var priceElement = shopItem.querySelector('.product-price');
+        var priceElement = shopItem.querySelector('.current');
         var thumbnailElement = shopItem.querySelector('.thumb-wrap');
 
         if (!titleElement || !priceElement || !thumbnailElement) {
@@ -1164,10 +1165,6 @@
 
         addItemToCart(title, price, imageSrc);
     }
-
-
-
-
 
     function addItemToCart(title, price, imageSrc) {
         var cartRow = createCartItem(title, price, imageSrc);
@@ -1269,10 +1266,14 @@
             var price = parseFloat(priceElement.innerText.replace('$', ''))
             var quantity = quantityElement.value
             total = total + (price * quantity)
+
         }
         total = Math.round(total * 100) / 100
         document.getElementsByClassName('value')[0].innerText = '$' + total
+        document.getElementsByClassName('value-total')[0].innerText = '$' + total
+
     }
+
 
     document.addEventListener('DOMContentLoaded', function () {
         var closeButton = document.querySelector('.close-trigger');
@@ -1283,4 +1284,5 @@
             cartMenu.classList.toggle('active');
         });
     });
+
 </script>

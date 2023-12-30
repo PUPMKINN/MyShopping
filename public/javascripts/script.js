@@ -1,3 +1,40 @@
+// const triggerOpen = document.querySelectorAll('[trigger-button]');
+// const triggerClose = document.querySelectorAll('[close-button]');
+// const overlay = document.querySelectorAll('[data-overlay]');
+// let targetEl;
+
+// const openData = function () {
+//     if (targetEl) {
+//         targetEl.classList.remove('active');
+//         overlay.forEach(item => item.classList.remove('active'));
+//     }
+// };
+
+
+// for (let i = 0; i < triggerOpen.length; i++) {
+//     let currentId = triggerOpen[i].dataset.target,
+//         targetEl = document.querySelector(`#${currentId}`)
+//     const openData = function () {
+//         targetEl.classList.remove('active');
+//         overlay.classList.remove('active');
+//     }
+//     triggerOpen[i].addEventListener('click', function () {
+//         if (targetEl) {
+//             targetEl.classList.add('active');
+//             overlay.forEach(item => item.classList.add('active'));
+//         }
+
+//         // targetEl.classList.add('active');
+//         // overlay.classList.add('active');
+//     });
+
+//     targetEl.querySelector('[close-button]').addEventListener('click', openData);
+//     overlay.forEach(function (overlayItem) {
+//         overlayItem.addEventListener('click', openData);
+//     });
+//     // overlay.addEventListener('click', openData);
+// }
+
 const triggerOpen = document.querySelectorAll('[trigger-button]');
 const triggerClose = document.querySelectorAll('[close-button]');
 const overlay = document.querySelectorAll('[data-overlay]');
@@ -10,31 +47,31 @@ const openData = function () {
     }
 };
 
-
 for (let i = 0; i < triggerOpen.length; i++) {
     let currentId = triggerOpen[i].dataset.target,
-        targetEl = document.querySelector(`#${currentId}`)
+        targetEl = document.querySelector(`#${currentId}`);
+
     const openData = function () {
         targetEl.classList.remove('active');
         overlay.classList.remove('active');
     }
+
     triggerOpen[i].addEventListener('click', function () {
         if (targetEl) {
             targetEl.classList.add('active');
             overlay.forEach(item => item.classList.add('active'));
         }
-
-        // targetEl.classList.add('active');
-        // overlay.classList.add('active');
     });
 
-    targetEl.querySelector('[close-button]').addEventListener('click', openData);
+    targetEl.querySelector('[close-button]').addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent the default behavior (page reload)
+        openData();
+    });
+
     overlay.forEach(function (overlayItem) {
         overlayItem.addEventListener('click', openData);
     });
-    // overlay.addEventListener('click', openData);
 }
-
 
 
 
