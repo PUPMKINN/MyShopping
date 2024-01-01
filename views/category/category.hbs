@@ -239,8 +239,8 @@
                         <h1 class="title">Category</h1>
                     </div>
                     <div class="content">
-                        <div id="sidebar-filter" class="sidebar">
-                            <form action="/category" method="GET" id="filter_form">
+                        <form action="/category" method="GET" id="filter_form">
+                            <div id="sidebar-filter" class="sidebar">
                                 <div class="wrap">
                                     <a href="#0" class="close-trigger" close-button>
                                         <i class="ri-close-line"></i>
@@ -252,6 +252,10 @@
                                                 <label for="size">Size</label>
                                                 <select name="size" id="size">
                                                     <option value="None">None</option>
+                                                    <option value="36">36</option>
+                                                    <option value="37">37</option>
+                                                    <option value="38">38</option>
+                                                    <option value="39">39</option>
                                                     <option value="40">40</option>
                                                     <option value="41">41</option>
                                                     <option value="42">42</option>
@@ -321,6 +325,7 @@
                                                 <span class="rangeValues" id="range-values">
                                                 </span>
                                                 <div class="range-track" id="range-track">
+
                                                     <input type="range" class="range-input" value="100" min="0"
                                                         max="500" step="10">
                                                     <input type="range" class="range-input" value="250" min="100"
@@ -328,17 +333,17 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="button-container" style="margin-top: 20px;">
+                                            <div class="button"><a href="#" class="primary-btn"
+                                                    onclick="clearForm()">Clear</a>
+                                            </div>
+                                            <div class="button"><a href="#" class="primary-btn">Submit</a></div>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="button-container" style="margin-top: 20px;">
-                                    <div class="button"><a href="#" class="primary-btn" onclick="clearForm()">Clear</a>
-                                    </div>
-                                    <div class="button"><a href="#" class="primary-btn">Submit</a></div>
-                                </div>
-                            </form>
-
-                        </div>
+                            </div>
+                        </form>
                         <div class="category-content">
                             <div class="sorter">
                                 <a href="#0" class="menu-trigger" trigger-button data-target="sidebar-filter">
@@ -355,36 +360,6 @@
                                     <span class="grey-color">Showing 9 of 35 results</span>
                                 </div>
                                 <div class="right">
-                                    {{!-- <div class="sort-list">
-                                        <div class="wrap">
-                                            <div class="opt-trigger">
-                                                <span class="value">Default sorting</span>
-                                                <i class="ri-arrow-down-s-line"></i>
-                                            </div>
-                                            <ul>
-                                                <li class="active">
-                                                    <a href="">
-                                                        <selected>Default sorting</selected>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <option value="name-asc">Name A-Z</option>
-                                                </li>
-                                                <li>
-                                                    <option value="name-desc">Name Z-A</option>
-                                                </li>
-                                                <li>
-                                                    <option value="size">Size</option>
-                                                </li>
-                                                <li>
-                                                    <option value="price-asc">Price: Low to High</option>
-                                                </li>
-                                                <li>
-                                                    <option value="price-asc">Price: High to Low</option>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div> --}}
                                     <div class="col-8 col-xl-2 col-lg-2 col-sm-8 wrapper-sort-course">
                                         <select class="form-select" id="sort_selection" aria-label="Sort Course">
                                             <option selected>Sort Products</option>
@@ -396,14 +371,6 @@
                                             <option value="price-asc">Price: Low to High</option>
                                         </select>
                                     </div>
-                                    {{!-- <div class="list-inline">
-                                        <ul>
-                                            <li><a href=""><i class="ri-pause-mini-line"></i></a></li>
-                                            <li><a href=""><i class="ri-list-check-2"></i></a></li>
-                                            <li><a href=""><i class="ri-layout-grid-line"></i></a></li>
-                                            <li><a href=""><i class="ri-layout-masonry-line"></i></a></li>
-                                        </ul>
-                                    </div> --}}
                                 </div>
                             </div>
                             <div class="tabbed">
@@ -427,9 +394,9 @@
                                                         <ul>
                                                             <li><a href=""><i class="ri-star-line"></i></a>
                                                             </li>
-                                                            <li><a href=""
-                                                                    onclick="addItemToCart('product/detail/{{this._id}}')"><i
-                                                                        class="ri-shopping-cart-line"></i></a>
+                                                            <li><a href=""><i class="ri-shopping-cart-line"><button
+                                                                            type="submit"
+                                                                            class="primary-btn shop-item-button"></button></i></a>
                                                             </li>
                                                             <li><a href="/product/detail/{{this._id}}"><i
                                                                         class="ri-eye-line"></i></a>
@@ -441,7 +408,8 @@
                                                 </div>
                                                 <div class="dot-info">
                                                     <h2 class="dot-title"><a
-                                                            href="/product/detail/{{this._id}}">{{this.name}}</a></h2>
+                                                            href="/product/detail/{{this._id}}">{{this.name}}</a>
+                                                    </h2>
                                                     <div class="product-price">
                                                         <span class="before">${{this.price}}</span>
                                                         <span class="current">${{this.discount}}</span>
@@ -453,14 +421,15 @@
                                     </div>
                                 </div>
                                 <div class="pagination">
-                                    <a id="prev_page">
+                                    <a id="prev_page" href="/category?page={{prevPage}}">
                                         < </a>
-                                            <a id="1" href="" class="active">1</a>
-                                            <a id="2" href="">2</a>
-                                            <a id="3" href="">3</a>
-                                            <a id="4" href="">4</a>
-                                            <a id="5" href="">5</a>
-                                            <a id="next_page" href="">></a>
+
+                                            {{#each pages}}
+                                            <a id="{{this}}" href="/category?page={{this}}"
+                                                class="{{#if (eq this ../currentPage)}}active{{/if}}">{{this}}</a>
+                                            {{/each}}
+
+                                            <a id="next_page" href="/category?page={{nextPage}}"> > </a>
                                 </div>
                             </div>
                         </div>
@@ -695,15 +664,12 @@
                             <h3>Shopping cart</h3>
                         </div>
                         <div class="cart-body">
-                            <div class="product-list scrollto">
-
+                            {{!-- <div class="product-list scrollto">
                                 <div class="wrapper">
                                     {{#each productList}}
                                     <ul>
                                         <li>
-                                            <!--3 lần-->
-
-                                            {{!-- <div class="grouping">
+                                            <div class="grouping">
                                                 <div class="quantity">
                                                     <div class="control">
                                                         <button>-</button>
@@ -731,13 +697,12 @@
                                                 <a href="" class="item-remove">
                                                     <i class="ri-close-line"></i>
                                                 </a>
-                                            </div> --}}
+                                            </div>
                                         </li>
                                     </ul>
                                     {{/each}}
                                 </div>
-
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="cart-footer">
                             <div class="discount">
@@ -793,6 +758,96 @@
 
 
 <script>
+
+    //price range
+
+    function getVals() {
+        // Get slider values
+        let parent = this.parentNode;
+        let slides = parent.querySelectorAll(".range-input");
+        let slide1 = parseFloat(slides[0].value);
+        let slide2 = parseFloat(slides[1].value);
+
+        // Cross Range 
+        if (slide1 > slide2) {
+            let tmp = slide2;
+            slide2 = slide1;
+            slide1 = tmp;
+        }
+
+        let displayElement = document.getElementById("range-values");
+        //innerHTML property allows Javascript code to manipulate a website being displayed
+        displayElement.innerHTML = "Min: $" + slide1 + "–––––––Max: $" + slide2;
+    }
+
+    window.onload = function () {
+        let sliderSections = document.getElementById("range-track");
+        let sliders = sliderSections.querySelectorAll(".range-input");
+
+        sliders.forEach((slide) => {
+            if (slide.type === "range") {
+                // Change Value Method
+                slide.oninput = getVals;
+                // Initial Value
+                slide.oninput();
+            }
+        });
+    };
+
+
+    $('.ri-search-eye-line').addEventListener('click', function () {
+        const productName = $('#search-product').value
+        console.log(productName)
+        if (currentUrl.searchParams.has('searchField')) {
+            currentUrl.searchParams.set('searchField', productName);
+        }
+        else {
+            currentUrl.searchParams.append('searchField', productName);
+        }
+        window.location.href = currentUrl.toString();
+
+    });
+    // handle
+    function loadDetail(id) {
+        window.location.href = `/category/${id}`
+    }
+
+    function changePage(page) {
+        if (currentUrl.searchParams.has('page')) {
+            currentUrl.searchParams.set('page', page);
+        }
+        else {
+            currentUrl.searchParams.append('page', page);
+        }
+        window.location.href = currentUrl.toString();
+    }
+
+    const sortSelection = document.getElementById("sort_selection");
+    console.log(sortSelection)
+    sortSelection.addEventListener("change", async function () {
+
+        let selectedValue = sortSelection.value;
+        const parts = selectedValue.split('-');
+        const sortByOrder = parts[1];
+        const sortByField = parts[0];
+        if (currentUrl.searchParams.has('sortByField')) {
+            currentUrl.searchParams.set('sortByField', sortByField);
+        }
+        else {
+            currentUrl.searchParams.append('sortByField', sortByField);
+        }
+
+        if (currentUrl.searchParams.has('sortByOrder')) {
+            currentUrl.searchParams.set('sortByOrder', sortByOrder);
+        }
+        else {
+            currentUrl.searchParams.append('sortByOrder', sortByOrder);
+        }
+        console.log('haha')
+        window.location.href = currentUrl.toString();
+
+
+    })
     //add to cart
 
     if (document.readyState == 'loading') {
@@ -803,6 +858,7 @@
 
     function ready() {
         var removeCartItemButtons = document.getElementsByClassName('item-remove')
+
         for (var i = 0; i < removeCartItemButtons.length; i++) {
             var button = removeCartItemButtons[i]
             button.addEventListener('click', removeCartItem)
@@ -814,7 +870,7 @@
             input.addEventListener('change', quantityChanged)
         }
 
-        var addToCartButtons = document.getElementsByClassName('ri-shopping-cart-line')
+        var addToCartButtons = document.getElementsByClassName('shop-item-button')
         for (var i = 0; i < addToCartButtons.length; i++) {
             var button = addToCartButtons[i]
             button.addEventListener('click', addToCartClicked)
@@ -831,9 +887,10 @@
         updateCartTotal()
     }
     function removeCartItem(event) {
-        var buttonClicked = event.target
-        buttonClicked.parentElement.parentElement.remove()
-        updateCartTotal()
+        var buttonClicked = event.target;
+        var cartItem = buttonClicked.closest('.cart-header');
+        cartItem.remove();
+        updateCartTotal();
     }
 
     function purchaseClicked() {
@@ -844,17 +901,18 @@
         }
         updateCartTotal()
     }
+
     function addToCartClicked(event) {
         var button = event.target;
-        var shopItem = button.closest('.item');  // Find the closest ancestor with class 'item'
+        var shopItem = button.closest('.wrapper');  // Find the closest ancestor with class 'item'
         if (!shopItem) {
             console.error('Unable to find the shop item.');
             return;
         }
 
-        var titleElement = shopItem.querySelector('.dot-title');
-        var priceElement = shopItem.querySelector('.product-price');
-        var thumbnailElement = shopItem.querySelector('.thumbnail');
+        var titleElement = shopItem.querySelector('.title');
+        var priceElement = shopItem.querySelector('.current');
+        var thumbnailElement = shopItem.querySelector('.thumb-wrap');
 
         if (!titleElement || !priceElement || !thumbnailElement) {
             console.error('Missing required elements in the shop item.');
@@ -868,27 +926,39 @@
         addItemToCart(title, price, imageSrc);
     }
 
-
     function addItemToCart(title, price, imageSrc) {
-        var cartRow = document.createElement('div')
-        cartRow.classList.add('cart-header')
-        var cartItems = document.getElementsByClassName('cart-body')[0]
-        var cartItemNames = cartItems.getElementsByClassName('dot-title')
+        var cartRow = createCartItem(title, price, imageSrc);
+        var cartItems = document.getElementsByClassName('cart-body')[0];
+        var cartItemNames = cartItems.getElementsByClassName('dot-title');
+
         for (var i = 0; i < cartItemNames.length; i++) {
             if (cartItemNames[i].innerText == title) {
-                alert('This item is already added to the cart')
-                return
+                alert('This item is already added to the cart');
+                return;
             }
         }
+
+        cartItems.appendChild(cartRow);
+    }
+
+    function createCartItem(title, price, imageSrc) {
+        var cartRow = document.createElement('div');
+        cartRow.classList.add('cart-header');
+
         var cartRowContents = `
-        <div class="grouping">
+        <div class="product-list scrollto">
+                                <div class="wrapper">
+                                    {{#each productList}}
+                                    <ul>
+                                        <li>
+                                            <div class="grouping">
                                                 <div class="quantity">
-                                                    <div class="control">
-                                                        <button>-</button>
-                                                        <input type="text" id="quantity" class="quantity-input" value="1">
-                                                        <button>+</button>
-                                                    </div>
-                                                </div>
+                                <div class="control">
+                                    <button class="decrease">-</button>
+                                    <input type="text" class="quantity-input" value="1">
+                                    <button class="increase">+</button>
+                                </div>
+                            </div>
                                                 <div class="thumbnail">
                                                     <a href="">
                                                         <img src="${imageSrc}" alt="">
@@ -905,16 +975,47 @@
                                                     <span>Size:</span>
                                                     <span>42</span>
                                                 </div>
-                                                <div class="price">Price:${price}</div>
+                                                <div class="price">${price}</div>
                                                 <a href="" class="item-remove">
                                                     <i class="ri-close-line"></i>
                                                 </a>
-                                            </div>`
-        cartRow.innerHTML = cartRowContents
-        cartItems.append(cartRow)
-        cartRow.getElementsByClassName('item-remove')[0].addEventListener('click', removeCartItem)
-        cartRow.getElementsByClassName('quantity-input')[0].addEventListener('change', quantityChanged)
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    {{/each}}
+                                </div>
+                            </div>`;
+
+        cartRow.innerHTML = cartRowContents;
+        cartRow.getElementsByClassName('item-remove')[0].addEventListener('click', removeCartItem);
+        cartRow.getElementsByClassName('quantity-input')[0].addEventListener('change', quantityChanged);
+        cartRow.querySelector(".increase").addEventListener("click", increaseQuantity);
+        cartRow.querySelector(".decrease").addEventListener("click", decreaseQuantity);
+
+        return cartRow;
     }
+
+    function increaseQuantity() {
+        var valueCount = parseInt(this.parentNode.querySelector(".quantity-input").value);
+        valueCount++;
+        this.parentNode.querySelector(".quantity-input").value = valueCount;
+        if (valueCount > 1) {
+            this.parentNode.querySelector(".decrease").removeAttribute("disabled");
+            this.parentNode.querySelector(".decrease").classList.remove("disabled");
+        }
+        updateCartTotal();
+    }
+
+    function decreaseQuantity() {
+        var valueCount = parseInt(this.parentNode.querySelector(".quantity-input").value);
+        valueCount--;
+        this.parentNode.querySelector(".quantity-input").value = valueCount;
+        if (valueCount == 1) {
+            this.setAttribute("disabled", "disabled");
+        }
+        updateCartTotal();
+    }
+
 
     function updateCartTotal() {
         var cartItemContainer = document.getElementsByClassName('cart-body')[0]
@@ -927,8 +1028,25 @@
             var price = parseFloat(priceElement.innerText.replace('$', ''))
             var quantity = quantityElement.value
             total = total + (price * quantity)
+
         }
         total = Math.round(total * 100) / 100
         document.getElementsByClassName('value')[0].innerText = '$' + total
+        document.getElementsByClassName('value-total')[0].innerText = '$' + total
+
     }
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var closeButton = document.querySelector('.close-trigger');
+        var cartMenu = document.getElementById('data-cart');
+
+        closeButton.addEventListener('click', function () {
+            // Thêm hoặc loại bỏ lớp 'active' để ẩn hoặc hiển thị cart-menu
+            cartMenu.classList.toggle('active');
+        });
+    });
+
+
+
 </script>

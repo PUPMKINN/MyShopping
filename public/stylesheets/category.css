@@ -335,15 +335,15 @@ input.checker:checked::after {
 .overlay {
     background-color: var(--dark-color);
     opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+    visibility: hidden !important;
+    pointer-events: none !important;
     z-index: 999;
     transition: opacity .3s, visibility .3s;
 }
 
 .overlay.active {
     opacity: .75;
-    /* visibility: visible; */
+    /* visibility: hidden; */
     pointer-events: all;
 }
 
@@ -2204,6 +2204,7 @@ form .button {
 }
 
 
+
 input[type="range"] {
     -webkit-appearance: none !important;
     width: 20%;
@@ -2234,6 +2235,16 @@ input[type="range"]::-webkit-slider-thumb {
     cursor: pointer;
     -webkit-appearance: none;
     margin-top: -7px;
+}
+
+.rangeValues {
+    display: block;
+    background-color: #212121;
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 15px;
+    margin-bottom: 35px;
 }
 
 .sidebar .price-range {
@@ -2615,6 +2626,8 @@ select#sort_selection {
     .sidebar>.wrap {
         all: unset;
     }
+
+
 
 
 }
