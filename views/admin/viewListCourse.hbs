@@ -3,13 +3,16 @@
 <style>
     @import url(/stylesheets/category.css);
 </style>
+<script type="module" src="/javascripts/swiper-bundle.min.js"></script>
+<script type="module" src="/javascripts/script.js"></script>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Account List</title>
-    <link rel="stylesheet" href="/assetsViewWaitingTutor/styleViewAccountList.css">
+    <link rel="stylesheet" href="/assetsViewWaitingTutor/styleViewListCourse.css">
     <link rel="stylesheet" href="/pagination.css">
+    <script src="/javascripts/script.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
@@ -37,12 +40,12 @@
                     <div class="col-8 col-xl-2 col-lg-2 col-sm-8 wrapper-sort-course">
                         <select class="form-select" id="sort_selection" aria-label="Sort Course">
                             <option selected>Sort accounts</option>
-                            <option value="name-asc">name course, Alphabetically, A-Z</option>
-                            <option value="name-desc">name course, Alphabetically, Z-A</option>
-                            <option value="tutor-asc">tutor, Alphabetically, A-Z</option>
-                            <option value="tutor-desc">tutor, Alphabetically, Z-A</option>
-                            <option value="price-desc">price, expensive to cheap</option>
-                            <option value="price-asc">price, cheap to expensive</option>
+                            <option value="name-asc">Name course, Alphabetically, A-Z</option>
+                            <option value="name-desc">Name course, Alphabetically, Z-A</option>
+                            <option value="tutor-asc">Tutor, Alphabetically, A-Z</option>
+                            <option value="tutor-desc">Tutor, Alphabetically, Z-A</option>
+                            <option value="price-desc">Price, expensive to cheap</option>
+                            <option value="price-asc">Price, cheap to expensive</option>
                         </select>
                     </div>
                 </div>
@@ -54,7 +57,7 @@
                             {{#each courseList}}
                             <div class="item">
                                 <div class="dot-image">
-                                    <a onclick="loadDetail( '{{this._id}}')" class="product-permalink"></a>
+                                    <a onclick="loadDetail('{{this._id}}')" class="product-permalink"></a>
                                     <div class="thumbnail">
                                         <img src="/images/{{this.tutor.avatar}}" alt="">
                                     </div>

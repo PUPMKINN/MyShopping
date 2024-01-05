@@ -34,13 +34,10 @@ const openData = function () {
 for (let i = 0; i < triggerOpen.length; i++) {
     let currentId = triggerOpen[i].dataset.target,
         targetEl = document.querySelector(`#${currentId}`)
-
     const openData = function () {
         targetEl.classList.remove('active');
         overlay.classList.remove('active');
     }
-
-
     triggerOpen[i].addEventListener('click', function () {
         if (targetEl) {
             targetEl.classList.add('active');
@@ -51,11 +48,11 @@ for (let i = 0; i < triggerOpen.length; i++) {
         // overlay.classList.add('active');
     });
 
-    targetEl.querySelector('[close-button]').addEventListener('click', openData);
+    // targetEl.querySelector('[close-button]').addEventListener('click', openData);
     overlay.forEach(function (overlayItem) {
         overlayItem.addEventListener('click', openData);
     });
-    // overlay.addEventListener('click', openData)
+    // overlay.addEventListener('click', openData);
 }
 
 
