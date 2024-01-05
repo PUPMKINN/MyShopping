@@ -277,7 +277,7 @@ const destroyUser = async (req, res, next) => {
 }
 
 const getCoursePage = async (req, res, next) => {
-    const courseList = await Course.find();
+    const courseList = await Course.find().populate('tutor').lean();
     res.render('admin/viewListCourse', {
         courseList: courseList,
         amountOfCourse: courseList.length,
