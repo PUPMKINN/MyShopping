@@ -9,12 +9,14 @@
     <link rel="stylesheet" href="/assets/fonts/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Document</title>
 
+    <title>Document</title>
 </head>
 
 <body>
     <div class="container">
+
+
         <div class="wrapper-header">
             <div class="login-interface row">
                 <div class="col-6  content-login">
@@ -42,9 +44,13 @@
                                 <div class="input">
                                     <i class="ti-lock"></i>
                                     <div class="input-data">
+
+
                                         <input type="password" id="input-password" placeholder="Password"
                                             name="password">
                                     </div>
+
+
                                 </div>
                             </div>
                         </form>
@@ -56,6 +62,9 @@
 
                             <a href="/forget-password" class="text-data forget-password">Forget Password?</a>
                         </div>
+
+
+
                         <div class="btn">
                             <button class="btn-login" onclick="login()">Login Now</button>
                             <button class="btn-create-account">Create Account</button>
@@ -71,10 +80,11 @@
                     </div>
 
                 </div>
-                {{!-- <div class="discriptions col-6">
+                <div class="discriptions col-6">
                     <div class="wrapper-logo">
                         <img class="logo" src="assets\img\logo.png" alt="">
                     </div>
+
                     <div class="wrapper-discriptions">
                         <div class="discription">
                             <div class="header-discription">
@@ -133,12 +143,47 @@
                         </div>
                     </div>
 
-                </div> --}}
+                </div>
             </div>
         </div>
 
 
     </div>
+
+
+
+    </div>
+
+    </div>
+
+    <!-- <img src="your_image.jpg" id="clickableImage" alt="Hình ảnh có thể bấm">
+    
+    <script>
+        // Bắt sự kiện khi hình ảnh được bấm
+        document.getElementById("clickableImage").addEventListener("click", function() {
+            // Chuyển đến trang hoặc tab mới
+            window.location.href = "https://www.example.com"; // Thay thế địa chỉ URL bằng trang mà bạn muốn chuyển đến.
+        });
+    </script> 
+        </div>
+    </div>
+    <- <script>
+        var cbRemember = document.querySelector(".checkbox-remember")
+        cbRemember.addEventListener("change", function () {
+            if (cbRemember.checked) {
+                // Checkbox đã được chọn
+                cbRemember.classList.add("checked");
+                console.log(cbRemember)
+                console.log("check")
+            } else {
+                // Checkbox đã bị bỏ chọn
+                cbRemember.classList.remove("checked");
+                console.log(cbRemember)
+                console.log("uncheck")
+            }
+        });
+    </script>-->
+
     <script>
         var createAccountBtn = document.querySelector('.btn .btn-create-account');
 
