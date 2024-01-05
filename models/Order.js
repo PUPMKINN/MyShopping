@@ -5,49 +5,29 @@ const OrderScheme = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User' // Tham chiếu đến user mà đặt hàng 
     },
-    listItem: [
-        {
-            productId: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'Product',
-            },
-            quantity1: Number
-        }
-    ],
+    courseId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Course', // Tham chiếu đến schema sản phẩm (Product)
+        required: true
+    },
+    desiredGPA: {
+        type: Number,
+        required: [true, 'Please provide desired GPA'],
+    },
+    comment: {
+        type: String,
+        required: [true, 'Please provide comment'],
+    },
     status: {
         type: String,
-        default: "Processing"
+        default: "Subscribing",
     },
-    subTotal: {
-        type: Number,
-        default: 0
-    },
-    discount: {
-        type: Number,
-        default: 0
-    },
-    shipping: {
-        type: Number,
-        default: 0
-    },
-    total: {
-        type: Number,
-        default: 0
-    },
-    phoneNumber: {
-        type: String,
-        required: [true, "Please provide phonenumber"]
-    },
-    fullname: {
-        type: String,
-        maxLength: 20,
-        default: "full name",
-        trim: true,
-    },
-    date: {
+    datePost: {
         type: Date,
         default: Date.now(),
-    },
+    }
+    
+    
 });
 
 

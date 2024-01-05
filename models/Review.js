@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate-v2');
+
 
 const reviewSchema = new mongoose.Schema({
-  productId: {
+  courseId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Product', // Tham chiếu đến schema sản phẩm (Product)
+    ref: 'Course', // Tham chiếu đến schema sản phẩm (Product)
     required: true
   },
   userId: {
@@ -15,29 +17,21 @@ const reviewSchema = new mongoose.Schema({
     type: Number,
     required: true,
     min: 1,
-    max: 5
+    max: 5,
+    required: [true, 'Please chose star rating'],
   },
   comment: {
     type: String,
-  },
-  title: {
-    type: String,
+    required: [true, 'Please provide comment'],
   },
   datePost: {
     type: Date,
     default: Date.now(),
-  },
-  avatar: {
-    type: [String],
-    default: [],
-    validate: {
-        validator: function (value) {
-            return value.every(url => typeof url === 'string' && url.trim().length > 0);
-        },
-        message: 'Invalid image URLs in the list'
-    }
-},
+  }
 });
+
+
+reviewSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('Review', reviewSchema);
 

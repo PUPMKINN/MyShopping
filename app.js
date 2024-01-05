@@ -7,11 +7,10 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const methodOverride = require('method-override');
 const nodemailer = require('nodemailer');
-const { OAuth2Client } = require ('google-auth-library');
-//add facebook
-const facebookRouter = require('./controllers/facebook-auth');
+const { OAuth2Client } = require('google-auth-library');
 
-//var indexRouter = require('./public/javascripts/script');
+const MongoStore = require('connect-mongo');
+
 const route = require('./routes/index');
 const db = require('./config/dbMongo');
 const passport = require('./middlewares/passport');
@@ -21,14 +20,14 @@ const app = express();
 // Connect to DB
 db.connect();
 
-require('dotenv').config();
-
 //Session for registry
 app.use(
   session({
     secret: 'secret',
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: { maxAge: 60 * 60 * 1000 }, // 1 hour
+    store: MongoStore.create({ mongoUrl: 'mongodb+srv://thduy161103:A6DWueoYXaz2NLtO@cluster0.7dzahsd.mongodb.net/TUS?retryWrites=true&w=majority' })
   })
 );
 app.use(flash());
@@ -48,27 +47,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(express.static(path.join(__dirname, '/public')));
-
-
-//Facebook
-// app.use('/auth/facebook', facebookRouter);
-// passport.serializeUser(function (user, cb) {
-//   cb(null, user);
-// });
-// passport.deserializeUser(function (obj, cb) {
-//   cb(null, obj);
-// });
+app.use(express.static(path.join(process.cwd(), 'public')));
 
 route(app);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -79,4 +68,3 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
-

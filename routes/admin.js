@@ -1,54 +1,46 @@
 const express = require("express")
 const router = express.Router();
-//const passport = require("passport");
+const passport = require("passport");
 //require("../middlewares/passportAccessToken.js");
 
 //const checkAdmin = require("../middlewares/authenticationAdmin.js")
-const adminControllers = require("../controllers/AdminController.js");
+const adminController = require("../controllers/AdminController.js");
 
 
-const multerConfig = require("../config/multer.js")
-const multer = require("multer");
+// const multerConfig = require("../config/multer.js")
+// const multer = require("multer");
 
 
-const upload = multerConfig;
+// const upload = multerConfig;
 
-const UploadProduct = upload.fields([
-    { name: 'thumbnail', maxCount: 1 },
-    { name: 'gallery', maxCount: 8 },
-]);
+// const UploadProduct = upload.fields([
+//     { name: 'thumbnail', maxCount: 1 },
+//     { name: 'gallery', maxCount: 8 },
+// ]);
 
 
 
-router.get("/adminhome", adminControllers.getHomePage);
-router.get("/product/:productId", adminControllers.getProductDetail)
+// router.get("/admin/home-page", passport.authenticate('jwt', { session: false }), checkAdmin, adminController.getHomePage);
+// router.get("/admin/product/:productId", passport.authenticate('jwt', { session: false }), checkAdmin, adminControllers.getProductDetail)
 
-router.get("/product", adminControllers.getFormCreateNewProduct)
-router.post("/product", UploadProduct, adminControllers.postANewProduct)
+// router.get("/admin/product", passport.authenticate('jwt', { session: false }), checkAdmin, adminControllers.getFormCreateNewProduct)
+// router.post("/admin/product", passport.authenticate('jwt', { session: false }), checkAdmin, UploadProduct, adminControllers.postANewProduct)
 
-router.get("/productlist", adminControllers.getProductList)
-router.get("/dashboard", adminControllers.getDashBoard)
+// router.get("/admin/productlist", passport.authenticate('jwt', { session: false }), checkAdmin, adminControllers.getProductList)
+// router.get("/admin/dashboard", passport.authenticate('jwt', { session: false }), checkAdmin, adminControllers.getDashBoard)
 
-router.get("/account/edit/:id", adminControllers.getEditUserPage);
-router.put("/account/edit/:id", adminControllers.putEditUserPage);
-router.delete("/account/:id", adminControllers.destroyUser);
-router.get("/account", adminControllers.getAccountPage);
-router.get("/add", adminControllers.getAddProduct);
-router.post("/add", adminControllers.postAddProduct);
-router.get("/calendar", adminControllers.getCalendar);
-//router.get("/change-password", adminControllers.changePassword);
-//router.get("/confirm-password", adminControllers.confirmPassword);
-router.get("/contact", adminControllers.getContact);
-router.get("/delivery/edit/:id", adminControllers.getEditDeliveryPage);
-router.put("/delivery/edit/:id", adminControllers.putEditDeliveryPage);
-router.delete("/delivery/:id", adminControllers.destroyDelivery);
-router.get("/delivery", adminControllers.getDelivery);
-router.get("/product/edit/:id", adminControllers.getEditProductPage);
-router.put("/product/edit/:id", adminControllers.putEditProductPage);
-router.delete("product/:id", adminControllers.destroyProduct);
-router.get("/product", adminControllers.getProductPage);
-router.get("/profile", adminControllers.getProfile);
-router.put("/profile", adminControllers.putEditProfile);
-router.get("/", adminControllers.getHomePage);
+router.get("/waitingTutor/:id", adminController.getDetailTutor);
+router.get("/waitingTutor", adminController.getWaitingListTutor);
+router.get("/accepted/:id", adminController.acceptTutor);
+router.get("/denied/:id", adminController.denyTutor);
 
+router.get("/account/edit/:id", adminController.getEditUserPage);
+router.put("/account/edit/:id", adminController.putEditUserPage);
+router.delete("/account/:id", adminController.destroyUser);
+router.get("/account", adminController.getAccountPage);
+
+router.get("product/edit/:id", adminController.getEditCoursePage);
+router.put("product/edit/:id", adminController.putEditCoursePage);
+router.delete("product/:id", adminController.destroyCourse);
+router.get("/product", adminController.getCoursePage);
 module.exports = router;

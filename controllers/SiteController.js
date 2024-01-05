@@ -1,36 +1,30 @@
-const Product = require("../models/Product");
+const Course = require("../models/Course");
 const { mutipleMongooseToObject } = require("../util/mongoose");
 
 
 // [GET] /home
 const getHomePage = async(req, res, next) => {
-  Product.find({})
-  .then((products) => {
-    res.render("home", {
-      products: mutipleMongooseToObject(products),
-    });
-  })
-  .catch(next);
-    // Product.find({})
+  res.render('home/home');
+    // Course.find({})
     //   .lean()
-    //   .then((Products) => {
-    //     Product.find({}).lean();
-    //     res.render("home", { Products: Products });
+    //   .then((courses) => {
+    //     Course.find({}).lean();
+    //     res.render("home", { courses: courses });
     //   })
     //   .catch((error) => {
     //     next(error);
     //   });
-    // Product.find({}, function (err, Products) {
+    // Course.find({}, function (err, courses) {
     //   if (!err) {
-    //     res.json(Products);
+    //     res.json(courses);
     //   } else {
     //     next(err);
     //     //res.status(400).json({ err: "ERROR!!!" });
     //   }
     // });
     // try {
-    //   const Products = await Product.find({});
-    //   res.json(Products);
+    //   const courses = await Course.find({});
+    //   res.json(courses);
     // } catch (error) {
     //   res.status(400).json({ err: "ERROR!!!" });
     // }
@@ -39,15 +33,9 @@ const getHomePage = async(req, res, next) => {
 
 // [GET] /search
 const search = (req, res) => {
-  res.render("search");
+    res.render("search");
 }
-
-const AboutUs = (req, res) => {
-  res.render("aboutus/aboutus");
-}
-
 module.exports = {
   getHomePage,
-  AboutUs,
   search,
 };

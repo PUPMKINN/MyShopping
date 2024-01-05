@@ -1,14 +1,25 @@
-const meRouter = require("./me");
+const userRouter = require("./user");
+const newsRouter = require("./news");
 const siteRouter = require("./site");
-const productRouter = require("./product");
+const courseRouter = require("./courses");
 const authRouter = require("./auth");
-const categoryRouter = require("./category.js");
 const reviewRouter = require("./review");
-const adminRouter = require("./admin.js");
+const orderRouter = require("./order");
+const tutorRouter = require("./tutor");
+const adminRouter = require("./admin");
+const guestRouter = require("./guest");
+
+
+// /* GET home page. */
+// router.get('/home', function(req, res, next) {
+//   res.render('home/home');
+// });
+
 function route(app) {
   //   app.get("/news", function (req, res) {
   //     res.render("news");
   //   });
+  app.use("/news", newsRouter);
 
   //   app.get("/search", function (req, res) {
   //     console.log(req.query.q);
@@ -22,12 +33,14 @@ function route(app) {
   //   app.get("/", function (req, res) {
   //     res.render("home");
   //   });
-  app.use("/category", categoryRouter);
-  app.use("/user", meRouter);
-  app.use("/product", productRouter);
+  app.use("/admin", adminRouter);
+  app.use("/user", userRouter);
+  app.use("/tutor", tutorRouter);
+  app.use("/courses", courseRouter);
   app.use("/site", siteRouter);
   app.use("/review", reviewRouter);
-  app.use("/admin", adminRouter);
+  app.use("/order", orderRouter);
+  app.use("/guest", guestRouter);
   app.use("/", authRouter);
 }
 
