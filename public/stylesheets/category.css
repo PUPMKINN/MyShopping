@@ -520,11 +520,12 @@ input.checker:checked::after {
 
 .sidebar .close-trigger {
     position: absolute;
+    font-size: 30px;
     top: 0;
     right: -40px;
     width: 40px;
     height: 40px;
-    color: var(--black-color);
+    color: var(--dark-color);
     /*màu button*/
     display: flex;
     align-items: center;
