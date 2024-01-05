@@ -343,11 +343,11 @@ const getHomePage = async (req, res, next) => {
 
     // Apply skip and limit - here skip 0 and limit 4
     userList = userList.slice(0, 4);
-    console.log(userList);
+    //console.log(userList);
 
-
+    const user = await User.findById(req.user._id).lean();
     // console.log(JSON.stringify(reviewList, null, 2));
-    res.render('home/userhome', { user: req.user, layout: 'user', reviewList: reviewList, userList: userList });
+    res.render('home/userhome', { user: user, layout: 'user', reviewList: reviewList, userList: userList });
   } catch (error) {
     console.error(error);
     next(error);
