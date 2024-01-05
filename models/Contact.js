@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const contactSchema = new mongoose.Schema({
-  courseId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Course', // Tham chiếu đến schema sản phẩm (Product)
-    required: true
-  },
+//   productId: {
+//     type: mongoose.Schema.Types.ObjectId,
+//     ref: 'Product', // Tham chiếu đến schema sản phẩm (Product)
+//     required: true
+//   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User', // Tham chiếu đến schema người dùng (User)
@@ -17,13 +17,20 @@ const contactSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    //required: [true, 'Please provide email'],
   },
-  phoneNumber: {
+//   rating: {
+//     type: Number,
+//     required: true,
+//     min: 1,
+//     max: 5
+//   },
+  comment: {
     type: String,
     //required: [true, 'Please provide phone number'],
   },
-  
+//   title: {
+//     type: String,
+//   },
   datePost: {
     type: Date,
     default: Date.now(),

@@ -353,36 +353,32 @@ table.table .avatar {
 }
 
 .pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
     float: right;
-    margin: 0 0 5px;
 }
 
-.pagination li a {
-    border: none;
-    font-size: 13px;
-    min-width: 30px;
-    min-height: 30px;
-    color: #999;
-    margin: 0 2px;
-    line-height: 30px;
-    border-radius: 2px !important;
-    text-align: center;
-    padding: 0 6px;
+.pagination a {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
 }
 
-.pagination li a:hover {
-    color: #666;
+.pagination a:hover {
+    background-color: #ddd;
+    color: black;
 }
 
-
-.pagination li.disabled i {
-    color: #ccc;
-
-}
-
-.pagination li i {
-    font-size: 16px;
-    padding-top: 6px;
+.pagination .active {
+    background-color: #04AA6D;
+    color: white;
 }
 
 .hint-text {
