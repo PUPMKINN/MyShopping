@@ -24,11 +24,11 @@ passport.use(
     }
   })
 );
-  
+
 passport.serializeUser((user, done) => {
   done(null, user._id);
 });
-  
+
 passport.deserializeUser(async (id, done) => {
   try {
     const user = await User.findById(id);
@@ -43,11 +43,11 @@ passport.deserializeUser(async (id, done) => {
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 passport.use(new GoogleStrategy({
-    clientID: process.env.GOOGLE_MAILER_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_MAILER_CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/callback"
-  },
-  async function(accessToken, refreshToken, profile, cb) {
+  clientID: process.env.GOOGLE_MAILER_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_MAILER_CLIENT_SECRET,
+  callbackURL: "http://localhost:3000/auth/google/callback"
+},
+  async function (accessToken, refreshToken, profile, cb) {
     console.log(profile);
     try {
       const user = await User.findOne({ googleId: profile.id });
@@ -86,4 +86,3 @@ passport.use(new GoogleStrategy({
   }
 ));
 module.exports = passport;
-  
