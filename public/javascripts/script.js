@@ -1,3 +1,23 @@
+let menu = document.querySelector('#menu-btn');
+let navbarLinks = document.querySelector('.header .navbar .links');
+
+menu.onclick = () => {
+    menu.classList.toggle('fa-times');
+    navbarLinks.classList.toggle('active');
+}
+
+window.onscroll = () => {
+    menu.classList.remove('fa-times');
+    navbarLinks.classList.remove('active');
+
+    if (window.scrollY > 60) {
+        document.querySelector('.header .navbar').classList.add('active');
+    } else {
+        document.querySelector('.header .navbar').classList.remove('active');
+    }
+}
+
+
 const triggerOpen = document.querySelectorAll('[trigger-button]');
 const triggerClose = document.querySelectorAll('[close-button]');
 const overlay = document.querySelectorAll('[data-overlay]');
@@ -10,34 +30,33 @@ const openData = function () {
     }
 };
 
+
 for (let i = 0; i < triggerOpen.length; i++) {
     let currentId = triggerOpen[i].dataset.target,
         targetEl = document.querySelector(`#${currentId}`)
+
     const openData = function () {
         targetEl.classList.remove('active');
         overlay.classList.remove('active');
     }
+
+
     triggerOpen[i].addEventListener('click', function () {
         if (targetEl) {
             targetEl.classList.add('active');
             overlay.forEach(item => item.classList.add('active'));
         }
+
+        // targetEl.classList.add('active');
+        // overlay.classList.add('active');
     });
 
-    targetEl.querySelector('[close-button]').addEventListener('click', function (event) {
-        event.preventDefault(); // Prevent the default behavior (page reload)
-        openData();
-    });
-
-    // targetEl.querySelector('[close-button]').addEventListener('click', openData);
+    targetEl.querySelector('[close-button]').addEventListener('click', openData);
     overlay.forEach(function (overlayItem) {
         overlayItem.addEventListener('click', openData);
     });
-    // overlay.addEventListener('click', openData);
+    // overlay.addEventListener('click', openData)
 }
-
-
-
 
 
 
@@ -169,63 +188,56 @@ if (sorter) {
 document.addEventListener('DOMContentLoaded', function () {
     var clearButtons = document.querySelectorAll('.clear-button');
 
-trigger.forEach((btn) => {
-    btn.addEventListener('click', function () {
-        let dataTarget = this.dataset.id,
-            body = document.querySelector(`#${dataTarget}`);
-        trigger.forEach((b) => b.parentNode.classList.remove('active'));
-        content.forEach((s) => s.classList.remove('active'));
-        this.parentNode.classList.add('active');
-        body.classList.add('active');
+    clearButtons.forEach(function (clearButton) {
+        clearButton.addEventListener('click', function () {
+            var checkboxes = clearButton.closest('.widget').querySelectorAll('.accord.product-size input[type="checkbox"]');
+            checkboxes.forEach(function (checkbox) {
+                checkbox.checked = false;
+            });
+        });
     });
 });
 
+// var page = 1;
+// const curUrl = new URL(window.location.href);
+// curUrl.pathname = '/products/paging';
 
-//search enter
-document.addEventListener("DOMContentLoaded", function () {
-    const searchForm = document.getElementById("searchForm");
-    const closeButton = document.getElementById("closeButton");
-    const productNameInput = document.getElementById("productName");
-    closeButton.addEventListener("click", function () {
-        productNameInput.value = '';
-    });
-    productNameInput.addEventListener("keydown", function (event) {
-        if (event.key === "Enter") {
-            event.preventDefault();
-        }
-    });
+// const prevPage = document.getElementById("prev_page");
+// const nextPage = document.getElementById("next_page");
 
-    searchForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-        const searchTerm = productNameInput.value;
-        console.log("Search term:", searchTerm);
-    });
-});
+// prevPage.addEventListener("click", async function () {
+//     try {
+//         if (curUrl.searchParams.has('page')) {
+//             if (curUrl.searchParams.get('page') > 1) curUrl.searchParams.set('page', page - 1);
+//         } else {
+//             curUrl.searchParams.append('page', page);
+//         }
+//         console.log(curUrl.toString());
+//     } catch (error) {
+//         console.log(error);
+
+//     }
+
+//     try {
+//         const response = await fetch(curUrl.toString());
+
+//         const htmlContent = await response.text();
+
+//         console.log(htmlContent);
+
+//         if (!response.ok) {
+//             throw new Error(`Network response was not ok: ${response.status}`);
+//         }
+
+//     } catch (error) {
+//         // Handle errors during the fetch
+//         console.error('Fetch error:', error.message);
+//         debugger;
+//     }
+// });
+
 
 function clearForm() {
     var form = document.getElementById("filter_form");
     form.reset();
-}
-
-function selectColor(color) {
-    // Get the clicked color button
-    var selectedButton = document.querySelector('.color-button.' + color);
-
-    // Check if the button is currently selected
-    var isSelected = selectedButton.classList.contains('selected');
-
-    // Get all color buttons
-    var colorButtons = document.querySelectorAll('.color-button');
-
-    // Deselect all color buttons
-    colorButtons.forEach(function (button) {
-        button.classList.remove('selected');
-        button.style.boxShadow = 'none'; // Remove the box shadow for all buttons
-    });
-
-    // If the button was not selected, select it; otherwise, return to the initial state
-    if (!isSelected) {
-        selectedButton.classList.add('selected');
-        selectedButton.style.boxShadow = 'inset 0 0 0 4px var(--white-color)';
-    }
 }
