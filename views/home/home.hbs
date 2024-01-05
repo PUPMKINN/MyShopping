@@ -21,14 +21,8 @@
         <h3>
             Students
         </h3>
-        <a href="#" class="btn">Get consulting</a>
-        <i class="fas fa-play-circle">
-            <a href="#" class="btn">Watching video</a>
-            <div class="video-container">
-                <span class="close">&#10006;</span>
-                <video src="/images/video.mp4" controls></video>
-            </div>
-        </i>
+        <a href="/login" class="btn">Get consulting</a>
+        <a href="/course" class="btn">Watching List Tutor</a>
     </div>
     <div class="image">
         <img src="images/home-logo.svg" alt="">
@@ -336,17 +330,15 @@
 <script>
     const btn = document.querySelector('.btn'); // Corrected the selector for btn
     const videoContainer = document.querySelector('.video-container');
-    const close = document.querySelector('.close');
+    const closing = document.querySelector('.closing');
 
     btn.addEventListener('click', function () {
         videoContainer.classList.add('show');
     });
 
-    close.addEventListener('click', function () {
+    closing.addEventListener('click', function () {
         videoContainer.classList.remove('show');
     });
-
-
 
     lightGallery(document.querySelector('.gallery .gallery-container'));
 </script>
