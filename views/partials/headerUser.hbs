@@ -33,7 +33,7 @@
                 {{!-- <a href="/logout">Logout</a> --}}
             </div>
             <div class="profile-dropdown">
-                {{#each userList as |user|}}
+                {{#each userList}}
                 <div onclick="toggle()" class="profile-dropdown-btn">
                     <div class="profile-img">
                         <img src="/images/{{user.avatar}}" alt="">
