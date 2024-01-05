@@ -33,7 +33,7 @@
                                                 <div class="variants">
                                                     <h4 class="dot-title"><a href="">{{this.name}}</a></h4>
                                                     <div class="price grey-color">
-                                                        <span>Price: {{this.price}} VNĐ</span>
+                                                        <span>Price: {{this.discount}} VNĐ</span>
                                                     </div>
                                                     <div class="schedule">
                                                         <span>{{this.schedule}}</span>
@@ -114,7 +114,7 @@
         window.location.assign(`/courses/clone/${idCourse}`)
     }
     async function deleteCourse(idCourse) {
-        
+
         try {
             const response = await fetch(`/courses/${idCourse}`, {
                 method: 'DELETE',
@@ -240,7 +240,7 @@
             });
 
             numCourse = data.numCourse;
-            
+
 
             pagination.innerHTML = generateTutorPaginationLinks(data.pages, data.currentPage, data.prevPage, data.nextPage, data.namePage);
         } catch (error) {

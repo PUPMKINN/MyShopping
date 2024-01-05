@@ -14,8 +14,6 @@
 <style type="stylesheets">
     @import url(https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css);</style>
 
-
-
 <div id="page" class="page-category">
     <main>
         <div class="section">
@@ -201,8 +199,9 @@
                                                 </div>
                                                 <div class="dot-info">
 
-                                                    <h2 class="dot-title"><a href="">{{this.name}}</a>
-                                                        <h2 class="dot-title"><a href="">{{this.tutor.fullname}}</a>
+                                                    <h2 class="dot-title"><a href="">Môn học: {{this.name}}</a>
+                                                        <h2 class="dot-title"><a href="">Tên giảng viên:
+                                                                {{this.tutor.fullname}}</a>
 
                                                         </h2>
                                                         <i class="ri-star-fill"></i>
@@ -212,8 +211,8 @@
                                                         <i class="ri-star-fill"></i>
 
                                                         <div class="product-price">
-                                                            <span class="before"> {{this.price}}</span>
-                                                            <span class="current">{{this.discount}}</span>
+                                                            <span class="before"> {{this.price}}VNĐ</span>
+                                                            <span class="current">{{this.discount}}VNĐ</span>
                                                         </div>
                                                 </div>
                                             </div>
@@ -227,59 +226,13 @@
                             <div class="pagination">
                                 {{generatePaginationLinks pages currentPage prevPage nextPage role}}
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
     </main>
 </div>
-<section class="footer">
-
-    <div class="box-container">
-
-        <div class="box">
-            <h3>quick links</h3>
-            <a class="link" href="#home"> <i class="fas fa-angle-right"></i> Home</a>
-            <a class="link" href="#about"> <i class="fas fa-angle-right"></i> About</a>
-            <a class="link" href="#"> <i class="fas fa-angle-right"></i>Tutor</a>
-            <a class="link" href="#services"> <i class="fas fa-angle-right"></i>News & Blog</a>
-            <a class="link" href="#contact"> <i class="fas fa-angle-right"></i> Contact</a>
-            <a class="link" href="#"> <i class="fas fa-angle-right"></i> Login</a>
-        </div>
-
-        <div class="box">
-            <h3>contact info</h3>
-            <a href="#" class="link"> <i class="fas fa-phone"></i>0942607590</a>
-            <a href="#" class="link"> <i class="fas fa-phone"></i>0942492722</a>
-            <a href="#" class="link"> <i class="fas fa-envelope"></i> lynhathao.it@gmail.com </a>
-            <a href="#" class="link"> <i class="fas fa-map"></i>227 Nguyễn Văn Cừ, District 5, HCMC</a>
-        </div>
-
-        <div class="box">
-            <h3>Subscribe</h3>
-            <p>Join Our Mailing List & to get our news.</p>
-            <form action="">
-                <input type="email" name="" placeholder="enter your email address" id="" class="email">
-                <input type="submit" value="subscribe" class="btn">
-            </form>
-            <div class="share">
-                <a href="https://www.facebook.com/LNH.1105" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="credit"> © Created by <span>TUS Team</span> | all rights reserved! </div>
-
-</section>
 <script src="./js/script.js"></script>
 
 <script>

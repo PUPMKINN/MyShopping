@@ -24,7 +24,9 @@
 
             <div class="col-6 discription-product">
                 <!-- <div class="category-product">RUNNING SHOES</div> -->
-                <div class="header-product">{{course.tutor.fullname}}-{{course.name}}</div>
+                <div class="header-product">Giảng viên: {{course.tutor.fullname}}</div>
+                <div class="header-product">Môn học: {{course.name}}</div>
+
                 <div class="num-review">
                     <div class="rating">
                         {{course.average}}
@@ -34,14 +36,15 @@
                     ({{amountOfReviews}} Customer Reviews)
                 </div>
                 <div class="wrapper-price-product">
-                    <div class="price-product-current">${{course.discount}}</div>
+                    <div class="price-product-current">{{course.discount}}VNĐ</div>
 
-                    <div class="price-product-origin">$ {{course.price}}</div>
+                    <div class="price-product-origin">$ {{course.price}}VNĐ</div>
 
                     <div class="percent-discount">- {{percent course.discount course.price}}%</div>
                 </div>
 
                 <div class="discription-product">
+                    Mô tả về Khóa học:
                     {{course.description}}
                 </div>
 
@@ -73,34 +76,6 @@
 
             </div>
             <div class=" wrapper-discription ">
-                <!-- handled description: none -->
-                {{!-- <div class=" row description">
-                    <div class="col-6">
-                        <div class="text-header">Description</div>
-                        <div class="text-content">Keep your home organized, yet elegant with storage cabinets by
-                            Onita Patio Furniture. These cabinets not only make a great storage units, but also
-                            bring a great decorative accent to your decor. Traditionally designed, they are perfect
-                            to be used in the hallway, living room, bedroom, office or any place where you need to
-                            store or display things. Made of high quality materials, they are sturdy and durable for
-                            years. Bring one-of-a-kind look to your interior with furniture from Onita Furniture!
-                        </div>
-
-
-
-
-                    </div>
-
-                    <div class="col-6">
-                        <div class="text-header">About This Products</div>
-                        <ul class="text-content">
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Nulla luctus libero quis mauris vestibulum dapibus.</li>
-                            <li>Maecenas ullamcorper erat mi, vel consequat enim suscipit at.</li>
-                            <li>Quisque consectetur nibh ac urna molestie scelerisque.</li>
-                            <li>Mauris in nisl scelerisque massa consectetur pretium sed et mauris.</li>
-                        </ul>
-                    </div>
-                </div> --}}
                 <div class="header relative">Relative Course</div>
                 <div class="features">
 
@@ -448,7 +423,7 @@
                             });
 
                             userReviews.innerHTML = `${html}`;
-                            
+
                             generatePaging(pages, currentPage, prevPage, nextPage);
 
                         })

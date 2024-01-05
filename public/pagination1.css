@@ -7,7 +7,7 @@
 
 .pagination a {
     color: black;
-    text-decoration: none;
+    text-decoration: none !important;
     padding: 8px 15px;
     display: inline-block;
 }

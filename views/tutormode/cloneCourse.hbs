@@ -58,12 +58,12 @@
             <p class="wrapper-input">
                 <label for="school">Student Course:</label>
                 <select name="school" id="school" check>
-                    <option value="none" {{#if (eq course.studentCourse 'none')}}selected{{/if}}>None</option>
-                    <option value="K19" {{#if (eq course.studentCourse 'K19')}}selected{{/if}}>K19</option>
-                    <option value="K20" {{#if (eq course.studentCourse 'K20')}}selected{{/if}}>K20</option>
-                    <option value="K21" {{#if (eq course.studentCourse 'K21')}}selected{{/if}}>K21</option>
-                    <option value="K22" {{#if (eq course.studentCourse 'K22')}}selected{{/if}}>K22</option>
-                    <option value="K23" {{#if (eq course.studentCourse 'K23')}}selected{{/if}}>K23</option>
+                    <option value="none" {{#if (eq course.studentCourse 'none' )}}selected{{/if}}>None</option>
+                    <option value="K19" {{#if (eq course.studentCourse 'K19' )}}selected{{/if}}>K19</option>
+                    <option value="K20" {{#if (eq course.studentCourse 'K20' )}}selected{{/if}}>K20</option>
+                    <option value="K21" {{#if (eq course.studentCourse 'K21' )}}selected{{/if}}>K21</option>
+                    <option value="K22" {{#if (eq course.studentCourse 'K22' )}}selected{{/if}}>K22</option>
+                    <option value="K23" {{#if (eq course.studentCourse 'K23' )}}selected{{/if}}>K23</option>
                 </select>
             </p>
 
@@ -71,6 +71,12 @@
                 <label for="price">Price:</label>
                 <input type="text" id="price" name="price" placeholder="Enter your price/ Week" value="{{course.price}}"
                     required>
+            </p>
+
+            <p class="wrapper-input">
+                <label for="discount">Price after discount:</label>
+                <input type="text" id="discount" name="discount" placeholder="Enter your price discount"
+                    value="{{course.discount}}" required>
             </p>
 
             <p class="wrapper-input">
@@ -138,6 +144,8 @@
             'faculty': $('#faculty').value,
             'studentCourse': $('#school').value,
             'price': $('#price').value,
+            'discount': $('#discount').value,
+
             'description': $('#description').value,
 
         };

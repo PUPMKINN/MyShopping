@@ -23,7 +23,11 @@
         </h3>
         <a href="#" class="btn">Get consulting</a>
         <i class="fas fa-play-circle">
-            <a class="btn">Watching video</a>
+            <a href="#" class="btn">Watching video</a>
+            <div class="video-container">
+                <span class="close">&#10006;</span>
+                <video src="/images/video.mp4" controls></video>
+            </div>
         </i>
     </div>
     <div class="image">
@@ -330,5 +334,19 @@
 <script src="js/script.js"></script>
 
 <script>
+    const btn = document.querySelector('.btn'); // Corrected the selector for btn
+    const videoContainer = document.querySelector('.video-container');
+    const close = document.querySelector('.close');
+
+    btn.addEventListener('click', function () {
+        videoContainer.classList.add('show');
+    });
+
+    close.addEventListener('click', function () {
+        videoContainer.classList.remove('show');
+    });
+
+
+
     lightGallery(document.querySelector('.gallery .gallery-container'));
 </script>

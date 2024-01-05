@@ -79,6 +79,11 @@
                 <input type="text" id="price" name="price" placeholder="Enter your price/ Week" value="{{course.price}}"
                     required>
             </p>
+            <p class="wrapper-input">
+                <label for="discount">Price discount:</label>
+                <input type="text" id="discount" name="discount" placeholder="Enter your price discount"
+                    value="{{course.discount}}" required>
+            </p>
 
             <p class="wrapper-input">
                 <label for="description">Description:</label>
@@ -96,7 +101,7 @@
             </p>
 
             <p class="wrapper-input">
-                <button class="btn" id="btn-submit" type="submit">Edit Course</button>
+                <button class="btn" id="btn-submit" type="submit">Save Changes</button>
             </p>
         </form>
     </div>
@@ -108,52 +113,6 @@
 </section>
 
 <!--body section ends -->
-<!-- footer section starts  -->
-
-<section class="footer">
-
-    <div class="box-container">
-
-        <div class="box">
-            <h3>quick links</h3>
-            <a class="link" href="#home"> <i class="fas fa-angle-right"></i> Home</a>
-            <a class="link" href="#about"> <i class="fas fa-angle-right"></i> About</a>
-            <a class="link" href="./category.hbs"> <i class="fas fa-angle-right"></i>Tutor</a>
-            <a class="link" href="#services"> <i class="fas fa-angle-right"></i>News & Blog</a>
-            <a class="link" href="#contact"> <i class="fas fa-angle-right"></i> Contact</a>
-            <a class="link" href="#"> <i class="fas fa-angle-right"></i> Login</a>
-        </div>
-
-        <div class="box">
-            <h3>contact info</h3>
-            <a href="#" class="link"> <i class="fas fa-phone"></i>0942607590</a>
-            <a href="#" class="link"> <i class="fas fa-phone"></i>0942492722</a>
-            <a href="#" class="link"> <i class="fas fa-envelope"></i> lynhathao.it@gmail.com </a>
-            <a href="#" class="link"> <i class="fas fa-map"></i>227 Nguyễn Văn Cừ, District 5, HCMC</a>
-        </div>
-
-        <div class="box">
-            <h3>Subscribe</h3>
-            <p>Join Our Mailing List & to get our news.</p>
-            <form action="">
-                <input type="email" name="" placeholder="enter your email address" id="" class="email">
-                <input type="submit" value="subscribe" class="btn">
-            </form>
-            <div class="share">
-                <a href="https://www.facebook.com/LNH.1105" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="credit"> © Created by <span>TUS Team</span> | all rights reserved! </div>
-
-</section>
-
-<!-- footer section ends -->
 
 <script>
     const $ = document.querySelector.bind(document)
@@ -207,6 +166,7 @@
             'faculty': $('#faculty').value,
             'studentCourse': $('#school').value,
             'price': $('#price').value,
+            'discount': $('#discount').value,
             'description': $('#description').value,
             'status': $('#status').value,
         };

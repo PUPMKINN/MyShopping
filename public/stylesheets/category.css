@@ -34,7 +34,7 @@ body {
 
 a {
     text-decoration: none;
-    color: inherit;
+    color: inherit !important;
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -1559,7 +1559,7 @@ i.fas.fa-play-circle {
 
 .input-box {
     position: relative;
-   
+
     max-width: 900px;
     width: 100%;
     background: #fff;
@@ -1616,6 +1616,3 @@ i.fas.fa-play-circle {
 .input-box .button:active {
     transform: translateY(-50%) scale(0.98);
 }
-
-
-
