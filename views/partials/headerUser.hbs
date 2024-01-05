@@ -1,5 +1,9 @@
 <style>
-    @import url(/stylesheets/category.css);
+    @import url(/stylesheets/userhome.css);
+</style>
+
+<style>
+    @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css);
 </style>
 
 <header class="header">
@@ -25,11 +29,62 @@
                 <a href="/user/courses">Tutor</a>
                 <a href="/user/userMode" class="btn">USER MODE</a>
                 <a href="/user">Contact Us</a>
-                <a href="/user/premium" class="btn">Become A Tutor</a>
-                <a href="/logout">Logout</a>
+                {{!-- <a href="/user/premium" class="btn">Become A Tutor</a> --}}
+                {{!-- <a href="/logout">Logout</a> --}}
+            </div>
+            <div class="profile-dropdown">
+                <div onclick="toggle()" class="profile-dropdown-btn">
+                    <div class="profile-img">
+                        <img src="/images/{{this.user.avatar}}" alt="">
+                    </div>
+                </div>
+
+                <ul class="profile-dropdown-list">
+                    <li class="profile-dropdown-list-item">
+                        <a href="/user/profile">
+                            <i class="fa-solid fa-user"></i>
+                            Edit Profile
+                        </a>
+                    </li>
+
+                    <li class="profile-dropdown-list-item">
+                        <a href="/user/premium">
+                            <i class="fa-solid fa-list"></i>
+                            Become tutor
+                        </a>
+                    </li>
+                    <li class="profile-dropdown-list-item">
+                        <a href="/user/userMode">
+                            <i class="fa-solid fa-list"></i>
+                            User Modes
+                        </a>
+                    </li>
+                    <hr />
+
+                    <li class="profile-dropdown-list-item">
+                        <a href="/logout">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            Log out
+                        </a>
+                    </li>
+                </ul>
             </div>
 
             <div id="menu-btn" class="fa fa-bars"></div>
 
     </nav>
 </header>
+
+<script>
+    lightGallery(document.querySelector('.gallery .gallery-container'));
+    let profileDropdownList = document.querySelector(".profile-dropdown-list");
+    let btn = document.querySelector(".profile-dropdown-btn");
+
+    const toggle = () => profileDropdownList.classList.toggle("active");
+
+    window.addEventListener("click", function (e) {
+        if (!btn.contains(e.target) && !profileDropdownList.contains(e.target)) {
+            profileDropdownList.classList.remove("active");
+        }
+    });
+</script>
