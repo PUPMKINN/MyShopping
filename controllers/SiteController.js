@@ -1,4 +1,5 @@
 const Course = require("../models/Course");
+const User = require("../models/User");
 const { mutipleMongooseToObject } = require("../util/mongoose");
 
 
@@ -38,11 +39,13 @@ const search = (req, res) => {
 
 const aboutUs = (req, res) => {
   let role;
+  let user;
   if (req.user) {
+    user = User.findById(req.user._id).lean();
     role = req.user.role;
   }
   else role = "guest";
-  res.render("aboutUs", { layout: role });
+  res.render("aboutUs", { layout: role, user: user });
 }
 module.exports = {
   getHomePage,
