@@ -47,53 +47,26 @@
                 <h3 class="main--title">User information</h3>
                 <div class="profile-account">
                     <div class="img-account">
-                        <img class="img-detail" src="/images/{{tutor.tutorId.avatar}}" alt="">
+                        <img class="img-detail" src="/images/{{user.avatar}}" alt="">
                     </div>
                     <div class="information-account">
-                        <div class="name-account">name: {{tutor.tutorId.username}}</div>
+                        <div class="name-account">name: {{user.username}}</div>
                         <div class="email-account">
                             <i class="fa-solid fa-envelope"></i>
-                            <span>{{tutor.tutorId.email}}</span>
-                        </div>
-                        <div class="phone-account">
-                            <i class="fa-solid fa-money-check-dollar"></i>
-                            <span>{{tutor.price}}</span>
+                            <span>{{user.email}}</span>
                         </div>
                         <div class="address-account">
                             <i class="fa-solid fa-graduation-cap"></i>
-                            <span>{{tutor.tutorId.school}}</span>
+                            <span>{{user.school}}</span>
                         </div>
 
 
-
-                    </div>
-                    <div class="information-expenditure-account">
-
-                        <div class="voucher-account">
-
-                            <span>GPA: {{tutor.tutorId.GPA}}</span>
-                        </div>
-                        <div class="favourite-account">
-                            <i class="bi bi-chat"></i>
-                            <span>comment: {{tutor.comment}}</span>
-                        </div>
 
                     </div>
                     <div class="wrapper-control-access-account">
-                        <button class="ban-account" id="deny-tutor">Deny to tutor </button>
-                        <button class="unban-account" id="accept-tutor">Accept to tutor</button>
+                        <button class="ban-account" id="deny-tutor">Ban</button>
+                        <button class="unban-account" id="accept-tutor">Unban</button>
                     </div>
-                </div>
-
-
-            </div>
-            <div class="wrapper-activities-expenditure-account">
-                <div class="expenditure-account-container">
-                    <h3 class="main--title">Image GPA</h3>
-
-
-                    <img src="/images/{{tutor.tutorId.GPAfile}}" alt="">
-
                 </div>
 
 
@@ -113,7 +86,7 @@
 
 
     acceptTutor.addEventListener('click', function () {
-        const apiUrl = `/admin/accepted/${id}`;
+        const apiUrl = `/admin/unban/${id}`;
         fetch(apiUrl, {
             method: 'GET', // Use the GET method
             headers: {
@@ -148,7 +121,7 @@
             });
     });
     denyTutor.addEventListener('click', function () {
-        const apiUrl = `/admin/denied/${id}`;
+        const apiUrl = `/admin/ban/${id}`;
         fetch(apiUrl, {
             method: 'GET', // Use the GET method
             headers: {

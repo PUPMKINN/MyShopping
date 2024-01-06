@@ -7,15 +7,18 @@ const User = require("../models/User.js");
 const Review = require("../models/Review.js");
 const Course = require("../models/Course.js");
 const BeTutor = require("../models/BeTutor.js");
+const Order = require("../models/Order.js");
 
 
 //Service
-const courseService = require("../services/product.js")
+const CourseService = require("../services/product");
+const UserService = require("../services/user");
 const { mongooseToObject, mutipleMongooseToObject } = require("../util/mongoose");
 
 //const { use } = require("passport");
 //const jwt = require("jsonwebtoken");
 const { sendMail } = require("./mailAPI.js");
+const { validationResult } = require("express-validator");
 
 
 
@@ -23,126 +26,72 @@ require('dotenv').config();
 
 const getHomePage = async (req, res, next) => {
     try {
-        const courseName = req.query.courseName;
-        const catalogId = req.query.catalogId;
-        const minPrice = req.query.minPrice;
-        const maxPrice = req.query.maxPrice;
-        const manufacturer = req.query.manufacturer;
-        const sortByField = req.query.sortByField;
-        const sortByOrder = req.query.sortByOrder;
-
-        const courseList = await courseService.PrfilteredAndSortedcourses(courseName, catalogId, manufacturer, minPrice, maxPrice, sortByField, sortByOrder);
-        if (courseList) {
-            res.render("HomePage_1.ejs", { courseList: courseList });
-        }
-        else {
-            res.status(404).json({ message: "Not found" });
-        }
-
-    } catch (error) {
+        const reviewList = await Review.aggregate([
+          {
+            $lookup: {
+              from: "users",
+              localField: "userId",
+              foreignField: "_id",
+              as: "user"
+            }
+          },
+          {
+            $unwind: "$user"
+          },
+          {
+            $lookup: {
+              from: "courses",
+              localField: "courseId",
+              foreignField: "_id",
+              as: "course"
+            }
+          },
+          {
+            $unwind: "$course"
+          },
+          {
+            $project: {
+              courseId: 1,
+              userId: 1,
+              rating: 1,
+              comment: 1,
+              datePost: 1,
+              commentLength: { $strLenCP: "$comment" },
+              user: 1, // include all fields from the user document
+              course: 1 // include all fields from the course document
+            }
+          },
+          {
+            $sort: { rating: -1, commentLength: -1 }
+          }
+        ]).limit(3);
+    
+        const tutors = await User.find({ role: 'tutor' });
+        let userList = await Promise.all(tutors.map(async (tutor) => {
+          let averageRating = await UserService.getAverageRatingForTutor(tutor._id.toString());
+          //console.log(averageRating);
+          return {
+            ...tutor.toObject(),
+            averageRating: averageRating ? averageRating.averageRating : 0
+          };
+        }));
+        // Sort the userList based on averageRating in descending order
+        userList.sort((a, b) => b.averageRating - a.averageRating);
+    
+        // Apply skip and limit - here skip 0 and limit 4
+        userList = userList.slice(0, 4);
+        console.log(userList);
+    
+    
+        // console.log(JSON.stringify(reviewList, null, 2));
+        res.render('home/tutorhome', { user: req.user, layout: 'admin', reviewList: reviewList, userList: userList });
+      } catch (error) {
+        console.error(error);
         next(error);
-    }
+      }
 }
 
 
-const getDashBoard = (req, res, next) => {
-    try {
-        const user = req.user;
-        res.render("DashBoardAdmin.ejs");
-    }
-    catch {
-        next(error);
-    }
-}
-
-const getcourseDetail = async (req, res, next) => {
-    try {
-
-        const courseId = req.params.courseId;
-
-        const { courseInfo, relatedcourses, courseReviews } = await courseService.getAncourseDetail(courseId);
-
-
-        if (courseInfo) {
-
-            // Render file in here! Pleases!!!!!!!!!
-
-            res.status(200).json({ courseInfo, relatedcourses, courseReviews });
-        }
-        else {
-            res.status(404).json({ message: "Not found" });
-        }
-    }
-    catch (error) {
-        console.log(error);
-        next(error);
-    }
-}
-
-const getFormCreateNewcourse = (req, res, next) => {
-    try {
-
-        res.render("CreateNewcourse.ejs");
-    }
-    catch (error) {
-        console.log(error);
-        next(error);
-    }
-}
-
-
-
-const postANewcourse = async (req, res, next) => {
-    if (!req.files) {
-        return res.status(400).json({ error: "No file uploaded" });
-    }
-    try {
-        const course = {};
-        const { thumbnail, gallery } = await courseService.saveFileAndGetUrlFromThumbnailAndGallery(req.files);
-
-        course.thumbnail = thumbnail;
-        course.gallery = gallery;
-        course.catalogId = new mongoose.Types.ObjectId(req.body.catalogId);
-        course.name = req.body.name;
-        course.price = req.body.price;
-        course.description = req.body.description;
-        course.discount = req.body.discount;
-        course.status = req.body.status;
-        course.manufacturer = req.body.manufacturer;
-
-        const newcourse = new course(course);
-        await newcourse.save();
-        res.status(201).json({ message: "Create course successfully", newcourse });
-
-    }
-    catch (error) {
-        console.log(error);
-        next(error);
-    }
-}
-
-const getcourseList = async (req, res, next) => {
-    try {
-        const courseName = req.query.courseName;
-        const catalogId = req.query.catalogId;
-        const minPrice = req.query.minPrice;
-        const maxPrice = req.query.maxPrice;
-        const manufacturer = req.query.manufacturer;
-        const sortByField = req.query.sortByField;
-        const sortByOrder = req.query.sortByOrder;
-
-        const courseList = await courseService.PrfilteredAndSortedcourses(courseName, catalogId, manufacturer, minPrice, maxPrice, sortByField, sortByOrder);
-        if (courseList) {
-            res.render("Admincourses.ejs", { courseList: courseList });
-        }
-        else {
-            res.status(404).json({ message: "Not found" });
-        }
-
-    } catch (error) {
-        next(error);
-    }
-}
 //[GET] /admin/waitingTutor?page=*
 const getWaitingListTutor = async (req, res, next) => {
     //tính toán phân trang
@@ -244,18 +193,65 @@ const denyTutor = async (req, res, next) => {
 
 const getAccountPage = async (req, res, next) => {
     // 1 list user, amount of user
-    const userList = await User.find();
-    res.render('admin/account/admin-account', {
-        userList: userList,
-        amountOfUser: userList.length,
-    });
-}
-const getEditUserPage = async (req, res, next) => {
-    const user = await User.findById(req.params.id);
-    res.render("", {
-        user: user,
+    //tính toán phân trang
+    const pageSize = 12;
+    const userListFull = await User.find({ role: { $in: ["user", "tutor"] } });
+    const totalTutor = userListFull.length;
+    const totalPages = Math.ceil(totalTutor / pageSize);
+    const pageNumber = parseInt(req.query.page) || 1;
+    const skipAmount = (pageNumber - 1) * pageSize;
+    const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+    const currentPage = Math.max(1, Math.min(totalPages, pageNumber));
+    var nextPage = currentPage + 1; if (nextPage > totalPages) nextPage = totalPages;
+    var prevPage = currentPage - 1; if (prevPage < 1) prevPage = 1;
+    const userList = await User.find({ role: { $in: ["user", "tutor"] } }).skip(skipAmount).limit(pageSize);
+    console.log(userList);
+
+    res.render('admin/viewListAccount', {
+        userList: mutipleMongooseToObject(userList),
+        amountTutor: userList.length,
+        pages: pages,
+        prevPage: prevPage,
+        currentPage: currentPage,
+        nextPage: nextPage,
+        layout: 'admin',
     })
 }
+const getEditUserPage = async (req, res, next) => {
+    const user = await User.findById(req.params.id).lean();
+    res.render("admin/detailUser", {
+        user: user,
+        layout: "admin"
+    })
+}
+const banUser = async (req, res, next) => {
+    try {
+        const user = await User.findById(req.params.id);
+        if (!user) {
+            return res.status(404).json({ error: 'Không tìm thấy thông tin' });
+        }
+        user.ban = true;
+        await user.save();
+        return res.status(200).json({ msg: 'Ban thành công!' });
+
+    } catch (error) { 
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+const unbanUser = async (req, res, next) => {
+    try {
+        const user = await User.findById(req.params.id);
+        if (!user) {
+            return res.status(404).json({ error: 'Không tìm thấy thông tin' });
+        }
+        user.ban = false;
+        await user.save();
+        return res.status(200).json({ msg: 'Unban thành công!' });
+
+    } catch (error) { 
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
+}       
 const putEditUserPage = async (req, res, next) => {
     const result = validationResult(req);
     if (!result.isEmpty()) {
@@ -277,18 +273,83 @@ const destroyUser = async (req, res, next) => {
 }
 
 const getCoursePage = async (req, res, next) => {
-    const courseList = await Course.find().populate('tutor').lean();
-    res.render('admin/viewListCourse', {
-        courseList: courseList,
-        amountOfCourse: courseList.length,
+        try {
+          const searchField = req.query.searchField;
+          const courseName = req.query.courseName;
+          const tutorName = req.query.tutorName;
+          const faculty = req.query.faculty;
+          const studentCourse = req.query.studentCourse;
+          const average = req.query.average;
+          const minPrice = req.query.minPrice;
+          const maxPrice = req.query.maxPrice;
+          const sortByField = req.query.sortByField;
+          const sortByOrder = req.query.sortByOrder;
+      
+      
+          const pageSize = 12;
+          //filter thay vào trên đây (filter xong lấy ra coursesFull, courses)
+          const coursesFull = await CourseService.filteredAndSorted(
+            searchField, courseName, tutorName, faculty, studentCourse, average, minPrice, maxPrice, sortByField, sortByOrder
+          );
+          const totalCourses = coursesFull.length;
+          const totalPages = Math.ceil(totalCourses / pageSize);
+          const pageNumber = parseInt(req.query.page) || 1;
+          const skipAmount = (pageNumber - 1) * pageSize;
+          const courses = await CourseService.filteredSortedPaging(
+            searchField, courseName, tutorName, faculty, studentCourse, average, minPrice, maxPrice, sortByField, sortByOrder, skipAmount, pageSize
+          );
+          const role = "admin"
+          const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+          const currentPage = Math.max(1, Math.min(totalPages, pageNumber));
+          var nextPage = currentPage + 1; if (nextPage > totalPages) nextPage = totalPages;
+          var prevPage = currentPage - 1; if (prevPage < 1) prevPage = 1;
+          console.log(courses.length);
+      
+          res.render('admin/category', {
+            courses: courses,
+            pages: pages,
+            prevPage: prevPage,
+            currentPage: currentPage,
+            nextPage: nextPage,
+            role: role,
+            layout: 'admin',
+      
+          });
+        } catch (error) {
+          console.error('Error fetching courses:', error);
+          next(error);
+        }
+}
+const getCreateCoursePage = async (req, res, next) => {
+  const user = await User.findById(req.user._id).populate('avatar').lean();
+    res.render("admin/createCourse", {
+        user: user,
+        layout: 'admin',
     })
+}
+const postCreateCoursePage = async (req, res, next) => {
+    const result = validationResult(req);
+    if (!result.isEmpty()) {
+        res.status(400).json({ errors: result.array() });
+        return;
+    }
+    const formData = req.body;
+    formData.tutor = req.user._id;
+    const course = new Course(formData);
+    course.save()
+        .then(() => res.status(200).json({ success: true, redirectUrl: '/admin', msg: "Tạo khóa học thành công!" }))
+        .catch(next);
 }
 const getEditCoursePage = async (req, res, next) => {
     //Edit sản phẩm 
-    const course = await Course.findById(req.params.id)
-    res.render('admin/edit/edit', {
-        course: course,
-    })
+    Course.findById(req.params.id).populate('tutor')
+    .then((course) =>
+        res.render("admin/editCourse", {
+        course: mongooseToObject(course),
+        layout: 'admin',
+        })
+    )
+    .catch(next);
 }
 const putEditCoursePage = async (req, res, next) => {
     const result = validationResult(req);
@@ -312,13 +373,44 @@ const destroyCourse = async (req, res, next) => {
         });
 }
 
+const profile = async (req, res, next) => {
+    try {
+      const userId = req.user._id;
+  
+      // Tìm user trong database dựa vào userId
+      const user = await User.findById(userId).populate('avatar');
+  
+      if (!user) {
+        return res.status(404).json({ success: false, error: 'User not found' });
+      }
+      console.log(user)
+  
+      res.render('tutormode/editprofile', { user: mongooseToObject(user), layout: 'admin', });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ success: false, error: 'Internal Server Error' });
+    }
+}
+const editProfile = async (req, res, next) => {
+    const result = validationResult(req);
+    if (!result.isEmpty()) {
+      res.status(400).json({ errors: result.array() });
+      return;
+    }
+    try {
+      if (req.file) {
+        await profileService.cropImage(req.file.filename);
+        req.body.avatar = req.file.filename;
+      }
+      await User.updateOne({ _id: req.user._id }, req.body);
+      res.status(200).json({ msg: 'Cập nhật thông tin thành công' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ success: false, error: 'Internal Server Error' });
+    }
+}
 module.exports = {
     getHomePage,
-    getDashBoard,
-    getcourseDetail,
-    getFormCreateNewcourse,
-    postANewcourse,
-    getcourseList,
     getWaitingListTutor,
     getDetailTutor,
     acceptTutor,
@@ -331,4 +423,10 @@ module.exports = {
     putEditCoursePage,
     destroyCourse,
     getCoursePage,
+    profile,
+    editProfile,
+    banUser,
+    unbanUser,
+    getCreateCoursePage,
+    postCreateCoursePage
 }

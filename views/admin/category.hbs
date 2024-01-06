@@ -1,0 +1,396 @@
+<style>
+    @import url(/stylesheets/category.css);
+</style>
+<style type="stylesheets">@import url(https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css);</style>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<style type="stylesheets">@import url(https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css);</style>
+<script type="module" src="/javascripts/swiper-bundle.min.js"></script>
+<script type="module" src="/javascripts/script.js"></script>
+<style type="stylesheets">@import url(https://fonts.cdnfonts.com/css/prata-2);</style>
+<style type="stylesheets">
+    @import url(https://fonts.googleapis.com/css?family=Montserrat:400,500,600&subset=latin-ext&display=swap);</style>
+<style type="stylesheets">@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css);
+</style>
+<style type="stylesheets">
+    @import url(https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css);</style>
+
+<div id="page" class="page-category">
+    <main>
+        <div class="section">
+            <div class="container wide">
+                <div class="wrap">
+                    <div class="content">
+                        <div id="sidebar-filter" class="sidebar">
+                            <div class="wrap">
+                                <a href="#0" class="close-trigger" close-button>
+                                    <i class="ri-close-line"></i>
+                                </a>
+                                <div class="sidebar-content">
+                                    <div class="sidebar-title">Filter</div>
+                                    <form action="" method="GET" id="filter_form">
+                                        <div class="widget">
+                                            <div class="sumary">
+                                                <input type="checkbox" name="cats" id="aaa" check style="display: none;"
+                                                    checked>
+                                                <label for="aaa">
+                                                    <span>Faculty</span>
+                                                    <i class="ri-arrow-right-s-line"></i>
+                                                </label>
+                                                <div class="accord product-size">
+                                                    <div class="wrap">
+                                                        <label>
+                                                            Công nghệ thông tin
+                                                            <input type="radio" id="it" name="faculty"
+                                                                value="Công nghệ thông tin">
+                                                        </label>
+                                                        <label>
+                                                            Toán – Tin học
+                                                            <input type="radio" id="math" name="faculty"
+                                                                value="Toán – Tin học">
+                                                        </label>
+                                                        <label>
+                                                            Vật lý – Vật lý Kỹ thuật
+                                                            <input type="radio" id="physics" name="faculty"
+                                                                value="Vật lý – Vật lý Kỹ thuật">
+                                                        </label>
+                                                        <label>
+                                                            Hóa học
+                                                            <input type="radio" id="chemistry" name="faculty"
+                                                                value="Hóa học">
+                                                        </label>
+                                                        <label>
+                                                            Sinh học & Công nghệ Sinh học
+                                                            <input type="radio" id="biology" name="faculty"
+                                                                value="Sinh học & Công nghệ Sinh học">
+                                                        </label>
+                                                        <label>
+                                                            Môi trường
+                                                            <input type="radio" id="environment" name="faculty"
+                                                                value="Môi trường">
+                                                        </label>
+                                                        <label>
+                                                            Khoa học và Công nghệ vật liệu
+                                                            <input type="radio" id="material" name="faculty"
+                                                                value="Khoa học & Công nghệ vật liệu">
+                                                        </label>
+                                                        <label>
+                                                            Địa chất
+                                                            <input type="radio" id="geological" name="faculty"
+                                                                value="Địa chất">
+                                                        </label>
+                                                        <label>
+                                                            Điện tử Viễn thông
+                                                            <input type="radio" id="electronics" name="faculty"
+                                                                value="Điện tử Viễn thông">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="widget">
+                                            <div class="sumary">
+                                                <input type="checkbox" name="cats" id="aab" check style="display: none;"
+                                                    checked>
+                                                <label for="aab">
+                                                    <span>Student Course</span>
+                                                    <i class="ri-arrow-right-s-line"></i>
+                                                </label>
+                                                <div class="accord product-size">
+                                                    <div class="wrap">
+                                                        <label>
+                                                            K19
+                                                            <input type="radio" id="K19" name="studentCourse"
+                                                                value="K19">
+                                                        </label>
+                                                        <label>
+                                                            K20
+                                                            <input type="radio" id="K20" name="studentCourse"
+                                                                value="K20">
+                                                        </label>
+                                                        <label>
+                                                            K21
+                                                            <input type="radio" id="K21" name="studentCourse"
+                                                                value="K21">
+                                                        </label>
+                                                        <label>
+                                                            K22
+                                                            <input type="radio" id="K22" name="studentCourse"
+                                                                value="K22">
+                                                        </label>
+                                                        <label>
+                                                            K23
+                                                            <input type="radio" id="K23" name="studentCourse"
+                                                                value="K23">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="widget">
+                                            <div class="sumary">
+                                                <label><span>Price</span></label>
+                                                <div class="range-track">
+                                                    <input type="range" id="range-price" value="0" min="0" max="2000000"
+                                                        step="50000">
+
+
+                                                </div>
+                                                <div class="price-range grey-color">
+                                                    <span>0 VNĐ</span>
+                                                    <span id="value-limit">2000000 VNĐ</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="button-container">
+                                            <div class="button"><a class="primary-btn" onclick="clearForm()">Clear
+                                                    all</a></div>
+                                            <div class="button"><a class="primary-btn" id="primary-btn">Submit</a></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="category-content">
+                            <div class="sorter">
+                                <a href="#0" class="menu-trigger" trigger-button data-target="sidebar-filter">
+                                    <i class="ri-filter-line"></i>
+                                </a>
+                                <div class="left">
+                                    <div class="input-box">
+                                        <i class="fas fa-search"></i>
+
+                                        <input type="text" id="search-tutor" placeholder="Search">
+                                    </div>
+                                </div>
+                                <div class="right">
+                                    <div class="col-8 col-xl-2 col-lg-2 col-sm-8 wrapper-sort-course">
+                                        <select class="form-select" id="sort_selection" aria-label="Sort Course">
+                                            <option selected>Sort accounts</option>
+                                            <option value="name-asc">Name courses: A-Z</option>
+                                            <option value="name-desc">Name course: Z-A</option>
+                                            <option value="tutor-asc">Tutor: A-Z</option>
+                                            <option value="tutor-desc">Tutor: Z-A</option>
+                                            <option value="price-desc">Price, High to Low</option>
+                                            <option value="price-asc">Price, Low to High</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tabbed">
+                                <div id="shoes" class="sort-data active">
+                                    <div class="dotgrid">
+                                        <div class="wrapper">
+                                            {{#each courses}}
+                                            <div class="item">
+                                                <div class="dot-image">
+                                                    <a onclick="loadDetail( '{{this._id}}')"
+                                                        class="product-permalink"></a>
+                                                    <div class="thumbnail">
+                                                        <img src="/images/{{this.tutor.avatar}}" alt="">
+                                                    </div>
+                                                    <div class="label"><span>-{{percent this.discount
+                                                            this.price}}%</span></div>
+                                                </div>
+                                                <div class="dot-info">
+
+                                                    <h2 class="dot-title"><a href="">Môn học: {{this.name}}</a>
+                                                        <h2 class="dot-title"><a href="">Tên giảng viên:
+                                                                {{this.tutor.fullname}}</a>
+
+                                                        </h2>
+                                                        <i class="ri-star-fill"></i>
+                                                        <i class="ri-star-fill"></i>
+                                                        <i class="ri-star-fill"></i>
+                                                        <i class="ri-star-fill"></i>
+                                                        <i class="ri-star-fill"></i>
+
+                                                        <div class="product-price">
+                                                            <p class="before"> {{this.price}}VNĐ</p>
+                                                            <p class="current">{{this.discount}}VNĐ</p>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            {{/each}}
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pagination">
+                                {{generatePaginationLinks pages currentPage prevPage nextPage role}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<script src="./js/script.js"></script>
+
+<script>
+    // Lấy phần tử input range
+    const $ = document.querySelector.bind(document)
+    const $$ = document.querySelectorAll.bind(document)
+    const rangeInput = $('#range-price');
+    const submitBtn = $('#primary-btn');
+    let faculty = "None";
+    let studentCourse = "None";
+    // handle sort and filter
+
+    let maxPrice = 20000000;
+    let minPrice = 0;
+    // Thêm sự kiện 'input' để theo dõi sự thay đổi giá trị
+    rangeInput.addEventListener('input', function () {
+        // Lấy giá trị hiện tại từ phần tử input range
+        maxPrice = rangeInput.value;
+        // Hiển thị giá trị trong console hoặc làm cái gì đó với giá trị này
+        console.log('Giá trị hiện tại:', maxPrice);
+    });
+    let currentUrl = new URL(window.location.href);
+    //handle uncheck radio
+    let selectedRadio = null;
+
+
+
+    // Select both "studentCourse" and "faculty" radio buttons
+    document.querySelectorAll('input[type=radio][name="faculty"]').forEach(radio => {
+        radio.addEventListener('click', function () {
+
+            let deselect = (this == faculty);
+            if (deselect) {
+                faculty = `None`;
+            } else {
+                faculty = this.value;
+            }
+            this.checked = !deselect;
+        });
+    });
+
+    document.querySelectorAll('input[type=radio][name="studentCourse"]').forEach(radio => {
+        radio.addEventListener('click', function () {
+
+            let deselect = (this == studentCourse);
+            if (deselect) {
+                studentCourse = `None`;
+            } else {
+                studentCourse = this.value;
+            }
+            this.checked = !deselect;
+        });
+    });
+    const sortSelection = document.getElementById("sort_selection");
+    console.log(sortSelection)
+    sortSelection.addEventListener("change", async function () {
+
+        let selectedValue = sortSelection.value;
+        const parts = selectedValue.split('-');
+        const sortByOrder = parts[1];
+        const sortByField = parts[0];
+        if (currentUrl.searchParams.has('sortByField')) {
+            currentUrl.searchParams.set('sortByField', sortByField);
+        }
+        else {
+            currentUrl.searchParams.append('sortByField', sortByField);
+        }
+
+        if (currentUrl.searchParams.has('sortByOrder')) {
+            currentUrl.searchParams.set('sortByOrder', sortByOrder);
+        }
+        else {
+            currentUrl.searchParams.append('sortByOrder', sortByOrder);
+        }
+        console.log('haha')
+        window.location.href = currentUrl.toString();
+
+
+    })
+
+    function clearForm() {
+        currentUrl.searchParams.delete('faculty');
+        currentUrl.searchParams.delete('studentCourse');
+        currentUrl.searchParams.delete('minPrice');
+        currentUrl.searchParams.delete('maxPrice');
+        // window.location.href = currentUrl.toString();
+    }
+    submitBtn.addEventListener('click', function () {
+
+        console.log(faculty)
+        console.log(studentCourse)
+
+
+        if (currentUrl.searchParams.has('faculty')) {
+            currentUrl.searchParams.set('faculty', faculty);
+        }
+        else {
+            currentUrl.searchParams.append('faculty', faculty);
+        }
+
+        if (currentUrl.searchParams.has('studentCourse')) {
+            currentUrl.searchParams.set('studentCourse', studentCourse);
+        }
+        else {
+            currentUrl.searchParams.append('studentCourse', studentCourse);
+        }
+
+
+        if (currentUrl.searchParams.has('minPrice')) {
+            currentUrl.searchParams.set('minPrice', minPrice);
+        }
+        else {
+            currentUrl.searchParams.append('minPrice', minPrice);
+        }
+
+        if (currentUrl.searchParams.has('maxPrice')) {
+            currentUrl.searchParams.set('maxPrice', maxPrice);
+        }
+        else {
+            currentUrl.searchParams.append('maxPrice', maxPrice);
+        }
+        console.log(currentUrl.toString());
+        window.location.href = currentUrl.toString();
+
+    });
+
+
+
+    $('.fa-search').addEventListener('click', function () {
+        const tutorName = $('#search-tutor').value
+        console.log(tutorName)
+        if (currentUrl.searchParams.has('searchField')) {
+            currentUrl.searchParams.set('searchField', tutorName);
+        }
+        else {
+            currentUrl.searchParams.append('searchField', tutorName);
+        }
+        window.location.href = currentUrl.toString();
+
+    });
+    // handle
+    function loadDetail(id) {
+        window.location.href = `/{{role}}/courses/edit/${id}`
+    }
+    // changePage
+
+    function changePage(page) {
+        if (currentUrl.searchParams.has('page')) {
+            currentUrl.searchParams.set('page', page);
+        }
+        else {
+            currentUrl.searchParams.append('page', page);
+        }
+        window.location.href = currentUrl.toString();
+    }
+    // handler limit price
+    const valueLimit = $('#value-limit');
+    rangeInput.addEventListener('input', function () {
+        // Lấy giá trị hiện tại từ phần tử input range
+        maxPrice = rangeInput.value;
+
+        console.log('Giá trị hiện tại:', maxPrice);
+        valueLimit.innerHTML = maxPrice + ' VNĐ';
+    });
+
+</script>

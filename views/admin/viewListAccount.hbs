@@ -53,29 +53,21 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>GPA</th>
-                                <th>price</th>
-                                <th>Date</th>
+                                <th>Role</th>
 
                             </tr>
                         <tbody id="list-account">
 
-                            {{#each tutorList}}
+                            {{#each userList}}
                             <tr onclick="loadDetailUser('{{this._id}}')">
                                 <td>
-                                    {{this.tutorId.fullname}}
+                                    {{this.username}}
                                 </td>
                                 <td>
-                                    {{this.tutorId.email}}
+                                    {{this.email}}
                                 </td>
                                 <td>
-                                    {{this.tutorId.GPA}}
-                                </td>
-                                <td>
-                                    {{this.price}}
-                                </td>
-                                <td>
-                                    {{this.datePost}}
+                                    {{this.role}}
                                 </td>
                             </tr>
                             {{/each}}
@@ -107,7 +99,7 @@
 
     <script>
         function loadDetailUser(id) {
-            window.location.href = `/admin/waitingTutor/${id}`
+            window.location.href = `/admin/account/edit/${id}`
         }
 
         //handle choose method search

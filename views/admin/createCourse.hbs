@@ -1,0 +1,173 @@
+<style>
+    @import url(/stylesheets/createcourse.css);
+</style>
+<style>
+    @import url(https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css);
+</style>
+<!-- header section starts  -->
+
+
+
+<!-- header section ends -->
+
+<!--body section starts -->
+<section class="home" id="home">
+    <div class="content">
+        <h3 class="wrapper-header">
+            <a href=""><i class="ri-arrow-right-s-fill"></i> Create courses</a>
+            <br>
+
+        </h3>
+        <form action="">
+            <p class="wrapper-input">
+                <label for="subject">Course Name:</label>
+                <input type="" id="subject" name="subject" placeholder="Enter your course" check required>
+            </p>
+
+            <p class="wrapper-input">
+                <label for="schedule">Schedule:</label>
+                <input type="" id="schedule" name="schedule" placeholder="Enter your schedule" check required>
+            </p>
+
+            <p class="wrapper-input">
+                <label for="faculty">Faculty:</label>
+                <select name="faculty" id="faculty" check>
+                    <option value="none">None</option>
+                    <option value="Công nghệ thông tin">Công nghệ thông tin</option>
+                    <option value="Toán - Tin học">Toán-Tin học</option>
+                    <option value="Vật lý - Vật lý Kỹ thuật">Vật lý - Vật lý Kỹ thuật</option>
+                    <option value="Hóa học">Hóa học</option>
+                    <option value="Sinh học & Công nghệ Sinh học">Sinh học & Công nghệ Sinh học</option>
+                    <option value="Môi trường">Môi trường</option>
+                    <option value="Khoa học & Công nghệ vật liệu">Khoa học & Công nghệ vật liệu</option>
+                    <option value="Địa chất">Địa chất</option>
+                    <option value="Điện tử Viễn thông">Điện tử Viễn thông</option>
+                </select>
+            </p>
+
+            <p class="wrapper-input">
+                <label for="school">Student Course:</label>
+                <select name="school" id="school" check>
+                    <option value="none">None</option>
+                    <option value="K19">K19</option>
+                    <option value="K20">K20</option>
+                    <option value="K21">K21</option>
+                    <option value="K22">K22</option>
+                    <option value="K23">K23</option>
+                </select>
+            </p>
+
+            <p class="wrapper-input">
+                <label for="price">Price:</label>
+                <input type="text" id="price" name="price" placeholder="Enter your price/ Week" check required>
+            </p>
+
+            <p class="wrapper-input">
+                <label for="discount">Price:</label>
+                <input type="text" id="discount" name="discount" placeholder="Enter after discount" check required>
+            </p>
+
+            <p class="wrapper-input">
+                <label for="description">Description:</label>
+                <input type="text" id="description" name="description" placeholder="Enter your description about course"
+                    check required>
+            </p>
+            <p class="wrapper-input">
+                <button class="btn" id="btn-submit" type="submit">Create Course</button>
+            </p>
+        </form>
+    </div>
+    <div class="image">
+        <img src="/images/{{user.avatar}}">
+    </div>
+
+</section>
+
+
+<!--body section ends -->
+<!-- footer section starts  -->
+
+
+<!-- footer section ends -->
+
+<script>
+
+    const $ = document.querySelector.bind(document)
+    const $$ = document.querySelectorAll.bind(document)
+    let menu = document.querySelector('#menu-btn');
+    let navbarLinks = document.querySelector('.header .navbar .links');
+
+    menu.onclick = () => {
+        menu.classList.toggle('fa-times');
+        navbarLinks.classList.toggle('active');
+    }
+
+    window.onscroll = () => {
+        menu.classList.remove('fa-times');
+        navbarLinks.classList.remove('active');
+
+        if (window.scrollY > 60) {
+            document.querySelector('.header .navbar').classList.add('active');
+        } else {
+            document.querySelector('.header .navbar').classList.remove('active');
+        }
+    }
+
+    const submit = $('#btn-submit');
+    console.log(submit)
+    submit.addEventListener('click', function () {
+        event.preventDefault();
+
+        const curUrl = new URL(window.location.href);
+        let isError = false;
+        const formData = {
+            'name': $('#subject').value,
+            'schedule': $('#schedule').value,
+            'faculty': $('#faculty').value,
+            'studentCourse': $('#school').value,
+            'price': $('#price').value,
+            'discount': $('#discount').value,
+            'description': $('#description').value,
+        };
+        console.log(formData);
+        console.log($('#price').value);
+
+        fetch('/admin/courses/create', {
+            method: 'POST',
+            body: JSON.stringify(formData),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        }).then(response => {
+            if (!response.ok) {
+                isError = true;
+            }
+
+            return response.json();
+        })
+            .then(data => {
+                if (isError == true) {
+                    alert(data.error)
+                } else {
+
+
+                    const alertReview = $('.alert-success')
+                    alertReview.innerHTML = `${data.msg}`
+                    alertReview.style.opacity = "1";
+                    alertReview.style.display = "block"
+                    console.log(alertReview)
+                    setTimeout(function () {
+                        alertReview.style.opacity = "0";
+                        setTimeout(function () {
+                            alertReview.style.display = "none";
+                        }, 500);
+                    }, 3000);
+                }
+
+            })
+            .catch(error => {
+                // Handle other errors here
+                console.error('Error:', error);
+            });
+    });
+</script>

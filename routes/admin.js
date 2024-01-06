@@ -2,32 +2,11 @@ const express = require("express")
 const router = express.Router();
 const passport = require("passport");
 //require("../middlewares/passportAccessToken.js");
-
+const courseMiddleware = require("../middlewares/courseMiddlewares");
 //const checkAdmin = require("../middlewares/authenticationAdmin.js")
 const adminController = require("../controllers/AdminController.js");
-
-
-// const multerConfig = require("../config/multer.js")
-// const multer = require("multer");
-
-
-// const upload = multerConfig;
-
-// const UploadProduct = upload.fields([
-//     { name: 'thumbnail', maxCount: 1 },
-//     { name: 'gallery', maxCount: 8 },
-// ]);
-
-
-
-// router.get("/admin/home-page", passport.authenticate('jwt', { session: false }), checkAdmin, adminController.getHomePage);
-// router.get("/admin/product/:productId", passport.authenticate('jwt', { session: false }), checkAdmin, adminControllers.getProductDetail)
-
-// router.get("/admin/product", passport.authenticate('jwt', { session: false }), checkAdmin, adminControllers.getFormCreateNewProduct)
-// router.post("/admin/product", passport.authenticate('jwt', { session: false }), checkAdmin, UploadProduct, adminControllers.postANewProduct)
-
-// router.get("/admin/productlist", passport.authenticate('jwt', { session: false }), checkAdmin, adminControllers.getProductList)
-// router.get("/admin/dashboard", passport.authenticate('jwt', { session: false }), checkAdmin, adminControllers.getDashBoard)
+const profileMiddleware = require("../middlewares/profileMiddlewares");
+const {upload, storage} = require('../config/multer');
 
 router.get("/waitingTutor/:id", adminController.getDetailTutor);
 router.get("/waitingTutor", adminController.getWaitingListTutor);
@@ -35,15 +14,19 @@ router.get("/accepted/:id", adminController.acceptTutor);
 router.get("/denied/:id", adminController.denyTutor);
 
 router.get("/account/edit/:id", adminController.getEditUserPage);
-router.put("/account/edit/:id", adminController.putEditUserPage);
-router.delete("/account/:id", adminController.destroyUser);
+router.get("/ban/:id", adminController.banUser);
+router.get("/unban/:id", adminController.unbanUser);
 router.get("/account", adminController.getAccountPage);
 
-router.get("courses/edit/:id", adminController.getEditCoursePage);
-router.put("courses/edit/:id", adminController.putEditCoursePage);
-router.delete("courses/:id", adminController.destroyCourse);
+router.get("/courses/create", adminController.getCreateCoursePage);
+router.post("/courses/create", courseMiddleware.createValidator, adminController.postCreateCoursePage);
+router.get("/courses/edit/:id", adminController.getEditCoursePage);
+router.put("/courses/edit/:id", courseMiddleware.createValidator, adminController.putEditCoursePage);
+router.delete("/courses/:id", adminController.destroyCourse);
 router.get("/courses", adminController.getCoursePage);
 router.get("/viewListCourse", adminController.getCoursePage);
 
-
+router.get('/profile',adminController.profile);
+router.post('/profile',upload.single('avatar'), profileMiddleware.postValidator, adminController.editProfile);
+router.get("/", adminController.getHomePage);
 module.exports = router;
