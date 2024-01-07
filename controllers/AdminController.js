@@ -110,12 +110,8 @@ const getWaitingListTutor = async (req, res, next) => {
     }
   }
   if (sortByField !== `None` && sortByField) {
-    if (sortByField === 'GPA') {
-        sort['tutorId.GPA'] = sortByOrder === `desc` ? -1 : 1;
-    } else {
-        sort[sortByField] = sortByOrder === `desc` ? -1 : 1;
-    }
-}
+    sort[sortByField] = sortByOrder === `desc` ? -1 : 1;
+  }
   //tính toán phân trang
   const pageSize = 12;
   const tutorListFull = await BeTutor.find(filter).sort(sort).populate('tutorId');
