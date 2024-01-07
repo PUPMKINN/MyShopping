@@ -193,9 +193,22 @@ const denyTutor = async (req, res, next) => {
 
 const getAccountPage = async (req, res, next) => {
   // 1 list user, amount of user
+  const searchField = req.query.searchField;
+  const sortByField = req.query.sortByField;
+  const sortByOrder = req.query.sortByOrder;
+  var filter = { role: { $in: ["user", "tutor"] } };
+  var sort = {};
+  if (searchField !== `None` && searchField) {
+    const checkUser = await User.findOne({ username: searchField });
+    if (checkUser) filter.username = searchField;
+    else filter.email = searchField;
+  }
+  if (sortByField !== `None` && sortByField) {
+    sort[sortByField] = sortByOrder === `desc` ? -1 : 1;
+  }
   //tính toán phân trang
   const pageSize = 12;
-  const userListFull = await User.find({ role: { $in: ["user", "tutor"] } });
+  const userListFull = await User.find(filter).sort(sort);
   const totalTutor = userListFull.length;
   const totalPages = Math.ceil(totalTutor / pageSize);
   const pageNumber = parseInt(req.query.page) || 1;
@@ -204,7 +217,7 @@ const getAccountPage = async (req, res, next) => {
   const currentPage = Math.max(1, Math.min(totalPages, pageNumber));
   var nextPage = currentPage + 1; if (nextPage > totalPages) nextPage = totalPages;
   var prevPage = currentPage - 1; if (prevPage < 1) prevPage = 1;
-  const userList = await User.find({ role: { $in: ["user", "tutor"] } }).skip(skipAmount).limit(pageSize);
+  const userList = await User.find(filter).sort(sort).skip(skipAmount).limit(pageSize);
   console.log(userList);
 
   res.render('admin/viewListAccount', {

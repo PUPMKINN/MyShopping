@@ -100,13 +100,13 @@
                     </table>
                 </div>
                 <div class="pagination">
-                    <a id="prev_page" href="/courses?page={{prevPage}}">
+                    <a id="prev_page" href="admin/account?page={{prevPage}}">
                         < </a>
                             {{#each pages}}
-                            <a id="{{this}}" href="/admin/waitingTutor/?page={{this}}"
+                            <a id="{{this}}" href="/admin/account/?page={{this}}"
                                 class="{{#if (eq this ../currentPage)}}active{{/if}}">{{this}}</a>
                             {{/each}}
-                            <a id="next_page" href="/admin/waitingTutor/?page={{nextPage}}"> > </a>
+                            <a id="next_page" href="/admin/account/?page={{nextPage}}"> > </a>
                 </div>
             </div>
         </div>
@@ -141,9 +141,13 @@
 
 
         })
-        $('.fa-search').addEventListener('click', function () {
-            const tutorName = $('#search-tutor').value
-            console.log(tutorName)
+
+        const searchBtn = document.querySelector(".fa-search");
+        searchBtn.addEventListener('click', function () {
+            //console.log('haha');
+            const tutorName = $('#search-tutor').val();
+            let currentUrl = new URL(window.location.href);
+            
             if (currentUrl.searchParams.has('searchField')) {
                 currentUrl.searchParams.set('searchField', tutorName);
             }
@@ -151,7 +155,6 @@
                 currentUrl.searchParams.append('searchField', tutorName);
             }
             window.location.href = currentUrl.toString();
-
         });
 
         function loadDetailUser(id) {
@@ -161,6 +164,7 @@
         //handle choose method search
 
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 
 </html>
