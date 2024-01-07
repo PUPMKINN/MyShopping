@@ -114,6 +114,46 @@
     </div>
 
     <script>
+        let currentUrl = new URL(window.location.href);
+        const sortSelection = document.getElementById("sort_selection");
+        console.log(sortSelection)
+        sortSelection.addEventListener("change", async function () {
+
+            let selectedValue = sortSelection.value;
+            const parts = selectedValue.split('-');
+            const sortByOrder = parts[1];
+            const sortByField = parts[0];
+            if (currentUrl.searchParams.has('sortByField')) {
+                currentUrl.searchParams.set('sortByField', sortByField);
+            }
+            else {
+                currentUrl.searchParams.append('sortByField', sortByField);
+            }
+
+            if (currentUrl.searchParams.has('sortByOrder')) {
+                currentUrl.searchParams.set('sortByOrder', sortByOrder);
+            }
+            else {
+                currentUrl.searchParams.append('sortByOrder', sortByOrder);
+            }
+            console.log('haha')
+            window.location.href = currentUrl.toString();
+
+
+        })
+        $('.fa-search').addEventListener('click', function () {
+            const tutorName = $('#search-tutor').value
+            console.log(tutorName)
+            if (currentUrl.searchParams.has('searchField')) {
+                currentUrl.searchParams.set('searchField', tutorName);
+            }
+            else {
+                currentUrl.searchParams.append('searchField', tutorName);
+            }
+            window.location.href = currentUrl.toString();
+
+        });
+
         function loadDetailUser(id) {
             window.location.href = `/admin/account/edit/${id}`
         }
