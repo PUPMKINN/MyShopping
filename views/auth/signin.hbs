@@ -46,7 +46,8 @@
                                     <div class="input-data">
 
 
-                                        <input type="password" id="input-password" placeholder="Password" name="password">
+                                        <input type="password" id="input-password" placeholder="Password"
+                                            name="password">
                                     </div>
 
 
@@ -65,7 +66,7 @@
 
 
                         <div class="btn">
-                            <button class="btn-login"  onclick="login()">Login Now</button>
+                            <button class="btn-login" onclick="login()">Login Now</button>
                             <button class="btn-create-account">Create Account</button>
                         </div>
 
@@ -73,9 +74,7 @@
                         <div class="text-data pd-20-0">Or you can join with</div>
 
                         <div class="login-other-method">
-                            <img src="assets/img/icons8-google-48.png" alt="" onclick="google()"><a href="#"></a></img><img
-                                src="assets\img\icons8-facebook-48.png" alt=""><a href="#"></a></img><img
-                                src="assets\img\icons8-twitter-circled-48.png" alt=""><a href="#"></a></img>
+                            <img src="assets/img/icons8-google-48.png" alt="" onclick="google()"><a href="#"></a></img>
                         </div>
                     </div>
 
@@ -184,15 +183,15 @@
         });
     </script>-->
 
-    <script >
-         var createAccountBtn = document.querySelector('.btn .btn-create-account');
+    <script>
+        var createAccountBtn = document.querySelector('.btn .btn-create-account');
 
-         createAccountBtn.addEventListener("click", function () {
+        createAccountBtn.addEventListener("click", function () {
             window.location.href = "/signup";
 
         })
 
-      
+
 
 
         function signup(event) {
@@ -227,10 +226,13 @@
 
                 console.log(response);
                 // Check if the response indicates a successful login and a redirection
-                {{!-- if (response.ok && response.redirected) {
-                    window.location.href = response.json().redirectUrl;
-                    
-                } --}}
+                {
+                    {
+                        !-- if (response.ok && response.redirected) {
+                            window.location.href = response.json().redirectUrl;
+
+                        } --}
+                }
 
                 // Optional: You can handle the data returned from the server if needed
                 const data = await response.json();
