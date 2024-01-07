@@ -38,16 +38,12 @@
                         <div class="col-8 col-xl-2 col-lg-2 col-sm-8 wrapper-sort-course">
                             <select class="form-select" id="sort_selection" aria-label="Sort Course">
                                 <option selected>Sort accounts</option>
-                                <option value="username-asc">Name: A-Z</option>
-                                <option value="username-desc">Name: Z-A</option>
-                                <option value="email-asc">Email: A-Z</option>
-                                <option value="email-desc">Email: Z-A</option>
-                                <option value="gpa-asc">Email: Low to High</option>
-                                <option value="gpa-desc">Email: High to Low</option>
-                                <option value="price-asc">Price: Low to High</option>
-                                <option value="price-desc">Price: High to Low</option>
-                                <option value="date-asc">Role: Tutor</option>
-                                <option value="date-desc">Role: User</option>
+                                <option value="price-asc">Price: nhỏ-lớn</option>
+                                <option value="price-desc">Price: lớn-nhỏ</option>
+                                <option value="datePost-asc">Date Post: A-Z</option>
+                                <option value="datePost-desc">Date Post: Z-A</option>
+                                <option value="GPA-asc">GPA: Low to High</option>
+                                <option value="GPA-desc">GPA: High to Low</option>
                             </select>
                         </div>
                     </div>
@@ -102,7 +98,7 @@
                     </table>
                 </div>
                 <div class="pagination">
-                    <a id="prev_page" href="/courses?page={{prevPage}}">
+                    <a id="prev_page" href="/admin/waitingTutor?page={{prevPage}}">
                         < </a>
                             {{#each pages}}
                             <a id="{{this}}" href="/admin/waitingTutor/?page={{this}}"
@@ -116,6 +112,48 @@
     </div>
 
     <script>
+        let currentUrl = new URL(window.location.href);
+        const sortSelection = document.getElementById("sort_selection");
+        console.log(sortSelection)
+        sortSelection.addEventListener("change", async function () {
+
+            let selectedValue = sortSelection.value;
+            const parts = selectedValue.split('-');
+            const sortByOrder = parts[1];
+            const sortByField = parts[0];
+            if (currentUrl.searchParams.has('sortByField')) {
+                currentUrl.searchParams.set('sortByField', sortByField);
+            }
+            else {
+                currentUrl.searchParams.append('sortByField', sortByField);
+            }
+
+            if (currentUrl.searchParams.has('sortByOrder')) {
+                currentUrl.searchParams.set('sortByOrder', sortByOrder);
+            }
+            else {
+                currentUrl.searchParams.append('sortByOrder', sortByOrder);
+            }
+            console.log('haha')
+            window.location.href = currentUrl.toString();
+
+
+        })
+
+        const searchBtn = document.querySelector(".fa-search");
+        searchBtn.addEventListener('click', function () {
+            //console.log('haha');
+            const tutorName = $('#search-tutor').val();
+            let currentUrl = new URL(window.location.href);
+
+            if (currentUrl.searchParams.has('searchField')) {
+                currentUrl.searchParams.set('searchField', tutorName);
+            }
+            else {
+                currentUrl.searchParams.append('searchField', tutorName);
+            }
+            window.location.href = currentUrl.toString();
+        });
         function loadDetailUser(id) {
             window.location.href = `/admin/waitingTutor/${id}`
         }
@@ -123,6 +161,7 @@
         //handle choose method search
 
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 
 </html>

@@ -94,9 +94,31 @@ const getHomePage = async (req, res, next) => {
 
 //[GET] /admin/waitingTutor?page=*
 const getWaitingListTutor = async (req, res, next) => {
+  //filter and sort ở đây
+  const searchField = req.query.searchField;
+  const sortByField = req.query.sortByField;
+  const sortByOrder = req.query.sortByOrder;
+  var filter = { status: "waiting" };
+  var sort = {};
+  if (searchField !== `None` && searchField) {
+    const checkUser = await BeTutor.findOne({ username: searchField });
+    if (checkUser) filter.username = searchField;
+    else {
+      const checkEmail = await BeTutor.findOne({ email: searchField });
+      if (checkEmail) filter.email = searchField;
+      else filter.role = searchField;
+    }
+  }
+  if (sortByField !== `None` && sortByField) {
+    if (sortByField === 'GPA') {
+        sort['tutorId.GPA'] = sortByOrder === `desc` ? -1 : 1;
+    } else {
+        sort[sortByField] = sortByOrder === `desc` ? -1 : 1;
+    }
+}
   //tính toán phân trang
   const pageSize = 12;
-  const tutorListFull = await BeTutor.find({ status: "waiting" }).populate('tutorId');
+  const tutorListFull = await BeTutor.find(filter).sort(sort).populate('tutorId');
   const totalTutor = tutorListFull.length;
   const totalPages = Math.ceil(totalTutor / pageSize);
   const pageNumber = parseInt(req.query.page) || 1;
@@ -105,7 +127,7 @@ const getWaitingListTutor = async (req, res, next) => {
   const currentPage = Math.max(1, Math.min(totalPages, pageNumber));
   var nextPage = currentPage + 1; if (nextPage > totalPages) nextPage = totalPages;
   var prevPage = currentPage - 1; if (prevPage < 1) prevPage = 1;
-  const tutorList = await BeTutor.find({ status: "waiting" }).populate('tutorId').skip(skipAmount).limit(pageSize);
+  const tutorList = await BeTutor.find(filter).sort(sort).populate('tutorId').skip(skipAmount).limit(pageSize);
   console.log(tutorList);
 
   res.render('admin/waitingTutor', {
