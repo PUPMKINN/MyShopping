@@ -37,14 +37,15 @@ const search = (req, res) => {
   res.render("search");
 }
 
-const aboutUs = (req, res) => {
-  let role;
-  let user;
+const aboutUs = async(req, res) => {
+  let user = null;
+  let role = "guest";
   if (req.user) {
-    user = User.findById(req.user._id).lean();
+    user = await User.findById(req.user._id).lean();
     role = req.user.role;
   }
-  else role = "guest";
+  //else role = "guest";
+  console.log(user);
   res.render("aboutUs", { layout: role, user: user });
 }
 module.exports = {
