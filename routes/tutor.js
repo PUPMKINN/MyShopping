@@ -31,8 +31,10 @@ router.get('/formTutor/:page', isTutor, tutorController.getFormTutor);
 router.post('/formTutor/:page', isTutor, upload.single('GPAfile'), beTutorMiddleware.postValidator, tutorController.postFormTutor);
 
 router.get('/contactToTutor/:id', isTutor, tutorController.getContactToTutor);
-
 router.post('/contactToTutor/:id', isTutor, orderMiddleware.postValidator, tutorController.postContactToTutor);
+
+router.get('/changePassword', isTutor, tutorController.getChangePassword);
+router.post('/changePassword', isTutor, tutorController.postChangePassword);
 
 router.get('/', isTutor, tutorController.getHomePage);
 

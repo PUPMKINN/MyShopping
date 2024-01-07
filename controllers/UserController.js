@@ -248,45 +248,6 @@ const postContactToTutor = async (req, res, next) => {
   }
 }
 
-//[GET] /user/home
-// const getHomePage = async (req, res, next) => {
-//   const reviewList = await Review.aggregate([
-//     {
-//       $project: {
-//         courseId: 1, // Include other fields as needed
-//         userId: 1,
-//         rating: 1,
-//         comment: 1,
-//         datePost: 1,
-//         commentLength: { $strLenCP: "$comment" } // Calculate the length of comment
-//       }
-//     },
-//     {
-//       $sort: { rating: -1, commentLength: -1, } // Sort by comment length in ascending order
-//     }
-//   ]).skip(0).limit(3);
-//   //console.log(reviewList);
-
-//   const tutors = await User.find({role: 'tutor'});
-//   let userList = await Promise.all(tutors.map(async (tutor) => {
-//       let averageRating = await UserService.getAverageRatingForTutor(tutor._id.toString());
-//       //console.log(averageRating);
-//       return {
-//           ...tutor.toObject(),
-//           averageRating: averageRating ? averageRating.averageRating : 0
-//       };
-//   }));
-//   // Sort the userList based on averageRating in descending order
-//   userList.sort((a, b) => b.averageRating - a.averageRating);
-
-//   // Apply skip and limit - here skip 0 and limit 4
-//   userList = userList.slice(0, 4);
-//   //console.log(userList);
-
-//   res.render('home/userHome', { user: req.user, layout: 'user', reviewList: reviewList, userList: userList});
-// }
-
-
 const getHomePage = async (req, res, next) => {
   try {
     const reviewList = await Review.aggregate([
@@ -433,6 +394,34 @@ const detail = async (req, res, next) => {
   }
 }
 
+const getChangePassword = async (req, res, next) => {
+  const role = req.user.role;
+  res.render('auth/updatePassword', { user: req.user, layout: role, role: role });
+}
+const postChangePassword = async (req, res, next) => {
+  const result = validationResult(req);
+  if (!result.isEmpty()) {
+    res.status(400).json({ errors: result.array() });
+    return;
+  }
+  try {
+    const { oldPassword, newPassword, confirmPassword } = req.body;
+    if (newPassword !== confirmPassword) {
+      res.status(400).json({ error: "New password and confirmation do not match" });
+    }
+    const user = await User.findById(req.user._id);
+    const isMatch = await user.validPassword(oldPassword);
+    if (!isMatch) {
+      return res.status(400).json({ success: false, error: 'Mật khẩu cũ không đúng' });
+    }
+    user.password = newPassword;
+    await user.save();
+    return res.status(200).json({ success: true, msg: "Đổi mật khẩu thành công" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, error: 'Internal Server Error' });
+  }
+}
 module.exports = {
   storedCourses,
   detailCourses,
@@ -447,4 +436,6 @@ module.exports = {
   postContactToTutor,
   showAll,
   detail,
+  getChangePassword,
+  postChangePassword,
 };

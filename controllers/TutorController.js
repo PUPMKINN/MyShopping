@@ -657,7 +657,34 @@ const postContactToTutor = async (req, res, next) => {
     next(err);
   }
 }
-
+const getChangePassword = async (req, res, next) => {
+  const role = req.user.role;
+  res.render('auth/updatePassword', { user: req.user, layout: role, role: role });
+}
+const postChangePassword = async (req, res, next) => {
+  const result = validationResult(req);
+  if (!result.isEmpty()) {
+    res.status(400).json({ errors: result.array() });
+    return;
+  }
+  try {
+    const { oldPassword, newPassword, confirmPassword } = req.body;
+    if (newPassword !== confirmPassword) {
+      res.status(400).json({ error: "New password and confirmation do not match" });
+    }
+    const user = await User.findById(req.user._id);
+    const isMatch = await user.validPassword(oldPassword);
+    if (!isMatch) {
+      return res.status(400).json({ success: false, error: 'Mật khẩu cũ không đúng' });
+    }
+    user.password = newPassword;
+    await user.save();
+    return res.status(200).json({ success: true, msg: "Đổi mật khẩu thành công" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, error: 'Internal Server Error' });
+  }
+}
 module.exports = {
   storedCourses,
   storedStudents,
@@ -680,5 +707,6 @@ module.exports = {
   postFormTutor,
   getContactToTutor,
   postContactToTutor,
-
+  getChangePassword,
+  postChangePassword,
 };

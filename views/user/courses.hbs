@@ -27,16 +27,22 @@
                             <div class="product-list has-bg">
                                 <div class="table-content">
                                     <ul id="list-course">
-                                        {{#each courses}}
+                                        {{#each orders}}
                                         <li class="dotgrid row">
                                             <div class="grouping wrapper col-9">
                                                 <div class="variants">
                                                     <h4 class="dot-title"><a href="">{{this.name}}</a></h4>
+                                                    <h4 class="dot-title"><a href="">{{this.courseId.name}}</a></h4>
                                                     <div class="price grey-color">
                                                         <span>Price: {{this.price}} VNĐ</span>
+                                                        <span>Price: {{this.courseId.price}} VNĐ</span>
                                                     </div>
                                                     <div class="schedule">
                                                         <span>{{this.schedule}}</span>
+                                                        <span>{{this.courseId.schedule}}</span>
+                                                    </div>
+                                                    <div class="schedule">
+                                                        <span>{{this.status}}</span>
                                                     </div>
 
                                                 </div>
