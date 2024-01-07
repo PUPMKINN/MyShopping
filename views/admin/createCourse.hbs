@@ -77,8 +77,13 @@
             </p>
         </form>
     </div>
-    <div class="image">
+    {{!-- <div class="image">
         <img src="/images/{{user.avatar}}">
+    </div> --}}
+    <div class="image">
+        <input type="file" accept="image/jpeg, image/png, image/jpg" id="input-file" check style="display: none;">
+        <span id="file-label"> <img src="/images/{{user.avatar}}" id="profile-pic"></span>
+        <label class="btn" for="input-file" id="custom-button">choose new avatar</label>
     </div>
 
 </section>
@@ -113,6 +118,14 @@
         }
     }
 
+    let profilePic = document.getElementById("profile-pic");
+    let inputFile = document.getElementById("input-file");
+
+    inputFile.onchange = function () {
+
+        profilePic.src = URL.createObjectURL(inputFile.files[0]);
+    }
+
     const submit = $('#btn-submit');
     console.log(submit)
     submit.addEventListener('click', function () {
@@ -131,6 +144,11 @@
         };
         console.log(formData);
         console.log($('#price').value);
+        if (inputFile.files[0] != undefined) {
+
+            formData.append('avatar', inputFile.files[0]);
+        }
+
 
         fetch('/admin/courses/create', {
             method: 'POST',
