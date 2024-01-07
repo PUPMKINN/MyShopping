@@ -953,7 +953,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .pagination a.active {
-    background-color: #825959;
+    background-color: #ffc300;
     font-weight: bold;
     border-radius: 5px;
 }
