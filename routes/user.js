@@ -14,6 +14,7 @@ router.get('/userMode', isUser, userController.getUserMode);
 
 router.get('/stored/courses/:id', isUser, userController.detailCourses);
 router.get('/stored/courses', isUser, userController.storedCourses);
+router.get('/stored/coursesAjax', isUser, userController.storedCoursesAjax);
 
 router.get('/profile', isUser, userController.profile);
 router.post('/profile', isUser,upload.single('avatar'), profileMiddleware.postValidator,  userController.editProfile);
@@ -29,8 +30,8 @@ router.post('/contactToTutor/:id', isUser, orderMiddleware.postValidator,userCon
 router.get('/changePassword', isUser, userController.getChangePassword);
 router.post('/changePassword', isUser, userController.postChangePassword);
 
-router.get('/courses/:id', userController.detail);
-router.get('/courses/', userController.showAll);
+router.get('/courses/:id', isUser, userController.detail);
+router.get('/courses/', isUser,userController.showAll);
 router.get('/', isUser, userController.getHomePage);
 
 module.exports = router;

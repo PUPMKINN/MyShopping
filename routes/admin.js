@@ -7,26 +7,27 @@ const courseMiddleware = require("../middlewares/courseMiddlewares");
 const adminController = require("../controllers/AdminController.js");
 const profileMiddleware = require("../middlewares/profileMiddlewares");
 const {upload, storage} = require('../config/multer');
+const { isAdmin } = require('../middlewares/isAuthenticated');
 
-router.get("/waitingTutor/:id", adminController.getDetailTutor);
-router.get("/waitingTutor", adminController.getWaitingListTutor);
-router.get("/accepted/:id", adminController.acceptTutor);
-router.get("/denied/:id", adminController.denyTutor);
+router.get("/waitingTutor/:id", isAdmin, adminController.getDetailTutor);
+router.get("/waitingTutor", isAdmin,adminController.getWaitingListTutor);
+router.get("/accepted/:id", isAdmin,adminController.acceptTutor);
+router.get("/denied/:id", isAdmin,adminController.denyTutor);
 
-router.get("/account/edit/:id", adminController.getEditUserPage);
-router.get("/ban/:id", adminController.banUser);
-router.get("/unban/:id", adminController.unbanUser);
-router.get("/account", adminController.getAccountPage);
+router.get("/account/edit/:id", isAdmin,adminController.getEditUserPage);
+router.get("/ban/:id", isAdmin,adminController.banUser);
+router.get("/unban/:id", isAdmin,adminController.unbanUser);
+router.get("/account", isAdmin,adminController.getAccountPage);
 
-router.get("/courses/create", adminController.getCreateCoursePage);
-router.post("/courses/create", courseMiddleware.createValidator, adminController.postCreateCoursePage);
-router.get("/courses/edit/:id", adminController.getEditCoursePage);
-router.put("/courses/edit/:id", courseMiddleware.createValidator, adminController.putEditCoursePage);
-router.delete("/courses/:id", adminController.destroyCourse);
-router.get("/courses", adminController.getCoursePage);
-router.get("/viewListCourse", adminController.getCoursePage);
+router.get("/courses/create", isAdmin,adminController.getCreateCoursePage);
+router.post("/courses/create", isAdmin,courseMiddleware.createValidator, adminController.postCreateCoursePage);
+router.get("/courses/edit/:id", isAdmin,adminController.getEditCoursePage);
+router.put("/courses/edit/:id", isAdmin,courseMiddleware.createValidator, adminController.putEditCoursePage);
+router.delete("/courses/:id", isAdmin,adminController.destroyCourse);
+router.get("/courses", isAdmin,adminController.getCoursePage);
+router.get("/viewListCourse", isAdmin,adminController.getCoursePage);
 
-router.get('/profile',adminController.profile);
-router.post('/profile',upload.single('avatar'), profileMiddleware.postValidator, adminController.editProfile);
-router.get("/", adminController.getHomePage);
+router.get('/profile',isAdmin,adminController.profile);
+router.post('/profile',isAdmin,upload.single('avatar'), profileMiddleware.postValidator, adminController.editProfile);
+router.get("/", isAdmin,adminController.getHomePage);
 module.exports = router;
