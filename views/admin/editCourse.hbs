@@ -15,7 +15,6 @@
 
 
 <!-- header section ends -->
-
 <!--body section starts -->
 <section class="home" id="home">
     <div class="content">
@@ -219,7 +218,7 @@
         event.preventDefault();
         let isError = false;
         const response = await fetch(`/admin/courses/{{course._id}}`, {
-                method: 'DELETE',
+            method: 'DELETE',
         });
 
         if (!response.ok) {
@@ -246,7 +245,7 @@
             }, 3000);
         } else {
             // Xử lý phản hồi thành công ở đây
-            
+
             const alertReview = document.querySelector('.alert-success'); // Change to document.querySelector
             alertReview.innerHTML = `${data.msg}`;
             alertReview.style.opacity = "1";

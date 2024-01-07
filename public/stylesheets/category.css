@@ -1617,3 +1617,29 @@ i.fas.fa-play-circle {
 .input-box .button:active {
     transform: translateY(-50%) scale(0.98);
 }
+
+
+.product-size .wrap {
+
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    line-height: 1.6;
+
+}
+
+.right {
+    display: flex;
+    padding: 4px;
+    background-color: var(--flashwhite-color);
+    margin-left: 10px;
+    border-radius: 8px;
+
+}
+
+#sort_selection {
+    border: none !important;
+}
+
+.wrap input[type="radio"] {
+    margin-left: 10px !important;
+}
