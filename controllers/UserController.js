@@ -43,17 +43,16 @@ const storedCourses = async (req, res, next) => {
 // [GET] /user/stored/courses/Order._id
 const detailCourses = async (req, res, next) => {
   const order = Order.findById(req.params.id).populate('courseId userId');
+  const user = await User.findById(req.user._id).lean();
   res.render("user/stored-courses", {
     orders: mongooseToObject(order),
     layout: 'user',
+    user: user,
   });
 }
 
 
 const getUserMode = async (req, res, next) => {
-
-
-
   const user = await User.findById(req.user._id).lean();
   res.render('user/userMode', {
     user: user,
@@ -103,20 +102,22 @@ const editProfile = async (req, res, next) => {
 }
 
 // [GET] /user/premium
-const getPremium = (req, res, next) => {
+const getPremium = async(req, res, next) => {
   const role = req.user.role;
-  res.render('user/signuptotutor', { user: req.user, layout: role, role: role });
+  const user = await User.findById(req.user._id).lean();
+  res.render('user/signuptotutor', { user: user, layout: role, role: role });
 }
 // [GET] /user/formTutor/123
-const getFormTutor = (req, res, next) => {
+const getFormTutor = async(req, res, next) => {
   let price;
   if (req.params.page == '1') { price = 199000 }
   else if (req.params.page == '2') { price = 1999000 }
   else if (req.params.page == '3') { price = 3999000 };
 
   const role = req.user.role;
+  const user = await User.findById(req.user._id).lean();
   res.render('user/formbetutor', {
-    user: req.user,
+    user: user,
     price: price,
     page: req.params.page,
     layout: role,
@@ -213,11 +214,13 @@ const getContactToTutor = async (req, res, next) => {
   }
   console.log(amountOfReviews)
   const role = req.user.role;
+  const user = await User.findById(req.user._id).lean();
   res.render('user/contactToTutor', {
     course: mongooseToObject(course),
     amountOfReviews: amountOfReviews,
     layout: role,
     role: role,
+    user: user,
   });
 }
 
@@ -347,7 +350,8 @@ const showAll = async (req, res, next) => {
     var nextPage = currentPage + 1; if (nextPage > totalPages) nextPage = totalPages;
     var prevPage = currentPage - 1; if (prevPage < 1) prevPage = 1;
     console.log(courses.length);
-
+    
+    const user = await User.findById(req.user._id).lean();
     res.render('catalog/category', {
       courses: courses,
       pages: pages,
@@ -356,6 +360,7 @@ const showAll = async (req, res, next) => {
       nextPage: nextPage,
       layout: 'user',
       role: role,
+      user: user,
     });
   } catch (error) {
     console.error('Error fetching courses:', error);
@@ -381,6 +386,7 @@ const detail = async (req, res, next) => {
     }
     const coursesListOfName = await Course.find({ name: course.name }).populate('tutor');
     console.log(coursesListOfName);
+    const user = await User.findById(req.user._id).lean();
     res.render("courses/detail", {
       course: mongooseToObject(course),
       coursesListOfTutor: mutipleMongooseToObject(coursesListOfTutor),
@@ -388,6 +394,7 @@ const detail = async (req, res, next) => {
       amountOfReviews: amountOfReviews,
       coursesListOfName: mutipleMongooseToObject(coursesListOfName),
       layout: 'user',
+      user: user,
     });
   } catch (err) {
     next(err);
@@ -396,7 +403,8 @@ const detail = async (req, res, next) => {
 
 const getChangePassword = async (req, res, next) => {
   const role = req.user.role;
-  res.render('auth/updatePassword', { user: req.user, layout: role, role: role });
+  const user = await User.findById(req.user._id).lean();
+  res.render('auth/updatePassword', { user: user, layout: role, role: role });
 }
 const postChangePassword = async (req, res, next) => {
   const result = validationResult(req);
