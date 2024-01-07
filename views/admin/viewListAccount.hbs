@@ -49,12 +49,12 @@
                         <div class="col-8 col-xl-2 col-lg-2 col-sm-8 wrapper-sort-course">
                             <select class="form-select" id="sort_selection" aria-label="Sort Course">
                                 <option selected>Sort accounts</option>
-                                <option value="name-asc">Name courses: A-Z</option>
-                                <option value="name-desc">Name course: Z-A</option>
-                                <option value="tutor-asc">Tutor: A-Z</option>
-                                <option value="tutor-desc">Tutor: Z-A</option>
-                                <option value="price-desc">Price, High to Low</option>
-                                <option value="price-asc">Price, Low to High</option>
+                                <option value="username-asc">Name: A-Z</option>
+                                <option value="username-desc">Name: Z-A</option>
+                                <option value="email-asc">Email: A-Z</option>
+                                <option value="email-desc">Email: Z-A</option>
+                                <option value="role-asc">Role: Tutor</option>
+                                <option value="role-desc">Role: User</option>
                             </select>
                         </div>
                     </div>
@@ -147,7 +147,7 @@
             //console.log('haha');
             const tutorName = $('#search-tutor').val();
             let currentUrl = new URL(window.location.href);
-            
+
             if (currentUrl.searchParams.has('searchField')) {
                 currentUrl.searchParams.set('searchField', tutorName);
             }
