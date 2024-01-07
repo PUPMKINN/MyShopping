@@ -201,7 +201,11 @@ const getAccountPage = async (req, res, next) => {
   if (searchField !== `None` && searchField) {
     const checkUser = await User.findOne({ username: searchField });
     if (checkUser) filter.username = searchField;
-    else filter.email = searchField;
+    else {
+      const checkEmail = await User.findOne({ email: searchField });
+      if (checkEmail) filter.email = searchField;
+      else filter.role = searchField;
+    }
   }
   if (sortByField !== `None` && sortByField) {
     sort[sortByField] = sortByOrder === `desc` ? -1 : 1;
