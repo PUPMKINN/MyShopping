@@ -22,6 +22,37 @@
 <body>
     <div class="page-view-account-list">
         <div class="main--content">
+            <div class="category-content">
+                <div class="sorter">
+                    <a href="#0" class="menu-trigger" trigger-button data-target="sidebar-filter">
+                        <i class="ri-filter-line"></i>
+                    </a>
+                    <div class="left">
+                        <div class="input-box">
+                            <i class="fas fa-search"></i>
+
+                            <input type="text" id="search-tutor" placeholder="Search">
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="col-8 col-xl-2 col-lg-2 col-sm-8 wrapper-sort-course">
+                            <select class="form-select" id="sort_selection" aria-label="Sort Course">
+                                <option selected>Sort accounts</option>
+                                <option value="username-asc">Name: A-Z</option>
+                                <option value="username-desc">Name: Z-A</option>
+                                <option value="email-asc">Email: A-Z</option>
+                                <option value="email-desc">Email: Z-A</option>
+                                <option value="gpa-asc">Email: Low to High</option>
+                                <option value="gpa-desc">Email: High to Low</option>
+                                <option value="price-asc">Price: Low to High</option>
+                                <option value="price-desc">Price: High to Low</option>
+                                <option value="date-asc">Role: Tutor</option>
+                                <option value="date-desc">Role: User</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="list-account-container">
                 <h3 class="main--title">List Account Waiting Be Tutor</h3>
 
