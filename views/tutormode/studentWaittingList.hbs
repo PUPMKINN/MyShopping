@@ -5,6 +5,9 @@
 <style>
     @import url('https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css');
 </style>
+<style>
+    @import url(https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css);
+</style>
 
 
 
@@ -35,7 +38,7 @@
                                                         <a>{{this.userId.fullname}}-{{this.courseId.name}}</a>
                                                     </h4>
                                                     <div class="price grey-color">
-                                                        <span>Price: {{this.courseId.price}}</span>
+                                                        <span>Price: {{this.courseId.discount}}</span>
                                                     </div>
                                                     <div class="btn">
                                                         <span>Schedule: {{this.courseId.schedule}}</span>
@@ -123,7 +126,7 @@
     }
 
     function denyOrder(currentPage, idOrder) {
-
+        console.log(idOrder)
         fetch(`/tutor/denied/${idOrder}`, {
             method: 'GET',
             headers: {
@@ -276,7 +279,7 @@
                                             </div>
                                             <div class="choose col-3">
                                                 <button class="accept"
-                                                    onclick="acceptOrder('${data.currentPage}','${order._id}}')">Accept</button>
+                                                    onclick="acceptOrder('${data.currentPage}','${order._id}')">Accept</button>
                                                 <button class="deny" onclick="denyOrder('${data.currentPage}','${order._id}')">Deny</button>
                                                 <button class="texting" onclick="texTing('${order._id}')">Texting</button>
 

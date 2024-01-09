@@ -1,21 +1,20 @@
 <style>
-    @import url(/stylesheets/userhome.css);
-</style>
-
-<style>
-    @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css);
+    @import url(/stylesheets/category.css);
 </style>
 
 <header class="header">
 
     <div class="contact-info">
         <p> <i class="fas fa-map-marker-alt"></i>227 Nguyễn Văn Cừ, District 5, HCMC</p>
-        <p> <i class="fas fa-envelope"></i>TUSteam.it@gmail.com</p>
+        <p> <i class="fas fa-envelope"></i>lynhathao.it@gmail.com</p>
         <p> <i class="fas fa-clock"></i>24/7
             <a href="https://instagram.com/nauxbachh/"><i class="fab fa-instagram"></i></a>
             <a href="https://www.facebook.com/bach0807/"><i class="fab fa-facebook"></i></a>
-            <a href="https://github.com/PUPMKINN/MyShopping"><i class="fab fa-github"></i></a>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-pinterest"></i>
+            </i>
         </p>
+
     </div>
 
 
@@ -28,64 +27,12 @@
                 <a href="/site/aboutUs">About Us</a>
                 <a href="/user/courses">Tutor</a>
                 <a href="/user/userMode" class="btn">USER MODE</a>
-                {{!-- <a href="/user/premium" class="btn">Become A Tutor</a> --}}
-                {{!-- <a href="/logout">Logout</a> --}}
-            </div>
-            <div class="profile-dropdown">
-
-                <div onclick="toggle()" class="profile-dropdown-btn">
-                    <div class="profile-img">
-                        <img src="/images/{{user.avatar}}" alt="">
-                    </div>
-                </div>
-
-
-                <ul class="profile-dropdown-list">
-                    <li class="profile-dropdown-list-item">
-                        <a href="/user/profile">
-                            <i class="fa-solid fa-user"></i>
-                            Edit Profile
-                        </a>
-                    </li>
-                    <li class="profile-dropdown-list-item">
-                        <a href="/user/changePassword">
-                            <i class="fa-solid fa-list"></i>
-                            Change password
-                        </a>
-                    </li>
-
-                    <li class="profile-dropdown-list-item">
-                        <a href="/user/premium">
-                            <i class="fa-solid fa-list"></i>
-                            Become tutor
-                        </a>
-                    </li>
-                    <hr>
-
-                    <li class="profile-dropdown-list-item">
-                        <a href="/logout">
-                            <i class="fa-solid fa-right-from-bracket"></i>
-                            Log out
-                        </a>
-                    </li>
-                </ul>
+               
+                <a href="/user/premium" class="btn">Become A Tutor</a>
+                <a href="/logout">Logout</a>
             </div>
 
             <div id="menu-btn" class="fa fa-bars"></div>
 
     </nav>
 </header>
-
-<script>
-    lightGallery(document.querySelector('.gallery .gallery-container'));
-    let profileDropdownList = document.querySelector(".profile-dropdown-list");
-    let btn = document.querySelector(".profile-dropdown-btn");
-
-    const toggle = () => profileDropdownList.classList.toggle("active");
-
-    window.addEventListener("click", function (e) {
-        if (!btn.contains(e.target) && !profileDropdownList.contains(e.target)) {
-            profileDropdownList.classList.remove("active");
-        }
-    });
-</script>

@@ -5,7 +5,7 @@
     margin-right: 1rem;
 }
 
-.clearfix {
+ .clearfix {
     justify-content: center;
 }
 
@@ -31,11 +31,11 @@
     opacity: 1;
 }
 
-.cancelbtn {
+.cancelbtn{
     background-color: #da5767 !important;
 }
 
-.input-content {
+.input-content{
     padding: 0;
 }
 
@@ -43,7 +43,7 @@
 
 
 
-.wrapper-content-create .modal-content {
+.wrapper-content-create .modal-content{
     border: none;
 }
 
@@ -102,14 +102,14 @@
 }
 
 
-input[id*="input"] {
+input[id*="input"]{
     width: 100%;
     background-color: inherit;
     border: none;
 }
 
 
-.wrapper-input {
+.wrapper-input{
     position: relative;
 
 }
@@ -119,11 +119,11 @@ input[id*="input"] {
     text-align: end;
     padding-top: 8px;
     font-weight: 500;
-
     position: absolute;
-    bottom: -24px;
-    right: 0;
-    display: none;
+    
+   right: 0;
+   bottom: -24px;
+    display: none; 
 }
 
 .error.active {

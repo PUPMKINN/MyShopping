@@ -24,7 +24,7 @@ body {
     color: #fff;
     overflow: hidden;
     transition: all 0.5s linear;
-    background: #40DDB6;
+    background: rgba(113, 99, 186, 255);
 
 }
 
@@ -263,7 +263,7 @@ body {
 /* tabular section */
 
 
-.tabular--wrapper {
+.tabular--wrapper{
     background: #fff;
     margin-top: 1rem;
     border-radius: 10px;
@@ -271,7 +271,7 @@ body {
     width: 100%;
 }
 
-.table-container {
+.table-container{
     width: 100%;
 
 }
@@ -281,58 +281,55 @@ table {
     border-collapse: collapse;
 }
 
-thead {
+thead{
     background: rgba(113, 99, 186, 255);
     color: #fff;
 }
 
-th {
+th{
     padding: 15px;
     text-align: left;
 }
 
-tbody {
+tbody{
     background: #f2f2f2;
 }
 
-td {
+td{
     padding: 15px;
     font-size: 14px;
     color: #333;
 }
 
-tr:nth-child(even) {
+tr:nth-child(even){
     background: #fff;
 }
 
-tfoot {
-    background: rgba(113, 99, 186, 255);
+tfoot{
+    background: rgba(113,99,186,255);
     font-weight: bold;
     color: #fff;
 
 }
-
-tfoot td {
+tfoot td{
     padding: 15px;
     background: inherit;
 }
 
-.table-container button {
+.table-container button{
     color: green;
-    background: none;
+    background:none;
     cursor: pointer;
 }
-
 .throughout-visual,
-.finance-visual {
+.finance-visual{
     background: #fff;
     border-radius: 20px;
     padding: 2rem;
     margin-top: 1rem;
-
+    
 }
-
-.graph-box {
+.graph-box{
     display: flex;
     align-items: center;
     justify-content: center;

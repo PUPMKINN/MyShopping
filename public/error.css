@@ -1,0 +1,95 @@
+
+.wrapper-input{
+    position: relative;
+
+}
+
+.error {
+    color: red;
+    text-align: end;
+    padding-top: 8px;
+    font-weight: 500;
+    position: absolute;
+    
+    /* bottom: -24px; */
+    right: 50%;
+    display: none; 
+}
+
+.error.active {
+    display: block;
+}
+
+
+
+.wrapper-content-reset .error{
+    color: red;
+    text-align: end;
+    padding-top: 8px;
+    font-weight: 500;
+    position: absolute;
+    
+    bottom: 0px; 
+    right: 0;
+    display: none; 
+}
+
+.error.active {
+    display: block;
+}
+
+ 
+.form-to-contact .error{
+    color: red;
+    text-align: end;
+    padding-top: 8px;
+    font-weight: 500;
+    position: absolute;
+    
+    bottom: -14px; 
+    right: 18px;
+    display: none; 
+}
+
+.form-to-contact .error.active {
+    display: block;
+}
+
+#login-page input{
+    position: relative;
+}
+#login-page .error{
+    color: red;
+    text-align: end;
+    padding-top: 8px;
+    font-weight: 500;
+    position: absolute;
+    
+    bottom: -22px; 
+    right: 0px;
+    display: none; 
+}
+
+#login-page .error.active {
+    display: block;
+}
+
+#page-contact-to-tutor .error{
+    color: red;
+    text-align: end;
+    padding-top: 8px;
+    font-weight: 500;
+    position: absolute;
+    
+    bottom: -14px; 
+    right: 18px;
+    /* display: none;  */
+}
+
+#page-contact-to-tutor .error.active {
+    display: block;
+}
+
+#page-contact-to-tutor .col-12 {
+    position: relative;
+}

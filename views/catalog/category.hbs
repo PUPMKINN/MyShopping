@@ -5,17 +5,16 @@
     @import url(https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css);
 </style>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<style type="stylesheets">@import url(https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css);</style>
+<style>
+    @import url(https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css);
+</style>
 <script type="module" src="/javascripts/swiper-bundle.min.js"></script>
 <script type="module" src="/javascripts/script.js"></script>
-<style>
-    @import url(https://fonts.cdnfonts.com/css/prata-2);
-</style>
+<style type="stylesheets">@import url(https://fonts.cdnfonts.com/css/prata-2);</style>
 <style>
     @import url(https://fonts.googleapis.com/css?family=Montserrat:400,500,600&subset=latin-ext&display=swap);
 </style>
-<style>
-    @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css);
+<style type="stylesheets">@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css);
 </style>
 <style>
     @import url(https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css);
@@ -140,14 +139,14 @@
                                             <div class="sumary">
                                                 <label><span>Price</span></label>
                                                 <div class="range-track">
-                                                    <input type="range" id="range-price" value="0" min="0" max="2000000"
-                                                        step="50000">
+                                                    <input type="range" id="range-price" value="1000000" min="0"
+                                                        max="1000000" step="50000">
 
 
                                                 </div>
                                                 <div class="price-range grey-color">
                                                     <span>0 VNĐ</span>
-                                                    <span id="value-limit">2000000 VNĐ</span>
+                                                    <span id="value-limit">1000000 VNĐ</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -205,14 +204,14 @@
                                                 </div>
                                                 <div class="dot-info">
 
-                                                    <h2 class="dot-title"><a href="">Môn học: {{this.name}}</a>
-                                                        <h2 class="dot-title"><a href="">Giảng Viên:
+                                                    <h2 class="dot-title"><a href="">Course: {{this.name}}</a>
+                                                        <h2 class="dot-title"><a href="">Tutor:
                                                                 {{this.tutor.fullname}}</a>
 
                                                         </h2>
                                                         <div class="product-price">
-                                                            <span class="before"> {{this.price}}VNĐ</span>
-                                                            <span class="current">{{this.discount}}VNĐ</span>
+                                                            <span class="before"> {{this.price}} VNĐ</span>
+                                                            <span class="current">{{this.discount}} VNĐ</span>
                                                         </div>
                                                 </div>
                                             </div>
@@ -249,7 +248,7 @@
     let studentCourse = "None";
     // handle sort and filter
 
-    let maxPrice = 20000000;
+    let maxPrice = 10000000;
     let minPrice = 0;
     // Thêm sự kiện 'input' để theo dõi sự thay đổi giá trị
     rangeInput.addEventListener('input', function () {

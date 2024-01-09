@@ -1,6 +1,4 @@
-* {
-    padding: 0;
-}
+* {padding: 0;}
 
 html {
     padding: 0;
@@ -11,29 +9,32 @@ html {
     background-position: center;
     height: 100vh;
     width: 100vw;
-    max-width: none !important;
+    max-width: none !important; 
     position: relative;
-    background: linear-gradient(to bottom, #264D59, #43978D);
+    background: linear-gradient(to bottom, #264D59 , #43978D);
     margin: 0;
     padding: 0;
 
 }
 
+
+
+
 .create .header-create,
 .reset .header-reset,
 .forget .header-forget,
-.login .header-login {
+.login .header-login{
     display: flex;
     align-items: center;
 }
 
-.app-name {
+.app-name{
     color: #fff;
     padding-left: 4px;
     font-size: 18px;
 }
 
-.register {
+.register{
     color: #fff;
     font-size: 32px;
     padding: 20px 0;
@@ -42,15 +43,15 @@ html {
 .create-interface,
 .reset-interface,
 .forget-interface,
-.login-interface {
+.login-interface{
     border-radius: 20px;
-
+   
     width: 60vw;
     height: 60vh;
-
+  
     align-items: center;
     justify-content: center;
-
+    
 }
 
 .col-3 {
@@ -108,6 +109,8 @@ html {
     height: 30px;
 }
 
+
+
 .img {
     width: 100%;
 }
@@ -131,23 +134,24 @@ html {
     /* box-shadow: 1px 2px 5px #888888; */
 
 }
-
 .wrapper-content-create,
 .wrapper-content-reset,
 .wrapper-content-forget,
-.wrapper-content-login {
-    padding: 8%;
+.wrapper-content-login{
+    padding: 8% ;
     border-radius: 8px;
     height: fit-content;
 }
 
-.login-interface .content-login {}
+.login-interface .content-login {
+   
+}
 
 
 .content-create .create,
 .content-reset .reset,
 .content-forget .forget,
-.content-login .login {
+.content-login .login{
     position: absolute;
     z-index: 1;
     top: -10vh;
@@ -157,12 +161,12 @@ html {
 .wrapper-content-create,
 .wrapper-content-reset,
 .wrapper-content-forget,
-.wrapper-content-login {
+.wrapper-content-login{
     background-color: rgba(255, 255, 255);
     height: 80%;
 }
 
-.wrapper-header {
+.wrapper-header{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -174,7 +178,7 @@ html {
 
 }
 
-.input {
+.input{
     margin-bottom: 1.5rem;
     border-radius: 8px;
 }
@@ -238,8 +242,7 @@ input[class*="input-"] {
     color: #000 !important;
     /* radiant */
 }
-
-.btn button[class*="btn-"]:hover {
+.btn button[class*="btn-"]:hover{
     cursor: pointer;
 }
 
@@ -254,7 +257,7 @@ input[class*="input-"] {
     display: flex;
 }
 
-.choose .text-data {
+.choose .text-data{
     padding-left: 4px;
 }
 
@@ -273,34 +276,34 @@ input[class*="input-"] {
     /* margin-top: 20vh;
     margin-left: 23vw; */
     /* transform: translate(-50%, -50%); */
-
+    
 }
 
 
-.login-other-method img {
+.login-other-method img{
     padding-right: 12px;
 }
 
-.login-other-method:hover {
+.login-other-method:hover{
     cursor: pointer;
 }
 
 .discriptions {
     position: absolute;
     z-index: 1;
-    height: 80%;
-
+   height: 80%;
+ 
     /* margin-top: 40vh;
     margin-left: 55vw; */
     /* transform: translate(-50%, -50%); */
 }
 
-.wrapper-discriptions {
-    height: fit-content;
-    padding: 10%;
+.wrapper-discriptions{
+   height: fit-content;
+   padding: 10%;
 }
 
-.logo {
+.logo{
     width: 300px;
     height: 282px;
 }
@@ -311,24 +314,24 @@ input[class*="input-"] {
     top: -18vh !important;
     /* margin-top: 8vh;
     margin-left: 50vw; */
-
+   
 }
 
 
 .square {
     /* đang không biết tại sao width bị thay đổi */
-    width: 16px;
+    width: 16px;  
     height: 16px;
     background-color: #40DDb6;
-
+   
     /* Biến nó thành hình tròn */
-
+    
 }
 
 
 .circle {
     /* đang không biết tại sao width bị thay đổi */
-    width: 28px;
+    width: 28px;  
     height: 28px;
     background-color: white;
     border-radius: 50%;
@@ -346,43 +349,38 @@ input[class*="input-"] {
     top: 12%;
     left: 32%;
 }
-
-.discription {
+.discription{
     width: 100%;
     padding-left: 10%;
 }
-
 .header-discription {
     display: flex;
 }
 
-.header-discription .text {
+.header-discription .text{
     padding-left: 12px;
 }
-
 .text-header-discription {
-
+    
     color: #fff;
     font-size: 24px;
 }
-
-.text {
+.text{
     width: 100%
 }
-
-.text-discription {
+.text-discription{
     padding: 12px 0;
     color: #fff;
     font-size: 18px;
     line-height: 1.4;
 }
 
-.seperator {
+.seperator{
     margin: 24px 0;
     border-top: 1px solid #fff;
 }
 
-.instruction {
+.instruction{
     padding-bottom: 12px;
 }
 
@@ -390,7 +388,7 @@ input[class*="input-"] {
 
 
 
-.wrapper-content-create .modal-content {
+.wrapper-content-create .modal-content{
     border: none;
 }
 

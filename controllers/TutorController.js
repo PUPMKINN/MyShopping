@@ -8,6 +8,7 @@ const BeTutor = require("../models/BeTutor");
 const CourseService = require("../services/product");
 const UserService = require("../services/user");
 const profileService = require("../services/profile");
+const RoomChat = require("../models/Roomchat");
 
 
 // [GET] /tutor/stored/courses
@@ -76,7 +77,12 @@ const storedCoursesAjax = async (req, res, next) => {
     Course.find({ tutor: req.user._id }).skip(skipAmount).limit(pageSize)
       .then((courses) => {
         console.log(courses);
-
+          console.log('cat2')
+          console.log(pages)
+          console.log(prevPage)
+          console.log(nextPage)
+          console.log(currentPage)
+         
         res.status(200).json({
           courses: mutipleMongooseToObject(courses),
           numCourse: numCourse,
@@ -104,7 +110,9 @@ const storedWaitingListAjax = async (req, res, next) => {
     const courseIds = courses.map(course => course._id);
 
     const orders = await Order.find({ courseId: { $in: courseIds }, status: "Subscribing" }).populate('userId courseId');
-
+   
+    const orderIds = orders.map(order => order._id);
+    const roomChats = await RoomChat.find({ OrderId: { $in: orderIds } }).populate('OrderId');
     const pageSize = 4;
     const totalCourses = orders.length;
     const totalPages = Math.ceil(totalCourses / pageSize);
@@ -129,6 +137,7 @@ const storedWaitingListAjax = async (req, res, next) => {
     res.status(200).json({
       orders: mutipleMongooseToObject(orderList),
       amountOfStudents: amountOfStudents,
+      roomChats: mutipleMongooseToObject(roomChats),
       pages: pages,
       prevPage: prevPage,
       currentPage: currentPage,
@@ -151,6 +160,7 @@ const storedStudents = async (req, res, next) => {
 
   // Find orders for those courses
   const orders = await Order.find({ courseId: { $in: courseIds }, status: "Subscribing" }).populate('userId courseId');
+  const roomChats = await RoomChat.find({}).populate('OrderId');
 
   //tính toán phân trang
   const pageSize = 4;
@@ -184,6 +194,7 @@ const storedStudents = async (req, res, next) => {
     amountOfStudents: amountOfStudents,
     user: mongooseToObject(user),
     pages: pages,
+    roomChats: mutipleMongooseToObject(roomChats),
     prevPage: prevPage,
     currentPage: currentPage,
     nextPage: nextPage,
@@ -218,7 +229,7 @@ const createNewCourse = async (req, res, next) => {
     const course = new Course(formData);
     await course.save();
 
-    return res.status(200).json({ success: true, msg: "Thêm course thành công!" });
+    return res.status(200).json({ success: true, msg: "Add course successfully!" });
     //return res.send("Thêm review thành công!").redirect("/user/home");
   }
   catch (err) {
@@ -402,20 +413,25 @@ const getDetailStudent = async (req, res, next) => {
 }
 //[GET] /tutor/accepted/Order._id
 const acceptStudent = async (req, res, next) => {
+  console.log("click accepted");
   try {
     const order = await Order.findById(req.params.id).populate('userId courseId');
     if (!order) {
+      console.log("Không tìm thấy thông tin");
       return res.status(404).json({ error: 'Không tìm thấy thông tin' });
     }
     order.status = "Learning";
+    console.log("Learning");
     await order.save();
     const courseId = order.courseId._id;
     const course = await Course.findById(courseId);
     course.totalPurchase = course.totalPurchase + 1;
+    console.log(course.totalPurchase);
     await course.save();
+    console.log(course.totalPurchase);
     return res.status(200).json({ msg: 'Accepted thành công!' });
   } catch {
-    console.error(error);
+    //console.error(error);
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 }
@@ -431,13 +447,14 @@ const denyStudent = async (req, res, next) => {
     await order.save();
     return res.status(200).json({ msg: 'Denied thành công!' });
   } catch {
-    console.error(error);
+    //console.error(error);
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 }
 // [GET] /tutor/courses?page=*;
 const showAll = async (req, res, next) => {
   try {
+    //lấy về thông tin để filter và sort
     const searchField = req.query.searchField;
     const courseName = req.query.courseName;
     const tutorName = req.query.tutorName;
@@ -492,6 +509,9 @@ const detail = async (req, res, next) => {
     if (!course) {
       return res.status(404).render("404"); // Handle the case where the product is not found
     }
+
+    course.view = course.view + 1;
+    await course.save();
 
     const coursesListOfTutor = await Course.find({ tutor: course.tutor }).populate('tutor');
     const reviews = await Review.find({ courseId: req.params.id }).populate('userId');
@@ -549,11 +569,12 @@ const postFormTutor = async (req, res, next) => {
   }
   //chống spam
   const checkBeTutor = await BeTutor.find({ tutorId: req.user._id, status: "waiting" });
-  if (checkBeTutor.length > 0) return res.status(304).json({ success: true, error: "Bạn đã đăng ký rồi! Hãy chờ admin phản hồi bạn!" });
+  if (checkBeTutor.length > 0) return res.status(400).json({error: "Bạn đã đăng ký rồi! Hãy chờ admin phản hồi bạn!" });
 
   var leftDay = Number.MAX_SAFE_INTEGER;
   var leftCourse = Number.MAX_SAFE_INTEGER;
   const beTutors = await BeTutor.find({ tutorId: req.user._id, status: "accepted" }).populate('tutorId');
+  //tao tính 
   for (let i = 0; i < beTutors.length; i++) {
     const uploadDuration = beTutors[i].tutorId.amountDayUpload * 24 * 60 * 60 * 1000; // Convert days to milliseconds
     const timeSincePost = Date.now() - new Date(beTutors[i].datePost).getTime(); // Calculate time since post in milliseconds
@@ -568,7 +589,7 @@ const postFormTutor = async (req, res, next) => {
   leftDay = leftDay === Number.MAX_SAFE_INTEGER ? 0 : Math.ceil(leftDay / (24 * 60 * 60 * 1000));
   leftCourse = leftCourse === Number.MAX_SAFE_INTEGER ? 0 : leftCourse;
   if (leftDay > 0 || leftCourse > 0) {
-    return res.status(304).json({ success: true, error: "Bạn đã là tutor rồi! Hãy chờ hết hạn để đăng ký mới!" });
+    return res.status(400).json({error: "Bạn đã là tutor rồi! Hãy chờ hết hạn để đăng ký mới!" });
   }
 
   let price;
@@ -637,16 +658,26 @@ const getContactToTutor = async (req, res, next) => {
 
 
 const postContactToTutor = async (req, res, next) => {
+
   const result = validationResult(req);
   if (!result.isEmpty()) {
-    res.status(400).json({ errors: result.array() });
+   // const errors = result.array().map(error => error.msg).join(', ');
+  
+    res.status(400).json({ errors: result.array()});
     return;
   }
   try {
-    //Chống spam
-    const checkOrder = await Order.find({ userId: req.user._id, courseId: req.params.id, status: "Subscribing" || "Learning" });
-    //console.log(checkOrder.length);
-    if (checkOrder.length > 0) return res.status(304).json({ success: true, error: "Bạn đã đăng ký khóa học rồi! Hãy chờ tutor accept bạn vào khóa học!" })
+    // Prevent spam
+    const checkOrder = await Order.find({ userId: req.user._id, courseId: req.params.id, status: "Subscribing" });
+    if (checkOrder.length > 0) {
+      console.log("Ban da dang ky khoa hoc roi!")
+      return res.status(400).json({error: "Bạn đã đăng ký khóa học rồi! Hãy chờ tutor accept bạn vào khóa học!" })
+    }
+    const checkOrder1 = await Order.find({ userId: req.user._id, courseId: req.params.id, status: "Learning" });
+    if (checkOrder1.length > 0) {
+      console.log("Ban da dang ky khoa hoc roi!")
+      return res.status(400).json({error: "Bạn đang học khóa học này rồi!" })
+    }
 
     const formData = req.body;
     formData.courseId = req.params.id;
@@ -655,16 +686,40 @@ const postContactToTutor = async (req, res, next) => {
     const order = new Order(formData);
     await order.save();
     console.log(order)
-    return res.status(200).json({ success: true, msg: "đã gửi contact thành công! Vui lòng chờ đợi phản hồi" });
-    //return res.send("Thêm review thành công!").redirect("/user/home");
+    const roomChat = new RoomChat({
+      OrderId: order._id,
+    })
+    console.log(roomChat)
+    await roomChat.save();
+    return res.status(200).json({msg: "đã gửi contact thành công! Vui lòng chờ đợi phản hồi" });
   }
   catch (err) {
     next(err);
   }
 }
+
+const getChat = async (req, res, next) => {
+  const orderId = req.params.id;
+  const order = await Order.findById(orderId).populate('courseId').lean();
+  const roomChat = await RoomChat.findOne({ OrderId: orderId }).populate('OrderId').lean();
+  console.log(roomChat)
+  res.render("tutormode/texting", { roomChat: roomChat, layout: 'tutor', order: order});
+
+}
+//[POST] /tutor/texting/:id
+const postChat = async (req, res, next) => {
+  const order = req.params.id;
+  const roomChat = await RoomChat.findOne({ OrderId: order });
+  console.log(req.body.message);
+  roomChat.TutorMessage.push(req.body.message);
+  roomChat.message.push(req.body.message);
+  await roomChat.save();
+  res.status(200).json({ roomChat: mongooseToObject(roomChat) });
+}
+
 const getChangePassword = async (req, res, next) => {
   const role = req.user.role;
-  res.render('auth/updatePassword', { user: req.user, layout: role, role: role });
+  res.render('tutormode/updatePassword', { user: req.user, layout: role, role: role });
 }
 const postChangePassword = async (req, res, next) => {
   const result = validationResult(req);
@@ -682,7 +737,7 @@ const postChangePassword = async (req, res, next) => {
     if (!isMatch) {
       return res.status(400).json({ success: false, error: 'Mật khẩu cũ không đúng' });
     }
-    user.password = user.encryptPassword(newPassword);;
+    user.password = user.encryptPassword(newPassword);
     await user.save();
     return res.status(200).json({ success: true, msg: "Đổi mật khẩu thành công" });
   } catch (error) {
@@ -690,6 +745,7 @@ const postChangePassword = async (req, res, next) => {
     res.status(500).json({ success: false, error: 'Internal Server Error' });
   }
 }
+
 module.exports = {
   storedCourses,
   storedStudents,
@@ -712,6 +768,8 @@ module.exports = {
   postFormTutor,
   getContactToTutor,
   postContactToTutor,
+  getChat,
+  postChat,
   getChangePassword,
   postChangePassword,
 };

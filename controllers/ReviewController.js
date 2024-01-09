@@ -9,6 +9,10 @@ const { validationResult } = require("express-validator");
 const store = async (req, res, next) => {
     // Verify user input
     const result = validationResult(req);
+    console.log("haha", result.array());
+    if(!req.user){
+        return res.status(400).json({ error: "You Haven't Login!" });
+    }
     if (!result.isEmpty()) {
         const errors = result.array().map(error => error.msg).join(', ');
         console.log(errors);
@@ -16,17 +20,17 @@ const store = async (req, res, next) => {
         return;
     }
     try {
-        if(!req.user){
-            return res.status(400).json({ error: "You Haven't Login!" });
-        }
+      
         const order = await Order.findOne({ courseId: req.params.id, userId: req.user._id });
         //Kiểm tra xem user có được tutor accept vào khóa học không
         if (!order || (order && order.status === "denied")) {
-            return res.status(400).json({ error: "Bạn chưa đăng ký khóa học!" });
+            return res.status(400).json({ error: "You Haven't register for a tutor!" });
         }
         else if (order && order.status === "Subscribing") {
-            return res.status(400).json({ error: "Hãy đợi tutor accept bạn vào khóa học!" });
+            return res.status(400).json({ error: "Haven't accepted by tutor!" });
         }
+
+
         //Lưu review lại
         const formData = req.body;
         formData.courseId = req.params.id;
@@ -48,7 +52,7 @@ const store = async (req, res, next) => {
             await course.save();
         }
 
-        return res.status(200).json({ success: true, msg: "Thêm review thành công!" });
+        return res.status(200).json({ success: true, msg: "Add review successfully!" });
         //return res.send("Thêm review thành công!").redirect("/user/home");
     }
     catch (err) {

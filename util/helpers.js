@@ -67,8 +67,7 @@ const handlebars = exphbs.create({
     registerHelper: function(context) {
       return JSON.stringify(context);
     },
-  }
-
+  } 
 
 });
 

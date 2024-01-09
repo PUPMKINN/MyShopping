@@ -109,4 +109,5 @@ module.exports = {
     signupValidator,
     forgetValidator,
     resetValidator,
+    updateValidator,
 }

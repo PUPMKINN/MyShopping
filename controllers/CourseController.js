@@ -63,9 +63,14 @@ const showAll = async (req, res, next) => {
 const detail = async(req, res, next) => {
   try {
     const course = await Course.findById(req.params.id).populate('tutor');
+    //console.log(course);
     if (!course) {
       return res.status(404).render("404"); // Handle the case where the product is not found
     }
+    course.view = course.view + 1;
+    await course.save();
+    //console.log(course.view);
+
     //Tìm kiếm những khóa học của cùng tutor
     const coursesListOfTutor = await Course.find({tutor: course.tutor}).populate('tutor');
     //Tìm kiếm những review của khóa học này
@@ -111,7 +116,7 @@ const store = async(req, res, next) => {
   //Kiểm tra spam
   const checkList = await Course.find({name: req.body.name, tutor: req.user._id});
   if(checkList!=null) {
-    return res.status(304).json({error: 'Bạn đã đăng khóa học này rồi!'})
+    return res.status(400).json({error: 'Bạn đã đăng khóa học này rồi!'})
   }
   //Tạo khóa học mới
   const formData = req.body;
@@ -119,7 +124,7 @@ const store = async(req, res, next) => {
   formData.discount = formData.price;
   const course = new Course(formData);
   course.save().then;
-  return res.status(200).json({success: true, redirectUrl: '/tutor', msg: "Đăng khóa học thành công!"})
+  return res.status(200).json({success: true, redirectUrl: '/tutor', msg: "Add course successfully!"})
   //res.redirect("/tutor/");
 
 }
@@ -192,7 +197,7 @@ const createNewCourse = async (req, res, next) => {
     console.log(course)
     await course.save();
 
-    return res.status(200).json({ success: true, msg: "Thêm course thành công!" });
+    return res.status(200).json({ success: true, msg: "Add course successfully!" });
     //return res.send("Thêm review thành công!").redirect("/user/home");
   }
   catch (err) {

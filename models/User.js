@@ -89,6 +89,7 @@ const UserScheme = new Schema({
     googleId: {
         type: String,
     },
+    
 })
 
 UserScheme.methods.encryptPassword = function(password) {

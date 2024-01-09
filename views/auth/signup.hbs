@@ -91,12 +91,12 @@
                                 style="color:dodgerblue">Terms &
                                 Privacy</a>.
                         </div>
-                        <div class="choose">
+                        {{!-- <div class="choose">
                             <label for="checkbox-accept-policy" class="checkbox-container">
                                 <input type="checkbox" id="checkbox-accept-policy" name="checkbox-accept-policy">
                                 <span class="checkmark"></span>Agree Policies
                             </label>
-                        </div>
+                        </div> --}}
                         <div class="clearfix">
 
                             <button type="submit" class="signupbtn">Sign Up</button>
@@ -241,7 +241,22 @@
                         });
                     } else {
                         // Redirect to the signin page (adjust the URL as needed)
-                        window.location.href = '/signin';
+                          const errorElements = $$('.error');
+
+                        errorElements.forEach(errorElement => {
+                            errorElement.classList.remove('active');
+                        });
+                         const alertReview = $('.alert-success')
+                                alertReview.innerHTML = `${data.msg}`;
+                                alertReview.style.opacity = "1";
+                                alertReview.style.display = "block"
+                                console.log(alertReview)
+                                setTimeout(function () {
+                                    alertReview.style.opacity = "0";
+                                    setTimeout(function () {
+                                        alertReview.style.display = "none";
+                                    }, 500);
+                                }, 3000);
                     }
 
                 })
