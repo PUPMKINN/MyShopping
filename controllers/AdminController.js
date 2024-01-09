@@ -420,7 +420,7 @@ const profile = async (req, res, next) => {
     }
     console.log(user)
 
-    res.render('tutormode/editprofile', { user: mongooseToObject(user), layout: 'admin', });
+    res.render('admin/editprofile', { user: mongooseToObject(user), layout: 'admin', });
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, error: 'Internal Server Error' });
