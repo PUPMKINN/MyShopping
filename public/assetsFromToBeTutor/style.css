@@ -87,6 +87,7 @@
 .contact-us,
 .let-talk {
     font-weight: 600;
+    font-size: 25px;
 }
 
 .wrapper-contact-method>div {
@@ -159,4 +160,28 @@
     background-color: #6B77E5;
     padding: 8px 2rem;
     font-weight: 500;
+}
+
+input#email-address {
+    font-size: 25px;
+}
+
+input#gpa {
+    font-size: 25px;
+}
+
+input#your-name {
+    font-size: 25px;
+}
+
+input#phone-number {
+    font-size: 25px;
+}
+
+textarea#message {
+    font-size: 25px;
+}
+
+input#file-gpa {
+    font-size: 15px;
 }

@@ -30,62 +30,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="main-product row main-method-contact ">
-            <div class="col-6">
-                <div class="img-main-product">
-                    <img class="main-img" src="/assetsFromToBeTutor/z4974466230071_54de896ba0932b02331ffcfa8970d702.jpg"
-                        alt="">
-                </div>
-            </div>
-            <div class="col-6 container-method-contact">
-                <div class="wrapper-let-talk">
-                    <div class="tus-icon"></div>
-                    <div class="let-talk">Let's Talk</div>
-                </div>
-                <div class="header">
-                    Get in touch with us
-                </div>
-                <div class="discription">
-                    Completely synergize resource taxing relationships via premier niche ynamically innovate state of
-                    the art customer service.
-                </div>
-
-                <ul class="list-contact-method">
-                    <li class="contact-method">
-                        <div class="wrapper-icon">
-                            <img width="24" height="24" src="https://img.icons8.com/ios/24/phone--v1.png"
-                                alt="phone--v1" />
-                        </div>
-                        <div class="wrapper-contact-method">
-                            <div class="text-method">Have any questions?</div>
-                            <div class="text-method-contact">Free +84 782 832 923</div>
-                        </div>
-                    </li>
-                    <li class="contact-method">
-                        <div class="wrapper-icon">
-                            <img width="24" height="24" src="https://img.icons8.com/ios/24/mail.png" alt="mail" />
-                        </div>
-                        <div class="wrapper-contact-method">
-                            <div class="text-method">Write email</div>
-                            <div class="text-method-contact">Lnhao.it@gmail.com</div>
-                        </div>
-                    </li>
-                    <li class="contact-method">
-                        <div class="wrapper-icon">
-                            <img width="24" height="24" src="https://img.icons8.com/ios/24/marker--v1.png"
-                                alt="marker--v1" />
-                        </div>
-                        <div class="wrapper-contact-method">
-                            <div class="text-method">Visit anytime</div>
-                            <div class="text-method-contact">227, NGUYEN VAN CU, DISTRICT 5, HCMC</div>
-                        </div>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-
         <div class="wrapper-contact-us">
             <div class="tus-icon"></div>
             <div class="contact-us">Contact Us</div>
@@ -143,7 +87,8 @@
                 </div>
                 <div class="col-md-12  ">
                     <label for="message" class="form-label"></label>
-                    <textarea type="text" name="comment" rows="4" cols="50" class="form-control" id="message" placeholder="message"></textarea>
+                    <textarea type="text" name="comment" rows="4" cols="50" class="form-control" id="message"
+                        placeholder="message"></textarea>
                     <!-- <div class="valid-feedback">
                         Looks good!-->
                     <div class="error"> error</div>
@@ -155,6 +100,63 @@
                 </div>
             </form>
         </div>
+
+        <div class="main-product row main-method-contact ">
+            <div class="col-6">
+                <div class="img-main-product">
+                    <img class="main-img" src="/assetsFromToBeTutor/z4974466230071_54de896ba0932b02331ffcfa8970d702.jpg"
+                        alt="">
+                </div>
+            </div>
+            <div class="col-6 container-method-contact">
+                <div class="wrapper-let-talk">
+                    <div class="tus-icon"></div>
+                    <div class="let-talk">Let's Talk</div>
+                </div>
+                <div class="header">
+                    Get in touch with us
+                </div>
+                <div class="discription">
+                    Completely synergize resource taxing relationships via premier niche ynamically innovate state of
+                    the art customer service.
+                </div>
+
+                <ul class="list-contact-method">
+                    <li class="contact-method">
+                        <div class="wrapper-icon">
+                            <img width="24" height="24" src="https://img.icons8.com/ios/24/phone--v1.png"
+                                alt="phone--v1" />
+                        </div>
+                        <div class="wrapper-contact-method">
+                            <div class="text-method">Have any questions?</div>
+                            <div class="text-method-contact">Free +84 782 832 923</div>
+                        </div>
+                    </li>
+                    <li class="contact-method">
+                        <div class="wrapper-icon">
+                            <img width="24" height="24" src="https://img.icons8.com/ios/24/mail.png" alt="mail" />
+                        </div>
+                        <div class="wrapper-contact-method">
+                            <div class="text-method">Write email</div>
+                            <div class="text-method-contact">TusTeam.it@gmail.com</div>
+                        </div>
+                    </li>
+                    <li class="contact-method">
+                        <div class="wrapper-icon">
+                            <img width="24" height="24" src="https://img.icons8.com/ios/24/marker--v1.png"
+                                alt="marker--v1" />
+                        </div>
+                        <div class="wrapper-contact-method">
+                            <div class="text-method">Visit anytime</div>
+                            <div class="text-method-contact">227, NGUYEN VAN CU, DISTRICT 5, HCMC</div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+
     </div>
     <script>
         const $ = document.querySelector.bind(document)
@@ -212,18 +214,18 @@
                     errorElements.forEach(errorElement => {
                         errorElement.classList.remove('active');
                     });
-                    if(data.error){
-                         const alertReview = $('.alert-danger')
-                    alertReview.innerHTML = `${data.error}`
-                    alertReview.style.opacity = "1";
-                    alertReview.style.display = "block"
-                    console.log(alertReview)
-                    setTimeout(function () {
-                        alertReview.style.opacity = "0";
+                    if (data.error) {
+                        const alertReview = $('.alert-danger')
+                        alertReview.innerHTML = `${data.error}`
+                        alertReview.style.opacity = "1";
+                        alertReview.style.display = "block"
+                        console.log(alertReview)
                         setTimeout(function () {
-                            alertReview.style.display = "none";
-                        }, 500);
-                    }, 3000);
+                            alertReview.style.opacity = "0";
+                            setTimeout(function () {
+                                alertReview.style.display = "none";
+                            }, 500);
+                        }, 3000);
                     }
                     errorElements.forEach(errorElement => {
                         const fieldName = errorElement.previousElementSibling.getAttribute('name');
