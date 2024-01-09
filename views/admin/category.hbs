@@ -131,14 +131,14 @@
                                             <div class="sumary">
                                                 <label><span>Price</span></label>
                                                 <div class="range-track">
-                                                    <input type="range" id="range-price" value="0" min="0" max="2000000"
-                                                        step="50000">
+                                                    <input type="range" id="range-price" value="1000000" min="0"
+                                                        max="1000000" step="50000">
 
 
                                                 </div>
                                                 <div class="price-range grey-color">
                                                     <span>0 VNĐ</span>
-                                                    <span id="value-limit">2000000 VNĐ</span>
+                                                    <span id="value-limit">1000000 VNĐ</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -148,8 +148,6 @@
                                             <div class="button"><a class="primary-btn" id="primary-btn">Submit</a></div>
                                         </div>
                                     </form>
-
-
                                 </div>
                             </div>
                         </div>
@@ -164,16 +162,15 @@
 
                                         <input type="text" id="search-tutor" placeholder="Search">
                                     </div>
-
                                 </div>
                                 <div class="right">
                                     <div class="col-8 col-xl-2 col-lg-2 col-sm-8 wrapper-sort-course">
                                         <select class="form-select" id="sort_selection" aria-label="Sort Course">
                                             <option selected>Sort accounts</option>
-                                            <option value="name-asc">Name courses: A-Z</option>
-                                            <option value="name-desc">Name course: Z-A</option>
-                                            <option value="tutor-asc">Tutor: A-Z</option>
-                                            <option value="tutor-desc">Tutor: Z-A</option>
+                                            <option value="name-asc">Name course, Alphabetically, A-Z</option>
+                                            <option value="name-desc">Name course, Alphabetically, Z-A</option>
+                                            <option value="tutor-asc">Tutor, Alphabetically, A-Z</option>
+                                            <option value="tutor-desc">Tutor, Alphabetically, Z-A</option>
                                             <option value="price-desc">Price, High to Low</option>
                                             <option value="price-asc">Price, Low to High</option>
                                         </select>
@@ -185,32 +182,28 @@
                                     <div class="dotgrid">
                                         <div class="wrapper">
                                             {{#each courses}}
-                                            <div class="item">
+                                            <div onclick="loadDetail( '{{this._id}}')" class="item">
                                                 <div class="dot-image">
-                                                    <a onclick="loadDetail( '{{this._id}}')"
-                                                        class="product-permalink"></a>
+                                                    <a class="product-permalink"></a>
                                                     <div class="thumbnail">
                                                         <img src="/images/{{this.tutor.avatar}}" alt="">
+                                                    </div>
+                                                    <div class="star"><span>{{ round this.average}} </span>
+                                                        <div class="star-"></div>
                                                     </div>
                                                     <div class="label"><span>-{{percent this.discount
                                                             this.price}}%</span></div>
                                                 </div>
                                                 <div class="dot-info">
 
-                                                    <h2 class="dot-title"><a href="">Môn học: {{this.name}}</a>
-                                                        <h2 class="dot-title"><a href="">Tên giảng viên:
+                                                    <h2 class="dot-title"><a href="">Course: {{this.name}}</a>
+                                                        <h2 class="dot-title"><a href="">Tutor:
                                                                 {{this.tutor.fullname}}</a>
 
                                                         </h2>
-                                                        <i class="ri-star-fill"></i>
-                                                        <i class="ri-star-fill"></i>
-                                                        <i class="ri-star-fill"></i>
-                                                        <i class="ri-star-fill"></i>
-                                                        <i class="ri-star-fill"></i>
-
                                                         <div class="product-price">
-                                                            <p class="before"> {{this.price}}VNĐ</p>
-                                                            <p class="current">{{this.discount}}VNĐ</p>
+                                                            <span class="before"> {{this.price}} VNĐ</span>
+                                                            <span class="current">{{this.discount}} VNĐ</span>
                                                         </div>
                                                 </div>
                                             </div>
@@ -221,11 +214,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="button"><a href="/admin/courses/create" class="primary-btn"
-                                    id="primary-btn">Create Course</a></div>
                             <div class="pagination">
                                 {{generatePaginationLinks pages currentPage prevPage nextPage role}}
-
                             </div>
 
                         </div>
@@ -233,6 +223,9 @@
                 </div>
             </div>
         </div>
+
+
+
     </main>
 </div>
 <script src="./js/script.js"></script>

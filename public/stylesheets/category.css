@@ -1199,6 +1199,7 @@ i.ri-star-fill {
     section {
         padding: 3rem 5%;
     }
+
 }
 
 @media (max-width: 991px) {
@@ -1217,6 +1218,7 @@ i.ri-star-fill {
     section {
         padding: 3rem 2rem;
     }
+
 }
 
 @media (max-width: 768px) {

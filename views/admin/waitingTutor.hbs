@@ -21,17 +21,30 @@
     <div class="page-view-account-list">
 
         <div class="main--content">
-            <div class="header--wrapper">
-                <div class="header--title">
-                    <span>Primary</span>
+            <div class="category-content">
+                <div class="sorter">
+                    <a href="#0" class="menu-trigger" trigger-button data-target="sidebar-filter">
+                        <i class="ri-filter-line"></i>
+                    </a>
+                    <div class="left">
+                        <div class="input-box">
+                            <i class="fas fa-search"></i>
 
-                    <h2>View Waiting List</h2>
-                </div>
-
-                <div class="user--infor">
-                    <div class="search--box">
-                        <i class="fa-solid fa-search"></i>
-                        <input type="text" id="search-information" placeholder="Search">
+                            <input type="text" id="search-tutor" placeholder="Search">
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="col-8 col-xl-2 col-lg-2 col-sm-8 wrapper-sort-course">
+                            <select class="form-select" id="sort_selection" aria-label="Sort Course">
+                                <option selected>Sort accounts</option>
+                                <option value="username-asc">Name: A-Z</option>
+                                <option value="username-desc">Name: Z-A</option>
+                                <option value="email-asc">Email: A-Z</option>
+                                <option value="email-desc">Email: Z-A</option>
+                                <option value="price-asc">Price: High to Low</option>
+                                <option value="price-desc">Role: Low to High</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
