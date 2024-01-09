@@ -100,13 +100,7 @@
                     </table>
                 </div>
                 <div class="pagination">
-                    <a id="prev_page" href="admin/account?page={{prevPage}}">
-                        < </a>
-                            {{#each pages}}
-                            <a id="{{this}}" href="/admin/account/?page={{this}}"
-                                class="{{#if (eq this ../currentPage)}}active{{/if}}">{{this}}</a>
-                            {{/each}}
-                            <a id="next_page" href="/admin/account/?page={{nextPage}}"> > </a>
+                    {{generatePaginationLinks pages currentPage prevPage nextPage role}}
                 </div>
             </div>
         </div>
@@ -162,6 +156,16 @@
         }
 
         //handle choose method search
+        
+        function changePage(page) {
+        if (currentUrl.searchParams.has('page')) {
+            currentUrl.searchParams.set('page', page);
+        }
+        else {
+            currentUrl.searchParams.append('page', page);
+        }
+        window.location.href = currentUrl.toString();
+    }
 
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
