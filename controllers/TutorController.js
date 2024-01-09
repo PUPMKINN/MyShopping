@@ -213,6 +213,7 @@ const createNewCourse = async (req, res, next) => {
     }
     const formData = req.body;
     formData.tutor = req.user._id;
+    formData.discount = formData.price;
     console.log(req)
     const course = new Course(formData);
     await course.save();
@@ -408,6 +409,10 @@ const acceptStudent = async (req, res, next) => {
     }
     order.status = "Learning";
     await order.save();
+    const courseId = order.courseId._id;
+    const course = await Course.findById(courseId);
+    course.totalPurchase = course.totalPurchase + 1;
+    await course.save();
     return res.status(200).json({ msg: 'Accepted thành công!' });
   } catch {
     console.error(error);
@@ -677,7 +682,7 @@ const postChangePassword = async (req, res, next) => {
     if (!isMatch) {
       return res.status(400).json({ success: false, error: 'Mật khẩu cũ không đúng' });
     }
-    user.password = newPassword;
+    user.password = user.encryptPassword(newPassword);;
     await user.save();
     return res.status(200).json({ success: true, msg: "Đổi mật khẩu thành công" });
   } catch (error) {

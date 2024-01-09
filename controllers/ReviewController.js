@@ -10,10 +10,15 @@ const store = async (req, res, next) => {
     // Verify user input
     const result = validationResult(req);
     if (!result.isEmpty()) {
-        res.status(400).json({ errors: result.array() });
+        const errors = result.array().map(error => error.msg).join(', ');
+        console.log(errors);
+        res.status(400).json({ error: errors.toString() });
         return;
     }
     try {
+        if(!req.user){
+            return res.status(400).json({ error: "You Haven't Login!" });
+        }
         const order = await Order.findOne({ courseId: req.params.id, userId: req.user._id });
         //Kiểm tra xem user có được tutor accept vào khóa học không
         if (!order || (order && order.status === "denied")) {

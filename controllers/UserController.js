@@ -134,7 +134,7 @@ const editProfile = async (req, res, next) => {
 const getPremium = async(req, res, next) => {
   const role = req.user.role;
   const user = await User.findById(req.user._id).lean();
-  res.render('user/signuptotutor', { user: user, layout: role, role: role });
+  res.render('user/signuptotutor', { user: user, layout: 'user', role: role });
 }
 // [GET] /user/formTutor/123
 const getFormTutor = async(req, res, next) => {
@@ -247,7 +247,7 @@ const getContactToTutor = async (req, res, next) => {
   res.render('user/contactToTutor', {
     course: mongooseToObject(course),
     amountOfReviews: amountOfReviews,
-    layout: role,
+    layout: 'user',
     role: role,
     user: user,
   });
@@ -451,7 +451,7 @@ const postChangePassword = async (req, res, next) => {
     if (!isMatch) {
       return res.status(400).json({ success: false, error: 'Mật khẩu cũ không đúng' });
     }
-    user.password = newPassword;
+    user.password = user.encryptPassword(newPassword);;
     await user.save();
     return res.status(200).json({ success: true, msg: "Đổi mật khẩu thành công" });
   } catch (error) {

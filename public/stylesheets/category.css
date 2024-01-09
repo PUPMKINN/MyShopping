@@ -1688,14 +1688,21 @@ select#sort_selection {
 }
 
 .page-category div[class*="star-"] {
+<<<<<<< HEAD
+   padding: 0 2px;
+=======
     padding: 0 2px;
+>>>>>>> 3b2aa0c8b30f144934f33e72bcdb68e46dfcc463
 }
 
 
 .item:hover {
     cursor: pointer;
+<<<<<<< HEAD
+=======
 }
 
 .product-price {
     font-size: 15px;
+>>>>>>> 3b2aa0c8b30f144934f33e72bcdb68e46dfcc463
 }

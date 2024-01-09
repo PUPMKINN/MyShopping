@@ -64,6 +64,9 @@ const handlebars = exphbs.create({
     starRating: function (rating) {
       return Array(rating).fill(1);
     },
+    registerHelper: function(context) {
+      return JSON.stringify(context);
+    },
   }
 
 
