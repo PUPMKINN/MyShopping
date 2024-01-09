@@ -10,8 +10,6 @@
     <title>View Account List</title>
     <link rel="stylesheet" href="/assetsViewWaitingTutor/styleViewAccountList.css">
     <link rel="stylesheet" href="/pagination.css">
-    <link rel="stylesheet" href="/stylesheets/styleSideBarAdmin.css">
-
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
@@ -21,34 +19,24 @@
 
 <body>
     <div class="page-view-account-list">
-        <div class="main--content">
-            <div class="category-content">
-                <div class="sorter">
-                    <a href="#0" class="menu-trigger" trigger-button data-target="sidebar-filter">
-                        <i class="ri-filter-line"></i>
-                    </a>
-                    <div class="left">
-                        <div class="input-box">
-                            <i class="fas fa-search"></i>
 
-                            <input type="text" id="search-tutor" placeholder="Search">
-                        </div>
-                    </div>
-                    <div class="right">
-                        <div class="col-8 col-xl-2 col-lg-2 col-sm-8 wrapper-sort-course">
-                            <select class="form-select" id="sort_selection" aria-label="Sort Course">
-                                <option selected>Sort accounts</option>
-                                <option value="price-asc">Price: nhỏ-lớn</option>
-                                <option value="price-desc">Price: lớn-nhỏ</option>
-                                <option value="datePost-asc">Date Post: A-Z</option>
-                                <option value="datePost-desc">Date Post: Z-A</option>
-                            </select>
-                        </div>
+        <div class="main--content">
+            <div class="header--wrapper">
+                <div class="header--title">
+                    <span>Primary</span>
+
+                    <h2>View Waiting List</h2>
+                </div>
+
+                <div class="user--infor">
+                    <div class="search--box">
+                        <i class="fa-solid fa-search"></i>
+                        <input type="text" id="search-information" placeholder="Search">
                     </div>
                 </div>
             </div>
             <div class="list-account-container">
-                <h3 class="main--title">List Account Waiting Be Tutor</h3>
+                <h3 class="main--title">List Account</h3>
 
 
                 <div class="table-container">
@@ -96,13 +84,7 @@
                     </table>
                 </div>
                 <div class="pagination">
-                    <a id="prev_page" href="/admin/waitingTutor?page={{prevPage}}">
-                        < </a>
-                            {{#each pages}}
-                            <a id="{{this}}" href="/admin/waitingTutor/?page={{this}}"
-                                class="{{#if (eq this ../currentPage)}}active{{/if}}">{{this}}</a>
-                            {{/each}}
-                            <a id="next_page" href="/admin/waitingTutor/?page={{nextPage}}"> > </a>
+                    {{generatePaginationLinks pages currentPage prevPage nextPage role}}
                 </div>
             </div>
         </div>
@@ -111,55 +93,21 @@
 
     <script>
         let currentUrl = new URL(window.location.href);
-        const sortSelection = document.getElementById("sort_selection");
-        console.log(sortSelection)
-        sortSelection.addEventListener("change", async function () {
-
-            let selectedValue = sortSelection.value;
-            const parts = selectedValue.split('-');
-            const sortByOrder = parts[1];
-            const sortByField = parts[0];
-            if (currentUrl.searchParams.has('sortByField')) {
-                currentUrl.searchParams.set('sortByField', sortByField);
-            }
-            else {
-                currentUrl.searchParams.append('sortByField', sortByField);
-            }
-
-            if (currentUrl.searchParams.has('sortByOrder')) {
-                currentUrl.searchParams.set('sortByOrder', sortByOrder);
-            }
-            else {
-                currentUrl.searchParams.append('sortByOrder', sortByOrder);
-            }
-            console.log('haha')
-            window.location.href = currentUrl.toString();
-
-
-        })
-
-        const searchBtn = document.querySelector(".fa-search");
-        searchBtn.addEventListener('click', function () {
-            //console.log('haha');
-            const tutorName = $('#search-tutor').val();
-            let currentUrl = new URL(window.location.href);
-
-            if (currentUrl.searchParams.has('searchField')) {
-                currentUrl.searchParams.set('searchField', tutorName);
-            }
-            else {
-                currentUrl.searchParams.append('searchField', tutorName);
-            }
-            window.location.href = currentUrl.toString();
-        });
         function loadDetailUser(id) {
             window.location.href = `/admin/waitingTutor/${id}`
         }
 
         //handle choose method search
-
+        function changePage(page) {
+            if (currentUrl.searchParams.has('page')) {
+                currentUrl.searchParams.set('page', page);
+            }
+            else {
+                currentUrl.searchParams.append('page', page);
+            }
+            window.location.href = currentUrl.toString();
+        }
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 
-</html>
+</html>``

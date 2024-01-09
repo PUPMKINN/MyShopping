@@ -2,6 +2,10 @@ const Order = require("../models/Order");
 const { body, check } = require('express-validator');
 
 const postValidator = [
+    body("email").trim()
+    .notEmpty().withMessage("Email must not be empty")
+    .isEmail().withMessage("Email is invalid")
+    .escape(),
     body("fullname")
         .notEmpty().withMessage("Please provide full name")
         .escape(),
@@ -11,6 +15,7 @@ const postValidator = [
     body("GPA")
         .notEmpty().withMessage("Please provide GPA")
         .isNumeric().withMessage("GPA is a number")
+        .isFloat({ min: 0, max: 4 }).withMessage("GPA must be between 0 and 4")
         .escape(),
 
     body("comment")

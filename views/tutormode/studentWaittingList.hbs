@@ -2,12 +2,8 @@
     @import url(/stylesheets/waitlist.css);
     @import url(/pagination1.css);
 </style>
-<style type="stylesheets">
-    @import url(https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous");
-</style>
-
 <style>
-    @import url(https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css);
+    @import url('https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css');
 </style>
 
 
@@ -51,9 +47,10 @@
                                             </div>
                                             <div class="choose col-3">
                                                 <button class="accept"
-                                                    onclick="acceptOrder('{{this._id}}')">Accept</button>
-                                                <button class="deny" onclick="denyOrder('{{this._id}}')">Deny</button>
-
+                                                    onclick="acceptOrder(1,'{{this._id}}')">Accept</button>
+                                                <button class="deny" onclick="denyOrder(1,'{{this._id}}')">Deny</button>
+                                                <button class="texting"
+                                                    onclick="texTing('{{this._id}}')">Texting</button>
                                             </div>
                                         </li>
                                         {{/each}}
@@ -79,6 +76,10 @@
 </section>
 
 <!--body section ends -->
+<!-- footer section starts  -->
+
+
+<!-- footer section ends -->
 
 <script>
     const $ = document.querySelector.bind(document)
@@ -121,7 +122,8 @@
         window.location.href = `/tutor/courseDetail/${idCourse}`
     }
 
-    function denyOrder(idOrder) {
+    function denyOrder(currentPage, idOrder) {
+
         fetch(`/tutor/denied/${idOrder}`, {
             method: 'GET',
             headers: {
@@ -136,6 +138,11 @@
                 return response.json();
             })
             .then(data => {
+                console.log('currentPage')
+                console.log(currentPage)
+                if (amountOfStudents % 4 === 1) {
+                    currentPage -= 1;
+                }
                 loadCourse(currentPage);
                 // Xử lý dữ liệu nhận được từ API
                 const alertReview = $('.alert-success')
@@ -155,7 +162,7 @@
                 console.error('Fetch error:', error);
             });
     }
-    function acceptOrder(idOrder) {
+    function acceptOrder(currentPage, idOrder) {
         fetch(`/tutor/accepted/${idOrder}`, {
             method: 'GET',
             headers: {
@@ -171,7 +178,10 @@
             })
             .then(data => {
                 // Xử lý dữ liệu nhận được từ API
-
+                if (amountOfStudents % 4 === 1) {
+                    currentPage -= 1;
+                }
+                console.log(currentPage)
                 loadCourse(currentPage);
                 const alertReview = $('.alert-success')
                 alertReview.innerHTML = `${data.msg}`
@@ -223,10 +233,8 @@
     }
     async function loadCourse(currentPage) {
 
-        amountOfStudents -= 1;
-        if (amountOfStudents % 4 === 0) {
-            currentPage -= 1;
-        }
+
+
         console.log(currentPage)
         try {
             const response = await fetch(`/tutor/stored/waiting-listAjax?page=${currentPage}`, {
@@ -268,16 +276,18 @@
                                             </div>
                                             <div class="choose col-3">
                                                 <button class="accept"
-                                                    onclick="acceptOrder('${order._id}}')">Accept</button>
-                                                <button class="deny" onclick="denyOrder('${order._id}')">Deny</button>
+                                                    onclick="acceptOrder('${data.currentPage}','${order._id}}')">Accept</button>
+                                                <button class="deny" onclick="denyOrder('${data.currentPage}','${order._id}')">Deny</button>
+                                                <button class="texting" onclick="texTing('${order._id}')">Texting</button>
 
                                             </div>
             `;
                 listWaiting.appendChild(tempStudent);
             });
-            console.log()
-            console.log('haha1111')
-
+            console.log(data)
+            currentPage = data.currentPage;
+            amountOfStudents = data.amountOfStudents;
+            console.log(amountOfStudents)
             pagination.innerHTML = generateTutorPaginationLinks(data.pages, data.currentPage, data.prevPage, data.nextPage, data.namePage);
 
 
@@ -286,5 +296,10 @@
         } catch (error) {
             console.error('Error:', error.message);
         }
+    }
+
+    // texting
+    function texTing(idOrder) {
+        window.location.href = `/tutor/texting/${idOrder}`
     }
 </script>

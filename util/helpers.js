@@ -6,6 +6,7 @@ const handlebars = exphbs.create({
   extname: '.hbs',
   helpers: {
     eq: (a, b) => a === b,
+    round: (a) => Math.round(a),
     percent: (a, b) => (100 - a * 100 / b).toFixed(0),
     // Add other helpers if needed
     generatePaginationLinks: function (pages, currentPage, prevPage, nextPage, role) {
@@ -62,6 +63,9 @@ const handlebars = exphbs.create({
     },
     starRating: function (rating) {
       return Array(rating).fill(1);
+    },
+    registerHelper: function(context) {
+      return JSON.stringify(context);
     },
   }
 

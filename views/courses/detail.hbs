@@ -24,9 +24,7 @@
 
             <div class="col-6 discription-product">
                 <!-- <div class="category-product">RUNNING SHOES</div> -->
-                <div class="header-product">Giảng viên: {{course.tutor.fullname}}</div>
-                <div class="header-product">Môn học: {{course.name}}</div>
-
+                <div class="header-product">{{course.tutor.fullname}}-{{course.name}}</div>
                 <div class="num-review">
                     <div class="rating">
                         {{course.average}}
@@ -36,15 +34,14 @@
                     ({{amountOfReviews}} Customer Reviews)
                 </div>
                 <div class="wrapper-price-product">
-                    <div class="price-product-current">{{course.discount}}VNĐ</div>
+                    <div class="price-product-current">${{course.discount}}</div>
 
-                    <div class="price-product-origin">$ {{course.price}}VNĐ</div>
+                    <div class="price-product-origin">$ {{course.price}}</div>
 
                     <div class="percent-discount">- {{percent course.discount course.price}}%</div>
                 </div>
 
                 <div class="discription-product">
-                    Mô tả về Khóa học:
                     {{course.description}}
                 </div>
 
@@ -127,7 +124,7 @@
                                         srcset="https://secure.gravatar.com/avatar/b992087ca24c735ade838a3cf92d0d29?s=200&amp;d=mm&amp;r=g 2x"
                                         class="avatar avatar-100 photo" height="100" width="100" loading="lazy"
                                         decoding="async">
-
+                                        
                                     <div class="detail-review-user">
                                         <div class="score-rating-user">
                                             <div class="num-review">
@@ -361,6 +358,10 @@
                 });
                 function linkToForm(id) {
                     console.log(id)
+                    if ('{{layout}}' === 'guest') {
+                        window.location.href = `/login`
+                        return;
+                    }
                     window.location.href = `/{{layout}}/contactToTutor/${id}`
                 }
 

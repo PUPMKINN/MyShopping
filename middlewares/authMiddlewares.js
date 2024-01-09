@@ -38,6 +38,7 @@ const signupValidator = [
     body("password")
         .notEmpty().withMessage("Password must not be empty")
         .isLength({ min: 6 }).withMessage('Password must be at least 6 characters')
+        .isStrongPassword().withMessage('Password is not strong enough')
         .escape(),
 
     body("passwordConfirmation")
@@ -62,13 +63,42 @@ const resetValidator = [
     body("password")
         .notEmpty().withMessage("Password must not be empty")
         .isLength({ min: 6 }).withMessage('Password must be at least 6 characters')
+        .isStrongPassword().withMessage('Password is not strong enough')
         .escape(),
 
-    body("passwordConfirmation")
+    body("password2")
         .notEmpty().withMessage("Confirm password must not be empty")
         .escape()
         .custom((value, { req }) => {
         if (value !== req.body.password) {
+            throw new Error("Password confirmation does not match password");
+        }
+        return true;
+    })
+];
+const updateValidator = [
+    body("oldPassword") 
+        .notEmpty().withMessage("Old password must not be empty")
+        .escape()
+        .custom((value, { req }) => {
+            const user = req.user;
+            if (!user.validPassword(value)) {
+                throw new Error("Old password is incorrect");
+            }
+            return true;
+        }),
+    body("newPassword")
+        .notEmpty().withMessage("Password must not be empty")
+        .isLength({ min: 6 }).withMessage('Password must be at least 6 characters')
+        .isStrongPassword().withMessage('Password is not strong enough')
+        .escape(),
+
+    body("confirmPassword")
+        .notEmpty().withMessage("Confirm password must not be empty")
+        .escape()
+        .custom((value, { req }) => {
+          
+        if (value !== req.body.newPassword) {
             throw new Error("Password confirmation does not match password");
         }
         return true;
