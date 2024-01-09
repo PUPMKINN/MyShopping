@@ -30,9 +30,10 @@ const storedCourses = async (req, res, next) => {
   console.log(orders.length);
   const namePage = "courses";
   const orderList = await Order.find({ userId: req.user._id }).populate('courseId userId').skip(skipAmount).limit(pageSize).lean();
+  const user = await User.findById(req.user._id).lean();
   res.render("user/courses", {
     orders: orderList,
-    user: mongooseToObject(req.user),
+    user: user,
     pages: pages,
     roomChats: mutipleMongooseToObject(roomChats),
     prevPage: prevPage,
@@ -62,9 +63,10 @@ const storedCoursesAjax = async (req, res, next) => {
   console.log(orders.length);
   const namePage = "courses";
   const orderList = await Order.find({ userId: req.user._id }).populate('courseId userId').skip(skipAmount).limit(pageSize).lean();
+  const user = await User.findById(req.user._id).lean();
   res.status(200).json({
     orders: orderList,
-    user: mongooseToObject(req.user),
+    user: user,
     roomChats: mutipleMongooseToObject(roomChats),
     pages: pages,
     prevPage: prevPage,
@@ -78,17 +80,16 @@ const storedCoursesAjax = async (req, res, next) => {
 // [GET] /user/stored/courses/Order._id
 const detailCourses = async (req, res, next) => {
   const order = Order.findById(req.params.id).populate('courseId userId');
+  const user = await User.findById(req.user._id).lean();
   res.render("user/stored-courses", {
     orders: mongooseToObject(order),
     layout: 'user',
+    user: user, 
   });
 }
 
 
 const getUserMode = async (req, res, next) => {
-
-
-
   const user = await User.findById(req.user._id).lean();
   res.render('user/userMode', {
     user: user,
@@ -103,13 +104,13 @@ const profile = async (req, res, next) => {
     const userId = req.user.id;
 
     // Tìm user trong database dựa vào userId
-    const user = await User.findById(userId).populate('avatar');
+    const user = await User.findById(userId).populate('avatar').lean();
 
     if (!user) {
       return res.status(404).json({ success: false, error: 'User not found' });
     }
 
-    res.render('user/editprofile', { user: mongooseToObject(user), layout: 'user', });
+    res.render('user/editprofile', { user: user, layout: 'user', });
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, error: 'Internal Server Error' });
@@ -138,20 +139,21 @@ const editProfile = async (req, res, next) => {
 }
 
 // [GET] /user/premium
-const getPremium = (req, res, next) => {
+const getPremium = async(req, res, next) => {
   const role = req.user.role;
-  res.render('user/signuptotutor', { user: req.user, layout: 'user', role: role });
+  const user = await User.findById(req.user._id).lean();
+  res.render('user/signuptotutor', { user: user, layout: 'user', role: role });
 }
 // [GET] /user/formTutor/123
-const getFormTutor = (req, res, next) => {
+const getFormTutor = async(req, res, next) => {
   let price;
   if (req.params.page == '1') { price = 199000 }
   else if (req.params.page == '2') { price = 1999000 }
   else if (req.params.page == '3') { price = 3999000 };
-
+  const user = await User.findById(req.user._id).lean();
   const role = req.user.role;
   res.render('user/formbetutor', {
-    user: req.user,
+    user: user,
     price: price,
     page: req.params.page,
     layout: 'user',
@@ -253,10 +255,11 @@ const getContactToTutor = async (req, res, next) => {
   }
   console.log(amountOfReviews)
   const role = req.user.role;
-
+  const user = await User.findById(req.user._id).lean();
 
   res.render('user/contactToTutor', {
     course: mongooseToObject(course),
+    user: user,
     amountOfReviews: amountOfReviews,
     layout: 'user',
     role: role,
@@ -303,45 +306,6 @@ const postContactToTutor = async (req, res, next) => {
     next(err);
   }
 }
-
-//[GET] /user/home
-// const getHomePage = async (req, res, next) => {
-//   const reviewList = await Review.aggregate([
-//     {
-//       $project: {
-//         courseId: 1, // Include other fields as needed
-//         userId: 1,
-//         rating: 1,
-//         comment: 1,
-//         datePost: 1,
-//         commentLength: { $strLenCP: "$comment" } // Calculate the length of comment
-//       }
-//     },
-//     {
-//       $sort: { rating: -1, commentLength: -1, } // Sort by comment length in ascending order
-//     }
-//   ]).skip(0).limit(3);
-//   //console.log(reviewList);
-
-//   const tutors = await User.find({role: 'tutor'});
-//   let userList = await Promise.all(tutors.map(async (tutor) => {
-//       let averageRating = await UserService.getAverageRatingForTutor(tutor._id.toString());
-//       //console.log(averageRating);
-//       return {
-//           ...tutor.toObject(),
-//           averageRating: averageRating ? averageRating.averageRating : 0
-//       };
-//   }));
-//   // Sort the userList based on averageRating in descending order
-//   userList.sort((a, b) => b.averageRating - a.averageRating);
-
-//   // Apply skip and limit - here skip 0 and limit 4
-//   userList = userList.slice(0, 4);
-//   //console.log(userList);
-
-//   res.render('home/userHome', { user: req.user, layout: 'user', reviewList: reviewList, userList: userList});
-// }
-
 
 const getHomePage = async (req, res, next) => {
   try {
@@ -401,9 +365,9 @@ const getHomePage = async (req, res, next) => {
     userList = userList.slice(0, 4);
     console.log(userList);
 
-
+    const user = await User.findById(req.user._id).lean();
     // console.log(JSON.stringify(reviewList, null, 2));
-    res.render('home/userhome', { user: req.user, layout: 'user', reviewList: reviewList, userList: userList });
+    res.render('home/userhome', { user: user, layout: 'user', reviewList: reviewList, userList: userList });
   } catch (error) {
     console.error(error);
     next(error);
@@ -442,7 +406,7 @@ const showAll = async (req, res, next) => {
     var nextPage = currentPage + 1; if (nextPage > totalPages) nextPage = totalPages;
     var prevPage = currentPage - 1; if (prevPage < 1) prevPage = 1;
     console.log(courses.length);
-
+    const user = await User.findById(req.user._id).lean();
     res.render('catalog/category', {
       courses: courses,
       pages: pages,
@@ -451,6 +415,7 @@ const showAll = async (req, res, next) => {
       nextPage: nextPage,
       layout: 'user',
       role: role,
+      user: user,
     });
   } catch (error) {
     console.error('Error fetching courses:', error);
@@ -479,6 +444,7 @@ const detail = async (req, res, next) => {
     }
     const coursesListOfName = await Course.find({ name: course.name }).populate('tutor');
     console.log(coursesListOfName);
+    const user = await User.findById(req.user._id).lean();
     res.render("courses/detail", {
       course: mongooseToObject(course),
       coursesListOfTutor: mutipleMongooseToObject(coursesListOfTutor),
@@ -486,6 +452,7 @@ const detail = async (req, res, next) => {
       amountOfReviews: amountOfReviews,
       coursesListOfName: mutipleMongooseToObject(coursesListOfName),
       layout: 'user',
+      user: user,
     });
   } catch (err) {
     next(err);
@@ -499,9 +466,9 @@ const getChat = async (req, res, next) => {
     const order = await Order.findById(orderId).populate('courseId').lean();
     const roomChat = await RoomChat.findOne({ OrderId: orderId }).populate('OrderId').lean();
     console.log(roomChat)
-
+    const user = await User.findById(req.user._id).lean();
     res.render('user/texting', {
-      roomChat: roomChat, layout: 'user', order: order,
+      roomChat: roomChat, layout: 'user', order: order, user: user,
     });
   } catch (err) {
     next(err);
