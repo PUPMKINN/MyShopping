@@ -552,6 +552,7 @@ ul {
     font-size: 22px;
     display: inline-block;
     color: #fff;
+    background-color: #40DDB6;
     width: 100%;
 }
 
@@ -575,7 +576,7 @@ ul {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #c2c2c2 ;
+    border-bottom: 1px solid #c2c2c2;
 }
 
 .choose {
@@ -595,7 +596,8 @@ ul {
 .clone {
     background: linear-gradient(to right, #2ecc71, #27ae60);
 }
+
 .schedule,
-.price{
+.price {
     font-size: 16px !important;
 }

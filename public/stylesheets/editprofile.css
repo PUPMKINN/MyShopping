@@ -34,6 +34,10 @@ html::-webkit-scrollbar-thumb {
     border-radius: 5rem;
 }
 
+form {
+    font-size: 20px;
+}
+
 section {
     padding: 5rem 10%;
 }
@@ -438,16 +442,16 @@ label.btn {
 }
 
 
-.wrapper-header{
+.wrapper-header {
     padding-bottom: 4rem;
     border-bottom: 4px solid #000;
 }
 
-.text-field{
+.text-field {
     font-size: 28px;
 }
 
-input{
+input {
     background-color: inherit !important;
     padding-bottom: 0.75rem;
     border-bottom: 1px solid #000;
@@ -459,17 +463,13 @@ input{
     display: none;
 } */
 
-.image:hover{
+.image:hover {
     cursor: pointer;
 }
 
-.wrapper-btn-submit{
+.wrapper-btn-submit {
     display: flex;
     justify-content: center;
 }
 
-#btn-submit{
-    
-}
-
- 
+#btn-submit {}
