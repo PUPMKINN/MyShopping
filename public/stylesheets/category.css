@@ -34,7 +34,7 @@ body {
 
 a {
     text-decoration: none;
-    color: inherit !important;
+    color: inherit;
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -49,8 +49,8 @@ ul {
     font-size: 20px;
 }
 
-p {
-    font-size: 15px;
+span {
+    font-size: 15px !important;
 }
 
 
@@ -520,12 +520,11 @@ input.checker:checked::after {
 
 .sidebar .close-trigger {
     position: absolute;
-    font-size: 30px;
     top: 0;
     right: -40px;
     width: 40px;
     height: 40px;
-    color: var(--dark-color);
+    color: var(--black-color);
     /*màu button*/
     display: flex;
     align-items: center;
@@ -953,7 +952,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .pagination a.active {
-    background-color: #ffc300;
+    background-color: #825959;
     font-weight: bold;
     border-radius: 5px;
 }
@@ -1342,21 +1341,6 @@ h4 {
     font-family: ui-monospace;
 }
 
-
-
-.btn {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 1rem 3rem;
-    cursor: pointer;
-    background: #40DDB6;
-    font-size: 1.7rem;
-    text-transform: capitalize;
-    color: #000000;
-
-    border-radius: 15px;
-}
-
 .frame {
     display: inline-block;
     margin-top: 1rem;
@@ -1444,7 +1428,6 @@ h4 {
     font-size: 2rem;
     text-transform: capitalize;
     color: #334;
-    text-decoration: none;
 }
 
 .header .navbar .links a:hover {
@@ -1579,12 +1562,12 @@ i.fas.fa-play-circle {
     transform: translateY(-50%);
 }
 
-#sort_selection {
+/* #sort_selection {
     font-size: 20px;
     padding: 8px 15px;
     border-radius: 8px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-}
+} */
 
 .input-box i {
     left: 20px;
@@ -1619,6 +1602,35 @@ i.fas.fa-play-circle {
     transform: translateY(-50%) scale(0.98);
 }
 
+select#sort_selection {
+    font-size: var(--fs14);
+    border: 1px solid var(--light-color);
+    outline: 0;
+    background-color: transparent;
+    padding: 10px 20px;
+    transition: border .3s;
+}
+
+.category-content :where(.sorter, .right) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 1rem 3rem;
+    cursor: pointer;
+    background: #40DDB6;
+    font-size: 1.7rem;
+    text-transform: capitalize;
+    color: #000000;
+    border: 0.2rem solid #334;
+    border-radius: 15px;
+}
+
+
 
 .product-size .wrap {
 
@@ -1644,6 +1656,7 @@ i.fas.fa-play-circle {
 .wrap input[type="radio"] {
     margin-left: 10px !important;
 }
+
 
 .page-category .star {
     position: absolute;
@@ -1676,4 +1689,13 @@ i.fas.fa-play-circle {
 
 .page-category div[class*="star-"] {
     padding: 0 2px;
+}
+
+
+.item:hover {
+    cursor: pointer;
+}
+
+.product-price {
+    font-size: 15px;
 }
