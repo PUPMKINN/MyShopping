@@ -35,7 +35,7 @@
 
 
 
-var port = normalizePort(process.env.PORT || '10000');
+var port = normalizePort(process.env.PORT || '3000');
 
 /**
  * Normalize a port into a number, string, or false.
