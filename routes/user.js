@@ -35,8 +35,8 @@ router.post('/contactToTutor/:id', isUser, orderMiddleware.postValidator,userCon
 router.get('/changePassword', isUser, userController.getChangePassword);
 router.post('/changePassword', isUser, authMiddleware.updateValidator, userController.postChangePassword);
 
-router.get('/courses/:id', userController.detail);
-router.get('/courses/', userController.showAll);
+router.get('/courses/:id', isUser,userController.detail);
+router.get('/courses/', isUser, userController.showAll);
 router.get('/', isUser, userController.getHomePage);
 
 

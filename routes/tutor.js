@@ -21,11 +21,11 @@ router.post('/createNewCourse', isTutor, courseMiddleware.createValidator, tutor
 router.get('/profile', isTutor, tutorController.profile);
 router.get('/courseDetail/:id', isTutor, tutorController.courseDetail);
 router.post('/profile', isTutor, upload.single('avatar'), profileMiddleware.postValidator, tutorController.editProfile);
-router.get('/tutor-mode', tutorController.getTutorMode);
-router.get('/waitingStudent/:id', tutorController.getDetailStudent);
-router.get("/accepted/:id", tutorController.acceptStudent);
-router.get("/denied/:id", tutorController.denyStudent);
-router.get('/courses/:id', tutorController.detail);
+router.get('/tutor-mode', isTutor,tutorController.getTutorMode);
+router.get('/waitingStudent/:id', isTutor,tutorController.getDetailStudent);
+router.get("/accepted/:id", isTutor,tutorController.acceptStudent);
+router.get("/denied/:id", isTutor,tutorController.denyStudent);
+router.get('/courses/:id', isTutor,tutorController.detail);
 router.get('/courses/', isTutor, tutorController.showAll);
 router.get('/premium', isTutor, tutorController.getPremium);
 router.get('/formTutor/:page', isTutor, tutorController.getFormTutor);
