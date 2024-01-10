@@ -46,7 +46,7 @@ const aboutUs = async(req, res) => {
   }
   //else role = "guest";
   console.log(user);
-  res.render("aboutUs", { layout: role, user: user });
+  res.render("aboutus", { layout: role, user: user });
 }
 module.exports = {
   getHomePage,
